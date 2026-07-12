@@ -250,8 +250,16 @@
                     var card = document.querySelector('.aspect[data-cat="' + cat.id + '"]');
                     if (!card) return;
                     var heads = [];
+                    var seen = {};
                     cat.aspects.forEach(function (a) {
-                        if (a.headlines.length) heads.push({ aspect: a.name, h: a.headlines[0] });
+                        for (var k = 0; k < a.headlines.length; k++) {
+                            var h = a.headlines[k];
+                            if (!seen[h.url]) {
+                                seen[h.url] = true;
+                                heads.push({ aspect: a.name, h: h });
+                                break;
+                            }
+                        }
                     });
                     if (!heads.length) return;
                     var list = document.createElement('ul');
