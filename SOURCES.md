@@ -1,5 +1,7 @@
 # Global Intelligence — News Source Registry
 
+> **Browse this live on the site:** https://equalinformation.com/global-intelligence-site/sources/
+
 Global Intelligence synthesizes what is happening around the world from the world's most
 important news media. This page lists the sources; the machine-readable registry the pipelines
 consume is [`data/sources.json`](data/sources.json) — that file is the single source of truth.

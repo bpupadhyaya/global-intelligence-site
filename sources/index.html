@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Source Registry — Global Intelligence</title>
+    <meta name="description" content="The transparent, public registry of the world's major news media that Global Intelligence monitors — every region, state-affiliated outlets flagged, machine-readable.">
+    <link rel="canonical" href="https://equalinformation.com/global-intelligence-site/sources/">
+    <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+    <meta name="theme-color" content="#0b3d2e">
+    <link rel="stylesheet" href="../assets/fonts/inter.css">
+    <link rel="stylesheet" href="../assets/css/style.css?v=b3a9f35b">
+</head>
+<body>
+
+<nav>
+    <div class="nav-inner">
+        <a href="../" class="nav-logo"><span class="globe">🌐</span> Global Intelligence</a>
+        <ul class="nav-links">
+            <li><a href="../briefing/">Live briefing</a></li>
+            <li><a href="../#how">How it works</a></li>
+            <li><a href="../#privacy">Privacy</a></li>
+            <li><a href="./" aria-current="page">Sources</a></li>
+        </ul>
+        <span class="nav-utc"><span class="live">●</span> <span id="utc">— UTC</span></span>
+        <button class="mobile-menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('show')" aria-label="Menu">&#9776;</button>
+    </div>
+</nav>
+
+<header class="hero hero-sub">
+    <div class="wrap">
+        <h1>The <span class="accent">source registry</span></h1>
+        <p class="tagline" id="src-stamp">Loading…</p>
+        <p class="lede">Global Intelligence reads the world's major news media, transparently.
+        Every source we monitor is public, listed here, and machine-readable
+        (<a href="../data/sources.json">sources.json</a>). We summarize in our own words and
+        always link to the original reporting; state-affiliated outlets are flagged.</p>
+    </div>
+</header>
+
+<main class="wrap" id="sources-root" style="padding: 28px 24px 64px;">
+    <noscript><p>This page needs JavaScript — or read the raw registry at
+    <a href="../data/sources.json">data/sources.json</a>.</p></noscript>
+</main>
+
+<footer>
+    <div class="footer-inner">
+        <ul class="footer-links">
+            <li><a href="../">Home</a></li>
+            <li><a href="../briefing/">Live briefing</a></li>
+            <li><a href="./">Source registry</a></li>
+            <li><a href="https://github.com/bpupadhyaya/global-intelligence-site">GitHub</a></li>
+        </ul>
+        <p class="footer-copy">© 2026 Global Intelligence · To suggest a source,
+        <a href="https://github.com/bpupadhyaya/global-intelligence-site/issues">open an issue</a></p>
+    </div>
+</footer>
+
+<script>
+    (function () {
+        var utc = document.getElementById('utc');
+        function tick() {
+            var d = new Date(), p = function (n) { return String(n).padStart(2, '0'); };
+            utc.textContent = p(d.getUTCHours()) + ':' + p(d.getUTCMinutes()) + ':' + p(d.getUTCSeconds()) + ' UTC';
+        }
+        tick(); setInterval(tick, 1000);
+    })();
+
+    (function () {
+        var root = document.getElementById('sources-root');
+        fetch('../data/sources.json?t=' + Date.now())
+            .then(function (r) { return r.json(); })
+            .then(function (d) {
+                document.getElementById('src-stamp').textContent =
+                    d.sources.length + ' sources · registry v' + d.version + ' · updated ' + d.updated;
+                var regions = {};
+                d.sources.forEach(function (s) { (regions[s.region] = regions[s.region] || []).push(s); });
+                var order = ['Global', 'Americas', 'Europe', 'Middle East', 'Asia', 'Oceania', 'Africa'];
+                order.concat(Object.keys(regions).filter(function (r) { return order.indexOf(r) < 0; }))
+                    .forEach(function (region) {
+                        var list = regions[region];
+                        if (!list) return;
+                        var section = document.createElement('section');
+                        section.style.padding = '24px 0 4px';
+                        var h = document.createElement('h2');
+                        h.textContent = region;
+                        h.style.cssText = 'color:var(--green-900);font-size:22px;letter-spacing:-0.02em;margin-bottom:14px;';
+                        section.appendChild(h);
+                        var grid = document.createElement('div');
+                        grid.className = 'brief-grid';
+                        list.sort(function (a, b) { return a.country.localeCompare(b.country) || a.name.localeCompare(b.name); })
+                            .forEach(function (s) {
+                                var card = document.createElement('article');
+                                card.className = 'briefing brief-card';
+                                var head = document.createElement('div');
+                                head.className = 'aspect-path';
+                                head.textContent = s.country;
+                                card.appendChild(head);
+                                var name = document.createElement('p');
+                                var link = document.createElement('a');
+                                link.href = s.url; link.rel = 'noopener'; link.target = '_blank';
+                                link.textContent = s.name;
+                                link.style.cssText = 'font-weight:700;color:var(--ink);text-decoration:none;font-size:16px;';
+                                name.appendChild(link);
+                                name.style.marginTop = '6px';
+                                card.appendChild(name);
+                                var meta = document.createElement('span');
+                                meta.className = 'live-meta';
+                                meta.textContent = s.type + ' · ' + s.language.toUpperCase() +
+                                    (s.state_affiliated ? ' · state-affiliated' : '');
+                                card.appendChild(meta);
+                                grid.appendChild(card);
+                            });
+                        section.appendChild(grid);
+                        root.appendChild(section);
+                    });
+            })
+            .catch(function () {
+                root.innerHTML = '<p style="color:var(--ink-faint)">Could not load the registry — try again shortly.</p>';
+            });
+    })();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live World Briefing — Global Intelligence</title>
+    <meta name="description" content="The live Global Intelligence briefing: fresh reporting across all 41 world aspects — economy, markets, politics, geopolitics, energy, technology and more — rebuilt every four hours from the world's major news media.">
+    <link rel="canonical" href="https://equalinformation.com/global-intelligence-site/briefing/">
+    <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+    <meta name="theme-color" content="#0b3d2e">
+    <link rel="stylesheet" href="../assets/fonts/inter.css">
+    <link rel="stylesheet" href="../assets/css/style.css?v=b3a9f35b">
+</head>
+<body>
+
+<nav>
+    <div class="nav-inner">
+        <a href="../" class="nav-logo"><span class="globe">🌐</span> Global Intelligence</a>
+        <ul class="nav-links">
+            <li><a href="./" aria-current="page">Live briefing</a></li>
+            <li><a href="../#how">How it works</a></li>
+            <li><a href="../#privacy">Privacy</a></li>
+            <li><a href="../sources/">Sources</a></li>
+        </ul>
+        <span class="nav-utc"><span class="live">●</span> <span id="utc">— UTC</span></span>
+        <button class="mobile-menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('show')" aria-label="Menu">&#9776;</button>
+    </div>
+</nav>
+
+<header class="hero hero-sub">
+    <div class="wrap">
+        <h1>The live <span class="accent">world briefing</span></h1>
+        <p class="tagline" id="brief-stamp">Loading the latest cycle…</p>
+        <p class="lede">All 41 aspects of the world, populated with the freshest reporting from
+        the global source registry — rebuilt every four hours by an open pipeline. Headlines
+        link to the original reporting.</p>
+        <div class="chips" id="cat-nav" style="margin-top:26px;"></div>
+    </div>
+</header>
+
+<main class="wrap" id="briefing-root" style="padding: 28px 24px 64px;">
+    <noscript><p>The live briefing needs JavaScript — or read the raw data at
+    <a href="../data/briefing.json">data/briefing.json</a>.</p></noscript>
+</main>
+
+<footer>
+    <div class="footer-inner">
+        <ul class="footer-links">
+            <li><a href="../">Home</a></li>
+            <li><a href="./">Live briefing</a></li>
+            <li><a href="../sources/">Source registry</a></li>
+            <li><a href="https://github.com/bpupadhyaya/global-intelligence-site">GitHub</a></li>
+        </ul>
+        <p class="footer-copy">© 2026 Global Intelligence · Headlines belong to their publishers — we link, never republish ·
+        Rebuilt every 4 hours by an <a href="https://github.com/bpupadhyaya/global-intelligence-site/blob/main/scripts/build_briefing.py">open-source pipeline</a></p>
+    </div>
+</footer>
+
+<script>
+    (function () {
+        var utc = document.getElementById('utc');
+        function tick() {
+            var d = new Date(), p = function (n) { return String(n).padStart(2, '0'); };
+            utc.textContent = p(d.getUTCHours()) + ':' + p(d.getUTCMinutes()) + ':' + p(d.getUTCSeconds()) + ' UTC';
+        }
+        tick(); setInterval(tick, 1000);
+    })();
+
+    (function () {
+        var root = document.getElementById('briefing-root');
+        fetch('../data/briefing.json?t=' + Date.now())
+            .then(function (r) { return r.json(); })
+            .then(function (b) {
+                document.getElementById('brief-stamp').textContent =
+                    'Updated ' + b.generated_at.replace('T', ' ').slice(0, 16) + ' UTC · ' +
+                    b.stats.fresh_items + ' fresh items from ' + b.stats.sources_ok + ' sources · ' +
+                    b.stats.aspects_covered + '/' + b.stats.aspects_total + ' aspects covered';
+                var catNav = document.getElementById('cat-nav');
+                b.categories.forEach(function (cat) {
+                    var chip = document.createElement('a');
+                    chip.className = 'chip';
+                    chip.href = '#' + cat.id;
+                    chip.textContent = cat.name;
+                    chip.style.textDecoration = 'none';
+                    catNav.appendChild(chip);
+
+                    var section = document.createElement('section');
+                    section.id = cat.id;
+                    section.style.padding = '26px 0 6px';
+                    var h = document.createElement('h2');
+                    h.textContent = cat.name;
+                    h.style.cssText = 'color:var(--green-900);font-size:22px;letter-spacing:-0.02em;margin-bottom:14px;';
+                    section.appendChild(h);
+                    var grid = document.createElement('div');
+                    grid.className = 'brief-grid';
+                    cat.aspects.forEach(function (a) {
+                        var card = document.createElement('article');
+                        card.className = 'briefing brief-card';
+                        var head = document.createElement('div');
+                        head.className = 'aspect-path';
+                        head.textContent = cat.name + ' · ' + a.name;
+                        card.appendChild(head);
+                        if (!a.headlines.length) {
+                            var quiet = document.createElement('p');
+                            quiet.textContent = 'No significant fresh reporting in the last day.';
+                            quiet.style.color = 'var(--ink-faint)';
+                            card.appendChild(quiet);
+                        } else {
+                            var list = document.createElement('ul');
+                            list.className = 'live-list';
+                            list.style.borderTop = 'none';
+                            list.style.paddingTop = '4px';
+                            a.headlines.forEach(function (hl) {
+                                var li = document.createElement('li');
+                                var link = document.createElement('a');
+                                link.href = hl.url; link.rel = 'noopener'; link.target = '_blank';
+                                link.textContent = hl.title;
+                                var meta = document.createElement('span');
+                                meta.className = 'live-meta';
+                                meta.textContent = hl.source + ' · ' +
+                                    (hl.age_hours < 1 ? 'just now' : Math.round(hl.age_hours) + 'h ago');
+                                li.appendChild(link); li.appendChild(meta); list.appendChild(li);
+                            });
+                            card.appendChild(list);
+                        }
+                        grid.appendChild(card);
+                    });
+                    section.appendChild(grid);
+                    root.appendChild(section);
+                });
+            })
+            .catch(function () {
+                root.innerHTML = '<p style="color:var(--ink-faint)">Could not load the briefing — try again shortly.</p>';
+            });
+    })();
+</script>
+
+</body>
+</html>
