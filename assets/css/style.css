@@ -187,18 +187,21 @@ section.tint { background: var(--paper-tint); border-top: 1px solid var(--line);
 
 /* ---------- Run strip ---------- */
 .runstrip { max-width: 860px; margin: 0 auto; }
-.track { position: relative; margin-top: 10px; height: 3px; background: var(--line); border-radius: 2px; }
-.runs { display: flex; justify-content: space-between; transform: translateY(-9px); }
-.run { text-align: center; width: 20px; }
+.runs { display: flex; justify-content: space-between; position: relative; margin-top: 10px; }
+.runs::before {
+    content: ""; position: absolute; left: 10px; right: 10px; top: 6px;
+    height: 3px; background: var(--line); border-radius: 2px;
+}
+.run { text-align: center; position: relative; }
 .run .tick {
-    width: 12px; height: 12px; margin: 0 auto; border-radius: 50%;
+    display: block; width: 12px; height: 12px; margin: 0 auto; border-radius: 50%;
     background: #fff; border: 2px solid var(--ink-faint);
 }
 .run.active .tick { background: var(--green-600); border-color: var(--green-600); box-shadow: 0 0 0 5px var(--green-100); }
-.run .t { display: block; margin-top: 10px; font-size: 13px; font-weight: 700; color: var(--ink-soft); }
+.run .t { display: block; margin-top: 12px; font-size: 13px; font-weight: 700; color: var(--ink-soft); }
 .run.active .t { color: var(--green-700); }
 .run .z { display: block; font-size: 11.5px; color: var(--ink-faint); margin-top: 2px; white-space: nowrap; }
-.runstrip-note { text-align: center; margin-top: 34px; font-size: 14px; color: var(--ink-faint); }
+.runstrip-note { text-align: center; margin-top: 40px; font-size: 14px; color: var(--ink-faint); }
 @media (max-width: 700px) { .run .z { display: none; } }
 
 /* ---------- Privacy banner ---------- */
