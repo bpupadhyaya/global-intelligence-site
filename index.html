@@ -1,0 +1,370 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Global Intelligence — Understand the world, every four hours</title>
+<meta name="description" content="Global Intelligence distills what is happening around the globe — economy, politics, geopolitics and hundreds of aspects more — into briefings you can act on. Refreshed six times a day. 100% private, on your device.">
+<style>
+  :root {
+    --ink: #0B1120;
+    --panel: #121B30;
+    --panel-2: #0E1626;
+    --line: #22304F;
+    --text: #E7ECF5;
+    --muted: #8C9AB6;
+    --accent: #E5A83B;
+    --accent-ink: #0B1120;
+    --pos: #63B98C;
+    --neg: #D98070;
+    --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+    --sans: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  }
+  @media (prefers-color-scheme: light) {
+    :root {
+      --ink: #F2F4F8; --panel: #FFFFFF; --panel-2: #E9EDF4; --line: #D5DCE8;
+      --text: #151C2E; --muted: #5B6780; --accent: #A96F14; --accent-ink: #FFFFFF;
+      --pos: #2E7D54; --neg: #B05442;
+    }
+  }
+  :root[data-theme="light"] {
+    --ink: #F2F4F8; --panel: #FFFFFF; --panel-2: #E9EDF4; --line: #D5DCE8;
+    --text: #151C2E; --muted: #5B6780; --accent: #A96F14; --accent-ink: #FFFFFF;
+    --pos: #2E7D54; --neg: #B05442;
+  }
+  :root[data-theme="dark"] {
+    --ink: #0B1120; --panel: #121B30; --panel-2: #0E1626; --line: #22304F;
+    --text: #E7ECF5; --muted: #8C9AB6; --accent: #E5A83B; --accent-ink: #0B1120;
+    --pos: #63B98C; --neg: #D98070;
+  }
+  * { box-sizing: border-box; margin: 0; }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  body {
+    background: var(--ink); color: var(--text);
+    font-family: var(--sans); font-size: 16.5px; line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; }
+  a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+  .wrap { max-width: 1060px; margin: 0 auto; padding: 0 24px; }
+
+  /* ── top bar ── */
+  header {
+    border-bottom: 1px solid var(--line);
+    position: sticky; top: 0; background: color-mix(in srgb, var(--ink) 88%, transparent);
+    backdrop-filter: blur(8px); z-index: 10;
+  }
+  .bar { display: flex; align-items: center; gap: 20px; height: 58px; }
+  .mark {
+    font-family: var(--mono); font-size: 13px; letter-spacing: .22em;
+    text-transform: uppercase; text-decoration: none; white-space: nowrap;
+  }
+  .mark b { color: var(--accent); font-weight: 700; }
+  .utc { margin-left: auto; font-family: var(--mono); font-size: 12px; color: var(--muted); white-space: nowrap; }
+  .utc .dot { color: var(--accent); }
+  nav { display: flex; gap: 18px; }
+  nav a { font-family: var(--mono); font-size: 12px; letter-spacing: .08em; color: var(--muted); text-decoration: none; }
+  nav a:hover { color: var(--text); }
+  @media (max-width: 640px) { nav { display: none; } }
+
+  /* ── hero ── */
+  .hero { display: grid; grid-template-columns: 1.05fr .95fr; gap: 48px; padding: 72px 0 56px; align-items: center; }
+  @media (max-width: 880px) { .hero { grid-template-columns: 1fr; padding-top: 48px; } }
+  .eyebrow {
+    font-family: var(--mono); font-size: 12px; letter-spacing: .18em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 18px;
+  }
+  h1 {
+    font-family: var(--serif); font-weight: 500; font-size: clamp(34px, 5vw, 52px);
+    line-height: 1.12; text-wrap: balance; letter-spacing: -0.01em;
+  }
+  .lede { margin-top: 20px; color: var(--muted); max-width: 34em; }
+  .lede strong { color: var(--text); font-weight: 600; }
+  .cta-row { margin-top: 30px; display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
+  .btn {
+    font-family: var(--mono); font-size: 13px; letter-spacing: .06em; text-decoration: none;
+    padding: 11px 18px; border-radius: 3px; border: 1px solid var(--line);
+  }
+  .btn-primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); font-weight: 700; }
+  .btn-primary:hover { filter: brightness(1.08); }
+  .btn-ghost:hover { border-color: var(--muted); }
+  .status { font-family: var(--mono); font-size: 12px; color: var(--muted); }
+
+  /* ── specimen card ── */
+  .specimen { position: relative; }
+  .card {
+    background: var(--panel); border: 1px solid var(--line); border-radius: 6px;
+    padding: 22px 24px; box-shadow: 0 18px 50px -28px rgba(0,0,0,.55);
+  }
+  .card-head { display: flex; justify-content: space-between; gap: 12px; align-items: baseline; flex-wrap: wrap; }
+  .aspect-path { font-family: var(--mono); font-size: 11.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); }
+  .run-stamp { font-family: var(--mono); font-size: 11px; color: var(--muted); }
+  .card p { margin-top: 14px; font-size: 15px; line-height: 1.65; }
+  .influence { margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--line); }
+  .influence-label { font-family: var(--mono); font-size: 10.5px; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); }
+  .tags { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 9px; }
+  .tag {
+    font-family: var(--mono); font-size: 11.5px; padding: 4px 10px; border-radius: 999px;
+    border: 1px solid var(--line); color: var(--text);
+  }
+  .tag.up { color: var(--pos); border-color: color-mix(in srgb, var(--pos) 45%, transparent); }
+  .tag.down { color: var(--neg); border-color: color-mix(in srgb, var(--neg) 45%, transparent); }
+  .card-src { margin-top: 14px; font-family: var(--mono); font-size: 11px; color: var(--muted); }
+  .ribbon {
+    position: absolute; top: -11px; right: 16px; background: var(--ink);
+    border: 1px solid var(--line); border-radius: 999px; padding: 3px 12px;
+    font-family: var(--mono); font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted);
+  }
+
+  /* ── run strip ── */
+  .runstrip-section { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: var(--panel-2); }
+  .runstrip { padding: 34px 0 30px; }
+  .runstrip h2 { font-family: var(--mono); font-size: 12px; letter-spacing: .18em; text-transform: uppercase; color: var(--muted); font-weight: 400; text-align: center; }
+  .track { position: relative; margin-top: 26px; height: 2px; background: var(--line); }
+  .runs { display: flex; justify-content: space-between; transform: translateY(-9px); }
+  .run { text-align: center; width: 20px; }
+  .run .tick { width: 10px; height: 10px; margin: 0 auto; border-radius: 50%; background: var(--ink); border: 2px solid var(--muted); }
+  .run.active .tick { background: var(--accent); border-color: var(--accent); box-shadow: 0 0 0 5px color-mix(in srgb, var(--accent) 22%, transparent); }
+  .run .t { display: block; margin-top: 10px; font-family: var(--mono); font-size: 11.5px; color: var(--muted); }
+  .run.active .t { color: var(--accent); font-weight: 700; }
+  .run .z { display: block; font-family: var(--mono); font-size: 10px; color: var(--muted); opacity: .75; margin-top: 2px; white-space: nowrap; }
+  .runstrip .note { text-align: center; margin-top: 30px; font-size: 13.5px; color: var(--muted); }
+  @media (max-width: 700px) { .run .z { display: none; } }
+
+  /* ── sections ── */
+  section.block { padding: 64px 0; border-bottom: 1px solid var(--line); }
+  .sec-eyebrow { font-family: var(--mono); font-size: 12px; letter-spacing: .18em; text-transform: uppercase; color: var(--accent); }
+  .sec-title { font-family: var(--serif); font-weight: 500; font-size: clamp(24px, 3.2vw, 32px); margin-top: 10px; text-wrap: balance; }
+  .sec-lede { color: var(--muted); margin-top: 12px; max-width: 42em; }
+
+  .aspect-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 12px; margin-top: 32px; }
+  .aspect {
+    border: 1px solid var(--line); border-radius: 6px; padding: 15px 17px; background: var(--panel);
+  }
+  .aspect h3 { font-size: 15px; font-weight: 650; }
+  .aspect .subs { margin-top: 6px; font-family: var(--mono); font-size: 11px; line-height: 1.7; color: var(--muted); }
+  .aspect-foot { margin-top: 22px; font-size: 13.5px; color: var(--muted); }
+
+  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-top: 36px; }
+  @media (max-width: 760px) { .steps { grid-template-columns: 1fr; } }
+  .step { border-top: 2px solid var(--accent); padding-top: 16px; }
+  .step .k { font-family: var(--mono); font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); }
+  .step h3 { font-family: var(--serif); font-weight: 500; font-size: 20px; margin-top: 8px; }
+  .step p { margin-top: 8px; font-size: 14.5px; color: var(--muted); }
+  .step p a { color: var(--text); }
+
+  .privacy { display: grid; grid-template-columns: 1fr 1fr; gap: 44px; align-items: start; }
+  @media (max-width: 760px) { .privacy { grid-template-columns: 1fr; } }
+  .privacy-claim { font-family: var(--serif); font-size: clamp(24px, 3.4vw, 34px); line-height: 1.25; font-weight: 500; text-wrap: balance; }
+  .privacy-claim em { color: var(--accent); font-style: normal; }
+  .promise { list-style: none; display: grid; gap: 12px; }
+  .promise li { display: flex; gap: 12px; font-size: 15px; }
+  .promise li::before { content: "—"; color: var(--accent); flex: none; }
+  .promise li span b { font-weight: 650; }
+
+  .apps { text-align: center; }
+  .apps .sec-title { margin-top: 10px; }
+  .badges { display: flex; gap: 14px; justify-content: center; margin-top: 26px; flex-wrap: wrap; }
+  .badge {
+    border: 1px solid var(--line); border-radius: 6px; padding: 12px 22px; background: var(--panel);
+    font-family: var(--mono); font-size: 13px; color: var(--muted);
+  }
+  .badge b { display: block; color: var(--text); font-size: 14px; margin-top: 2px; }
+
+  footer { padding: 36px 0 48px; }
+  .foot { display: flex; justify-content: space-between; gap: 18px; flex-wrap: wrap; font-family: var(--mono); font-size: 12px; color: var(--muted); }
+  .foot a { color: var(--muted); }
+  .foot a:hover { color: var(--text); }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap bar">
+    <a class="mark" href="#"><b>Global</b> Intelligence</a>
+    <nav>
+      <a href="#aspects">Aspects</a>
+      <a href="#how">How it works</a>
+      <a href="#privacy">Privacy</a>
+      <a href="https://github.com/bpupadhyaya/global-intelligence-site/blob/main/SOURCES.md">Sources</a>
+    </nav>
+    <div class="utc"><span class="dot">●</span> <span id="utc">— UTC</span></div>
+  </div>
+</header>
+
+<main>
+  <div class="wrap hero">
+    <div>
+      <div class="eyebrow">The world, briefed</div>
+      <h1>Understand the world. Every four hours.</h1>
+      <p class="lede">Global Intelligence distills what is happening around the globe —
+        economy, politics, geopolitics, and <strong>hundreds of aspects more</strong> — into
+        one clear paragraph each, with what it might influence: your investments, your plans,
+        your travel. Synthesized by AI from the world's major news media.
+        <strong>Refreshed six times a day. Private by design.</strong></p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="#aspects">Explore the aspects</a>
+        <a class="btn btn-ghost" href="https://github.com/bpupadhyaya/global-intelligence-site/blob/main/SOURCES.md">Source registry</a>
+      </div>
+      <p class="status" style="margin-top:18px;">STATUS: IN DEVELOPMENT — iPhone &amp; Android apps in progress.</p>
+    </div>
+
+    <div class="specimen">
+      <div class="ribbon">Specimen · illustrative</div>
+      <div class="card">
+        <div class="card-head">
+          <span class="aspect-path">Economy · Inflation · Global</span>
+          <span class="run-stamp">RUN 12:00 UTC</span>
+        </div>
+        <p>Headline inflation cooled again across major economies this cycle, but services
+        prices remain sticky in the US and the eurozone, keeping central banks cautious on
+        rate cuts. Asia's picture diverges: Japan holds mild inflation while China flirts
+        with deflation, and food prices are pressuring households across South Asia.</p>
+        <div class="influence">
+          <span class="influence-label">What this might influence</span>
+          <div class="tags">
+            <span class="tag down">Bond yields</span>
+            <span class="tag up">Rate-cut odds</span>
+            <span class="tag">Mortgage timing</span>
+            <span class="tag">Grocery budgets</span>
+            <span class="tag">FX for travel</span>
+          </div>
+        </div>
+        <div class="card-src">Synthesized from: Reuters · FT · CNBC · Nikkei · The Economic Times</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="runstrip-section">
+    <div class="wrap runstrip">
+      <h2>Six runs a day — a fresh briefing for every morning on Earth</h2>
+      <div class="track">
+        <div class="runs">
+          <div class="run" data-run="0"><span class="tick"></span><span class="t">00:00</span><span class="z">Tokyo · Sydney AM</span></div>
+          <div class="run" data-run="4"><span class="tick"></span><span class="t">04:00</span><span class="z">Delhi · Dubai AM</span></div>
+          <div class="run" data-run="8"><span class="tick"></span><span class="t">08:00</span><span class="z">London · Berlin AM</span></div>
+          <div class="run" data-run="12"><span class="tick"></span><span class="t">12:00</span><span class="z">New York AM</span></div>
+          <div class="run" data-run="16"><span class="tick"></span><span class="t">16:00</span><span class="z">Los Angeles AM</span></div>
+          <div class="run" data-run="20"><span class="tick"></span><span class="t">20:00</span><span class="z">US market close</span></div>
+        </div>
+      </div>
+      <p class="note">All times UTC. The highlighted run is the briefing cycle the world is in right now.</p>
+    </div>
+  </div>
+
+  <section class="block" id="aspects">
+    <div class="wrap">
+      <div class="sec-eyebrow">The aspects</div>
+      <h2 class="sec-title">Hundreds of lenses on one world</h2>
+      <p class="sec-lede">The world is monitored as aspects — category × topic × region.
+        Each aspect is one briefing card: a paragraph of what's happening, and what it might
+        influence. Twelve categories at launch:</p>
+      <div class="aspect-grid">
+        <div class="aspect"><h3>Economy</h3><div class="subs">inflation · central banks · jobs · growth · trade · housing</div></div>
+        <div class="aspect"><h3>Markets</h3><div class="subs">stocks · bonds · currencies · commodities · crypto</div></div>
+        <div class="aspect"><h3>Politics</h3><div class="subs">elections · legislation · leadership · policy</div></div>
+        <div class="aspect"><h3>Geopolitics &amp; Security</h3><div class="subs">conflicts · diplomacy · sanctions · defense</div></div>
+        <div class="aspect"><h3>Energy</h3><div class="subs">oil &amp; gas · electricity · renewables · nuclear</div></div>
+        <div class="aspect"><h3>Technology</h3><div class="subs">AI · semiconductors · big tech · cybersecurity · space</div></div>
+        <div class="aspect"><h3>Science &amp; Health</h3><div class="subs">public health · medicine · research</div></div>
+        <div class="aspect"><h3>Climate &amp; Environment</h3><div class="subs">extreme weather · disasters · climate policy</div></div>
+        <div class="aspect"><h3>Business &amp; Industry</h3><div class="subs">earnings · autos · aviation · supply chains</div></div>
+        <div class="aspect"><h3>Society</h3><div class="subs">migration · labor · education · demographics</div></div>
+        <div class="aspect"><h3>Travel &amp; Mobility</h3><div class="subs">advisories · aviation · visas · tourism</div></div>
+        <div class="aspect"><h3>Food &amp; Agriculture</h3><div class="subs">harvests · food prices · food security</div></div>
+      </div>
+      <p class="aspect-foot">Every category fans out by region — <span style="font-family:var(--mono); font-size:12px;">ECONOMY · INFLATION · US</span> and <span style="font-family:var(--mono); font-size:12px;">GEOPOLITICS · CONFLICT · MIDDLE EAST</span> are different aspects — which is how twelve categories become hundreds of briefings.</p>
+    </div>
+  </section>
+
+  <section class="block" id="how">
+    <div class="wrap">
+      <div class="sec-eyebrow">How it works</div>
+      <h2 class="sec-title">From the world's press to your pocket</h2>
+      <div class="steps">
+        <div class="step">
+          <div class="k">Input</div>
+          <h3>The world's major media</h3>
+          <p>Reuters, AP, BBC, CNN, CNBC, FT, Al Jazeera, Times of India, Nikkei, and dozens
+          more — a transparent, <a href="https://github.com/bpupadhyaya/global-intelligence-site/blob/main/SOURCES.md">public
+          source registry</a> spanning every region, with state-affiliated outlets flagged.</p>
+        </div>
+        <div class="step">
+          <div class="k">Synthesis</div>
+          <h3>AI distillation, honestly attributed</h3>
+          <p>Every four hours, pipelines read the wires and write one clear paragraph per
+          aspect — in our own words, always attributing the sources — plus the decision hooks:
+          what this could influence.</p>
+        </div>
+        <div class="step">
+          <div class="k">Delivery</div>
+          <h3>A briefing pack, delivered down</h3>
+          <p>Your app downloads the latest briefing like a newspaper. Nothing about
+          you travels up — reading history, interests, and everything personal stays on
+          your device.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="privacy">
+    <div class="wrap privacy">
+      <div>
+        <div class="sec-eyebrow">Private by design</div>
+        <p class="privacy-claim" style="margin-top:14px;">Your information <em>never leaves
+        your device.</em> You are in charge of your own.</p>
+      </div>
+      <ul class="promise">
+        <li><span><b>No accounts.</b> Subscriptions run through the App Store and Google Play — payment and identity stay with Apple and Google, never with us.</span></li>
+        <li><span><b>All storage is local.</b> Preferences, history, everything — on your device only.</span></li>
+        <li><span><b>No tracking, no analytics.</b> We hold zero user data. There is nothing to leak, sell, or subpoena.</span></li>
+        <li><span><b>One-way traffic.</b> The only network activity is downloading the day's briefing — like a newspaper through the door.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="block apps" id="apps">
+    <div class="wrap">
+      <div class="sec-eyebrow">The apps</div>
+      <h2 class="sec-title">Super intelligence, for every human</h2>
+      <p class="sec-lede" style="margin-inline:auto;">People around the world use Global
+      Intelligence to make smarter decisions — about their money, their day, their travels.
+      Coming first to iPhone and Android, as a subscription that keeps the pipelines running.</p>
+      <div class="badges">
+        <div class="badge">Coming soon<b> App Store</b></div>
+        <div class="badge">Coming soon<b> Google Play</b></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <span>© 2026 Global Intelligence</span>
+    <span>Summaries in our own words · sources always attributed</span>
+    <span><a href="https://github.com/bpupadhyaya/global-intelligence-site">GitHub</a> · <a href="https://github.com/bpupadhyaya/global-intelligence-site/blob/main/data/sources.json">sources.json</a></span>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    var utc = document.getElementById('utc');
+    function tick() {
+      var d = new Date();
+      var p = function (n) { return String(n).padStart(2, '0'); };
+      utc.textContent = p(d.getUTCHours()) + ':' + p(d.getUTCMinutes()) + ':' + p(d.getUTCSeconds()) + ' UTC';
+      var h = d.getUTCHours();
+      var current = Math.floor(h / 4) * 4;
+      document.querySelectorAll('.run').forEach(function (el) {
+        el.classList.toggle('active', Number(el.dataset.run) === current);
+      });
+    }
+    tick();
+    setInterval(tick, 1000);
+  })();
+</script>
+
+</body>
+</html>
