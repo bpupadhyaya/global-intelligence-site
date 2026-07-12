@@ -1,100 +1,1204 @@
 {
-  "name": "Global Intelligence — News Source Registry",
-  "version": "0.1.0",
-  "updated": "2026-07-11",
-  "notes": [
-    "Machine-readable registry of the world's important news media, consumed by the Global Intelligence pipelines and displayed on the site.",
-    "RSS URLs are best-known candidates and are UNVERIFIED until the pipeline build validates each one; prefer RSS/official APIs over scraping.",
-    "Pipelines must summarize in our own words and attribute/link to sources — never republish article text.",
-    "state_affiliated=true marks government-funded or state-controlled outlets; the AI curation layer must weight/flag these for bias.",
-    "This is v0.1 — coverage will grow toward all countries/regions."
-  ],
-  "sources": [
-    { "id": "reuters", "name": "Reuters", "country": "International", "region": "Global", "language": "en", "type": "wire", "aspects": ["general", "economy", "markets", "politics", "geopolitics"], "url": "https://www.reuters.com", "rss": "https://www.reutersagency.com/feed/", "state_affiliated": false },
-    { "id": "ap", "name": "Associated Press", "country": "International", "region": "Global", "language": "en", "type": "wire", "aspects": ["general", "politics", "geopolitics"], "url": "https://apnews.com", "rss": null, "state_affiliated": false },
-    { "id": "afp", "name": "Agence France-Presse", "country": "International", "region": "Global", "language": "en", "type": "wire", "aspects": ["general", "geopolitics"], "url": "https://www.afp.com", "rss": null, "state_affiliated": false },
-    { "id": "bloomberg", "name": "Bloomberg", "country": "USA", "region": "Global", "language": "en", "type": "financial", "aspects": ["markets", "economy", "business", "energy"], "url": "https://www.bloomberg.com", "rss": null, "state_affiliated": false },
-
-    { "id": "cnn", "name": "CNN", "country": "USA", "region": "Americas", "language": "en", "type": "broadcaster", "aspects": ["general", "politics", "geopolitics"], "url": "https://www.cnn.com", "rss": "http://rss.cnn.com/rss/edition.rss", "state_affiliated": false },
-    { "id": "cnbc", "name": "CNBC", "country": "USA", "region": "Americas", "language": "en", "type": "financial", "aspects": ["markets", "economy", "business"], "url": "https://www.cnbc.com", "rss": "https://search.cnbc.com/rs/search/combinedcms/view.xml?partnerId=wrss01&id=100003114", "state_affiliated": false },
-    { "id": "abc-us", "name": "ABC News (US)", "country": "USA", "region": "Americas", "language": "en", "type": "broadcaster", "aspects": ["general", "politics"], "url": "https://abcnews.go.com", "rss": "https://abcnews.go.com/abcnews/topstories", "state_affiliated": false },
-    { "id": "fox", "name": "Fox News", "country": "USA", "region": "Americas", "language": "en", "type": "broadcaster", "aspects": ["general", "politics"], "url": "https://www.foxnews.com", "rss": "https://moxie.foxnews.com/google-publisher/latest.xml", "state_affiliated": false },
-    { "id": "nbc", "name": "NBC News", "country": "USA", "region": "Americas", "language": "en", "type": "broadcaster", "aspects": ["general", "politics"], "url": "https://www.nbcnews.com", "rss": "https://feeds.nbcnews.com/nbcnews/public/news", "state_affiliated": false },
-    { "id": "cbs", "name": "CBS News", "country": "USA", "region": "Americas", "language": "en", "type": "broadcaster", "aspects": ["general", "politics"], "url": "https://www.cbsnews.com", "rss": "https://www.cbsnews.com/latest/rss/main", "state_affiliated": false },
-    { "id": "nyt", "name": "The New York Times", "country": "USA", "region": "Americas", "language": "en", "type": "newspaper", "aspects": ["general", "politics", "geopolitics", "science"], "url": "https://www.nytimes.com", "rss": "https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml", "state_affiliated": false },
-    { "id": "wsj", "name": "The Wall Street Journal", "country": "USA", "region": "Americas", "language": "en", "type": "financial", "aspects": ["markets", "economy", "business"], "url": "https://www.wsj.com", "rss": "https://feeds.content.dowjones.io/public/rss/RSSWorldNews", "state_affiliated": false },
-    { "id": "wapo", "name": "The Washington Post", "country": "USA", "region": "Americas", "language": "en", "type": "newspaper", "aspects": ["politics", "geopolitics"], "url": "https://www.washingtonpost.com", "rss": "https://feeds.washingtonpost.com/rss/world", "state_affiliated": false },
-    { "id": "npr", "name": "NPR", "country": "USA", "region": "Americas", "language": "en", "type": "broadcaster", "aspects": ["general", "politics", "science"], "url": "https://www.npr.org", "rss": "https://feeds.npr.org/1001/rss.xml", "state_affiliated": false },
-    { "id": "politico", "name": "Politico", "country": "USA", "region": "Americas", "language": "en", "type": "digital", "aspects": ["politics", "policy"], "url": "https://www.politico.com", "rss": "https://rss.politico.com/politics-news.xml", "state_affiliated": false },
-    { "id": "axios", "name": "Axios", "country": "USA", "region": "Americas", "language": "en", "type": "digital", "aspects": ["politics", "business", "tech"], "url": "https://www.axios.com", "rss": "https://api.axios.com/feed/", "state_affiliated": false },
-    { "id": "marketwatch", "name": "MarketWatch", "country": "USA", "region": "Americas", "language": "en", "type": "financial", "aspects": ["markets", "economy"], "url": "https://www.marketwatch.com", "rss": "https://feeds.content.dowjones.io/public/rss/mw_topstories", "state_affiliated": false },
-
-    { "id": "cbc", "name": "CBC News", "country": "Canada", "region": "Americas", "language": "en", "type": "broadcaster", "aspects": ["general", "politics"], "url": "https://www.cbc.ca/news", "rss": "https://www.cbc.ca/webfeed/rss/rss-topstories", "state_affiliated": true },
-    { "id": "globeandmail", "name": "The Globe and Mail", "country": "Canada", "region": "Americas", "language": "en", "type": "newspaper", "aspects": ["general", "business"], "url": "https://www.theglobeandmail.com", "rss": null, "state_affiliated": false },
-    { "id": "folha", "name": "Folha de S.Paulo", "country": "Brazil", "region": "Americas", "language": "pt", "type": "newspaper", "aspects": ["general", "politics", "economy"], "url": "https://www.folha.uol.com.br", "rss": "https://feeds.folha.uol.com.br/emcimadahora/rss091.xml", "state_affiliated": false },
-    { "id": "g1", "name": "G1 (Globo)", "country": "Brazil", "region": "Americas", "language": "pt", "type": "broadcaster", "aspects": ["general"], "url": "https://g1.globo.com", "rss": "https://g1.globo.com/rss/g1/", "state_affiliated": false },
-    { "id": "clarin", "name": "Clarín", "country": "Argentina", "region": "Americas", "language": "es", "type": "newspaper", "aspects": ["general", "economy"], "url": "https://www.clarin.com", "rss": "https://www.clarin.com/rss/lo-ultimo/", "state_affiliated": false },
-    { "id": "eluniversal-mx", "name": "El Universal", "country": "Mexico", "region": "Americas", "language": "es", "type": "newspaper", "aspects": ["general", "politics"], "url": "https://www.eluniversal.com.mx", "rss": null, "state_affiliated": false },
-
-    { "id": "bbc", "name": "BBC News", "country": "UK", "region": "Europe", "language": "en", "type": "broadcaster", "aspects": ["general", "politics", "geopolitics", "science"], "url": "https://www.bbc.com/news", "rss": "http://feeds.bbci.co.uk/news/world/rss.xml", "state_affiliated": true },
-    { "id": "guardian", "name": "The Guardian", "country": "UK", "region": "Europe", "language": "en", "type": "newspaper", "aspects": ["general", "politics", "climate"], "url": "https://www.theguardian.com", "rss": "https://www.theguardian.com/world/rss", "state_affiliated": false },
-    { "id": "ft", "name": "Financial Times", "country": "UK", "region": "Europe", "language": "en", "type": "financial", "aspects": ["markets", "economy", "business", "geopolitics"], "url": "https://www.ft.com", "rss": "https://www.ft.com/rss/home", "state_affiliated": false },
-    { "id": "economist", "name": "The Economist", "country": "UK", "region": "Europe", "language": "en", "type": "magazine", "aspects": ["economy", "geopolitics", "politics"], "url": "https://www.economist.com", "rss": "https://www.economist.com/latest/rss.xml", "state_affiliated": false },
-    { "id": "sky", "name": "Sky News", "country": "UK", "region": "Europe", "language": "en", "type": "broadcaster", "aspects": ["general", "politics"], "url": "https://news.sky.com", "rss": "https://feeds.skynews.com/feeds/rss/world.xml", "state_affiliated": false },
-    { "id": "dw", "name": "Deutsche Welle", "country": "Germany", "region": "Europe", "language": "en", "type": "broadcaster", "aspects": ["general", "geopolitics"], "url": "https://www.dw.com", "rss": "https://rss.dw.com/rdf/rss-en-all", "state_affiliated": true },
-    { "id": "spiegel", "name": "Der Spiegel", "country": "Germany", "region": "Europe", "language": "de", "type": "magazine", "aspects": ["general", "politics"], "url": "https://www.spiegel.de", "rss": "https://www.spiegel.de/international/index.rss", "state_affiliated": false },
-    { "id": "lemonde", "name": "Le Monde", "country": "France", "region": "Europe", "language": "fr", "type": "newspaper", "aspects": ["general", "politics", "geopolitics"], "url": "https://www.lemonde.fr", "rss": "https://www.lemonde.fr/rss/une.xml", "state_affiliated": false },
-    { "id": "france24", "name": "France 24", "country": "France", "region": "Europe", "language": "en", "type": "broadcaster", "aspects": ["general", "geopolitics"], "url": "https://www.france24.com/en/", "rss": "https://www.france24.com/en/rss", "state_affiliated": true },
-    { "id": "elpais", "name": "El País", "country": "Spain", "region": "Europe", "language": "es", "type": "newspaper", "aspects": ["general", "politics"], "url": "https://elpais.com", "rss": "https://feeds.elpais.com/mrss-s/pages/ep/site/elpais.com/portada", "state_affiliated": false },
-    { "id": "corriere", "name": "Corriere della Sera", "country": "Italy", "region": "Europe", "language": "it", "type": "newspaper", "aspects": ["general", "politics"], "url": "https://www.corriere.it", "rss": "https://xml2.corriereobjects.it/rss/homepage.xml", "state_affiliated": false },
-    { "id": "euronews", "name": "Euronews", "country": "EU", "region": "Europe", "language": "en", "type": "broadcaster", "aspects": ["general", "politics"], "url": "https://www.euronews.com", "rss": "https://www.euronews.com/rss", "state_affiliated": false },
-    { "id": "politico-eu", "name": "Politico Europe", "country": "EU", "region": "Europe", "language": "en", "type": "digital", "aspects": ["politics", "policy"], "url": "https://www.politico.eu", "rss": "https://www.politico.eu/feed/", "state_affiliated": false },
-    { "id": "tass", "name": "TASS", "country": "Russia", "region": "Europe", "language": "en", "type": "wire", "aspects": ["geopolitics", "politics"], "url": "https://tass.com", "rss": "https://tass.com/rss/v2.xml", "state_affiliated": true },
-    { "id": "meduza", "name": "Meduza", "country": "Russia (exile, Latvia)", "region": "Europe", "language": "en", "type": "digital", "aspects": ["politics", "geopolitics"], "url": "https://meduza.io/en", "rss": "https://meduza.io/rss/en/all", "state_affiliated": false },
-    { "id": "kyivindependent", "name": "The Kyiv Independent", "country": "Ukraine", "region": "Europe", "language": "en", "type": "digital", "aspects": ["geopolitics", "conflict"], "url": "https://kyivindependent.com", "rss": "https://kyivindependent.com/feed/rss", "state_affiliated": false },
-
-    { "id": "aljazeera", "name": "Al Jazeera", "country": "Qatar", "region": "Middle East", "language": "en", "type": "broadcaster", "aspects": ["general", "geopolitics", "conflict"], "url": "https://www.aljazeera.com", "rss": "https://www.aljazeera.com/xml/rss/all.xml", "state_affiliated": true },
-    { "id": "alarabiya", "name": "Al Arabiya", "country": "Saudi Arabia", "region": "Middle East", "language": "en", "type": "broadcaster", "aspects": ["general", "geopolitics"], "url": "https://english.alarabiya.net", "rss": "https://english.alarabiya.net/feed/rss2/en.xml", "state_affiliated": true },
-    { "id": "timesofisrael", "name": "The Times of Israel", "country": "Israel", "region": "Middle East", "language": "en", "type": "digital", "aspects": ["geopolitics", "politics"], "url": "https://www.timesofisrael.com", "rss": "https://www.timesofisrael.com/feed/", "state_affiliated": false },
-    { "id": "haaretz", "name": "Haaretz", "country": "Israel", "region": "Middle East", "language": "en", "type": "newspaper", "aspects": ["politics", "geopolitics"], "url": "https://www.haaretz.com", "rss": null, "state_affiliated": false },
-    { "id": "trt", "name": "TRT World", "country": "Turkey", "region": "Middle East", "language": "en", "type": "broadcaster", "aspects": ["general", "geopolitics"], "url": "https://www.trtworld.com", "rss": null, "state_affiliated": true },
-    { "id": "ahram", "name": "Al-Ahram (English)", "country": "Egypt", "region": "Middle East", "language": "en", "type": "newspaper", "aspects": ["general", "politics"], "url": "https://english.ahram.org.eg", "rss": null, "state_affiliated": true },
-
-    { "id": "toi", "name": "The Times of India", "country": "India", "region": "Asia", "language": "en", "type": "newspaper", "aspects": ["general", "politics", "economy"], "url": "https://timesofindia.indiatimes.com", "rss": "https://timesofindia.indiatimes.com/rssfeedstopstories.cms", "state_affiliated": false },
-    { "id": "thehindu", "name": "The Hindu", "country": "India", "region": "Asia", "language": "en", "type": "newspaper", "aspects": ["general", "politics", "policy"], "url": "https://www.thehindu.com", "rss": "https://www.thehindu.com/news/national/feeder/default.rss", "state_affiliated": false },
-    { "id": "ndtv", "name": "NDTV", "country": "India", "region": "Asia", "language": "en", "type": "broadcaster", "aspects": ["general", "politics"], "url": "https://www.ndtv.com", "rss": "https://feeds.feedburner.com/ndtvnews-top-stories", "state_affiliated": false },
-    { "id": "economictimes", "name": "The Economic Times", "country": "India", "region": "Asia", "language": "en", "type": "financial", "aspects": ["markets", "economy", "business"], "url": "https://economictimes.indiatimes.com", "rss": "https://economictimes.indiatimes.com/rssfeedsdefault.cms", "state_affiliated": false },
-    { "id": "dawn", "name": "Dawn", "country": "Pakistan", "region": "Asia", "language": "en", "type": "newspaper", "aspects": ["general", "politics"], "url": "https://www.dawn.com", "rss": "https://www.dawn.com/feeds/home", "state_affiliated": false },
-    { "id": "dailystar-bd", "name": "The Daily Star", "country": "Bangladesh", "region": "Asia", "language": "en", "type": "newspaper", "aspects": ["general"], "url": "https://www.thedailystar.net", "rss": "https://www.thedailystar.net/frontpage/rss.xml", "state_affiliated": false },
-    { "id": "kathmandupost", "name": "The Kathmandu Post", "country": "Nepal", "region": "Asia", "language": "en", "type": "newspaper", "aspects": ["general"], "url": "https://kathmandupost.com", "rss": null, "state_affiliated": false },
-    { "id": "xinhua", "name": "Xinhua", "country": "China", "region": "Asia", "language": "en", "type": "wire", "aspects": ["general", "politics", "economy"], "url": "https://english.news.cn", "rss": null, "state_affiliated": true },
-    { "id": "scmp", "name": "South China Morning Post", "country": "Hong Kong", "region": "Asia", "language": "en", "type": "newspaper", "aspects": ["general", "geopolitics", "economy"], "url": "https://www.scmp.com", "rss": "https://www.scmp.com/rss/91/feed", "state_affiliated": false },
-    { "id": "caixin", "name": "Caixin Global", "country": "China", "region": "Asia", "language": "en", "type": "financial", "aspects": ["economy", "markets", "business"], "url": "https://www.caixinglobal.com", "rss": null, "state_affiliated": false },
-    { "id": "globaltimes", "name": "Global Times", "country": "China", "region": "Asia", "language": "en", "type": "newspaper", "aspects": ["geopolitics", "politics"], "url": "https://www.globaltimes.cn", "rss": null, "state_affiliated": true },
-    { "id": "nhk", "name": "NHK World", "country": "Japan", "region": "Asia", "language": "en", "type": "broadcaster", "aspects": ["general"], "url": "https://www3.nhk.or.jp/nhkworld/", "rss": "https://www3.nhk.or.jp/rss/news/cat0.xml", "state_affiliated": true },
-    { "id": "nikkei", "name": "Nikkei Asia", "country": "Japan", "region": "Asia", "language": "en", "type": "financial", "aspects": ["economy", "markets", "business"], "url": "https://asia.nikkei.com", "rss": "https://asia.nikkei.com/rss/feed/nar", "state_affiliated": false },
-    { "id": "asahi", "name": "The Asahi Shimbun", "country": "Japan", "region": "Asia", "language": "en", "type": "newspaper", "aspects": ["general", "politics"], "url": "https://www.asahi.com/ajw/", "rss": null, "state_affiliated": false },
-    { "id": "yonhap", "name": "Yonhap News Agency", "country": "South Korea", "region": "Asia", "language": "en", "type": "wire", "aspects": ["general", "geopolitics"], "url": "https://en.yna.co.kr", "rss": null, "state_affiliated": true },
-    { "id": "koreaherald", "name": "The Korea Herald", "country": "South Korea", "region": "Asia", "language": "en", "type": "newspaper", "aspects": ["general", "economy"], "url": "https://www.koreaherald.com", "rss": null, "state_affiliated": false },
-    { "id": "straitstimes", "name": "The Straits Times", "country": "Singapore", "region": "Asia", "language": "en", "type": "newspaper", "aspects": ["general", "economy"], "url": "https://www.straitstimes.com", "rss": "https://www.straitstimes.com/news/world/rss.xml", "state_affiliated": false },
-    { "id": "cna", "name": "Channel News Asia", "country": "Singapore", "region": "Asia", "language": "en", "type": "broadcaster", "aspects": ["general", "economy"], "url": "https://www.channelnewsasia.com", "rss": "https://www.channelnewsasia.com/api/v1/rss-outbound-feed?_format=xml", "state_affiliated": true },
-    { "id": "jakartapost", "name": "The Jakarta Post", "country": "Indonesia", "region": "Asia", "language": "en", "type": "newspaper", "aspects": ["general"], "url": "https://www.thejakartapost.com", "rss": null, "state_affiliated": false },
-    { "id": "bangkokpost", "name": "Bangkok Post", "country": "Thailand", "region": "Asia", "language": "en", "type": "newspaper", "aspects": ["general"], "url": "https://www.bangkokpost.com", "rss": "https://www.bangkokpost.com/rss/data/topstories.xml", "state_affiliated": false },
-    { "id": "vnexpress", "name": "VnExpress International", "country": "Vietnam", "region": "Asia", "language": "en", "type": "digital", "aspects": ["general", "economy"], "url": "https://e.vnexpress.net", "rss": "https://e.vnexpress.net/rss/news.rss", "state_affiliated": false },
-
-    { "id": "abc-au", "name": "ABC News (Australia)", "country": "Australia", "region": "Oceania", "language": "en", "type": "broadcaster", "aspects": ["general", "politics"], "url": "https://www.abc.net.au/news", "rss": "https://www.abc.net.au/news/feed/51120/rss.xml", "state_affiliated": true },
-    { "id": "smh", "name": "The Sydney Morning Herald", "country": "Australia", "region": "Oceania", "language": "en", "type": "newspaper", "aspects": ["general", "business"], "url": "https://www.smh.com.au", "rss": "https://www.smh.com.au/rss/feed.xml", "state_affiliated": false },
-    { "id": "rnz", "name": "RNZ", "country": "New Zealand", "region": "Oceania", "language": "en", "type": "broadcaster", "aspects": ["general"], "url": "https://www.rnz.co.nz", "rss": "https://www.rnz.co.nz/rss/national.xml", "state_affiliated": true },
-
-    { "id": "news24", "name": "News24", "country": "South Africa", "region": "Africa", "language": "en", "type": "digital", "aspects": ["general", "politics"], "url": "https://www.news24.com", "rss": "https://feeds.24.com/articles/news24/topstories/rss", "state_affiliated": false },
-    { "id": "nation-ke", "name": "Nation (Daily Nation)", "country": "Kenya", "region": "Africa", "language": "en", "type": "newspaper", "aspects": ["general"], "url": "https://nation.africa", "rss": null, "state_affiliated": false },
-    { "id": "premiumtimes", "name": "Premium Times", "country": "Nigeria", "region": "Africa", "language": "en", "type": "digital", "aspects": ["general", "politics"], "url": "https://www.premiumtimesng.com", "rss": "https://www.premiumtimesng.com/feed", "state_affiliated": false },
-    { "id": "allafrica", "name": "AllAfrica", "country": "Pan-Africa", "region": "Africa", "language": "en", "type": "aggregator", "aspects": ["general"], "url": "https://allafrica.com", "rss": "https://allafrica.com/tools/headlines/rdf/latest/headlines.rdf", "state_affiliated": false },
-
-    { "id": "nature", "name": "Nature News", "country": "International", "region": "Global", "language": "en", "type": "science", "aspects": ["science", "health"], "url": "https://www.nature.com/news", "rss": "https://www.nature.com/nature.rss", "state_affiliated": false },
-    { "id": "science", "name": "Science (AAAS) News", "country": "International", "region": "Global", "language": "en", "type": "science", "aspects": ["science"], "url": "https://www.science.org/news", "rss": "https://www.science.org/rss/news_current.xml", "state_affiliated": false },
-    { "id": "mittr", "name": "MIT Technology Review", "country": "USA", "region": "Global", "language": "en", "type": "science", "aspects": ["tech", "ai"], "url": "https://www.technologyreview.com", "rss": "https://www.technologyreview.com/feed/", "state_affiliated": false },
-    { "id": "arstechnica", "name": "Ars Technica", "country": "USA", "region": "Global", "language": "en", "type": "digital", "aspects": ["tech", "science"], "url": "https://arstechnica.com", "rss": "https://feeds.arstechnica.com/arstechnica/index", "state_affiliated": false },
-    { "id": "techcrunch", "name": "TechCrunch", "country": "USA", "region": "Global", "language": "en", "type": "digital", "aspects": ["tech", "business"], "url": "https://techcrunch.com", "rss": "https://techcrunch.com/feed/", "state_affiliated": false }
-  ]
+ "name": "Global Intelligence — News Source Registry",
+ "version": "0.2.0",
+ "updated": "2026-07-12",
+ "notes": [
+  "Machine-readable registry of the world's important news media, consumed by the Global Intelligence pipelines and displayed on the site.",
+  "RSS URLs are best-known candidates and are UNVERIFIED until the pipeline build validates each one; prefer RSS/official APIs over scraping.",
+  "Pipelines must summarize in our own words and attribute/link to sources — never republish article text.",
+  "state_affiliated=true marks government-funded or state-controlled outlets; the AI curation layer must weight/flag these for bias.",
+  "This is v0.1 — coverage will grow toward all countries/regions.",
+  "v0.2: validated/fixed 18 feeds; sources without native RSS use Google News per-site search RSS (public method)."
+ ],
+ "sources": [
+  {
+   "id": "reuters",
+   "name": "Reuters",
+   "country": "International",
+   "region": "Global",
+   "language": "en",
+   "type": "wire",
+   "aspects": [
+    "general",
+    "economy",
+    "markets",
+    "politics",
+    "geopolitics"
+   ],
+   "url": "https://www.reuters.com",
+   "rss": "https://news.google.com/rss/search?q=when:24h+site:reuters.com&hl=en-US&gl=US&ceid=US:en",
+   "state_affiliated": false
+  },
+  {
+   "id": "ap",
+   "name": "Associated Press",
+   "country": "International",
+   "region": "Global",
+   "language": "en",
+   "type": "wire",
+   "aspects": [
+    "general",
+    "politics",
+    "geopolitics"
+   ],
+   "url": "https://apnews.com",
+   "rss": "https://news.google.com/rss/search?q=when:24h+site:apnews.com&hl=en-US&gl=US&ceid=US:en",
+   "state_affiliated": false
+  },
+  {
+   "id": "afp",
+   "name": "Agence France-Presse",
+   "country": "International",
+   "region": "Global",
+   "language": "en",
+   "type": "wire",
+   "aspects": [
+    "general",
+    "geopolitics"
+   ],
+   "url": "https://www.afp.com",
+   "rss": "https://news.google.com/rss/search?q=when:24h+site:afp.com&hl=en-US&gl=US&ceid=US:en",
+   "state_affiliated": false
+  },
+  {
+   "id": "bloomberg",
+   "name": "Bloomberg",
+   "country": "USA",
+   "region": "Global",
+   "language": "en",
+   "type": "financial",
+   "aspects": [
+    "markets",
+    "economy",
+    "business",
+    "energy"
+   ],
+   "url": "https://www.bloomberg.com",
+   "rss": "https://feeds.bloomberg.com/markets/news.rss",
+   "state_affiliated": false
+  },
+  {
+   "id": "cnn",
+   "name": "CNN",
+   "country": "USA",
+   "region": "Americas",
+   "language": "en",
+   "type": "broadcaster",
+   "aspects": [
+    "general",
+    "politics",
+    "geopolitics"
+   ],
+   "url": "https://www.cnn.com",
+   "rss": "http://rss.cnn.com/rss/edition.rss",
+   "state_affiliated": false
+  },
+  {
+   "id": "cnbc",
+   "name": "CNBC",
+   "country": "USA",
+   "region": "Americas",
+   "language": "en",
+   "type": "financial",
+   "aspects": [
+    "markets",
+    "economy",
+    "business"
+   ],
+   "url": "https://www.cnbc.com",
+   "rss": "https://search.cnbc.com/rs/search/combinedcms/view.xml?partnerId=wrss01&id=100003114",
+   "state_affiliated": false
+  },
+  {
+   "id": "abc-us",
+   "name": "ABC News (US)",
+   "country": "USA",
+   "region": "Americas",
+   "language": "en",
+   "type": "broadcaster",
+   "aspects": [
+    "general",
+    "politics"
+   ],
+   "url": "https://abcnews.go.com",
+   "rss": "https://abcnews.go.com/abcnews/topstories",
+   "state_affiliated": false
+  },
+  {
+   "id": "fox",
+   "name": "Fox News",
+   "country": "USA",
+   "region": "Americas",
+   "language": "en",
+   "type": "broadcaster",
+   "aspects": [
+    "general",
+    "politics"
+   ],
+   "url": "https://www.foxnews.com",
+   "rss": "https://moxie.foxnews.com/google-publisher/latest.xml",
+   "state_affiliated": false
+  },
+  {
+   "id": "nbc",
+   "name": "NBC News",
+   "country": "USA",
+   "region": "Americas",
+   "language": "en",
+   "type": "broadcaster",
+   "aspects": [
+    "general",
+    "politics"
+   ],
+   "url": "https://www.nbcnews.com",
+   "rss": "https://feeds.nbcnews.com/nbcnews/public/news",
+   "state_affiliated": false
+  },
+  {
+   "id": "cbs",
+   "name": "CBS News",
+   "country": "USA",
+   "region": "Americas",
+   "language": "en",
+   "type": "broadcaster",
+   "aspects": [
+    "general",
+    "politics"
+   ],
+   "url": "https://www.cbsnews.com",
+   "rss": "https://www.cbsnews.com/latest/rss/main",
+   "state_affiliated": false
+  },
+  {
+   "id": "nyt",
+   "name": "The New York Times",
+   "country": "USA",
+   "region": "Americas",
+   "language": "en",
+   "type": "newspaper",
+   "aspects": [
+    "general",
+    "politics",
+    "geopolitics",
+    "science"
+   ],
+   "url": "https://www.nytimes.com",
+   "rss": "https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml",
+   "state_affiliated": false
+  },
+  {
+   "id": "wsj",
+   "name": "The Wall Street Journal",
+   "country": "USA",
+   "region": "Americas",
+   "language": "en",
+   "type": "financial",
+   "aspects": [
+    "markets",
+    "economy",
+    "business"
+   ],
+   "url": "https://www.wsj.com",
+   "rss": "https://feeds.content.dowjones.io/public/rss/RSSWorldNews",
+   "state_affiliated": false
+  },
+  {
+   "id": "wapo",
+   "name": "The Washington Post",
+   "country": "USA",
+   "region": "Americas",
+   "language": "en",
+   "type": "newspaper",
+   "aspects": [
+    "politics",
+    "geopolitics"
+   ],
+   "url": "https://www.washingtonpost.com",
+   "rss": "https://feeds.washingtonpost.com/rss/world",
+   "state_affiliated": false
+  },
+  {
+   "id": "npr",
+   "name": "NPR",
+   "country": "USA",
+   "region": "Americas",
+   "language": "en",
+   "type": "broadcaster",
+   "aspects": [
+    "general",
+    "politics",
+    "science"
+   ],
+   "url": "https://www.npr.org",
+   "rss": "https://feeds.npr.org/1001/rss.xml",
+   "state_affiliated": false
+  },
+  {
+   "id": "politico",
+   "name": "Politico",
+   "country": "USA",
+   "region": "Americas",
+   "language": "en",
+   "type": "digital",
+   "aspects": [
+    "politics",
+    "policy"
+   ],
+   "url": "https://www.politico.com",
+   "rss": "https://rss.politico.com/politics-news.xml",
+   "state_affiliated": false
+  },
+  {
+   "id": "axios",
+   "name": "Axios",
+   "country": "USA",
+   "region": "Americas",
+   "language": "en",
+   "type": "digital",
+   "aspects": [
+    "politics",
+    "business",
+    "tech"
+   ],
+   "url": "https://www.axios.com",
+   "rss": "https://api.axios.com/feed/",
+   "state_affiliated": false
+  },
+  {
+   "id": "marketwatch",
+   "name": "MarketWatch",
+   "country": "USA",
+   "region": "Americas",
+   "language": "en",
+   "type": "financial",
+   "aspects": [
+    "markets",
+    "economy"
+   ],
+   "url": "https://www.marketwatch.com",
+   "rss": "https://feeds.content.dowjones.io/public/rss/mw_topstories",
+   "state_affiliated": false
+  },
+  {
+   "id": "cbc",
+   "name": "CBC News",
+   "country": "Canada",
+   "region": "Americas",
+   "language": "en",
+   "type": "broadcaster",
+   "aspects": [
+    "general",
+    "politics"
+   ],
+   "url": "https://www.cbc.ca/news",
+   "rss": "https://www.cbc.ca/webfeed/rss/rss-topstories",
+   "state_affiliated": true
+  },
+  {
+   "id": "globeandmail",
+   "name": "The Globe and Mail",
+   "country": "Canada",
+   "region": "Americas",
+   "language": "en",
+   "type": "newspaper",
+   "aspects": [
+    "general",
+    "business"
+   ],
+   "url": "https://www.theglobeandmail.com",
+   "rss": "https://www.theglobeandmail.com/arc/outboundfeeds/rss/category/world/",
+   "state_affiliated": false
+  },
+  {
+   "id": "folha",
+   "name": "Folha de S.Paulo",
+   "country": "Brazil",
+   "region": "Americas",
+   "language": "pt",
+   "type": "newspaper",
+   "aspects": [
+    "general",
+    "politics",
+    "economy"
+   ],
+   "url": "https://www.folha.uol.com.br",
+   "rss": "https://feeds.folha.uol.com.br/emcimadahora/rss091.xml",
+   "state_affiliated": false
+  },
+  {
+   "id": "g1",
+   "name": "G1 (Globo)",
+   "country": "Brazil",
+   "region": "Americas",
+   "language": "pt",
+   "type": "broadcaster",
+   "aspects": [
+    "general"
+   ],
+   "url": "https://g1.globo.com",
+   "rss": "https://g1.globo.com/rss/g1/",
+   "state_affiliated": false
+  },
+  {
+   "id": "clarin",
+   "name": "Clarín",
+   "country": "Argentina",
+   "region": "Americas",
+   "language": "es",
+   "type": "newspaper",
+   "aspects": [
+    "general",
+    "economy"
+   ],
+   "url": "https://www.clarin.com",
+   "rss": "https://www.clarin.com/rss/lo-ultimo/",
+   "state_affiliated": false
+  },
+  {
+   "id": "eluniversal-mx",
+   "name": "El Universal",
+   "country": "Mexico",
+   "region": "Americas",
+   "language": "es",
+   "type": "newspaper",
+   "aspects": [
+    "general",
+    "politics"
+   ],
+   "url": "https://www.eluniversal.com.mx",
+   "rss": "https://www.eluniversal.com.mx/arc/outboundfeeds/rss/?outputType=xml",
+   "state_affiliated": false
+  },
+  {
+   "id": "bbc",
+   "name": "BBC News",
+   "country": "UK",
+   "region": "Europe",
+   "language": "en",
+   "type": "broadcaster",
+   "aspects": [
+    "general",
+    "politics",
+    "geopolitics",
+    "science"
+   ],
+   "url": "https://www.bbc.com/news",
+   "rss": "http://feeds.bbci.co.uk/news/world/rss.xml",
+   "state_affiliated": true
+  },
+  {
+   "id": "guardian",
+   "name": "The Guardian",
+   "country": "UK",
+   "region": "Europe",
+   "language": "en",
+   "type": "newspaper",
+   "aspects": [
+    "general",
+    "politics",
+    "climate"
+   ],
+   "url": "https://www.theguardian.com",
+   "rss": "https://www.theguardian.com/world/rss",
+   "state_affiliated": false
+  },
+  {
+   "id": "ft",
+   "name": "Financial Times",
+   "country": "UK",
+   "region": "Europe",
+   "language": "en",
+   "type": "financial",
+   "aspects": [
+    "markets",
+    "economy",
+    "business",
+    "geopolitics"
+   ],
+   "url": "https://www.ft.com",
+   "rss": "https://www.ft.com/rss/home",
+   "state_affiliated": false
+  },
+  {
+   "id": "economist",
+   "name": "The Economist",
+   "country": "UK",
+   "region": "Europe",
+   "language": "en",
+   "type": "magazine",
+   "aspects": [
+    "economy",
+    "geopolitics",
+    "politics"
+   ],
+   "url": "https://www.economist.com",
+   "rss": "https://www.economist.com/latest/rss.xml",
+   "state_affiliated": false
+  },
+  {
+   "id": "sky",
+   "name": "Sky News",
+   "country": "UK",
+   "region": "Europe",
+   "language": "en",
+   "type": "broadcaster",
+   "aspects": [
+    "general",
+    "politics"
+   ],
+   "url": "https://news.sky.com",
+   "rss": "https://feeds.skynews.com/feeds/rss/world.xml",
+   "state_affiliated": false
+  },
+  {
+   "id": "dw",
+   "name": "Deutsche Welle",
+   "country": "Germany",
+   "region": "Europe",
+   "language": "en",
+   "type": "broadcaster",
+   "aspects": [
+    "general",
+    "geopolitics"
+   ],
+   "url": "https://www.dw.com",
+   "rss": "https://rss.dw.com/rdf/rss-en-all",
+   "state_affiliated": true
+  },
+  {
+   "id": "spiegel",
+   "name": "Der Spiegel",
+   "country": "Germany",
+   "region": "Europe",
+   "language": "de",
+   "type": "magazine",
+   "aspects": [
+    "general",
+    "politics"
+   ],
+   "url": "https://www.spiegel.de",
+   "rss": "https://www.spiegel.de/international/index.rss",
+   "state_affiliated": false
+  },
+  {
+   "id": "lemonde",
+   "name": "Le Monde",
+   "country": "France",
+   "region": "Europe",
+   "language": "fr",
+   "type": "newspaper",
+   "aspects": [
+    "general",
+    "politics",
+    "geopolitics"
+   ],
+   "url": "https://www.lemonde.fr",
+   "rss": "https://www.lemonde.fr/rss/une.xml",
+   "state_affiliated": false
+  },
+  {
+   "id": "france24",
+   "name": "France 24",
+   "country": "France",
+   "region": "Europe",
+   "language": "en",
+   "type": "broadcaster",
+   "aspects": [
+    "general",
+    "geopolitics"
+   ],
+   "url": "https://www.france24.com/en/",
+   "rss": "https://www.france24.com/en/rss",
+   "state_affiliated": true
+  },
+  {
+   "id": "elpais",
+   "name": "El País",
+   "country": "Spain",
+   "region": "Europe",
+   "language": "es",
+   "type": "newspaper",
+   "aspects": [
+    "general",
+    "politics"
+   ],
+   "url": "https://elpais.com",
+   "rss": "https://feeds.elpais.com/mrss-s/pages/ep/site/elpais.com/portada",
+   "state_affiliated": false
+  },
+  {
+   "id": "corriere",
+   "name": "Corriere della Sera",
+   "country": "Italy",
+   "region": "Europe",
+   "language": "it",
+   "type": "newspaper",
+   "aspects": [
+    "general",
+    "politics"
+   ],
+   "url": "https://www.corriere.it",
+   "rss": "https://xml2.corriereobjects.it/rss/homepage.xml",
+   "state_affiliated": false
+  },
+  {
+   "id": "euronews",
+   "name": "Euronews",
+   "country": "EU",
+   "region": "Europe",
+   "language": "en",
+   "type": "broadcaster",
+   "aspects": [
+    "general",
+    "politics"
+   ],
+   "url": "https://www.euronews.com",
+   "rss": "https://www.euronews.com/rss",
+   "state_affiliated": false
+  },
+  {
+   "id": "politico-eu",
+   "name": "Politico Europe",
+   "country": "EU",
+   "region": "Europe",
+   "language": "en",
+   "type": "digital",
+   "aspects": [
+    "politics",
+    "policy"
+   ],
+   "url": "https://www.politico.eu",
+   "rss": "https://www.politico.eu/feed/",
+   "state_affiliated": false
+  },
+  {
+   "id": "tass",
+   "name": "TASS",
+   "country": "Russia",
+   "region": "Europe",
+   "language": "en",
+   "type": "wire",
+   "aspects": [
+    "geopolitics",
+    "politics"
+   ],
+   "url": "https://tass.com",
+   "rss": "https://tass.com/rss/v2.xml",
+   "state_affiliated": true
+  },
+  {
+   "id": "meduza",
+   "name": "Meduza",
+   "country": "Russia (exile, Latvia)",
+   "region": "Europe",
+   "language": "en",
+   "type": "digital",
+   "aspects": [
+    "politics",
+    "geopolitics"
+   ],
+   "url": "https://meduza.io/en",
+   "rss": "https://meduza.io/rss/en/all",
+   "state_affiliated": false
+  },
+  {
+   "id": "kyivindependent",
+   "name": "The Kyiv Independent",
+   "country": "Ukraine",
+   "region": "Europe",
+   "language": "en",
+   "type": "digital",
+   "aspects": [
+    "geopolitics",
+    "conflict"
+   ],
+   "url": "https://kyivindependent.com",
+   "rss": "https://kyivindependent.com/feed/rss",
+   "state_affiliated": false
+  },
+  {
+   "id": "aljazeera",
+   "name": "Al Jazeera",
+   "country": "Qatar",
+   "region": "Middle East",
+   "language": "en",
+   "type": "broadcaster",
+   "aspects": [
+    "general",
+    "geopolitics",
+    "conflict"
+   ],
+   "url": "https://www.aljazeera.com",
+   "rss": "https://www.aljazeera.com/xml/rss/all.xml",
+   "state_affiliated": true
+  },
+  {
+   "id": "alarabiya",
+   "name": "Al Arabiya",
+   "country": "Saudi Arabia",
+   "region": "Middle East",
+   "language": "en",
+   "type": "broadcaster",
+   "aspects": [
+    "general",
+    "geopolitics"
+   ],
+   "url": "https://english.alarabiya.net",
+   "rss": "https://english.alarabiya.net/feed/rss2/en.xml",
+   "state_affiliated": true
+  },
+  {
+   "id": "timesofisrael",
+   "name": "The Times of Israel",
+   "country": "Israel",
+   "region": "Middle East",
+   "language": "en",
+   "type": "digital",
+   "aspects": [
+    "geopolitics",
+    "politics"
+   ],
+   "url": "https://www.timesofisrael.com",
+   "rss": "https://www.timesofisrael.com/feed/",
+   "state_affiliated": false
+  },
+  {
+   "id": "haaretz",
+   "name": "Haaretz",
+   "country": "Israel",
+   "region": "Middle East",
+   "language": "en",
+   "type": "newspaper",
+   "aspects": [
+    "politics",
+    "geopolitics"
+   ],
+   "url": "https://www.haaretz.com",
+   "rss": "https://news.google.com/rss/search?q=when:24h+site:haaretz.com&hl=en-US&gl=US&ceid=US:en",
+   "state_affiliated": false
+  },
+  {
+   "id": "trt",
+   "name": "TRT World",
+   "country": "Turkey",
+   "region": "Middle East",
+   "language": "en",
+   "type": "broadcaster",
+   "aspects": [
+    "general",
+    "geopolitics"
+   ],
+   "url": "https://www.trtworld.com",
+   "rss": "https://news.google.com/rss/search?q=when:24h+site:trtworld.com&hl=en-US&gl=US&ceid=US:en",
+   "state_affiliated": true
+  },
+  {
+   "id": "ahram",
+   "name": "Al-Ahram (English)",
+   "country": "Egypt",
+   "region": "Middle East",
+   "language": "en",
+   "type": "newspaper",
+   "aspects": [
+    "general",
+    "politics"
+   ],
+   "url": "https://english.ahram.org.eg",
+   "rss": "https://news.google.com/rss/search?q=when:24h+site:english.ahram.org.eg&hl=en-US&gl=US&ceid=US:en",
+   "state_affiliated": true
+  },
+  {
+   "id": "toi",
+   "name": "The Times of India",
+   "country": "India",
+   "region": "Asia",
+   "language": "en",
+   "type": "newspaper",
+   "aspects": [
+    "general",
+    "politics",
+    "economy"
+   ],
+   "url": "https://timesofindia.indiatimes.com",
+   "rss": "https://timesofindia.indiatimes.com/rssfeedstopstories.cms",
+   "state_affiliated": false
+  },
+  {
+   "id": "thehindu",
+   "name": "The Hindu",
+   "country": "India",
+   "region": "Asia",
+   "language": "en",
+   "type": "newspaper",
+   "aspects": [
+    "general",
+    "politics",
+    "policy"
+   ],
+   "url": "https://www.thehindu.com",
+   "rss": "https://www.thehindu.com/news/national/feeder/default.rss",
+   "state_affiliated": false
+  },
+  {
+   "id": "ndtv",
+   "name": "NDTV",
+   "country": "India",
+   "region": "Asia",
+   "language": "en",
+   "type": "broadcaster",
+   "aspects": [
+    "general",
+    "politics"
+   ],
+   "url": "https://www.ndtv.com",
+   "rss": "https://feeds.feedburner.com/ndtvnews-top-stories",
+   "state_affiliated": false
+  },
+  {
+   "id": "economictimes",
+   "name": "The Economic Times",
+   "country": "India",
+   "region": "Asia",
+   "language": "en",
+   "type": "financial",
+   "aspects": [
+    "markets",
+    "economy",
+    "business"
+   ],
+   "url": "https://economictimes.indiatimes.com",
+   "rss": "https://economictimes.indiatimes.com/rssfeedsdefault.cms",
+   "state_affiliated": false
+  },
+  {
+   "id": "dawn",
+   "name": "Dawn",
+   "country": "Pakistan",
+   "region": "Asia",
+   "language": "en",
+   "type": "newspaper",
+   "aspects": [
+    "general",
+    "politics"
+   ],
+   "url": "https://www.dawn.com",
+   "rss": "https://www.dawn.com/feeds/home",
+   "state_affiliated": false
+  },
+  {
+   "id": "dailystar-bd",
+   "name": "The Daily Star",
+   "country": "Bangladesh",
+   "region": "Asia",
+   "language": "en",
+   "type": "newspaper",
+   "aspects": [
+    "general"
+   ],
+   "url": "https://www.thedailystar.net",
+   "rss": "https://www.thedailystar.net/frontpage/rss.xml",
+   "state_affiliated": false
+  },
+  {
+   "id": "kathmandupost",
+   "name": "The Kathmandu Post",
+   "country": "Nepal",
+   "region": "Asia",
+   "language": "en",
+   "type": "newspaper",
+   "aspects": [
+    "general"
+   ],
+   "url": "https://kathmandupost.com",
+   "rss": "https://kathmandupost.com/rss",
+   "state_affiliated": false
+  },
+  {
+   "id": "xinhua",
+   "name": "Xinhua",
+   "country": "China",
+   "region": "Asia",
+   "language": "en",
+   "type": "wire",
+   "aspects": [
+    "general",
+    "politics",
+    "economy"
+   ],
+   "url": "https://english.news.cn",
+   "rss": "https://english.news.cn/rss/worldrss.xml",
+   "state_affiliated": true
+  },
+  {
+   "id": "scmp",
+   "name": "South China Morning Post",
+   "country": "Hong Kong",
+   "region": "Asia",
+   "language": "en",
+   "type": "newspaper",
+   "aspects": [
+    "general",
+    "geopolitics",
+    "economy"
+   ],
+   "url": "https://www.scmp.com",
+   "rss": "https://www.scmp.com/rss/91/feed",
+   "state_affiliated": false
+  },
+  {
+   "id": "caixin",
+   "name": "Caixin Global",
+   "country": "China",
+   "region": "Asia",
+   "language": "en",
+   "type": "financial",
+   "aspects": [
+    "economy",
+    "markets",
+    "business"
+   ],
+   "url": "https://www.caixinglobal.com",
+   "rss": null,
+   "state_affiliated": false
+  },
+  {
+   "id": "globaltimes",
+   "name": "Global Times",
+   "country": "China",
+   "region": "Asia",
+   "language": "en",
+   "type": "newspaper",
+   "aspects": [
+    "geopolitics",
+    "politics"
+   ],
+   "url": "https://www.globaltimes.cn",
+   "rss": "https://www.globaltimes.cn/rss/outbrain.xml",
+   "state_affiliated": true
+  },
+  {
+   "id": "nhk",
+   "name": "NHK World",
+   "country": "Japan",
+   "region": "Asia",
+   "language": "en",
+   "type": "broadcaster",
+   "aspects": [
+    "general"
+   ],
+   "url": "https://www3.nhk.or.jp/nhkworld/",
+   "rss": "https://www3.nhk.or.jp/rss/news/cat0.xml",
+   "state_affiliated": true
+  },
+  {
+   "id": "nikkei",
+   "name": "Nikkei Asia",
+   "country": "Japan",
+   "region": "Asia",
+   "language": "en",
+   "type": "financial",
+   "aspects": [
+    "economy",
+    "markets",
+    "business"
+   ],
+   "url": "https://asia.nikkei.com",
+   "rss": "https://asia.nikkei.com/rss/feed/nar",
+   "state_affiliated": false
+  },
+  {
+   "id": "asahi",
+   "name": "The Asahi Shimbun",
+   "country": "Japan",
+   "region": "Asia",
+   "language": "en",
+   "type": "newspaper",
+   "aspects": [
+    "general",
+    "politics"
+   ],
+   "url": "https://www.asahi.com/ajw/",
+   "rss": "https://news.google.com/rss/search?q=when:24h+site:asahi.com/ajw&hl=en-US&gl=US&ceid=US:en",
+   "state_affiliated": false
+  },
+  {
+   "id": "yonhap",
+   "name": "Yonhap News Agency",
+   "country": "South Korea",
+   "region": "Asia",
+   "language": "en",
+   "type": "wire",
+   "aspects": [
+    "general",
+    "geopolitics"
+   ],
+   "url": "https://en.yna.co.kr",
+   "rss": "https://en.yna.co.kr/RSS/news.xml",
+   "state_affiliated": true
+  },
+  {
+   "id": "koreaherald",
+   "name": "The Korea Herald",
+   "country": "South Korea",
+   "region": "Asia",
+   "language": "en",
+   "type": "newspaper",
+   "aspects": [
+    "general",
+    "economy"
+   ],
+   "url": "https://www.koreaherald.com",
+   "rss": "https://www.koreaherald.com/rss/newsAll",
+   "state_affiliated": false
+  },
+  {
+   "id": "straitstimes",
+   "name": "The Straits Times",
+   "country": "Singapore",
+   "region": "Asia",
+   "language": "en",
+   "type": "newspaper",
+   "aspects": [
+    "general",
+    "economy"
+   ],
+   "url": "https://www.straitstimes.com",
+   "rss": "https://www.straitstimes.com/news/world/rss.xml",
+   "state_affiliated": false
+  },
+  {
+   "id": "cna",
+   "name": "Channel News Asia",
+   "country": "Singapore",
+   "region": "Asia",
+   "language": "en",
+   "type": "broadcaster",
+   "aspects": [
+    "general",
+    "economy"
+   ],
+   "url": "https://www.channelnewsasia.com",
+   "rss": "https://www.channelnewsasia.com/api/v1/rss-outbound-feed?_format=xml",
+   "state_affiliated": true
+  },
+  {
+   "id": "jakartapost",
+   "name": "The Jakarta Post",
+   "country": "Indonesia",
+   "region": "Asia",
+   "language": "en",
+   "type": "newspaper",
+   "aspects": [
+    "general"
+   ],
+   "url": "https://www.thejakartapost.com",
+   "rss": "https://news.google.com/rss/search?q=when:24h+site:thejakartapost.com&hl=en-US&gl=US&ceid=US:en",
+   "state_affiliated": false
+  },
+  {
+   "id": "bangkokpost",
+   "name": "Bangkok Post",
+   "country": "Thailand",
+   "region": "Asia",
+   "language": "en",
+   "type": "newspaper",
+   "aspects": [
+    "general"
+   ],
+   "url": "https://www.bangkokpost.com",
+   "rss": "https://www.bangkokpost.com/rss/data/topstories.xml",
+   "state_affiliated": false
+  },
+  {
+   "id": "vnexpress",
+   "name": "VnExpress International",
+   "country": "Vietnam",
+   "region": "Asia",
+   "language": "en",
+   "type": "digital",
+   "aspects": [
+    "general",
+    "economy"
+   ],
+   "url": "https://e.vnexpress.net",
+   "rss": "https://e.vnexpress.net/rss/news.rss",
+   "state_affiliated": false
+  },
+  {
+   "id": "abc-au",
+   "name": "ABC News (Australia)",
+   "country": "Australia",
+   "region": "Oceania",
+   "language": "en",
+   "type": "broadcaster",
+   "aspects": [
+    "general",
+    "politics"
+   ],
+   "url": "https://www.abc.net.au/news",
+   "rss": "https://www.abc.net.au/news/feed/51120/rss.xml",
+   "state_affiliated": true
+  },
+  {
+   "id": "smh",
+   "name": "The Sydney Morning Herald",
+   "country": "Australia",
+   "region": "Oceania",
+   "language": "en",
+   "type": "newspaper",
+   "aspects": [
+    "general",
+    "business"
+   ],
+   "url": "https://www.smh.com.au",
+   "rss": "https://www.smh.com.au/rss/feed.xml",
+   "state_affiliated": false
+  },
+  {
+   "id": "rnz",
+   "name": "RNZ",
+   "country": "New Zealand",
+   "region": "Oceania",
+   "language": "en",
+   "type": "broadcaster",
+   "aspects": [
+    "general"
+   ],
+   "url": "https://www.rnz.co.nz",
+   "rss": "https://www.rnz.co.nz/rss/national.xml",
+   "state_affiliated": true
+  },
+  {
+   "id": "news24",
+   "name": "News24",
+   "country": "South Africa",
+   "region": "Africa",
+   "language": "en",
+   "type": "digital",
+   "aspects": [
+    "general",
+    "politics"
+   ],
+   "url": "https://www.news24.com",
+   "rss": "https://feeds.capi24.com/v1/Search/articles/news24/topstories/rss",
+   "state_affiliated": false
+  },
+  {
+   "id": "nation-ke",
+   "name": "Nation (Daily Nation)",
+   "country": "Kenya",
+   "region": "Africa",
+   "language": "en",
+   "type": "newspaper",
+   "aspects": [
+    "general"
+   ],
+   "url": "https://nation.africa",
+   "rss": "https://news.google.com/rss/search?q=when:24h+site:nation.africa&hl=en-US&gl=US&ceid=US:en",
+   "state_affiliated": false
+  },
+  {
+   "id": "premiumtimes",
+   "name": "Premium Times",
+   "country": "Nigeria",
+   "region": "Africa",
+   "language": "en",
+   "type": "digital",
+   "aspects": [
+    "general",
+    "politics"
+   ],
+   "url": "https://www.premiumtimesng.com",
+   "rss": "https://www.premiumtimesng.com/feed",
+   "state_affiliated": false
+  },
+  {
+   "id": "allafrica",
+   "name": "AllAfrica",
+   "country": "Pan-Africa",
+   "region": "Africa",
+   "language": "en",
+   "type": "aggregator",
+   "aspects": [
+    "general"
+   ],
+   "url": "https://allafrica.com",
+   "rss": "https://allafrica.com/tools/headlines/rdf/latest/headlines.rdf",
+   "state_affiliated": false
+  },
+  {
+   "id": "nature",
+   "name": "Nature News",
+   "country": "International",
+   "region": "Global",
+   "language": "en",
+   "type": "science",
+   "aspects": [
+    "science",
+    "health"
+   ],
+   "url": "https://www.nature.com/news",
+   "rss": "https://www.nature.com/nature.rss",
+   "state_affiliated": false
+  },
+  {
+   "id": "science",
+   "name": "Science (AAAS) News",
+   "country": "International",
+   "region": "Global",
+   "language": "en",
+   "type": "science",
+   "aspects": [
+    "science"
+   ],
+   "url": "https://www.science.org/news",
+   "rss": "https://www.science.org/rss/news_current.xml",
+   "state_affiliated": false
+  },
+  {
+   "id": "mittr",
+   "name": "MIT Technology Review",
+   "country": "USA",
+   "region": "Global",
+   "language": "en",
+   "type": "science",
+   "aspects": [
+    "tech",
+    "ai"
+   ],
+   "url": "https://www.technologyreview.com",
+   "rss": "https://www.technologyreview.com/feed/",
+   "state_affiliated": false
+  },
+  {
+   "id": "arstechnica",
+   "name": "Ars Technica",
+   "country": "USA",
+   "region": "Global",
+   "language": "en",
+   "type": "digital",
+   "aspects": [
+    "tech",
+    "science"
+   ],
+   "url": "https://arstechnica.com",
+   "rss": "https://feeds.arstechnica.com/arstechnica/index",
+   "state_affiliated": false
+  },
+  {
+   "id": "techcrunch",
+   "name": "TechCrunch",
+   "country": "USA",
+   "region": "Global",
+   "language": "en",
+   "type": "digital",
+   "aspects": [
+    "tech",
+    "business"
+   ],
+   "url": "https://techcrunch.com",
+   "rss": "https://techcrunch.com/feed/",
+   "state_affiliated": false
+  }
+ ]
 }
