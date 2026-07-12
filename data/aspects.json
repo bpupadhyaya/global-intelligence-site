@@ -1,11 +1,16 @@
 {
   "name": "Global Intelligence — Aspect Taxonomy",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "confirmed": "2026-07-11",
   "notes": [
     "Phase 1 = global lens only: 12 categories, 41 core aspects (confirmed by Bhim 2026-07-11).",
     "An aspect = category x topic x region; region lenses (US/EU/India/China...) come in a later phase.",
-    "keywords are lowercase substrings scored against item title+summary for aspect matching.",
+    "v1.1 (2026-07-12): keywords are matched with WORD-BOUNDARY regex (not substring) against",
+    "lowercased item title+summary — 'gold' no longer matches inside 'golden'. A match requires",
+    "score >= 1.5 (a single title hit = 3.0 qualifies alone; a single summary-only hit = 1.0 does",
+    "not — avoids filing on one weak, out-of-context mention). Optional 'exclude_keywords' per",
+    "aspect (same word-boundary matching) zeroes out a match regardless of keyword score — used",
+    "for known collisions (e.g. 'gold' vs 'Golden Jubilee').",
     "influences are the decision domains a briefing card surfaces: investments | daily-life | travel | business."
   ],
   "categories": [
@@ -24,15 +29,15 @@
   ],
   "aspects": [
     { "id": "economy.inflation", "category": "economy", "name": "Inflation", "keywords": ["inflation", "cpi", "consumer price", "price index", "cost of living", "deflation", "disinflation", "core prices", "pce"], "influences": ["investments", "daily-life"] },
-    { "id": "economy.central-banks", "category": "economy", "name": "Central banks & rates", "keywords": ["federal reserve", "fed ", "ecb", "central bank", "interest rate", "rate cut", "rate hike", "monetary policy", "boj", "bank of england", "rbi", "fomc", "powell", "lagarde", "basis points"], "influences": ["investments", "daily-life"] },
+    { "id": "economy.central-banks", "category": "economy", "name": "Central banks & rates", "keywords": ["federal reserve", "fed", "ecb", "central bank", "interest rate", "rate cut", "rate hike", "monetary policy", "boj", "bank of england", "rbi", "fomc", "powell", "lagarde", "basis points"], "influences": ["investments", "daily-life"] },
     { "id": "economy.jobs", "category": "economy", "name": "Jobs & unemployment", "keywords": ["unemployment", "jobs report", "jobless", "payroll", "hiring", "labor market", "labour market", "employment", "wage growth", "job cuts"], "influences": ["daily-life", "investments"] },
     { "id": "economy.growth", "category": "economy", "name": "Growth & GDP", "keywords": ["gdp", "economic growth", "recession", "economic outlook", "pmi", "industrial output", "consumer spending", "retail sales", "stimulus", "economic slowdown"], "influences": ["investments", "business"] },
     { "id": "economy.trade", "category": "economy", "name": "Trade & tariffs", "keywords": ["tariff", "trade deal", "trade war", "import", "export", "wto", "trade deficit", "trade agreement", "customs", "protectionism", "trade talks"], "influences": ["investments", "business", "daily-life"] },
 
     { "id": "markets.stocks", "category": "markets", "name": "Stocks", "keywords": ["stock market", "s&p 500", "nasdaq", "dow jones", "equities", "shares", "wall street", "stock rally", "sell-off", "selloff", "nikkei", "ftse", "sensex", "hang seng", "ipo"], "influences": ["investments"] },
     { "id": "markets.bonds", "category": "markets", "name": "Bonds & yields", "keywords": ["bond", "treasury", "yield", "10-year", "gilt", "bund", "sovereign debt", "credit spread", "fixed income", "debt auction"], "influences": ["investments"] },
-    { "id": "markets.currencies", "category": "markets", "name": "Currencies", "keywords": ["dollar", "euro", "yen", "yuan", "renminbi", "currency", "forex", "fx ", "exchange rate", "devaluation", "rupee", "sterling", "swiss franc"], "influences": ["investments", "travel"] },
-    { "id": "markets.commodities", "category": "markets", "name": "Commodities", "keywords": ["gold", "silver", "copper", "commodity", "commodities", "iron ore", "lithium", "metals", "precious metal", "mining"], "influences": ["investments"] },
+    { "id": "markets.currencies", "category": "markets", "name": "Currencies", "keywords": ["dollar", "euro", "yen", "yuan", "renminbi", "currency", "forex", "fx", "exchange rate", "devaluation", "rupee", "sterling", "swiss franc"], "influences": ["investments", "travel"] },
+    { "id": "markets.commodities", "category": "markets", "name": "Commodities", "keywords": ["gold", "silver", "copper", "commodity", "commodities", "iron ore", "lithium", "metals", "precious metal", "mining"], "exclude_keywords": ["jubilee", "medal", "medalist", "olympic", "olympics", "anniversary"], "influences": ["investments"] },
     { "id": "markets.crypto", "category": "markets", "name": "Crypto", "keywords": ["bitcoin", "ethereum", "crypto", "cryptocurrency", "stablecoin", "blockchain", "btc", "digital asset", "defi", "token"], "influences": ["investments"] },
 
     { "id": "politics.elections", "category": "politics", "name": "Elections", "keywords": ["election", "ballot", "vote", "voting", "campaign", "polls", "primary", "referendum", "electoral", "candidate"], "influences": ["daily-life", "investments"] },
@@ -48,13 +53,13 @@
     { "id": "energy.electricity", "category": "energy", "name": "Electricity & grid", "keywords": ["electricity", "power grid", "blackout", "power outage", "utility", "energy prices", "power plant", "grid", "electric bill"], "influences": ["daily-life", "business"] },
     { "id": "energy.renewables", "category": "energy", "name": "Renewables & nuclear power", "keywords": ["solar", "wind power", "renewable", "nuclear power", "nuclear plant", "clean energy", "hydrogen", "battery storage", "geothermal", "hydropower", "reactor"], "influences": ["investments", "business"] },
 
-    { "id": "technology.ai", "category": "technology", "name": "AI", "keywords": ["artificial intelligence", " ai ", "machine learning", "chatgpt", "openai", "anthropic", "llm", "generative", "ai model", "deepmind", "ai chip", "ai regulation"], "influences": ["investments", "business", "daily-life"] },
+    { "id": "technology.ai", "category": "technology", "name": "AI", "keywords": ["artificial intelligence", "ai", "machine learning", "chatgpt", "openai", "anthropic", "llm", "generative", "ai model", "deepmind", "ai chip", "ai regulation"], "influences": ["investments", "business", "daily-life"] },
     { "id": "technology.semiconductors", "category": "technology", "name": "Semiconductors", "keywords": ["semiconductor", "chip", "tsmc", "nvidia", "intel", "asml", "foundry", "wafer", "chipmaker", "gpu"], "influences": ["investments", "business"] },
     { "id": "technology.big-tech", "category": "technology", "name": "Big tech", "keywords": ["apple", "google", "microsoft", "amazon", "meta", "antitrust", "app store", "big tech", "alphabet", "tesla", "samsung", "tiktok"], "influences": ["investments", "business"] },
     { "id": "technology.cybersecurity", "category": "technology", "name": "Cybersecurity", "keywords": ["cyberattack", "hack", "ransomware", "data breach", "cybersecurity", "malware", "phishing", "vulnerability", "zero-day", "breach"], "influences": ["business", "daily-life"] },
     { "id": "technology.space", "category": "technology", "name": "Space", "keywords": ["spacex", "nasa", "satellite", "rocket", "launch", "space station", "lunar", "mars", "orbit", "astronaut", "space mission"], "influences": ["investments", "business"] },
 
-    { "id": "science-health.public-health", "category": "science-health", "name": "Public health & outbreaks", "keywords": ["outbreak", "epidemic", "pandemic", "virus", "vaccine", "who ", "public health", "infection", "disease spread", "health emergency", "flu", "measles"], "influences": ["daily-life", "travel"] },
+    { "id": "science-health.public-health", "category": "science-health", "name": "Public health & outbreaks", "keywords": ["outbreak", "epidemic", "pandemic", "virus", "vaccine", "world health organization", "public health", "infection", "disease spread", "health emergency", "flu", "measles"], "influences": ["daily-life", "travel"] },
     { "id": "science-health.medicine", "category": "science-health", "name": "Medicine & drug breakthroughs", "keywords": ["drug", "fda approval", "clinical trial", "treatment", "therapy", "cancer", "alzheimer", "obesity drug", "pharma", "medical breakthrough", "gene therapy"], "influences": ["daily-life", "investments"] },
     { "id": "science-health.research", "category": "science-health", "name": "Research frontiers", "keywords": ["research", "study finds", "scientists", "discovery", "breakthrough", "quantum", "physics", "biology", "genome", "nobel", "peer-reviewed"], "influences": ["daily-life"] },
 
@@ -64,7 +69,7 @@
 
     { "id": "business.earnings", "category": "business", "name": "Earnings & corporate moves", "keywords": ["earnings", "quarterly results", "profit", "revenue", "merger", "acquisition", "layoff", "layoffs", "m&a", "bankruptcy", "ceo", "restructuring", "guidance"], "influences": ["investments", "business"] },
     { "id": "business.supply-chains", "category": "business", "name": "Supply chains & shipping", "keywords": ["supply chain", "shipping", "container", "port", "freight", "logistics", "suez", "panama canal", "shortage", "manufacturing", "factory output"], "influences": ["business", "daily-life"] },
-    { "id": "business.autos-aviation", "category": "business", "name": "Autos & aviation", "keywords": ["boeing", "airbus", "airline", "automaker", "ev ", "electric vehicle", "car sales", "aircraft", "aviation", "recall", "toyota", "volkswagen"], "influences": ["investments", "travel", "business"] },
+    { "id": "business.autos-aviation", "category": "business", "name": "Autos & aviation", "keywords": ["boeing", "airbus", "airline", "automaker", "ev", "electric vehicle", "car sales", "aircraft", "aviation", "recall", "toyota", "volkswagen"], "influences": ["investments", "travel", "business"] },
 
     { "id": "society.migration", "category": "society", "name": "Migration & refugees", "keywords": ["migration", "migrant", "refugee", "asylum", "border crossing", "immigration", "deportation", "displaced"], "influences": ["daily-life", "travel"] },
     { "id": "society.labor", "category": "society", "name": "Labor & workforce", "keywords": ["strike", "union", "workers", "wage", "labor dispute", "walkout", "remote work", "workforce", "collective bargaining", "minimum wage"], "influences": ["daily-life", "business"] },
@@ -73,7 +78,7 @@
     { "id": "travel.aviation-disruptions", "category": "travel", "name": "Aviation & transit disruptions", "keywords": ["flight", "flights cancelled", "flight delays", "airport", "air traffic", "rail strike", "airline strike", "grounded", "travel chaos", "disruption"], "influences": ["travel"] },
     { "id": "travel.visas", "category": "travel", "name": "Visas & borders", "keywords": ["visa", "passport", "border", "entry requirement", "schengen", "immigration rule", "travel ban", "border control", "e-visa"], "influences": ["travel"] },
 
-    { "id": "food-agriculture.prices", "category": "food-agriculture", "name": "Food prices", "keywords": ["food price", "grocery", "food inflation", "wheat", "rice", "corn", "soybean", "grain", "coffee", "cocoa", "sugar"], "influences": ["daily-life", "investments"] },
+    { "id": "food-agriculture.prices", "category": "food-agriculture", "name": "Food prices", "keywords": ["food price", "grocery", "food inflation", "wheat", "rice", "corn", "soybean", "grain", "coffee", "cocoa", "sugar"], "exclude_keywords": ["coffee shop", "coffee table"], "influences": ["daily-life", "investments"] },
     { "id": "food-agriculture.security", "category": "food-agriculture", "name": "Harvests & food security", "keywords": ["harvest", "crop", "famine", "food security", "food shortage", "agriculture", "farmers", "drought crop", "yield", "fertilizer", "hunger"], "influences": ["daily-life"] }
   ]
 }

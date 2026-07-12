@@ -1,8 +1,11 @@
-"""Build data/briefing.json — live headlines per aspect for the site's cards.
+"""Build data/briefing.json — live headlines + top stories per aspect for the site's cards.
 
 100% open source, zero cost: fetches the public RSS feeds in data/sources.json,
-matches items to the aspects in data/aspects.json by keyword, and writes the top
-headlines per aspect. Runs every 4 hours via GitHub Actions (free on public repos).
+matches items to the aspects in data/aspects.json by WORD-BOUNDARY keyword scoring
+(mirrors pvt/global-intelligence/pipeline/match.py — keep both in sync), ranks the
+most influential current stories by cross-aspect/category breadth, and writes the
+top headlines + top_stories per run. Runs every 4 hours via GitHub Actions (free on
+public repos).
 
     python scripts/build_briefing.py
 """
@@ -25,6 +28,8 @@ FRESH_HOURS = 26
 FETCH_TIMEOUT = 20
 MAX_ITEMS_PER_SOURCE = 40
 HEADLINES_PER_ASPECT = 3
+MIN_SCORE = 1.5  # a single title hit (3.0) qualifies alone; a lone summary hit (1.0) doesn't
+TOP_STORIES_COUNT = 10
 
 _TAG_RE = re.compile(r"<[^>]+>")
 
@@ -76,6 +81,84 @@ def _fetch_one(source: dict) -> tuple[dict, list[dict], str | None]:
         return source, [], "fetch-error"
 
 
+def _pattern(keyword: str) -> re.Pattern:
+    return re.compile(r"\b" + re.escape(keyword.strip()) + r"\b")
+
+
+def _compile_taxonomy(taxonomy: dict) -> dict:
+    compiled = {}
+    for aspect in taxonomy["aspects"]:
+        compiled[aspect["id"]] = {
+            "keywords": [_pattern(kw) for kw in aspect["keywords"]],
+            "exclude": [_pattern(kw) for kw in aspect.get("exclude_keywords", [])],
+        }
+    return compiled
+
+
+def _score_all(items: list[dict], taxonomy: dict) -> dict[str, list[tuple[float, dict]]]:
+    """One matching pass, word-boundary regex — mirrors pipeline/match.py exactly."""
+    compiled = _compile_taxonomy(taxonomy)
+    buckets: dict[str, list[tuple[float, dict]]] = {a["id"]: [] for a in taxonomy["aspects"]}
+    for item in items:
+        title = item["title"].lower()
+        summary = item["summary"].lower()
+        text = f"{title} {summary}"
+        for aspect_id, rules in compiled.items():
+            if any(pat.search(text) for pat in rules["exclude"]):
+                continue
+            score = 0.0
+            for pat in rules["keywords"]:
+                if pat.search(title):
+                    score += 3.0
+                elif pat.search(summary):
+                    score += 1.0
+            if score >= MIN_SCORE:
+                if item["state_affiliated"]:
+                    score *= 0.8
+                buckets[aspect_id].append((score, item))
+    return buckets
+
+
+def _rank_top_stories(buckets: dict, taxonomy: dict, top_n: int = TOP_STORIES_COUNT) -> list[dict]:
+    """Most influential current stories: breadth (aspects + 2x categories touched) x recency."""
+    aspect_to_category = {a["id"]: a["category"] for a in taxonomy["aspects"]}
+    category_names = {c["id"]: c["name"] for c in taxonomy["categories"]}
+
+    by_key: dict[str, dict] = {}
+    for aspect_id, scored in buckets.items():
+        for score, item in scored:
+            key = item["url"] or item["title"]
+            entry = by_key.setdefault(key, {"item": item, "aspect_ids": set(), "category_ids": set()})
+            entry["aspect_ids"].add(aspect_id)
+            entry["category_ids"].add(aspect_to_category[aspect_id])
+
+    now = time.time()
+    ranked = []
+    for entry in by_key.values():
+        item = entry["item"]
+        age_hours = max(0.0, (now - item["epoch"]) / 3600)
+        recency_weight = max(0.15, 1 - age_hours / FRESH_HOURS)
+        breadth = len(entry["aspect_ids"]) + 2 * len(entry["category_ids"])
+        ranked.append((breadth * recency_weight, entry))
+    ranked.sort(key=lambda pair: (-pair[0], -pair[1]["item"]["epoch"]))
+
+    out = []
+    for rank, (_, entry) in enumerate(ranked[:top_n], start=1):
+        item = entry["item"]
+        out.append(
+            {
+                "rank": rank,
+                "title": item["title"],
+                "source": item["source"],
+                "url": item["url"],
+                "age_hours": round(max(0.0, (now - item["epoch"]) / 3600), 1),
+                "categories": sorted(category_names[cid] for cid in entry["category_ids"]),
+                "aspect_count": len(entry["aspect_ids"]),
+            }
+        )
+    return out
+
+
 def main() -> None:
     sources = json.loads((ROOT / "data" / "sources.json").read_text())["sources"]
     taxonomy = json.loads((ROOT / "data" / "aspects.json").read_text())
@@ -100,17 +183,8 @@ def main() -> None:
             seen.add(key)
             unique.append(item)
 
-    # Match to aspects by keyword score (title hits weigh 3x).
-    buckets: dict[str, list[tuple[float, dict]]] = {a["id"]: [] for a in taxonomy["aspects"]}
-    for item in unique:
-        title = item["title"].lower()
-        text = f"{title} {item['summary'].lower()}"
-        for aspect in taxonomy["aspects"]:
-            score = sum(3.0 if kw in title else 1.0 for kw in aspect["keywords"] if kw in text)
-            if score > 0:
-                if item["state_affiliated"]:
-                    score *= 0.8
-                buckets[aspect["id"]].append((score, item))
+    buckets = _score_all(unique, taxonomy)
+    top_stories = _rank_top_stories(buckets, taxonomy)
 
     now = time.time()
     categories = []
@@ -144,11 +218,12 @@ def main() -> None:
             "aspects_covered": covered,
             "aspects_total": len(taxonomy["aspects"]),
         },
+        "top_stories": top_stories,
         "categories": categories,
     }
     out = ROOT / "data" / "briefing.json"
     out.write_text(json.dumps(briefing, ensure_ascii=False, indent=1))
-    print(f"ok={ok} failed/no-rss={failed} items={len(unique)} covered={covered}/41 → {out}")
+    print(f"ok={ok} failed/no-rss={failed} items={len(unique)} covered={covered}/41 top_stories={len(top_stories)} → {out}")
 
 
 if __name__ == "__main__":
