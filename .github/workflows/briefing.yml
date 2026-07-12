@@ -1,0 +1,38 @@
+name: briefing
+
+on:
+  schedule:
+    - cron: "0 */4 * * *" # 6 runs/day — the confirmed Global Intelligence cadence
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: briefing
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - run: pip install feedparser requests
+
+      - name: Build briefing.json
+        run: python scripts/build_briefing.py
+
+      - name: Commit and push
+        run: |
+          git config user.name "gi-briefing"
+          git config user.email "actions@users.noreply.github.com"
+          git add data/briefing.json
+          git diff --cached --quiet || git commit -m "briefing: $(date -u +%FT%H:%MZ)"
+          git pull --rebase origin main
+          git push

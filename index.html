@@ -11,7 +11,7 @@
     <meta property="og:description" content="One clear paragraph per world aspect, plus what it might influence — your investments, your plans, your travel. Refreshed six times a day. Private by design.">
     <meta property="og:type" content="website">
     <link rel="stylesheet" href="assets/fonts/inter.css">
-    <link rel="stylesheet" href="assets/css/style.css?v=24ee1edc">
+    <link rel="stylesheet" href="assets/css/style.css?v=b3bb21ab">
 </head>
 <body>
 
@@ -113,24 +113,25 @@
 <section class="tint" id="aspects">
     <div class="wrap">
         <div class="section-head">
-            <span class="kicker">The aspects</span>
+            <span class="kicker">The aspects — live</span>
             <h2>Hundreds of lenses on one world</h2>
             <p>The world is monitored as aspects — category × topic × region. Each aspect is
-            one briefing card. Twelve categories at launch:</p>
+            one briefing card, refreshed every four hours from the world's major news media.
+            <span id="briefing-stamp"></span></p>
         </div>
-        <div class="aspect-grid">
-            <div class="aspect"><h3>Economy</h3><div class="subs">inflation · central banks · jobs · growth · trade · housing</div></div>
-            <div class="aspect"><h3>Markets</h3><div class="subs">stocks · bonds · currencies · commodities · crypto</div></div>
-            <div class="aspect"><h3>Politics</h3><div class="subs">elections · legislation · leadership · policy</div></div>
-            <div class="aspect"><h3>Geopolitics &amp; Security</h3><div class="subs">conflicts · diplomacy · sanctions · defense</div></div>
-            <div class="aspect"><h3>Energy</h3><div class="subs">oil &amp; gas · electricity · renewables · nuclear</div></div>
-            <div class="aspect"><h3>Technology</h3><div class="subs">AI · semiconductors · big tech · cybersecurity · space</div></div>
-            <div class="aspect"><h3>Science &amp; Health</h3><div class="subs">public health · medicine · research</div></div>
-            <div class="aspect"><h3>Climate &amp; Environment</h3><div class="subs">extreme weather · disasters · climate policy</div></div>
-            <div class="aspect"><h3>Business &amp; Industry</h3><div class="subs">earnings · autos · aviation · supply chains</div></div>
-            <div class="aspect"><h3>Society</h3><div class="subs">migration · labor · education · demographics</div></div>
-            <div class="aspect"><h3>Travel &amp; Mobility</h3><div class="subs">advisories · aviation · visas · tourism</div></div>
-            <div class="aspect"><h3>Food &amp; Agriculture</h3><div class="subs">harvests · food prices · food security</div></div>
+        <div class="aspect-grid" id="aspect-grid">
+            <div class="aspect" data-cat="economy"><h3>Economy</h3><div class="subs">inflation · central banks · jobs · growth · trade · housing</div></div>
+            <div class="aspect" data-cat="markets"><h3>Markets</h3><div class="subs">stocks · bonds · currencies · commodities · crypto</div></div>
+            <div class="aspect" data-cat="politics"><h3>Politics</h3><div class="subs">elections · legislation · leadership · policy</div></div>
+            <div class="aspect" data-cat="geopolitics"><h3>Geopolitics &amp; Security</h3><div class="subs">conflicts · diplomacy · sanctions · defense</div></div>
+            <div class="aspect" data-cat="energy"><h3>Energy</h3><div class="subs">oil &amp; gas · electricity · renewables · nuclear</div></div>
+            <div class="aspect" data-cat="technology"><h3>Technology</h3><div class="subs">AI · semiconductors · big tech · cybersecurity · space</div></div>
+            <div class="aspect" data-cat="science-health"><h3>Science &amp; Health</h3><div class="subs">public health · medicine · research</div></div>
+            <div class="aspect" data-cat="climate"><h3>Climate &amp; Environment</h3><div class="subs">extreme weather · disasters · climate policy</div></div>
+            <div class="aspect" data-cat="business"><h3>Business &amp; Industry</h3><div class="subs">earnings · autos · aviation · supply chains</div></div>
+            <div class="aspect" data-cat="society"><h3>Society</h3><div class="subs">migration · labor · education · demographics</div></div>
+            <div class="aspect" data-cat="travel"><h3>Travel &amp; Mobility</h3><div class="subs">advisories · aviation · visas · tourism</div></div>
+            <div class="aspect" data-cat="food-agriculture"><h3>Food &amp; Agriculture</h3><div class="subs">harvests · food prices · food security</div></div>
         </div>
         <p class="aspect-foot">Every category fans out by region — <code>ECONOMY · INFLATION · US</code> and
         <code>GEOPOLITICS · CONFLICT · MIDDLE EAST</code> are different aspects — which is how
@@ -231,6 +232,49 @@
         }
         tick();
         setInterval(tick, 1000);
+    })();
+
+    // Populate the aspect cards with live headlines from data/briefing.json
+    // (built every 4 hours by an open-source GitHub Action in this repo).
+    (function () {
+        fetch('data/briefing.json?t=' + Date.now())
+            .then(function (r) { return r.json(); })
+            .then(function (b) {
+                var stamp = document.getElementById('briefing-stamp');
+                if (stamp) {
+                    stamp.innerHTML = '<strong>Live below — updated ' +
+                        b.generated_at.slice(11, 16) + ' UTC</strong> from ' +
+                        b.stats.sources_ok + ' sources (' + b.stats.fresh_items + ' fresh items).';
+                }
+                b.categories.forEach(function (cat) {
+                    var card = document.querySelector('.aspect[data-cat="' + cat.id + '"]');
+                    if (!card) return;
+                    var heads = [];
+                    cat.aspects.forEach(function (a) {
+                        if (a.headlines.length) heads.push({ aspect: a.name, h: a.headlines[0] });
+                    });
+                    if (!heads.length) return;
+                    var list = document.createElement('ul');
+                    list.className = 'live-list';
+                    heads.slice(0, 3).forEach(function (e) {
+                        var li = document.createElement('li');
+                        var link = document.createElement('a');
+                        link.href = e.h.url;
+                        link.rel = 'noopener';
+                        link.target = '_blank';
+                        link.textContent = e.h.title;
+                        var meta = document.createElement('span');
+                        meta.className = 'live-meta';
+                        meta.textContent = e.aspect + ' · ' + e.h.source + ' · ' +
+                            (e.h.age_hours < 1 ? 'just now' : Math.round(e.h.age_hours) + 'h ago');
+                        li.appendChild(link);
+                        li.appendChild(meta);
+                        list.appendChild(li);
+                    });
+                    card.appendChild(list);
+                });
+            })
+            .catch(function () { /* no briefing yet — cards stay static */ });
     })();
 </script>
 
