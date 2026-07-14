@@ -103,6 +103,21 @@
     </div>
 </section>
 
+<section class="tint" id="top10-preview">
+    <div class="wrap">
+        <div class="section-head">
+            <span class="kicker">Ranked, right now</span>
+            <h2>The most influential stories in the world</h2>
+            <p>Ranked by how many parts of the world each story touches — aspects and
+            categories — weighted by freshness. No editorial judgment call: a deterministic
+            score computed by the open pipeline every four hours.
+            <span id="top10-preview-stamp"></span></p>
+        </div>
+        <div id="top10-preview-root"></div>
+        <p style="text-align:center;margin-top:8px;"><a class="btn" href="top10/">See the full Top 10 →</a></p>
+    </div>
+</section>
+
 <section>
     <div class="wrap">
         <div class="section-head">
@@ -249,7 +264,13 @@
         setInterval(tick, 1000);
     })();
 
-    // Populate the aspect cards with live headlines from data/briefing.json
+    // Headline titles/sources come from real-world RSS feeds and can legitimately contain
+    // HTML-special characters (quotes, ampersands) — escape before interpolating into innerHTML.
+    function esc(s) {
+        return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    }
+
+    // Populate the aspect cards + Top 10 preview with live data from data/briefing.json
     // (built every 4 hours by an open-source GitHub Action in this repo).
     (function () {
         fetch('data/briefing.json?t=' + Date.now())
@@ -260,6 +281,33 @@
                     stamp.innerHTML = '<strong>Live below — updated ' +
                         b.generated_at.slice(11, 16) + ' UTC</strong> from ' +
                         b.stats.sources_ok + ' sources (' + b.stats.fresh_items + ' fresh items).';
+                }
+                var top10Stamp = document.getElementById('top10-preview-stamp');
+                var top10Root = document.getElementById('top10-preview-root');
+                var stories = (b.top_stories || []).slice(0, 3);
+                if (top10Stamp && stories.length) {
+                    top10Stamp.innerHTML = '<strong>Live — updated ' +
+                        b.generated_at.slice(11, 16) + ' UTC.</strong>';
+                }
+                if (top10Root && stories.length) {
+                    stories.forEach(function (s) {
+                        var ageLabel = s.age_hours < 1 ? 'just now' : Math.round(s.age_hours) + 'h ago';
+                        var tags = s.categories.slice(0, 3).map(function (c) {
+                            return '<span class="tag">' + esc(c) + '</span>';
+                        }).join('');
+                        var row = document.createElement('article');
+                        row.className = 'top10-row rank-' + s.rank;
+                        row.innerHTML =
+                            '<span class="rank-badge">' + s.rank + '</span>' +
+                            '<div style="flex:1;min-width:0;">' +
+                            '<h3><a href="' + esc(s.url) + '" rel="noopener" target="_blank">' + esc(s.title) + '</a></h3>' +
+                            '<div class="tags">' + tags + '</div>' +
+                            '<div class="top10-meta">' + esc(s.source) + ' · ' + ageLabel + ' · affects ' +
+                            s.aspect_count + ' aspect' + (s.aspect_count === 1 ? '' : 's') + '</div></div>';
+                        top10Root.appendChild(row);
+                    });
+                } else if (top10Root) {
+                    top10Root.innerHTML = '<p style="text-align:center;color:var(--ink-faint)">No ranking yet for this cycle — check back shortly.</p>';
                 }
                 b.categories.forEach(function (cat) {
                     var card = document.querySelector('.aspect[data-cat="' + cat.id + '"]');
