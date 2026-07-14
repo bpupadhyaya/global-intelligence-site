@@ -281,7 +281,14 @@ def main() -> None:
                 )
             if heads:
                 covered += 1
-            cat_aspects.append({"id": aspect["id"], "name": aspect["name"], "headlines": heads})
+            cat_aspects.append(
+                {
+                    "id": aspect["id"],
+                    "name": aspect["name"],
+                    "influences": aspect.get("influences", []),
+                    "headlines": heads,
+                }
+            )
         categories.append({"id": cat["id"], "name": cat["name"], "aspects": cat_aspects})
 
     briefing = {
