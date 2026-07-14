@@ -13,9 +13,11 @@
 </head>
 <body>
 
+<a class="skip-link" href="#briefing-root">Skip to content</a>
+
 <nav>
     <div class="nav-inner">
-        <a href="../" class="nav-logo"><span class="globe">🌐</span> Global Intelligence</a>
+        <a href="../" class="nav-logo"><span class="globe" aria-hidden="true">🌐</span> Global Intelligence</a>
         <ul class="nav-links">
             <li><a href="./" aria-current="page">Live briefing</a></li>
             <li><a href="../top10/">Top 10</a></li>
@@ -23,8 +25,8 @@
             <li><a href="../#privacy">Privacy</a></li>
             <li><a href="../sources/">Sources</a></li>
         </ul>
-        <span class="nav-utc"><span class="live">●</span> <span id="utc">— UTC</span></span>
-        <button class="mobile-menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('show')" aria-label="Menu">&#9776;</button>
+        <span class="nav-utc"><span class="live" aria-hidden="true">●</span> <span id="utc">— UTC</span></span>
+        <button class="mobile-menu-btn" aria-label="Menu" aria-expanded="false" onclick="var l=document.querySelector('.nav-links'); var open=l.classList.toggle('show'); this.setAttribute('aria-expanded', open);">&#9776;</button>
     </div>
 </nav>
 
@@ -83,10 +85,10 @@
                     '</div>';
             }).join('');
             var possibilities = r.possibility_chains.map(function (c) { return '<li>' + c + '</li>'; }).join('');
-            return '<details class="ripple"><summary>🔀 Ripple effects</summary>' +
+            return '<details class="ripple"><summary><span aria-hidden="true">🔀</span> Ripple effects</summary>' +
                 '<div class="ripple-body">' +
-                '<h5>What happened before</h5>' + precedents +
-                '<h5>What could follow</h5>' +
+                '<h3>What happened before</h3>' + precedents +
+                '<h3>What could follow</h3>' +
                 '<p class="disclaimer">Historically-observed possibilities — not a prediction.</p>' +
                 '<ul>' + possibilities + '</ul>' +
                 '</div></details>';
@@ -94,9 +96,9 @@
         if (item.category_context) {
             var c = item.category_context;
             var channels = c.typical_channels.map(function (ch) { return '<li>' + ch + '</li>'; }).join('');
-            return '<details class="context"><summary>💡 Why this matters</summary>' +
+            return '<details class="context"><summary><span aria-hidden="true">💡</span> Why this matters</summary>' +
                 '<div class="context-body"><p>' + c.why_it_matters + '</p>' +
-                '<h5>Can ripple into</h5><ul>' + channels + '</ul></div></details>';
+                '<h3>Can ripple into</h3><ul>' + channels + '</ul></div></details>';
         }
         return '';
     }

@@ -25,9 +25,11 @@
 </head>
 <body>
 
+<a class="skip-link" href="#main">Skip to content</a>
+
 <nav>
     <div class="nav-inner">
-        <a href="./" class="nav-logo"><span class="globe">🌐</span> Global Intelligence</a>
+        <a href="./" class="nav-logo"><span class="globe" aria-hidden="true">🌐</span> Global Intelligence</a>
         <ul class="nav-links">
             <li><a href="#aspects">Aspects</a></li>
             <li><a href="briefing/">Live briefing</a></li>
@@ -36,11 +38,12 @@
             <li><a href="#privacy">Privacy</a></li>
             <li><a href="sources/">Sources</a></li>
         </ul>
-        <span class="nav-utc"><span class="live">●</span> <span id="utc">— UTC</span></span>
-        <button class="mobile-menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('show')" aria-label="Menu">&#9776;</button>
+        <span class="nav-utc"><span class="live" aria-hidden="true">●</span> <span id="utc">— UTC</span></span>
+        <button class="mobile-menu-btn" aria-label="Menu" aria-expanded="false" onclick="var l=document.querySelector('.nav-links'); var open=l.classList.toggle('show'); this.setAttribute('aria-expanded', open);">&#9776;</button>
     </div>
 </nav>
 
+<main id="main">
 <header class="hero">
     <div class="wrap">
         <h1>Understand the world.<br><span class="accent">Every four hours.</span></h1>
@@ -176,21 +179,21 @@
         </div>
         <div class="grid">
             <div class="card">
-                <div class="icon">📰</div>
+                <div class="icon" aria-hidden="true">📰</div>
                 <h3>The world's major media</h3>
                 <p>Reuters, AP, BBC, CNN, CNBC, FT, Al Jazeera, Times of India, Nikkei, and
                 dozens more — a transparent, <a href="sources/">public
                 source registry</a> spanning every region, with state-affiliated outlets flagged.</p>
             </div>
             <div class="card">
-                <div class="icon blue">🤖</div>
+                <div class="icon blue" aria-hidden="true">🤖</div>
                 <h3>Open distillation, honestly attributed</h3>
                 <p>Every four hours, an open-source pipeline reads the wires and distills
                 the freshest reporting per aspect — always attributing and linking the
                 sources — plus the decision hooks: what this could influence.</p>
             </div>
             <div class="card">
-                <div class="icon">📬</div>
+                <div class="icon" aria-hidden="true">📬</div>
                 <h3>A briefing pack, delivered down</h3>
                 <p>Your app downloads the latest briefing like a newspaper. Nothing about you
                 travels up — reading history, interests, and everything personal stays on
@@ -230,6 +233,7 @@
         </div>
     </div>
 </section>
+</main>
 
 <footer>
     <div class="footer-inner">

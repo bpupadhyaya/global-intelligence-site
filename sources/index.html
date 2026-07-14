@@ -13,9 +13,11 @@
 </head>
 <body>
 
+<a class="skip-link" href="#sources-root">Skip to content</a>
+
 <nav>
     <div class="nav-inner">
-        <a href="../" class="nav-logo"><span class="globe">🌐</span> Global Intelligence</a>
+        <a href="../" class="nav-logo"><span class="globe" aria-hidden="true">🌐</span> Global Intelligence</a>
         <ul class="nav-links">
             <li><a href="../briefing/">Live briefing</a></li>
             <li><a href="../top10/">Top 10</a></li>
@@ -23,8 +25,8 @@
             <li><a href="../#privacy">Privacy</a></li>
             <li><a href="./" aria-current="page">Sources</a></li>
         </ul>
-        <span class="nav-utc"><span class="live">●</span> <span id="utc">— UTC</span></span>
-        <button class="mobile-menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('show')" aria-label="Menu">&#9776;</button>
+        <span class="nav-utc"><span class="live" aria-hidden="true">●</span> <span id="utc">— UTC</span></span>
+        <button class="mobile-menu-btn" aria-label="Menu" aria-expanded="false" onclick="var l=document.querySelector('.nav-links'); var open=l.classList.toggle('show'); this.setAttribute('aria-expanded', open);">&#9776;</button>
     </div>
 </nav>
 
