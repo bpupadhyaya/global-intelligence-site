@@ -126,6 +126,26 @@ def _match_ripple_effect(item: dict, compiled_playbooks: list[dict]) -> dict | N
     }
 
 
+def _category_context_lookup(category_context: dict) -> dict:
+    """id -> {why_it_matters, typical_channels} for the fallback tier."""
+    return {c["id"]: c for c in category_context["categories"]}
+
+
+def _category_context_for(category_id: str, lookup: dict) -> dict | None:
+    """Fallback context for a headline/story whose category didn't match a specific
+    ripple_effects playbook — general, structural "why this matters" content, never
+    framed as a specific historical claim. Guarantees every item has some context.
+    """
+    entry = lookup.get(category_id)
+    if entry is None:
+        return None
+    return {
+        "id": entry["id"],
+        "why_it_matters": entry["why_it_matters"],
+        "typical_channels": entry["typical_channels"],
+    }
+
+
 def _score_all(items: list[dict], taxonomy: dict) -> dict[str, list[tuple[float, dict]]]:
     """One matching pass, word-boundary regex — mirrors pipeline/match.py exactly."""
     compiled = _compile_taxonomy(taxonomy)
@@ -151,7 +171,11 @@ def _score_all(items: list[dict], taxonomy: dict) -> dict[str, list[tuple[float,
 
 
 def _rank_top_stories(
-    buckets: dict, taxonomy: dict, compiled_playbooks: list[dict], top_n: int = TOP_STORIES_COUNT
+    buckets: dict,
+    taxonomy: dict,
+    compiled_playbooks: list[dict],
+    category_context_lookup: dict,
+    top_n: int = TOP_STORIES_COUNT,
 ) -> list[dict]:
     """Most influential current stories: breadth (aspects + 2x categories touched) x recency."""
     aspect_to_category = {a["id"]: a["category"] for a in taxonomy["aspects"]}
@@ -179,6 +203,10 @@ def _rank_top_stories(
     for rank, (_, entry) in enumerate(ranked[:top_n], start=1):
         item = entry["item"]
         ripple_effect = _match_ripple_effect(item, compiled_playbooks)
+        category_context = None
+        if not ripple_effect:
+            primary_category_id = min(entry["category_ids"], key=lambda cid: category_names[cid])
+            category_context = _category_context_for(primary_category_id, category_context_lookup)
         out.append(
             {
                 "rank": rank,
@@ -189,6 +217,7 @@ def _rank_top_stories(
                 "categories": sorted(category_names[cid] for cid in entry["category_ids"]),
                 "aspect_count": len(entry["aspect_ids"]),
                 **({"ripple_effect": ripple_effect} if ripple_effect else {}),
+                **({"category_context": category_context} if category_context else {}),
             }
         )
     return out
@@ -199,6 +228,8 @@ def main() -> None:
     taxonomy = json.loads((ROOT / "data" / "aspects.json").read_text())
     ripple_effects = json.loads((ROOT / "data" / "ripple_effects.json").read_text())
     compiled_playbooks = _compile_playbooks(ripple_effects)
+    category_context = json.loads((ROOT / "data" / "category_context.json").read_text())
+    category_context_lookup = _category_context_lookup(category_context)
 
     items: list[dict] = []
     ok = failed = 0
@@ -221,7 +252,7 @@ def main() -> None:
             unique.append(item)
 
     buckets = _score_all(unique, taxonomy)
-    top_stories = _rank_top_stories(buckets, taxonomy, compiled_playbooks)
+    top_stories = _rank_top_stories(buckets, taxonomy, compiled_playbooks, category_context_lookup)
 
     now = time.time()
     categories = []
@@ -235,6 +266,9 @@ def main() -> None:
             heads = []
             for _, i in scored[:HEADLINES_PER_ASPECT]:
                 ripple_effect = _match_ripple_effect(i, compiled_playbooks)
+                category_context = (
+                    None if ripple_effect else _category_context_for(cat["id"], category_context_lookup)
+                )
                 heads.append(
                     {
                         "title": i["title"],
@@ -242,6 +276,7 @@ def main() -> None:
                         "url": i["url"],
                         "age_hours": round(max(0.0, (now - i["epoch"]) / 3600), 1),
                         **({"ripple_effect": ripple_effect} if ripple_effect else {}),
+                        **({"category_context": category_context} if category_context else {}),
                     }
                 )
             if heads:
