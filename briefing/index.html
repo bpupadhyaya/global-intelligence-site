@@ -70,6 +70,14 @@
         tick(); setInterval(tick, 1000);
     })();
 
+    // "investments" | "daily-life" | "travel" | "business" — the same controlled vocabulary
+    // curated per-aspect in taxonomy/aspects.json and mirrored in the mobile apps' Aspect
+    // Detail screen.
+    var INFLUENCE_LABELS = { 'daily-life': 'Daily life', investments: 'Investments', travel: 'Travel', business: 'Business' };
+    function influenceLabel(raw) {
+        return INFLUENCE_LABELS[raw] || (raw.charAt(0).toUpperCase() + raw.slice(1));
+    }
+
     // Renders a headline's "ripple_effect" (specific, dated historical precedent — fact) or
     // "category_context" (general structural fallback) as a native <details> foldable. Mirrors
     // the mobile apps' RippleEffectsSection/CategoryContextSection in content and trust-tier
@@ -166,6 +174,24 @@
                                 list.appendChild(li);
                             });
                             card.appendChild(list);
+                        }
+                        if (a.influences && a.influences.length) {
+                            var infl = document.createElement('div');
+                            infl.className = 'influence';
+                            var inflLabel = document.createElement('span');
+                            inflLabel.className = 'influence-label';
+                            inflLabel.textContent = 'What this might influence';
+                            infl.appendChild(inflLabel);
+                            var inflTags = document.createElement('div');
+                            inflTags.className = 'tags';
+                            a.influences.forEach(function (inf) {
+                                var t = document.createElement('span');
+                                t.className = 'tag';
+                                t.textContent = influenceLabel(inf);
+                                inflTags.appendChild(t);
+                            });
+                            infl.appendChild(inflTags);
+                            card.appendChild(infl);
                         }
                         grid.appendChild(card);
                     });
