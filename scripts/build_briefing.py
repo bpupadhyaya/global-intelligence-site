@@ -3,8 +3,10 @@
 100% open source, zero cost: fetches the public RSS feeds in data/sources.json,
 matches items to the aspects in data/aspects.json by WORD-BOUNDARY keyword scoring
 (mirrors pvt/global-intelligence/pipeline/match.py — keep both in sync), ranks the
-most influential current stories by cross-aspect/category breadth, and writes the
-top headlines + top_stories per run. Runs every 4 hours via GitHub Actions (free on
+most influential current stories by cross-aspect/category breadth, tags headlines/top
+stories with a "ripple effect" playbook when one matches (data/ripple_effects.json —
+historical precedent + hedged possibilities, zero AI cost, curated offline), and writes
+the top headlines + top_stories per run. Runs every 4 hours via GitHub Actions (free on
 public repos).
 
     python scripts/build_briefing.py
@@ -95,6 +97,35 @@ def _compile_taxonomy(taxonomy: dict) -> dict:
     return compiled
 
 
+def _compile_playbooks(ripple_effects: dict) -> list[dict]:
+    """Precompile each playbook's trigger keywords once per run."""
+    compiled = []
+    for pb in ripple_effects["playbooks"]:
+        compiled.append({**pb, "_patterns": [_pattern(kw) for kw in pb["keywords"]]})
+    return compiled
+
+
+def _match_ripple_effect(item: dict, compiled_playbooks: list[dict]) -> dict | None:
+    """Best-matching playbook for one item (title + summary), or None. "Best" = most
+    distinct trigger keywords hit — ties broken by playbook order in the source file.
+    Keeps a single, unambiguous ripple-effect panel per story rather than stacking several.
+    """
+    text = f"{item['title'].lower()} {item['summary'].lower()}"
+    best, best_hits = None, 0
+    for pb in compiled_playbooks:
+        hits = sum(1 for pat in pb["_patterns"] if pat.search(text))
+        if hits > best_hits:
+            best, best_hits = pb, hits
+    if best is None:
+        return None
+    return {
+        "id": best["id"],
+        "name": best["name"],
+        "historical_precedents": best["historical_precedents"],
+        "possibility_chains": best["possibility_chains"],
+    }
+
+
 def _score_all(items: list[dict], taxonomy: dict) -> dict[str, list[tuple[float, dict]]]:
     """One matching pass, word-boundary regex — mirrors pipeline/match.py exactly."""
     compiled = _compile_taxonomy(taxonomy)
@@ -119,7 +150,9 @@ def _score_all(items: list[dict], taxonomy: dict) -> dict[str, list[tuple[float,
     return buckets
 
 
-def _rank_top_stories(buckets: dict, taxonomy: dict, top_n: int = TOP_STORIES_COUNT) -> list[dict]:
+def _rank_top_stories(
+    buckets: dict, taxonomy: dict, compiled_playbooks: list[dict], top_n: int = TOP_STORIES_COUNT
+) -> list[dict]:
     """Most influential current stories: breadth (aspects + 2x categories touched) x recency."""
     aspect_to_category = {a["id"]: a["category"] for a in taxonomy["aspects"]}
     category_names = {c["id"]: c["name"] for c in taxonomy["categories"]}
@@ -145,6 +178,7 @@ def _rank_top_stories(buckets: dict, taxonomy: dict, top_n: int = TOP_STORIES_CO
     out = []
     for rank, (_, entry) in enumerate(ranked[:top_n], start=1):
         item = entry["item"]
+        ripple_effect = _match_ripple_effect(item, compiled_playbooks)
         out.append(
             {
                 "rank": rank,
@@ -154,6 +188,7 @@ def _rank_top_stories(buckets: dict, taxonomy: dict, top_n: int = TOP_STORIES_CO
                 "age_hours": round(max(0.0, (now - item["epoch"]) / 3600), 1),
                 "categories": sorted(category_names[cid] for cid in entry["category_ids"]),
                 "aspect_count": len(entry["aspect_ids"]),
+                **({"ripple_effect": ripple_effect} if ripple_effect else {}),
             }
         )
     return out
@@ -162,6 +197,8 @@ def _rank_top_stories(buckets: dict, taxonomy: dict, top_n: int = TOP_STORIES_CO
 def main() -> None:
     sources = json.loads((ROOT / "data" / "sources.json").read_text())["sources"]
     taxonomy = json.loads((ROOT / "data" / "aspects.json").read_text())
+    ripple_effects = json.loads((ROOT / "data" / "ripple_effects.json").read_text())
+    compiled_playbooks = _compile_playbooks(ripple_effects)
 
     items: list[dict] = []
     ok = failed = 0
@@ -184,7 +221,7 @@ def main() -> None:
             unique.append(item)
 
     buckets = _score_all(unique, taxonomy)
-    top_stories = _rank_top_stories(buckets, taxonomy)
+    top_stories = _rank_top_stories(buckets, taxonomy, compiled_playbooks)
 
     now = time.time()
     categories = []
@@ -195,15 +232,18 @@ def main() -> None:
             if aspect["category"] != cat["id"]:
                 continue
             scored = sorted(buckets[aspect["id"]], key=lambda p: (-p[0], -p[1]["epoch"]))
-            heads = [
-                {
-                    "title": i["title"],
-                    "source": i["source"],
-                    "url": i["url"],
-                    "age_hours": round(max(0.0, (now - i["epoch"]) / 3600), 1),
-                }
-                for _, i in scored[:HEADLINES_PER_ASPECT]
-            ]
+            heads = []
+            for _, i in scored[:HEADLINES_PER_ASPECT]:
+                ripple_effect = _match_ripple_effect(i, compiled_playbooks)
+                heads.append(
+                    {
+                        "title": i["title"],
+                        "source": i["source"],
+                        "url": i["url"],
+                        "age_hours": round(max(0.0, (now - i["epoch"]) / 3600), 1),
+                        **({"ripple_effect": ripple_effect} if ripple_effect else {}),
+                    }
+                )
             if heads:
                 covered += 1
             cat_aspects.append({"id": aspect["id"], "name": aspect["name"], "headlines": heads})
