@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top 10 Most Influential Stories — Global Intelligence</title>
+    <meta name="description" content="The 10 most influential stories in the world right now — ranked by how many parts of the world each story touches, weighted by freshness. Computed by an open pipeline, rebuilt every four hours.">
+    <link rel="canonical" href="https://equalinformation.com/global-intelligence-site/top10/">
+    <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+    <meta name="theme-color" content="#0b3d2e">
+    <link rel="stylesheet" href="../assets/fonts/inter.css">
+    <link rel="stylesheet" href="../assets/css/style.css?v=b3a9f35b">
+</head>
+<body>
+
+<nav>
+    <div class="nav-inner">
+        <a href="../" class="nav-logo"><span class="globe">🌐</span> Global Intelligence</a>
+        <ul class="nav-links">
+            <li><a href="../briefing/">Live briefing</a></li>
+            <li><a href="./" aria-current="page">Top 10</a></li>
+            <li><a href="../#how">How it works</a></li>
+            <li><a href="../#privacy">Privacy</a></li>
+            <li><a href="../sources/">Sources</a></li>
+        </ul>
+        <span class="nav-utc"><span class="live">●</span> <span id="utc">— UTC</span></span>
+        <button class="mobile-menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('show')" aria-label="Menu">&#9776;</button>
+    </div>
+</nav>
+
+<header class="hero hero-sub">
+    <div class="wrap">
+        <h1>The <span class="accent">10 most influential</span> stories right now</h1>
+        <p class="tagline" id="brief-stamp">Loading the latest ranking…</p>
+        <p class="lede">Ranked by how many parts of the world each story touches — aspects and
+        categories — weighted by freshness. No AI judgment call: a deterministic score computed
+        by the open pipeline every four hours. Tap a story to see its historical ripple effects,
+        where one exists.</p>
+    </div>
+</header>
+
+<main class="wrap" id="top10-root" style="padding: 28px 24px 64px; max-width: 760px;">
+    <noscript><p>The live ranking needs JavaScript — or read the raw data at
+    <a href="../data/briefing.json">data/briefing.json</a> (see <code>top_stories</code>).</p></noscript>
+</main>
+
+<footer>
+    <div class="footer-inner">
+        <ul class="footer-links">
+            <li><a href="../">Home</a></li>
+            <li><a href="../briefing/">Live briefing</a></li>
+            <li><a href="../sources/">Source registry</a></li>
+            <li><a href="https://github.com/bpupadhyaya/global-intelligence-site">GitHub</a></li>
+        </ul>
+        <p class="footer-copy">© 2026 Global Intelligence · Headlines belong to their publishers — we link, never republish ·
+        Rebuilt every 4 hours by an <a href="https://github.com/bpupadhyaya/global-intelligence-site/blob/main/scripts/build_briefing.py">open-source pipeline</a></p>
+    </div>
+</footer>
+
+<script>
+    (function () {
+        var utc = document.getElementById('utc');
+        function tick() {
+            var d = new Date(), p = function (n) { return String(n).padStart(2, '0'); };
+            utc.textContent = p(d.getUTCHours()) + ':' + p(d.getUTCMinutes()) + ':' + p(d.getUTCSeconds()) + ' UTC';
+        }
+        tick(); setInterval(tick, 1000);
+    })();
+
+    // Headline titles/sources come from real-world RSS feeds and can legitimately contain
+    // HTML-special characters (quotes, ampersands) — escape before interpolating into innerHTML.
+    function esc(s) {
+        return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    }
+
+    // Renders a headline/story's "ripple_effect" (specific, dated historical precedent — fact)
+    // or "category_context" (general structural fallback) as a native <details> foldable.
+    // Mirrors the mobile apps' RippleEffectsSection/CategoryContextSection exactly in content
+    // and trust-tier framing — see taxonomy/ripple_effects.json + category_context.json.
+    function renderExtra(item) {
+        if (item.ripple_effect) {
+            var r = item.ripple_effect;
+            var precedents = r.historical_precedents.map(function (p) {
+                return '<div class="ripple-precedent">' +
+                    '<div><span class="period">' + p.period + '</span> <span class="event">' + p.event + '</span></div>' +
+                    '<div>' + p.what_happened + '</div>' +
+                    '<div class="impact">Market impact: ' + p.market_impact + '</div>' +
+                    '</div>';
+            }).join('');
+            var possibilities = r.possibility_chains.map(function (c) { return '<li>' + c + '</li>'; }).join('');
+            return '<details class="ripple"><summary>🔀 Ripple effects</summary>' +
+                '<div class="ripple-body">' +
+                '<h5>What happened before</h5>' + precedents +
+                '<h5>What could follow</h5>' +
+                '<p class="disclaimer">Historically-observed possibilities — not a prediction.</p>' +
+                '<ul>' + possibilities + '</ul>' +
+                '</div></details>';
+        }
+        if (item.category_context) {
+            var c = item.category_context;
+            var channels = c.typical_channels.map(function (ch) { return '<li>' + ch + '</li>'; }).join('');
+            return '<details class="context"><summary>💡 Why this matters</summary>' +
+                '<div class="context-body"><p>' + c.why_it_matters + '</p>' +
+                '<h5>Can ripple into</h5><ul>' + channels + '</ul></div></details>';
+        }
+        return '';
+    }
+
+    (function () {
+        var root = document.getElementById('top10-root');
+        fetch('../data/briefing.json?t=' + Date.now())
+            .then(function (r) { return r.json(); })
+            .then(function (b) {
+                document.getElementById('brief-stamp').textContent =
+                    'Updated ' + b.generated_at.replace('T', ' ').slice(0, 16) + ' UTC · ranked from ' +
+                    b.stats.fresh_items + ' fresh items across ' + b.stats.aspects_total + ' aspects';
+                var stories = b.top_stories || [];
+                if (!stories.length) {
+                    root.innerHTML = '<p style="color:var(--ink-faint)">No ranking yet for this cycle — check back shortly.</p>';
+                    return;
+                }
+                stories.forEach(function (s) {
+                    var ageLabel = s.age_hours < 1 ? 'just now' : Math.round(s.age_hours) + 'h ago';
+                    var tags = s.categories.map(function (c) { return '<span class="tag">' + esc(c) + '</span>'; }).join('');
+                    var extra = renderExtra(s);
+                    if (s.rank === 1) {
+                        var hero = document.createElement('article');
+                        hero.className = 'top10-hero';
+                        hero.innerHTML =
+                            '<span class="rank-badge">1</span>' +
+                            '<h3><a href="' + esc(s.url) + '" rel="noopener" target="_blank" style="color:inherit;text-decoration:none;">' + esc(s.title) + '</a></h3>' +
+                            '<div class="tags">' + tags + '</div>' +
+                            '<div class="top10-meta"><span>' + esc(s.source) + ' · ' + ageLabel + '</span>' +
+                            '<span>Affects ' + s.aspect_count + ' aspect' + (s.aspect_count === 1 ? '' : 's') + '</span></div>' +
+                            extra;
+                        root.appendChild(hero);
+                        return;
+                    }
+                    var row = document.createElement('article');
+                    row.className = 'top10-row rank-' + s.rank;
+                    row.innerHTML =
+                        '<span class="rank-badge">' + s.rank + '</span>' +
+                        '<div style="flex:1;min-width:0;">' +
+                        '<h3><a href="' + esc(s.url) + '" rel="noopener" target="_blank">' + esc(s.title) + '</a></h3>' +
+                        '<div class="tags">' + tags + '</div>' +
+                        '<div class="top10-meta">' + esc(s.source) + ' · ' + ageLabel + ' · affects ' + s.aspect_count + ' aspect' + (s.aspect_count === 1 ? '' : 's') + '</div>' +
+                        extra +
+                        '</div>';
+                    root.appendChild(row);
+                });
+            })
+            .catch(function () {
+                root.innerHTML = '<p style="color:var(--ink-faint)">Could not load the ranking — try again shortly.</p>';
+            });
+    })();
+</script>
+
+</body>
+</html>
