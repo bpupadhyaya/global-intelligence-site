@@ -16,6 +16,7 @@ import calendar
 import html
 import json
 import re
+import sys
 import time
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime, timezone
@@ -250,6 +251,16 @@ def main() -> None:
         if key not in seen:
             seen.add(key)
             unique.append(item)
+
+    # A total (or near-total) fetch failure — e.g. a transient network outage on the runner —
+    # used to still write and get committed as data/briefing.json, silently replacing a fully
+    # populated briefing with an empty one live for every visitor. Aborting before writing
+    # leaves the previous good commit in place and fails the CI job loudly instead.
+    if ok == 0 or not unique:
+        print(f"ERROR: 0 sources succeeded (or 0 fresh items found) — aborting without writing "
+              f"{ROOT / 'data' / 'briefing.json'} to avoid overwriting the last good briefing. "
+              f"ok={ok} failed/no-rss={failed} items={len(unique)}", file=sys.stderr)
+        sys.exit(1)
 
     buckets = _score_all(unique, taxonomy)
     top_stories = _rank_top_stories(buckets, taxonomy, compiled_playbooks, category_context_lookup)
