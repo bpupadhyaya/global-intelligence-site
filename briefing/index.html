@@ -182,15 +182,17 @@
                             inflLabel.className = 'influence-label';
                             inflLabel.textContent = 'What this might influence';
                             infl.appendChild(inflLabel);
-                            var inflTags = document.createElement('div');
-                            inflTags.className = 'tags';
-                            a.influences.forEach(function (inf) {
-                                var t = document.createElement('span');
-                                t.className = 'tag';
-                                t.textContent = influenceLabel(inf);
-                                inflTags.appendChild(t);
-                            });
-                            infl.appendChild(inflTags);
+                            // Plain middot-separated text, not the same bordered-pill .tag/.chip
+                            // style used elsewhere on this page for genuinely clickable category
+                            // navigation — a filled/outlined pill is this site's visual language
+                            // for a tappable chip, and these influence values have no click
+                            // target at all, so styling them identically to a real nav chip
+                            // implied an affordance that didn't exist (the exact same bug already
+                            // found and fixed in both native apps).
+                            var inflText = document.createElement('p');
+                            inflText.className = 'influence-values';
+                            inflText.textContent = a.influences.map(influenceLabel).join(' · ');
+                            infl.appendChild(inflText);
                             card.appendChild(infl);
                         }
                         grid.appendChild(card);
