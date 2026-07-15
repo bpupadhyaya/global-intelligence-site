@@ -121,9 +121,23 @@
                     root.innerHTML = '<p style="color:var(--ink-faint)">No ranking yet for this cycle — check back shortly.</p>';
                     return;
                 }
+                // The live briefing page gives every category section a stable `id` matching
+                // its own id (briefing/index.html: `section.id = cat.id`), so a story's category
+                // name here really can jump straight to that section there — unlike the
+                // "what this might influence" tags (fixed separately), these tags have a real,
+                // sensible destination available at zero extra cost (b.categories, id+name, is
+                // already part of this same fetched payload), so it's worth actually wiring the
+                // link rather than just de-emphasizing the tag to look non-interactive.
+                var catIdByName = {};
+                (b.categories || []).forEach(function (c) { catIdByName[c.name] = c.id; });
                 stories.forEach(function (s) {
                     var ageLabel = s.age_hours < 1 ? 'just now' : Math.round(s.age_hours) + 'h ago';
-                    var tags = s.categories.map(function (c) { return '<span class="tag">' + esc(c) + '</span>'; }).join('');
+                    var tags = s.categories.map(function (c) {
+                        var id = catIdByName[c];
+                        return id
+                            ? '<a class="tag" href="../briefing/#' + esc(id) + '">' + esc(c) + '</a>'
+                            : '<span class="tag">' + esc(c) + '</span>';
+                    }).join('');
                     var extra = renderExtra(s);
                     if (s.rank === 1) {
                         var hero = document.createElement('article');
