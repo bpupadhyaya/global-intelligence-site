@@ -110,9 +110,14 @@
                                 card.appendChild(name);
                                 var meta = document.createElement('span');
                                 meta.className = 'live-meta';
-                                meta.textContent = s.type + ' · ' + s.language.toUpperCase() +
-                                    (s.state_affiliated ? ' · state-affiliated' : '');
+                                meta.textContent = s.type + ' · ' + s.language.toUpperCase();
                                 card.appendChild(meta);
+                                if (s.state_affiliated) {
+                                    var flag = document.createElement('span');
+                                    flag.className = 'source-flag';
+                                    flag.textContent = 'STATE-AFFILIATED';
+                                    card.appendChild(flag);
+                                }
                                 grid.appendChild(card);
                             });
                         section.appendChild(grid);

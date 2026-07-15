@@ -166,6 +166,15 @@ section.tint { background: var(--paper-tint); border-top: 1px solid var(--line);
 .live-list a { color: var(--ink); font-weight: 600; text-decoration: none; display: block; }
 .live-list a:hover { color: var(--green-700); text-decoration: underline; }
 .live-meta { display: block; margin-top: 2px; font-size: 11.5px; color: var(--ink-faint); }
+/* #d97706 (--amber-500) only reaches 3.19:1 contrast on white, below WCAG AA's 4.5:1 minimum
+   for this size text — darkened to the smallest shift that clears 4.5:1 (4.58:1), same method
+   as the green-600/ink-faint fixes elsewhere in this file. A distinct badge (not folded into
+   the plain-gray .live-meta text) so it's actually scannable at a glance — the whole point of
+   flagging state-affiliated sources is to let a reader weigh them quickly while skimming. */
+.source-flag {
+    display: inline-block; margin-top: 4px; font-size: 10.5px; font-weight: 700;
+    letter-spacing: 0.03em; color: #b16105;
+}
 #briefing-stamp strong { color: var(--green-700); }
 .aspect-foot { text-align: center; margin-top: 28px; font-size: 14.5px; color: var(--ink-soft); max-width: 760px; margin-left: auto; margin-right: auto; }
 .aspect-foot code {
