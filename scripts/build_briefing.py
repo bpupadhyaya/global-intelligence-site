@@ -42,6 +42,16 @@ def _clean(text: str, limit: int = 300) -> str:
     return " ".join(text.split())[:limit]
 
 
+def _safe_url(url: str) -> str:
+    """Only http(s) links survive — a malicious or compromised RSS feed could otherwise set
+    <link> to a javascript: URI, which every consumer of this url (this site's plain <a href>,
+    and the native apps' Custom Tabs/Safari View Controller) would treat as a real, clickable
+    link. Dropping anything else to "" is safe: both apps and this site already treat an empty
+    url as a legitimate "no link" state (e.g. Headline.id falls back to the title)."""
+    url = (url or "").strip()
+    return url if url.lower().startswith(("http://", "https://")) else ""
+
+
 def _entry_epoch(entry) -> float | None:
     for key in ("published_parsed", "updated_parsed"):
         parsed = entry.get(key)
@@ -73,7 +83,7 @@ def _fetch_one(source: dict) -> tuple[dict, list[dict], str | None]:
                 {
                     "title": title,
                     "summary": _clean(entry.get("summary", ""), 400),
-                    "url": entry.get("link", ""),
+                    "url": _safe_url(entry.get("link", "")),
                     "epoch": epoch or time.time(),
                     "source": source["name"],
                     "state_affiliated": source.get("state_affiliated", False),
