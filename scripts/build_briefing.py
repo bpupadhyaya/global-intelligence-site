@@ -15,6 +15,7 @@ public repos).
 import calendar
 import html
 import json
+import os
 import re
 import sys
 import time
@@ -325,7 +326,13 @@ def main() -> None:
         "categories": categories,
     }
     out = ROOT / "data" / "briefing.json"
-    out.write_text(json.dumps(briefing, ensure_ascii=False, indent=1))
+    # Write to a temp file then rename into place — same pattern as the mobile apps' on-disk
+    # pack cache (both were audited and fixed to do this). A same-directory rename is atomic,
+    # so a runner killed mid-write (job timeout, infra failure) can never leave a truncated
+    # briefing.json for the "Commit and push" step to pick up.
+    tmp = out.with_suffix(".json.tmp")
+    tmp.write_text(json.dumps(briefing, ensure_ascii=False, indent=1))
+    os.replace(tmp, out)
     print(f"ok={ok} failed/no-rss={failed} items={len(unique)} covered={covered}/41 top_stories={len(top_stories)} → {out}")
 
 
