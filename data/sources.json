@@ -12,7 +12,8 @@
   "v0.3: added 7 African sources (Ethiopia, Ghana, Tanzania, Uganda, Morocco, Zimbabwe, Rwanda) — round 1 of closing the continent-coverage gap identified when auditing source geographic distribution (Africa was 4/78 sources for ~18% of world population). All 7 feeds independently verified to return real, non-empty content before commit.",
   "v0.4: added the first Nordic sources (DR Denmark, SVT Sweden, Aftenposten Norway, Yle Finland — all previously zero) and the first Central Asian sources (The Astana Times Kazakhstan, Gazeta.uz Uzbekistan — previously zero). Several of these are native-language (da/sv/no/fi) rather than English — deliberately kept native, matching the existing precedent of Spanish/Portuguese/German/French/Italian sources already in this registry; the app has no translation layer, native-language headlines display as-is, same as those existing entries.",
   "v0.5: added Colombia (El Tiempo), Chile (La Tercera), Peru (El Comercio), Venezuela (El Nacional) — the Americas region was 87% USA/Canada before this; South America beyond Brazil/Argentina was entirely absent.",
-  "v0.6: added Iran (Iran International), Iraq (Rudaw), UAE (The National), Jordan (Jordan Times), Lebanon (L'Orient Today) — Middle East previously only had Qatar/Saudi Arabia/Israel(x2)/Turkey/Egypt."
+  "v0.6: added Iran (Iran International), Iraq (Rudaw), UAE (The National), Jordan (Jordan Times), Lebanon (L'Orient Today) — Middle East previously only had Qatar/Saudi Arabia/Israel(x2)/Turkey/Egypt.",
+  "v0.7: added the first Francophone African sources — TSA (Algeria), Radio Okapi (DR Congo), SenePlus (Senegal), Journal du Cameroun — zero French-language African source existed before this despite French being an official language in ~21 African countries. Verification note: the Google-News-per-site-search method returned garbage/placeholder results for 2 of these domains (radiookapi.net returned unrelated spam-like titles; seneplus.com/fratmat.info returned only the bare source name with no headline) — switched to each site's own native /feed or /rss.xml instead, confirmed with real, plausible headlines before adding. A 5th candidate (Fraternité Matin, Ivory Coast) had no working feed via either method and was dropped rather than added with unverified/low quality."
  ],
  "sources": [
   {
@@ -1547,6 +1548,68 @@
    ],
    "url": "https://today.lorientlejour.com",
    "rss": "https://news.google.com/rss/search?q=when:24h+site:lorientlejour.com&hl=en-US&gl=US&ceid=US:en",
+   "state_affiliated": false
+  },
+  {
+   "id": "tsa-dz",
+   "name": "TSA (Tout sur l'Algérie)",
+   "country": "Algeria",
+   "region": "Africa",
+   "language": "fr",
+   "type": "digital",
+   "aspects": [
+    "general",
+    "politics",
+    "economy"
+   ],
+   "url": "https://www.tsa-algerie.com",
+   "rss": "https://www.tsa-algerie.com/feed",
+   "state_affiliated": false
+  },
+  {
+   "id": "radiookapi",
+   "name": "Radio Okapi",
+   "country": "DR Congo",
+   "region": "Africa",
+   "language": "fr",
+   "type": "broadcaster",
+   "aspects": [
+    "general",
+    "politics"
+   ],
+   "url": "https://www.radiookapi.net",
+   "rss": "https://www.radiookapi.net/feed",
+   "state_affiliated": false
+  },
+  {
+   "id": "seneplus",
+   "name": "SenePlus",
+   "country": "Senegal",
+   "region": "Africa",
+   "language": "fr",
+   "type": "digital",
+   "aspects": [
+    "general",
+    "politics",
+    "economy"
+   ],
+   "url": "https://www.seneplus.com",
+   "rss": "https://www.seneplus.com/rss.xml",
+   "state_affiliated": false
+  },
+  {
+   "id": "journalducameroun",
+   "name": "Journal du Cameroun",
+   "country": "Cameroon",
+   "region": "Africa",
+   "language": "fr",
+   "type": "digital",
+   "aspects": [
+    "general",
+    "politics"
+   ],
+   "url": "https://www.journalducameroun.com",
+   "rss": "https://www.journalducameroun.com/feed",
    "state_affiliated": false
   }
  ]
