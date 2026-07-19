@@ -1,6 +1,6 @@
 {
  "name": "Global Intelligence — News Source Registry",
- "version": "0.3.0",
+ "version": "0.4.0",
  "updated": "2026-07-19",
  "notes": [
   "Machine-readable registry of the world's important news media, consumed by the Global Intelligence pipelines and displayed on the site.",
@@ -9,7 +9,8 @@
   "state_affiliated=true marks government-funded or state-controlled outlets; the AI curation layer must weight/flag these for bias.",
   "This is v0.1 — coverage will grow toward all countries/regions.",
   "v0.2: validated/fixed 18 feeds; sources without native RSS use Google News per-site search RSS (public method).",
-  "v0.3: added 7 African sources (Ethiopia, Ghana, Tanzania, Uganda, Morocco, Zimbabwe, Rwanda) — round 1 of closing the continent-coverage gap identified when auditing source geographic distribution (Africa was 4/78 sources for ~18% of world population). All 7 feeds independently verified to return real, non-empty content before commit."
+  "v0.3: added 7 African sources (Ethiopia, Ghana, Tanzania, Uganda, Morocco, Zimbabwe, Rwanda) — round 1 of closing the continent-coverage gap identified when auditing source geographic distribution (Africa was 4/78 sources for ~18% of world population). All 7 feeds independently verified to return real, non-empty content before commit.",
+  "v0.4: added the first Nordic sources (DR Denmark, SVT Sweden, Aftenposten Norway, Yle Finland — all previously zero) and the first Central Asian sources (The Astana Times Kazakhstan, Gazeta.uz Uzbekistan — previously zero). Several of these are native-language (da/sv/no/fi) rather than English — deliberately kept native, matching the existing precedent of Spanish/Portuguese/German/French/Italian sources already in this registry; the app has no translation layer, native-language headlines display as-is, same as those existing entries."
  ],
  "sources": [
   {
@@ -1308,6 +1309,99 @@
    "url": "https://www.newtimes.co.rw",
    "rss": "https://news.google.com/rss/search?q=when:24h+site:newtimes.co.rw&hl=en-US&gl=US&ceid=US:en",
    "state_affiliated": true
+  },
+  {
+   "id": "dr-dk",
+   "name": "DR Nyheder",
+   "country": "Denmark",
+   "region": "Europe",
+   "language": "da",
+   "type": "broadcaster",
+   "aspects": [
+    "general",
+    "politics"
+   ],
+   "url": "https://www.dr.dk/nyheder",
+   "rss": "https://news.google.com/rss/search?q=when:24h+site:dr.dk&hl=en-US&gl=US&ceid=US:en",
+   "state_affiliated": true
+  },
+  {
+   "id": "svt-se",
+   "name": "SVT Nyheter",
+   "country": "Sweden",
+   "region": "Europe",
+   "language": "sv",
+   "type": "broadcaster",
+   "aspects": [
+    "general",
+    "politics"
+   ],
+   "url": "https://www.svt.se/nyheter",
+   "rss": "https://news.google.com/rss/search?q=when:24h+site:svt.se&hl=en-US&gl=US&ceid=US:en",
+   "state_affiliated": true
+  },
+  {
+   "id": "aftenposten-no",
+   "name": "Aftenposten",
+   "country": "Norway",
+   "region": "Europe",
+   "language": "no",
+   "type": "newspaper",
+   "aspects": [
+    "general",
+    "politics",
+    "economy"
+   ],
+   "url": "https://www.aftenposten.no",
+   "rss": "https://news.google.com/rss/search?q=when:24h+site:aftenposten.no&hl=en-US&gl=US&ceid=US:en",
+   "state_affiliated": false
+  },
+  {
+   "id": "yle-fi",
+   "name": "Yle Uutiset",
+   "country": "Finland",
+   "region": "Europe",
+   "language": "fi",
+   "type": "broadcaster",
+   "aspects": [
+    "general",
+    "politics"
+   ],
+   "url": "https://yle.fi/uutiset",
+   "rss": "https://news.google.com/rss/search?q=when:24h+site:yle.fi&hl=en-US&gl=US&ceid=US:en",
+   "state_affiliated": true
+  },
+  {
+   "id": "astanatimes",
+   "name": "The Astana Times",
+   "country": "Kazakhstan",
+   "region": "Asia",
+   "language": "en",
+   "type": "digital",
+   "aspects": [
+    "general",
+    "politics",
+    "economy"
+   ],
+   "url": "https://astanatimes.com",
+   "rss": "https://news.google.com/rss/search?q=when:24h+site:astanatimes.com&hl=en-US&gl=US&ceid=US:en",
+   "state_affiliated": true
+  },
+  {
+   "id": "gazeta-uz",
+   "name": "Gazeta.uz",
+   "country": "Uzbekistan",
+   "region": "Asia",
+   "language": "en",
+   "type": "digital",
+   "aspects": [
+    "general",
+    "politics",
+    "economy"
+   ],
+   "url": "https://www.gazeta.uz/en",
+   "rss": "https://news.google.com/rss/search?q=when:24h+site:gazeta.uz&hl=en-US&gl=US&ceid=US:en",
+   "state_affiliated": false
   }
  ]
 }
