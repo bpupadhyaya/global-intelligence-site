@@ -1,6 +1,6 @@
 {
  "name": "Global Intelligence — News Source Registry",
- "version": "0.8.0",
+ "version": "0.9.0",
  "updated": "2026-07-19",
  "notes": [
   "Machine-readable registry of the world's important news media, consumed by the Global Intelligence pipelines and displayed on the site.",
@@ -14,7 +14,8 @@
   "v0.5: added Colombia (El Tiempo), Chile (La Tercera), Peru (El Comercio), Venezuela (El Nacional) — the Americas region was 87% USA/Canada before this; South America beyond Brazil/Argentina was entirely absent.",
   "v0.6: added Iran (Iran International), Iraq (Rudaw), UAE (The National), Jordan (Jordan Times), Lebanon (L'Orient Today) — Middle East previously only had Qatar/Saudi Arabia/Israel(x2)/Turkey/Egypt.",
   "v0.7: added the first Francophone African sources — TSA (Algeria), Radio Okapi (DR Congo), SenePlus (Senegal), Journal du Cameroun — zero French-language African source existed before this despite French being an official language in ~21 African countries. Verification note: the Google-News-per-site-search method returned garbage/placeholder results for 2 of these domains (radiookapi.net returned unrelated spam-like titles; seneplus.com/fratmat.info returned only the bare source name with no headline) — switched to each site's own native /feed or /rss.xml instead, confirmed with real, plausible headlines before adding. A 5th candidate (Fraternité Matin, Ivory Coast) had no working feed via either method and was dropped rather than added with unverified/low quality.",
-  "v0.8: added Philippines (Philippine Daily Inquirer), Malaysia (The Star), Sri Lanka (Daily Mirror), Afghanistan (TOLOnews) — closing the remaining Southeast/South Asia gaps."
+  "v0.8: added Philippines (Philippine Daily Inquirer), Malaysia (The Star), Sri Lanka (Daily Mirror), Afghanistan (TOLOnews) — closing the remaining Southeast/South Asia gaps.",
+  "v0.9: added Sudan (Sudan Tribune), Angola (ANGOP), Mali (Malijet), Mozambique (Club of Mozambique), Madagascar (Madagascar Tribune) — closing the last of the previously-documented Africa gap list. ANGOP is Angola's state news agency (state_affiliated=true, same precedent as Xinhua/TASS/CCTV already in this registry). For Mali, Journal du Mali's feed and Studio Tamani's feed were tested first but skewed heavily toward sports/soft-lifestyle content; Malijet's native rss.xml returned substantive hard news (security operations, flood-prevention infrastructure, regional diplomacy) and was used instead — a reminder that the first plausible-looking candidate for a country isn't always the best one available."
  ],
  "sources": [
   {
@@ -1675,6 +1676,83 @@
    ],
    "url": "https://tolonews.com",
    "rss": "https://news.google.com/rss/search?q=when:24h+site:tolonews.com&hl=en-US&gl=US&ceid=US:en",
+   "state_affiliated": false
+  },
+  {
+   "id": "sudantribune",
+   "name": "Sudan Tribune",
+   "country": "Sudan",
+   "region": "Africa",
+   "language": "en",
+   "type": "digital",
+   "aspects": [
+    "general",
+    "politics",
+    "geopolitics"
+   ],
+   "url": "https://sudantribune.com",
+   "rss": "https://news.google.com/rss/search?q=when:24h+site:sudantribune.com&hl=en-US&gl=US&ceid=US:en",
+   "state_affiliated": false
+  },
+  {
+   "id": "angop",
+   "name": "ANGOP (Angola Press)",
+   "country": "Angola",
+   "region": "Africa",
+   "language": "en",
+   "type": "wire",
+   "aspects": [
+    "general",
+    "politics"
+   ],
+   "url": "https://www.angop.ao",
+   "rss": "https://news.google.com/rss/search?q=when:24h+site:angop.ao&hl=en-US&gl=US&ceid=US:en",
+   "state_affiliated": true
+  },
+  {
+   "id": "malijet",
+   "name": "Malijet",
+   "country": "Mali",
+   "region": "Africa",
+   "language": "fr",
+   "type": "digital",
+   "aspects": [
+    "general",
+    "politics"
+   ],
+   "url": "https://malijet.com",
+   "rss": "https://malijet.com/rss.xml",
+   "state_affiliated": false
+  },
+  {
+   "id": "clubofmozambique",
+   "name": "Club of Mozambique",
+   "country": "Mozambique",
+   "region": "Africa",
+   "language": "en",
+   "type": "digital",
+   "aspects": [
+    "general",
+    "economy",
+    "business"
+   ],
+   "url": "https://clubofmozambique.com",
+   "rss": "https://clubofmozambique.com/feed/",
+   "state_affiliated": false
+  },
+  {
+   "id": "madagascar-tribune",
+   "name": "Madagascar Tribune",
+   "country": "Madagascar",
+   "region": "Africa",
+   "language": "fr",
+   "type": "digital",
+   "aspects": [
+    "general",
+    "politics"
+   ],
+   "url": "https://www.madagascar-tribune.com",
+   "rss": "https://www.madagascar-tribune.com/spip.php?page=backend",
    "state_affiliated": false
   }
  ]
