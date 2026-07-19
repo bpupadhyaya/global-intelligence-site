@@ -1,6 +1,6 @@
 {
  "name": "Global Intelligence — News Source Registry",
- "version": "0.6.0",
+ "version": "0.8.0",
  "updated": "2026-07-19",
  "notes": [
   "Machine-readable registry of the world's important news media, consumed by the Global Intelligence pipelines and displayed on the site.",
@@ -13,7 +13,8 @@
   "v0.4: added the first Nordic sources (DR Denmark, SVT Sweden, Aftenposten Norway, Yle Finland — all previously zero) and the first Central Asian sources (The Astana Times Kazakhstan, Gazeta.uz Uzbekistan — previously zero). Several of these are native-language (da/sv/no/fi) rather than English — deliberately kept native, matching the existing precedent of Spanish/Portuguese/German/French/Italian sources already in this registry; the app has no translation layer, native-language headlines display as-is, same as those existing entries.",
   "v0.5: added Colombia (El Tiempo), Chile (La Tercera), Peru (El Comercio), Venezuela (El Nacional) — the Americas region was 87% USA/Canada before this; South America beyond Brazil/Argentina was entirely absent.",
   "v0.6: added Iran (Iran International), Iraq (Rudaw), UAE (The National), Jordan (Jordan Times), Lebanon (L'Orient Today) — Middle East previously only had Qatar/Saudi Arabia/Israel(x2)/Turkey/Egypt.",
-  "v0.7: added the first Francophone African sources — TSA (Algeria), Radio Okapi (DR Congo), SenePlus (Senegal), Journal du Cameroun — zero French-language African source existed before this despite French being an official language in ~21 African countries. Verification note: the Google-News-per-site-search method returned garbage/placeholder results for 2 of these domains (radiookapi.net returned unrelated spam-like titles; seneplus.com/fratmat.info returned only the bare source name with no headline) — switched to each site's own native /feed or /rss.xml instead, confirmed with real, plausible headlines before adding. A 5th candidate (Fraternité Matin, Ivory Coast) had no working feed via either method and was dropped rather than added with unverified/low quality."
+  "v0.7: added the first Francophone African sources — TSA (Algeria), Radio Okapi (DR Congo), SenePlus (Senegal), Journal du Cameroun — zero French-language African source existed before this despite French being an official language in ~21 African countries. Verification note: the Google-News-per-site-search method returned garbage/placeholder results for 2 of these domains (radiookapi.net returned unrelated spam-like titles; seneplus.com/fratmat.info returned only the bare source name with no headline) — switched to each site's own native /feed or /rss.xml instead, confirmed with real, plausible headlines before adding. A 5th candidate (Fraternité Matin, Ivory Coast) had no working feed via either method and was dropped rather than added with unverified/low quality.",
+  "v0.8: added Philippines (Philippine Daily Inquirer), Malaysia (The Star), Sri Lanka (Daily Mirror), Afghanistan (TOLOnews) — closing the remaining Southeast/South Asia gaps."
  ],
  "sources": [
   {
@@ -1610,6 +1611,70 @@
    ],
    "url": "https://www.journalducameroun.com",
    "rss": "https://www.journalducameroun.com/feed",
+   "state_affiliated": false
+  },
+  {
+   "id": "inquirer-ph",
+   "name": "Philippine Daily Inquirer",
+   "country": "Philippines",
+   "region": "Asia",
+   "language": "en",
+   "type": "newspaper",
+   "aspects": [
+    "general",
+    "politics",
+    "economy"
+   ],
+   "url": "https://www.inquirer.net",
+   "rss": "https://news.google.com/rss/search?q=when:24h+site:inquirer.net&hl=en-US&gl=US&ceid=US:en",
+   "state_affiliated": false
+  },
+  {
+   "id": "thestar-my",
+   "name": "The Star",
+   "country": "Malaysia",
+   "region": "Asia",
+   "language": "en",
+   "type": "newspaper",
+   "aspects": [
+    "general",
+    "politics",
+    "economy"
+   ],
+   "url": "https://www.thestar.com.my",
+   "rss": "https://news.google.com/rss/search?q=when:24h+site:thestar.com.my&hl=en-US&gl=US&ceid=US:en",
+   "state_affiliated": false
+  },
+  {
+   "id": "dailymirror-lk",
+   "name": "Daily Mirror",
+   "country": "Sri Lanka",
+   "region": "Asia",
+   "language": "en",
+   "type": "newspaper",
+   "aspects": [
+    "general",
+    "politics",
+    "economy"
+   ],
+   "url": "https://www.dailymirror.lk",
+   "rss": "https://news.google.com/rss/search?q=when:24h+site:dailymirror.lk&hl=en-US&gl=US&ceid=US:en",
+   "state_affiliated": false
+  },
+  {
+   "id": "tolonews-af",
+   "name": "TOLOnews",
+   "country": "Afghanistan",
+   "region": "Asia",
+   "language": "en",
+   "type": "broadcaster",
+   "aspects": [
+    "general",
+    "politics",
+    "geopolitics"
+   ],
+   "url": "https://tolonews.com",
+   "rss": "https://news.google.com/rss/search?q=when:24h+site:tolonews.com&hl=en-US&gl=US&ceid=US:en",
    "state_affiliated": false
   }
  ]
