@@ -1,14 +1,15 @@
 {
  "name": "Global Intelligence — News Source Registry",
- "version": "0.2.3",
- "updated": "2026-07-15",
+ "version": "0.3.0",
+ "updated": "2026-07-19",
  "notes": [
   "Machine-readable registry of the world's important news media, consumed by the Global Intelligence pipelines and displayed on the site.",
   "RSS URLs are best-known candidates and are UNVERIFIED until the pipeline build validates each one; prefer RSS/official APIs over scraping.",
   "Pipelines must summarize in our own words and attribute/link to sources — never republish article text.",
   "state_affiliated=true marks government-funded or state-controlled outlets; the AI curation layer must weight/flag these for bias.",
   "This is v0.1 — coverage will grow toward all countries/regions.",
-  "v0.2: validated/fixed 18 feeds; sources without native RSS use Google News per-site search RSS (public method)."
+  "v0.2: validated/fixed 18 feeds; sources without native RSS use Google News per-site search RSS (public method).",
+  "v0.3: added 7 African sources (Ethiopia, Ghana, Tanzania, Uganda, Morocco, Zimbabwe, Rwanda) — round 1 of closing the continent-coverage gap identified when auditing source geographic distribution (Africa was 4/78 sources for ~18% of world population). All 7 feeds independently verified to return real, non-empty content before commit."
  ],
  "sources": [
   {
@@ -1199,6 +1200,114 @@
    "url": "https://techcrunch.com",
    "rss": "https://techcrunch.com/feed/",
    "state_affiliated": false
+  },
+  {
+   "id": "addisstandard",
+   "name": "Addis Standard",
+   "country": "Ethiopia",
+   "region": "Africa",
+   "language": "en",
+   "type": "digital",
+   "aspects": [
+    "general",
+    "politics"
+   ],
+   "url": "https://addisstandard.com",
+   "rss": "https://news.google.com/rss/search?q=when:24h+site:addisstandard.com&hl=en-US&gl=US&ceid=US:en",
+   "state_affiliated": false
+  },
+  {
+   "id": "graphic-gh",
+   "name": "Graphic Online",
+   "country": "Ghana",
+   "region": "Africa",
+   "language": "en",
+   "type": "newspaper",
+   "aspects": [
+    "general",
+    "politics",
+    "economy"
+   ],
+   "url": "https://www.graphic.com.gh",
+   "rss": "https://news.google.com/rss/search?q=when:24h+site:graphic.com.gh&hl=en-US&gl=US&ceid=US:en",
+   "state_affiliated": true
+  },
+  {
+   "id": "citizen-tz",
+   "name": "The Citizen",
+   "country": "Tanzania",
+   "region": "Africa",
+   "language": "en",
+   "type": "newspaper",
+   "aspects": [
+    "general",
+    "politics",
+    "economy"
+   ],
+   "url": "https://www.thecitizen.co.tz",
+   "rss": "https://news.google.com/rss/search?q=when:24h+site:thecitizen.co.tz&hl=en-US&gl=US&ceid=US:en",
+   "state_affiliated": false
+  },
+  {
+   "id": "monitor-ug",
+   "name": "Daily Monitor",
+   "country": "Uganda",
+   "region": "Africa",
+   "language": "en",
+   "type": "newspaper",
+   "aspects": [
+    "general",
+    "politics"
+   ],
+   "url": "https://www.monitor.co.ug",
+   "rss": "https://news.google.com/rss/search?q=when:24h+site:monitor.co.ug&hl=en-US&gl=US&ceid=US:en",
+   "state_affiliated": false
+  },
+  {
+   "id": "moroccoworldnews",
+   "name": "Morocco World News",
+   "country": "Morocco",
+   "region": "Africa",
+   "language": "en",
+   "type": "digital",
+   "aspects": [
+    "general",
+    "politics"
+   ],
+   "url": "https://www.moroccoworldnews.com",
+   "rss": "https://news.google.com/rss/search?q=when:24h+site:moroccoworldnews.com&hl=en-US&gl=US&ceid=US:en",
+   "state_affiliated": false
+  },
+  {
+   "id": "newsday-zw",
+   "name": "NewsDay Zimbabwe",
+   "country": "Zimbabwe",
+   "region": "Africa",
+   "language": "en",
+   "type": "newspaper",
+   "aspects": [
+    "general",
+    "politics"
+   ],
+   "url": "https://www.newsday.co.zw",
+   "rss": "https://news.google.com/rss/search?q=when:24h+site:newsday.co.zw&hl=en-US&gl=US&ceid=US:en",
+   "state_affiliated": false
+  },
+  {
+   "id": "newtimes-rw",
+   "name": "The New Times",
+   "country": "Rwanda",
+   "region": "Africa",
+   "language": "en",
+   "type": "newspaper",
+   "aspects": [
+    "general",
+    "politics",
+    "economy"
+   ],
+   "url": "https://www.newtimes.co.rw",
+   "rss": "https://news.google.com/rss/search?q=when:24h+site:newtimes.co.rw&hl=en-US&gl=US&ceid=US:en",
+   "state_affiliated": true
   }
  ]
 }
