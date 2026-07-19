@@ -1,6 +1,6 @@
 {
  "name": "Global Intelligence — News Source Registry",
- "version": "0.4.0",
+ "version": "0.5.0",
  "updated": "2026-07-19",
  "notes": [
   "Machine-readable registry of the world's important news media, consumed by the Global Intelligence pipelines and displayed on the site.",
@@ -10,7 +10,8 @@
   "This is v0.1 — coverage will grow toward all countries/regions.",
   "v0.2: validated/fixed 18 feeds; sources without native RSS use Google News per-site search RSS (public method).",
   "v0.3: added 7 African sources (Ethiopia, Ghana, Tanzania, Uganda, Morocco, Zimbabwe, Rwanda) — round 1 of closing the continent-coverage gap identified when auditing source geographic distribution (Africa was 4/78 sources for ~18% of world population). All 7 feeds independently verified to return real, non-empty content before commit.",
-  "v0.4: added the first Nordic sources (DR Denmark, SVT Sweden, Aftenposten Norway, Yle Finland — all previously zero) and the first Central Asian sources (The Astana Times Kazakhstan, Gazeta.uz Uzbekistan — previously zero). Several of these are native-language (da/sv/no/fi) rather than English — deliberately kept native, matching the existing precedent of Spanish/Portuguese/German/French/Italian sources already in this registry; the app has no translation layer, native-language headlines display as-is, same as those existing entries."
+  "v0.4: added the first Nordic sources (DR Denmark, SVT Sweden, Aftenposten Norway, Yle Finland — all previously zero) and the first Central Asian sources (The Astana Times Kazakhstan, Gazeta.uz Uzbekistan — previously zero). Several of these are native-language (da/sv/no/fi) rather than English — deliberately kept native, matching the existing precedent of Spanish/Portuguese/German/French/Italian sources already in this registry; the app has no translation layer, native-language headlines display as-is, same as those existing entries.",
+  "v0.5: added Colombia (El Tiempo), Chile (La Tercera), Peru (El Comercio), Venezuela (El Nacional) — the Americas region was 87% USA/Canada before this; South America beyond Brazil/Argentina was entirely absent."
  ],
  "sources": [
   {
@@ -1401,6 +1402,70 @@
    ],
    "url": "https://www.gazeta.uz/en",
    "rss": "https://news.google.com/rss/search?q=when:24h+site:gazeta.uz&hl=en-US&gl=US&ceid=US:en",
+   "state_affiliated": false
+  },
+  {
+   "id": "eltiempo-co",
+   "name": "El Tiempo",
+   "country": "Colombia",
+   "region": "Americas",
+   "language": "es",
+   "type": "newspaper",
+   "aspects": [
+    "general",
+    "politics",
+    "economy"
+   ],
+   "url": "https://www.eltiempo.com",
+   "rss": "https://news.google.com/rss/search?q=when:24h+site:eltiempo.com&hl=en-US&gl=US&ceid=US:en",
+   "state_affiliated": false
+  },
+  {
+   "id": "latercera-cl",
+   "name": "La Tercera",
+   "country": "Chile",
+   "region": "Americas",
+   "language": "es",
+   "type": "newspaper",
+   "aspects": [
+    "general",
+    "politics",
+    "economy"
+   ],
+   "url": "https://www.latercera.com",
+   "rss": "https://news.google.com/rss/search?q=when:24h+site:latercera.com&hl=en-US&gl=US&ceid=US:en",
+   "state_affiliated": false
+  },
+  {
+   "id": "elcomercio-pe",
+   "name": "El Comercio",
+   "country": "Peru",
+   "region": "Americas",
+   "language": "es",
+   "type": "newspaper",
+   "aspects": [
+    "general",
+    "politics",
+    "economy"
+   ],
+   "url": "https://elcomercio.pe",
+   "rss": "https://news.google.com/rss/search?q=when:24h+site:elcomercio.pe&hl=en-US&gl=US&ceid=US:en",
+   "state_affiliated": false
+  },
+  {
+   "id": "elnacional-ve",
+   "name": "El Nacional",
+   "country": "Venezuela",
+   "region": "Americas",
+   "language": "es",
+   "type": "newspaper",
+   "aspects": [
+    "general",
+    "politics",
+    "economy"
+   ],
+   "url": "https://www.elnacional.com",
+   "rss": "https://news.google.com/rss/search?q=when:24h+site:elnacional.com&hl=en-US&gl=US&ceid=US:en",
    "state_affiliated": false
   }
  ]
