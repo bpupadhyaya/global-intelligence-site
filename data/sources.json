@@ -1,6 +1,6 @@
 {
  "name": "Global Intelligence — News Source Registry",
- "version": "0.9.0",
+ "version": "1.0.0",
  "updated": "2026-07-19",
  "notes": [
   "Machine-readable registry of the world's important news media, consumed by the Global Intelligence pipelines and displayed on the site.",
@@ -15,7 +15,8 @@
   "v0.6: added Iran (Iran International), Iraq (Rudaw), UAE (The National), Jordan (Jordan Times), Lebanon (L'Orient Today) — Middle East previously only had Qatar/Saudi Arabia/Israel(x2)/Turkey/Egypt.",
   "v0.7: added the first Francophone African sources — TSA (Algeria), Radio Okapi (DR Congo), SenePlus (Senegal), Journal du Cameroun — zero French-language African source existed before this despite French being an official language in ~21 African countries. Verification note: the Google-News-per-site-search method returned garbage/placeholder results for 2 of these domains (radiookapi.net returned unrelated spam-like titles; seneplus.com/fratmat.info returned only the bare source name with no headline) — switched to each site's own native /feed or /rss.xml instead, confirmed with real, plausible headlines before adding. A 5th candidate (Fraternité Matin, Ivory Coast) had no working feed via either method and was dropped rather than added with unverified/low quality.",
   "v0.8: added Philippines (Philippine Daily Inquirer), Malaysia (The Star), Sri Lanka (Daily Mirror), Afghanistan (TOLOnews) — closing the remaining Southeast/South Asia gaps.",
-  "v0.9: added Sudan (Sudan Tribune), Angola (ANGOP), Mali (Malijet), Mozambique (Club of Mozambique), Madagascar (Madagascar Tribune) — closing the last of the previously-documented Africa gap list. ANGOP is Angola's state news agency (state_affiliated=true, same precedent as Xinhua/TASS/CCTV already in this registry). For Mali, Journal du Mali's feed and Studio Tamani's feed were tested first but skewed heavily toward sports/soft-lifestyle content; Malijet's native rss.xml returned substantive hard news (security operations, flood-prevention infrastructure, regional diplomacy) and was used instead — a reminder that the first plausible-looking candidate for a country isn't always the best one available."
+  "v0.9: added Sudan (Sudan Tribune), Angola (ANGOP), Mali (Malijet), Mozambique (Club of Mozambique), Madagascar (Madagascar Tribune) — closing the last of the previously-documented Africa gap list. ANGOP is Angola's state news agency (state_affiliated=true, same precedent as Xinhua/TASS/CCTV already in this registry). For Mali, Journal du Mali's feed and Studio Tamani's feed were tested first but skewed heavily toward sports/soft-lifestyle content; Malijet's native rss.xml returned substantive hard news (security operations, flood-prevention infrastructure, regional diplomacy) and was used instead — a reminder that the first plausible-looking candidate for a country isn't always the best one available.",
+  "v1.0: pivoted from breadth (new countries) to depth — added a second, independent source for 4 major countries that had only ever had one: Pakistan (The Express Tribune), Indonesia (Tempo.co), Nigeria (Vanguard), Turkey (Hürriyet Daily News, mainstream/private — pairs with the existing TRT World, which is state-affiliated=true, so Turkey now has both a state and an independent voice). A 5th candidate, Mexico, was attempted but every tested source (Milenio, Excelsior, Animal Político, Proceso, Infobae, El Universal via Google News) failed or returned empty — dropped rather than shipped unverified. Also rejected Hürriyet's Google-News-per-site-search results specifically because roughly half were generic topic-tag pages (\"X Latest News, Top Stories\") rather than real articles — used the site's own native /rss/turkey path instead, which returned clean, specific headlines throughout."
  ],
  "sources": [
   {
@@ -1753,6 +1754,66 @@
    ],
    "url": "https://www.madagascar-tribune.com",
    "rss": "https://www.madagascar-tribune.com/spip.php?page=backend",
+   "state_affiliated": false
+  },
+  {
+   "id": "expresstribune",
+   "name": "The Express Tribune",
+   "country": "Pakistan",
+   "region": "Asia",
+   "language": "en",
+   "type": "digital",
+   "aspects": [
+    "general",
+    "politics"
+   ],
+   "url": "https://tribune.com.pk",
+   "rss": "https://tribune.com.pk/feed/pakistan",
+   "state_affiliated": false
+  },
+  {
+   "id": "tempo-id",
+   "name": "Tempo.co",
+   "country": "Indonesia",
+   "region": "Asia",
+   "language": "en",
+   "type": "digital",
+   "aspects": [
+    "general",
+    "politics"
+   ],
+   "url": "https://en.tempo.co",
+   "rss": "https://news.google.com/rss/search?q=when:24h+site:en.tempo.co&hl=en-US&gl=US&ceid=US:en",
+   "state_affiliated": false
+  },
+  {
+   "id": "vanguardngr",
+   "name": "Vanguard",
+   "country": "Nigeria",
+   "region": "Africa",
+   "language": "en",
+   "type": "digital",
+   "aspects": [
+    "general",
+    "politics"
+   ],
+   "url": "https://www.vanguardngr.com",
+   "rss": "https://www.vanguardngr.com/feed/",
+   "state_affiliated": false
+  },
+  {
+   "id": "hurriyetdaily",
+   "name": "Hürriyet Daily News",
+   "country": "Turkey",
+   "region": "Middle East",
+   "language": "en",
+   "type": "digital",
+   "aspects": [
+    "general",
+    "politics"
+   ],
+   "url": "https://www.hurriyetdailynews.com",
+   "rss": "https://www.hurriyetdailynews.com/rss/turkey",
    "state_affiliated": false
   }
  ]
