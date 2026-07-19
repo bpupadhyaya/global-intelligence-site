@@ -1,6 +1,6 @@
 {
   "name": "Global Intelligence — Aspect Taxonomy",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "confirmed": "2026-07-11",
   "notes": [
     "Phase 1 = global lens only: 12 categories, 41 core aspects (confirmed by Bhim 2026-07-11).",
@@ -11,7 +11,14 @@
     "not — avoids filing on one weak, out-of-context mention). Optional 'exclude_keywords' per",
     "aspect (same word-boundary matching) zeroes out a match regardless of keyword score — used",
     "for known collisions (e.g. 'gold' vs 'Golden Jubilee').",
-    "influences are the decision domains a briefing card surfaces: investments | daily-life | travel | business."
+    "influences are the decision domains a briefing card surfaces: investments | daily-life | travel | business.",
+    "v1.2 (2026-07-19): audited keyword lists for Western/US-centric framing gaps. Fixed a real bug —",
+    "climate.policy's 'cop3' literally referred to COP3 (Kyoto, 1997), a keyword that could never",
+    "meaningfully match current news; replaced with cop28/29/30/31 + 'climate summit' (COP is hosted",
+    "in a different country/region each year — Dubai, Baku, Belem — so this directly serves global",
+    "coverage too). Added pboc/people's bank of china to economy.central-banks (only major central",
+    "bank missing by name), byd/tata motors/hyundai to business.autos-aviation, and",
+    "alibaba/tencent/huawei/bytedance/baidu to technology.big-tech (was 7 US companies + Samsung only)."
   ],
   "categories": [
     { "id": "economy", "name": "Economy" },
@@ -29,7 +36,7 @@
   ],
   "aspects": [
     { "id": "economy.inflation", "category": "economy", "name": "Inflation", "keywords": ["inflation", "cpi", "consumer price", "price index", "cost of living", "deflation", "disinflation", "core prices", "pce"], "influences": ["investments", "daily-life"] },
-    { "id": "economy.central-banks", "category": "economy", "name": "Central banks & rates", "keywords": ["federal reserve", "fed", "ecb", "central bank", "interest rate", "rate cut", "rate hike", "monetary policy", "boj", "bank of england", "rbi", "fomc", "powell", "lagarde", "basis points"], "influences": ["investments", "daily-life"] },
+    { "id": "economy.central-banks", "category": "economy", "name": "Central banks & rates", "keywords": ["federal reserve", "fed", "ecb", "central bank", "interest rate", "rate cut", "rate hike", "monetary policy", "boj", "bank of england", "rbi", "fomc", "powell", "lagarde", "basis points", "pboc", "people's bank of china"], "influences": ["investments", "daily-life"] },
     { "id": "economy.jobs", "category": "economy", "name": "Jobs & unemployment", "keywords": ["unemployment", "jobs report", "jobless", "payroll", "hiring", "labor market", "labour market", "employment", "wage growth", "job cuts"], "influences": ["daily-life", "investments"] },
     { "id": "economy.growth", "category": "economy", "name": "Growth & GDP", "keywords": ["gdp", "economic growth", "recession", "economic outlook", "pmi", "industrial output", "consumer spending", "retail sales", "stimulus", "economic slowdown"], "influences": ["investments", "business"] },
     { "id": "economy.trade", "category": "economy", "name": "Trade & tariffs", "keywords": ["tariff", "trade deal", "trade war", "import", "export", "wto", "trade deficit", "trade agreement", "customs", "protectionism", "trade talks"], "influences": ["investments", "business", "daily-life"] },
@@ -55,7 +62,7 @@
 
     { "id": "technology.ai", "category": "technology", "name": "AI", "keywords": ["artificial intelligence", "ai", "machine learning", "chatgpt", "openai", "anthropic", "llm", "generative", "ai model", "deepmind", "ai chip", "ai regulation"], "influences": ["investments", "business", "daily-life"] },
     { "id": "technology.semiconductors", "category": "technology", "name": "Semiconductors", "keywords": ["semiconductor", "chip", "tsmc", "nvidia", "intel", "asml", "foundry", "wafer", "chipmaker", "gpu"], "influences": ["investments", "business"] },
-    { "id": "technology.big-tech", "category": "technology", "name": "Big tech", "keywords": ["apple", "google", "microsoft", "amazon", "meta", "antitrust", "app store", "big tech", "alphabet", "tesla", "samsung", "tiktok"], "influences": ["investments", "business"] },
+    { "id": "technology.big-tech", "category": "technology", "name": "Big tech", "keywords": ["apple", "google", "microsoft", "amazon", "meta", "antitrust", "app store", "big tech", "alphabet", "tesla", "samsung", "tiktok", "alibaba", "tencent", "huawei", "bytedance", "baidu"], "influences": ["investments", "business"] },
     { "id": "technology.cybersecurity", "category": "technology", "name": "Cybersecurity", "keywords": ["cyberattack", "hack", "ransomware", "data breach", "cybersecurity", "malware", "phishing", "vulnerability", "zero-day", "breach"], "influences": ["business", "daily-life"] },
     { "id": "technology.space", "category": "technology", "name": "Space", "keywords": ["spacex", "nasa", "satellite", "rocket", "launch", "space station", "lunar", "mars", "orbit", "astronaut", "space mission"], "influences": ["investments", "business"] },
 
@@ -64,12 +71,12 @@
     { "id": "science-health.research", "category": "science-health", "name": "Research frontiers", "keywords": ["research", "study finds", "scientists", "discovery", "breakthrough", "quantum", "physics", "biology", "genome", "nobel", "peer-reviewed"], "influences": ["daily-life"] },
 
     { "id": "climate.extreme-weather", "category": "climate", "name": "Extreme weather & disasters", "keywords": ["hurricane", "typhoon", "flood", "wildfire", "earthquake", "drought", "heatwave", "heat wave", "storm", "tornado", "cyclone", "landslide", "disaster", "evacuation"], "influences": ["travel", "daily-life"] },
-    { "id": "climate.policy", "category": "climate", "name": "Climate policy", "keywords": ["climate", "emissions", "carbon", "cop3", "net zero", "paris agreement", "climate change", "global warming", "climate target", "carbon tax"], "influences": ["business", "investments"] },
+    { "id": "climate.policy", "category": "climate", "name": "Climate policy", "keywords": ["climate", "emissions", "carbon", "cop28", "cop29", "cop30", "cop31", "climate summit", "net zero", "paris agreement", "climate change", "global warming", "climate target", "carbon tax"], "influences": ["business", "investments"] },
     { "id": "climate.environment", "category": "climate", "name": "Oceans, ecosystems & pollution", "keywords": ["pollution", "ocean", "biodiversity", "deforestation", "plastic", "coral", "ecosystem", "endangered", "conservation", "air quality", "water quality"], "influences": ["daily-life"] },
 
     { "id": "business.earnings", "category": "business", "name": "Earnings & corporate moves", "keywords": ["earnings", "quarterly results", "profit", "revenue", "merger", "acquisition", "layoff", "layoffs", "m&a", "bankruptcy", "ceo", "restructuring", "guidance"], "influences": ["investments", "business"] },
     { "id": "business.supply-chains", "category": "business", "name": "Supply chains & shipping", "keywords": ["supply chain", "shipping", "container", "port", "freight", "logistics", "suez", "panama canal", "shortage", "manufacturing", "factory output"], "influences": ["business", "daily-life"] },
-    { "id": "business.autos-aviation", "category": "business", "name": "Autos & aviation", "keywords": ["boeing", "airbus", "airline", "automaker", "ev", "electric vehicle", "car sales", "aircraft", "aviation", "recall", "toyota", "volkswagen"], "influences": ["investments", "travel", "business"] },
+    { "id": "business.autos-aviation", "category": "business", "name": "Autos & aviation", "keywords": ["boeing", "airbus", "airline", "automaker", "ev", "electric vehicle", "car sales", "aircraft", "aviation", "recall", "toyota", "volkswagen", "byd", "tata motors", "hyundai"], "influences": ["investments", "travel", "business"] },
 
     { "id": "society.migration", "category": "society", "name": "Migration & refugees", "keywords": ["migration", "migrant", "refugee", "asylum", "border crossing", "immigration", "deportation", "displaced"], "influences": ["daily-life", "travel"] },
     { "id": "society.labor", "category": "society", "name": "Labor & workforce", "keywords": ["union", "workers", "wage", "labor dispute", "walkout", "remote work", "workforce", "collective bargaining", "minimum wage", "labor strike", "worker strike", "general strike", "strike action"], "influences": ["daily-life", "business"] },
