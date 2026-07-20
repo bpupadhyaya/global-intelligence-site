@@ -1,6 +1,6 @@
 {
  "name": "Global Intelligence — News Source Registry",
- "version": "1.10.0",
+ "version": "1.11.0",
  "updated": "2026-07-19",
  "notes": [
   "Machine-readable registry of the world's important news media, consumed by the Global Intelligence pipelines and displayed on the site.",
@@ -26,7 +26,8 @@
   "v1.7: ran a systematic scan of every remaining single-source country's state_affiliated flag (rather than spot-checking a handful) and found only 5 left: Angola, New Zealand, Qatar, Russia, Saudi Arabia. Qatar/Saudi Arabia already flagged as likely-permanent gaps. Russia's TASS is offset in practice by the separately-labeled 'Russia (exile, Latvia)' independent source, just split across 2 country-label entries rather than a true single-source gap. Fixed New Zealand: added Stuff.co.nz (private, alongside the public broadcaster RNZ). Angola remains open — Novo Jornal, Expansão, and Valor Económico (via Google News) all returned zero results in this attempt; ANGOP remains the only working Angola feed found so far.",
   "v1.8: back to breadth after the depth pivot — added the registry's first Caribbean, Central American, and Pacific Island sources: Jamaica (Jamaica Observer), Trinidad & Tobago (Trinidad Guardian), Costa Rica (La Nación, Spanish-language), Fiji (The Fiji Times), Papua New Guinea (Post-Courier). Rejected Newsday Trinidad (its feed was entirely legal notices/classified ads, not news) in favor of Trinidad Guardian instead.",
   "v1.9: continued broadening the same 3 regions — Dominican Republic (Diario Libre, Spanish-language), Haiti (Le Nouvelliste, English edition), Samoa (Samoa Observer, thin 24h volume but confirmed real via the round-104 wider-window method). Guatemala (Prensa Libre) and Panama (La Prensa) were attempted but dropped — Prensa Libre's Google News results were bare '- Prensa Libre' placeholders with no headline text, and La Prensa returned zero results via both methods.",
-  "v1.10: 5 more first-time countries — El Salvador (elsalvador.com, Spanish), Belize (Breaking Belize News), Barbados (Nation News), Nicaragua (Confidencial, Spanish — an independent/exile-adjacent outlet given Nicaragua's press restrictions under the Ortega government, publishing openly critical coverage including political-prisoner reporting), Bahamas (Eyewitness News — chosen over Tribune 242 after Tribune 242's Google News results included a bare placeholder entry alongside real content)."
+  "v1.10: 5 more first-time countries — El Salvador (elsalvador.com, Spanish), Belize (Breaking Belize News), Barbados (Nation News), Nicaragua (Confidencial, Spanish — an independent/exile-adjacent outlet given Nicaragua's press restrictions under the Ortega government, publishing openly critical coverage including political-prisoner reporting), Bahamas (Eyewitness News — chosen over Tribune 242 after Tribune 242's Google News results included a bare placeholder entry alongside real content).",
+  "v1.11: 5 more first-time countries, closing out most of the remaining Caribbean/Central America/Pacific gap list — Honduras (Proceso), Cuba (14ymedio, Spanish — Cuba's leading independent/dissident outlet, largely produced in exile/underground given the domestic press environment; genuinely critical coverage of repression, blackouts, and political prisoners, a meaningfully different voice from the sole state-media alternative Granma), Tonga (Matangi Tonga — some entries are government procurement/tender notices rather than narrative news, but real local news (rugby, community) is present too, a small-market variant of the round-110 'mixed but net-real' case), Solomon Islands (Solomon Star), Vanuatu (Vanuatu Daily Post)."
  ],
  "sources": [
   {
@@ -2291,6 +2292,81 @@
    ],
    "url": "https://ewnews.com",
    "rss": "https://ewnews.com/feed",
+   "state_affiliated": false
+  },
+  {
+   "id": "proceso-hn",
+   "name": "Proceso Digital",
+   "country": "Honduras",
+   "region": "Americas",
+   "language": "es",
+   "type": "digital",
+   "aspects": [
+    "general",
+    "politics"
+   ],
+   "url": "https://proceso.hn",
+   "rss": "https://proceso.hn/feed/",
+   "state_affiliated": false
+  },
+  {
+   "id": "14ymedio",
+   "name": "14ymedio",
+   "country": "Cuba",
+   "region": "Americas",
+   "language": "es",
+   "type": "digital",
+   "aspects": [
+    "general",
+    "politics"
+   ],
+   "url": "https://www.14ymedio.com",
+   "rss": "https://news.google.com/rss/search?q=when:24h+site:14ymedio.com&hl=en-US&gl=US&ceid=US:en",
+   "state_affiliated": false
+  },
+  {
+   "id": "matangitonga",
+   "name": "Matangi Tonga",
+   "country": "Tonga",
+   "region": "Oceania",
+   "language": "en",
+   "type": "digital",
+   "aspects": [
+    "general",
+    "politics"
+   ],
+   "url": "https://matangitonga.to",
+   "rss": "https://news.google.com/rss/search?q=when:24h+site:matangitonga.to&hl=en-US&gl=US&ceid=US:en",
+   "state_affiliated": false
+  },
+  {
+   "id": "solomonstar",
+   "name": "Solomon Star News",
+   "country": "Solomon Islands",
+   "region": "Oceania",
+   "language": "en",
+   "type": "digital",
+   "aspects": [
+    "general",
+    "politics"
+   ],
+   "url": "https://www.solomonstarnews.com",
+   "rss": "https://news.google.com/rss/search?q=when:24h+site:solomonstarnews.com&hl=en-US&gl=US&ceid=US:en",
+   "state_affiliated": false
+  },
+  {
+   "id": "vanuatudailypost",
+   "name": "Vanuatu Daily Post",
+   "country": "Vanuatu",
+   "region": "Oceania",
+   "language": "en",
+   "type": "digital",
+   "aspects": [
+    "general",
+    "politics"
+   ],
+   "url": "https://dailypost.vu",
+   "rss": "https://news.google.com/rss/search?q=when:24h+site:dailypost.vu&hl=en-US&gl=US&ceid=US:en",
    "state_affiliated": false
   }
  ]
