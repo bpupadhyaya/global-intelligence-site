@@ -1,6 +1,6 @@
 {
  "name": "Global Intelligence — News Source Registry",
- "version": "1.38.0",
+ "version": "1.39.0",
  "updated": "2026-07-20",
  "notes": [
   "Machine-readable registry of the world's important news media, consumed by the Global Intelligence pipelines and displayed on the site.",
@@ -54,7 +54,8 @@
   "v1.35: Habari Leo (Tanzania, Swahili, state — Tanzania's official state newspaper, alongside the independent Citizen and state Daily News), a 2nd attempt after Mwananchi failed last round. Kenya (Taifa Leo) got only 1 real headline in a 7-day window and 0 in 24h — too thin to add confidently, unresolved. Ethiopia (Amharic) attempted again (EBC Amharic-locale search, Walta Info, Addis Admas) but all either returned English-language content despite the Amharic locale parameter or zero results — Ethiopia's Amharic gap persists across 2 rounds now.",
   "v1.36: ran a broader fresh scan beyond the original 16-country list and found 3 more clear native-language gaps — Al Rakoba (Sudan, Arabic, alongside the English Sudan Tribune/Dabanga Sudan), Utusan (Malaysia, Bahasa Malaysia, alongside the English The Star/Malay Mail), Novo Jornal (Angola, Portuguese, alongside the English ANGOP — chosen over Jornal de Angola, whose Google News results were just a repeated site tagline). Several other candidate countries from the broader scan (Ghana, Nigeria, Rwanda, Zimbabwe, Uganda) were deliberately not pursued since English functions as a genuine primary/official media language there alongside many co-official local languages, unlike Sudan/Malaysia/Angola where a single dominant national language was clearly and completely unrepresented.",
   "v1.37: Kenya (Swahili) and Ethiopia (Amharic) failed a 3rd/2nd time this round with fresh candidates — likely permanent gaps now. Pivoted to breadth and found a much bigger unaddressed problem: 35 countries had ZERO sources at all, never previously attempted. Added the first 5: Civil.ge (Georgia — first-ever South Caucasus source), TAP (Tunisia, state news agency — first-ever source), El Deber (Bolivia — first-ever source), Myanmar Now (Myanmar, independent, deeply reported ongoing-conflict coverage — first-ever source), Arab Times Kuwait (Kuwait, independent — first-ever source, chosen over the official KUNA whose Google News results were about 60% generic navigation pages).",
-  "v1.38: 3 more first-ever countries — OC Media (Armenia — independent Caucasus-regional outlet with substantial Armenia-specific coverage; Netanyahu blocking an Armenian Genocide bill after Azerbaijan pressure, Armenian mine sale, flower exports), Libya Review (Libya, independent), Yemen Monitor (Yemen — mixed but net-real, roughly 40% of its Google News results are generic tag pages, same judgment call as round 110/129 given the high-stakes, genuinely relevant content in the real portion). Mongolia (News.MN) and Azerbaijan (APA) were attempted but Mongolia's results were mostly generic archive/tag pages and Azerbaijan returned nothing — both unresolved."
+  "v1.38: 3 more first-ever countries — OC Media (Armenia — independent Caucasus-regional outlet with substantial Armenia-specific coverage; Netanyahu blocking an Armenian Genocide bill after Azerbaijan pressure, Armenian mine sale, flower exports), Libya Review (Libya, independent), Yemen Monitor (Yemen — mixed but net-real, roughly 40% of its Google News results are generic tag pages, same judgment call as round 110/129 given the high-stakes, genuinely relevant content in the real portion). Mongolia (News.MN) and Azerbaijan (APA) were attempted but Mongolia's results were mostly generic archive/tag pages and Azerbaijan returned nothing — both unresolved.",
+  "v1.39: 3 more first-ever countries — El Observador (Uruguay, independent — real hard news present including political criticism of the Interior Minister, a criminal homicide case, and UTE storm-repair coverage, amid heavy World Cup coverage given the current news cycle), El Comercio (Ecuador, independent — major Ecuadorian daily), Times of Oman (Oman, independent — genuine local coverage of consumer protection enforcement, industrial waste management, and the Dhofar Khareef tourist season amid some sports/opinion filler). Bahrain (BNA) and Paraguay (ABC, Ultima Hora) were attempted but failed — 405 error and 404 respectively."
  ],
  "sources": [
   {
@@ -3482,6 +3483,51 @@
    ],
    "url": "https://yemenmonitor.com",
    "rss": "https://news.google.com/rss/search?q=when:24h+site:yemenmonitor.com&hl=en-US&gl=US&ceid=US:en",
+   "state_affiliated": false
+  },
+  {
+   "id": "elobservador-uy",
+   "name": "El Observador",
+   "country": "Uruguay",
+   "region": "Americas",
+   "language": "es",
+   "type": "digital",
+   "aspects": [
+    "general",
+    "politics"
+   ],
+   "url": "https://www.elobservador.com.uy",
+   "rss": "https://www.elobservador.com.uy/rss/pages/portada.xml",
+   "state_affiliated": false
+  },
+  {
+   "id": "elcomercio-ec",
+   "name": "El Comercio",
+   "country": "Ecuador",
+   "region": "Americas",
+   "language": "es",
+   "type": "digital",
+   "aspects": [
+    "general",
+    "politics"
+   ],
+   "url": "https://www.elcomercio.com",
+   "rss": "https://www.elcomercio.com/feed",
+   "state_affiliated": false
+  },
+  {
+   "id": "timesofoman",
+   "name": "Times of Oman",
+   "country": "Oman",
+   "region": "Middle East",
+   "language": "en",
+   "type": "digital",
+   "aspects": [
+    "general",
+    "politics"
+   ],
+   "url": "https://timesofoman.com",
+   "rss": "https://news.google.com/rss/search?q=when:24h+site:timesofoman.com&hl=en-US&gl=US&ceid=US:en",
    "state_affiliated": false
   }
  ]
