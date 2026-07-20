@@ -1,6 +1,6 @@
 {
  "name": "Global Intelligence — News Source Registry",
- "version": "1.21.0",
+ "version": "1.22.0",
  "updated": "2026-07-20",
  "notes": [
   "Machine-readable registry of the world's important news media, consumed by the Global Intelligence pipelines and displayed on the site.",
@@ -37,7 +37,8 @@
   "v1.18: pivoted the depth pass to non-African single-source countries that hadn't been prioritized — Italy and Spain (both G7/G20-tier European economies were somehow still single-source) plus Kenya and Bangladesh. Added El Mundo (Spain, center-right, alongside the center-left El País), La Repubblica (Italy, center-left, alongside the more centrist Corriere della Sera), Prothom Alo English (Bangladesh, alongside The Daily Star), Standard Media (Kenya, alongside the Nation).",
   "v1.19: 4 more depth fixes — Ukrinform (Ukraine, state news agency, alongside the independent Kyiv Independent), NRK (Norway, state broadcaster, alongside the independent Aftenposten), Rappler (Philippines, independent, press-freedom-focused, alongside the Inquirer), Malay Mail (Malaysia, independent, alongside The Star). Free Malaysia Today and Bernama were tried first for Malaysia but returned HTTP 403/404 respectively.",
   "v1.20: 4 more depth fixes — Hong Kong Free Press (Hong Kong, independent, alongside SCMP which now leans closer to the establishment view under its current ownership), Onlinekhabar English (Nepal, alongside The Kathmandu Post — chosen over The Himalayan Times, whose Google News results were roughly 40% generic navigation/tag pages), Daily FT (Sri Lanka, business-focused independent, alongside Daily Mirror), Efecto Cocuyo (Venezuela, independent, alongside the opposition/exile-leaning El Nacional — gives 2 independent Venezuelan voices from different vantage points rather than forcing an uncertain state-media classification).",
-  "v1.21: first depth pass on the small Caribbean/Pacific countries added in rounds 123-127 — Jamaica Gleaner (Jamaica, alongside Jamaica Observer), FBC News (Fiji, state broadcaster, alongside The Fiji Times), CNC3 (Trinidad and Tobago, alongside Trinidad Guardian). Costa Rica was attempted (CRhoy, La República) but both returned 404 — dropped."
+  "v1.21: first depth pass on the small Caribbean/Pacific countries added in rounds 123-127 — Jamaica Gleaner (Jamaica, alongside Jamaica Observer), FBC News (Fiji, state broadcaster, alongside The Fiji Times), CNC3 (Trinidad and Tobago, alongside Trinidad Guardian). Costa Rica was attempted (CRhoy, La República) but both returned 404 — dropped.",
+  "v1.22: continued the small-country depth batch — Tribune 242 (Bahamas, alongside Eyewitness News — retried after round 125 dropped it for one placeholder entry mixed with real content; this attempt returned entirely real, substantive headlines), Barbados Today (Barbados, alongside Nation News). Belize (Amandala) and Dominican Republic (El Caribe) were attempted but returned 404/empty — dropped."
  ],
  "sources": [
   {
@@ -2846,6 +2847,36 @@
    ],
    "url": "https://www.cnc3.co.tt",
    "rss": "https://news.google.com/rss/search?q=when:24h+site:cnc3.co.tt&hl=en-US&gl=US&ceid=US:en",
+   "state_affiliated": false
+  },
+  {
+   "id": "tribune242",
+   "name": "Tribune 242",
+   "country": "Bahamas",
+   "region": "Americas",
+   "language": "en",
+   "type": "digital",
+   "aspects": [
+    "general",
+    "politics"
+   ],
+   "url": "https://www.tribune242.com",
+   "rss": "https://news.google.com/rss/search?q=when:24h+site:tribune242.com&hl=en-US&gl=US&ceid=US:en",
+   "state_affiliated": false
+  },
+  {
+   "id": "barbadostoday",
+   "name": "Barbados Today",
+   "country": "Barbados",
+   "region": "Americas",
+   "language": "en",
+   "type": "digital",
+   "aspects": [
+    "general",
+    "politics"
+   ],
+   "url": "https://barbadostoday.bb",
+   "rss": "https://barbadostoday.bb/feed/",
    "state_affiliated": false
   }
  ]
