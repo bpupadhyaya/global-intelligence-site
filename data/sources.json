@@ -1,7 +1,7 @@
 {
  "name": "Global Intelligence — News Source Registry",
- "version": "1.14.0",
- "updated": "2026-07-19",
+ "version": "1.15.0",
+ "updated": "2026-07-20",
  "notes": [
   "Machine-readable registry of the world's important news media, consumed by the Global Intelligence pipelines and displayed on the site.",
   "RSS URLs are best-known candidates and are UNVERIFIED until the pipeline build validates each one; prefer RSS/official APIs over scraping.",
@@ -30,7 +30,8 @@
   "v1.11: 5 more first-time countries, closing out most of the remaining Caribbean/Central America/Pacific gap list — Honduras (Proceso), Cuba (14ymedio, Spanish — Cuba's leading independent/dissident outlet, largely produced in exile/underground given the domestic press environment; genuinely critical coverage of repression, blackouts, and political prisoners, a meaningfully different voice from the sole state-media alternative Granma), Tonga (Matangi Tonga — some entries are government procurement/tender notices rather than narrative news, but real local news (rugby, community) is present too, a small-market variant of the round-110 'mixed but net-real' case), Solomon Islands (Solomon Star), Vanuatu (Vanuatu Daily Post).",
   "v1.12: retried Panama and Guatemala with fresh candidates after both were dead ends 2 rounds ago (round 124's La Prensa/Prensa Libre attempts both failed) — this time both worked: Panamá América (Panama) and República (Guatemala). This closes out essentially the entire Caribbean/Central America/Pacific gap list opened in round 123; a re-audit of category_context.json (last checked round 108) found it still clean — all entries are generic structural statements with no country-specific framing to fix.",
   "v1.13: back to depth — a 2nd, independent-leaning source for 4 South America/Africa countries that had only a single establishment-leaning outlet: La Silla Vacía (Colombia, independent investigative, alongside the more establishment El Tiempo), Interferencia (Chile, alongside the center-right La Tercera), RPP (Peru, major independent radio/news network, alongside the conservative-leaning El Comercio), Hespress English (Morocco, alongside Morocco World News).",
-  "v1.14: added a state perspective to 3 East African countries whose sole source was independent (inverse of the v1.1-v1.3/v1.5-v1.7 gap): Daily News (Tanzania, state, alongside the independent Citizen), New Vision (Uganda, state, alongside the independent Daily Monitor — mixed but net-real, roughly 60% substantive local hard news amid some navigation-page noise in the Google News feed, similar to round 110's Daily Mirror judgment call), EBC (Ethiopia, state, alongside the independent Addis Standard — same mixed-but-net-real pattern). Zimbabwe was attempted (Herald, the state paper) but dropped — zero results in both 24h and 7d windows."
+  "v1.14: added a state perspective to 3 East African countries whose sole source was independent (inverse of the v1.1-v1.3/v1.5-v1.7 gap): Daily News (Tanzania, state, alongside the independent Citizen), New Vision (Uganda, state, alongside the independent Daily Monitor — mixed but net-real, roughly 60% substantive local hard news amid some navigation-page noise in the Google News feed, similar to round 110's Daily Mirror judgment call), EBC (Ethiopia, state, alongside the independent Addis Standard — same mixed-but-net-real pattern). Zimbabwe was attempted (Herald, the state paper) but dropped — zero results in both 24h and 7d windows.",
+  "v1.15: 2 more North/Central African depth fixes — APS (Algeria, official state news agency, English, alongside the independent TSA), ActuCameroun (Cameroon, a 2nd independent voice alongside Journal du Cameroun). Zimbabwe retried again (Herald native feed, ZBC News) — both blocked with HTTP 403, a 2nd consecutive dead end; Senegal's RTS and Cameroon's CRTV state broadcasters were also tried and returned only generic station-identity placeholder pages via Google News, not real articles."
  ],
  "sources": [
   {
@@ -2507,6 +2508,36 @@
    "url": "https://www.ebc.et",
    "rss": "https://news.google.com/rss/search?q=when:24h+site:ebc.et&hl=en-US&gl=US&ceid=US:en",
    "state_affiliated": true
+  },
+  {
+   "id": "aps-dz",
+   "name": "APS",
+   "country": "Algeria",
+   "region": "Africa",
+   "language": "en",
+   "type": "wire",
+   "aspects": [
+    "general",
+    "politics"
+   ],
+   "url": "https://www.aps.dz/en",
+   "rss": "https://news.google.com/rss/search?q=when:24h+site:aps.dz&hl=en-US&gl=US&ceid=US:en",
+   "state_affiliated": true
+  },
+  {
+   "id": "actucameroun",
+   "name": "ActuCameroun",
+   "country": "Cameroon",
+   "region": "Africa",
+   "language": "fr",
+   "type": "digital",
+   "aspects": [
+    "general",
+    "politics"
+   ],
+   "url": "https://actucameroun.com",
+   "rss": "https://actucameroun.com/feed/",
+   "state_affiliated": false
   }
  ]
 }
