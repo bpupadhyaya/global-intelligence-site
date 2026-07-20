@@ -1,6 +1,6 @@
 {
  "name": "Global Intelligence — News Source Registry",
- "version": "1.37.0",
+ "version": "1.38.0",
  "updated": "2026-07-20",
  "notes": [
   "Machine-readable registry of the world's important news media, consumed by the Global Intelligence pipelines and displayed on the site.",
@@ -53,7 +53,8 @@
   "v1.34: closed 4 more — Thairath (Thailand, Thai, independent, alongside the English Bangkok Post/Nation Thailand), Ukrinform Ukrainian edition (Ukraine, alongside the existing English Ukrinform and independent Kyiv Independent), Divaina (Sri Lanka, Sinhala, independent, alongside the English Daily Mirror/Daily FT), Setopati (Nepal, Nepali, independent, alongside the English Kathmandu Post/Onlinekhabar). Ethiopia (Amharic) and Tanzania/Kenya (Swahili) remain — domestic-outlet candidates for both failed this round (Mwananchi Tanzania 404, Taifa Leo Kenya 403), only BBC's regional-language services worked, which weren't used since they're not domestic outlets.",
   "v1.35: Habari Leo (Tanzania, Swahili, state — Tanzania's official state newspaper, alongside the independent Citizen and state Daily News), a 2nd attempt after Mwananchi failed last round. Kenya (Taifa Leo) got only 1 real headline in a 7-day window and 0 in 24h — too thin to add confidently, unresolved. Ethiopia (Amharic) attempted again (EBC Amharic-locale search, Walta Info, Addis Admas) but all either returned English-language content despite the Amharic locale parameter or zero results — Ethiopia's Amharic gap persists across 2 rounds now.",
   "v1.36: ran a broader fresh scan beyond the original 16-country list and found 3 more clear native-language gaps — Al Rakoba (Sudan, Arabic, alongside the English Sudan Tribune/Dabanga Sudan), Utusan (Malaysia, Bahasa Malaysia, alongside the English The Star/Malay Mail), Novo Jornal (Angola, Portuguese, alongside the English ANGOP — chosen over Jornal de Angola, whose Google News results were just a repeated site tagline). Several other candidate countries from the broader scan (Ghana, Nigeria, Rwanda, Zimbabwe, Uganda) were deliberately not pursued since English functions as a genuine primary/official media language there alongside many co-official local languages, unlike Sudan/Malaysia/Angola where a single dominant national language was clearly and completely unrepresented.",
-  "v1.37: Kenya (Swahili) and Ethiopia (Amharic) failed a 3rd/2nd time this round with fresh candidates — likely permanent gaps now. Pivoted to breadth and found a much bigger unaddressed problem: 35 countries had ZERO sources at all, never previously attempted. Added the first 5: Civil.ge (Georgia — first-ever South Caucasus source), TAP (Tunisia, state news agency — first-ever source), El Deber (Bolivia — first-ever source), Myanmar Now (Myanmar, independent, deeply reported ongoing-conflict coverage — first-ever source), Arab Times Kuwait (Kuwait, independent — first-ever source, chosen over the official KUNA whose Google News results were about 60% generic navigation pages)."
+  "v1.37: Kenya (Swahili) and Ethiopia (Amharic) failed a 3rd/2nd time this round with fresh candidates — likely permanent gaps now. Pivoted to breadth and found a much bigger unaddressed problem: 35 countries had ZERO sources at all, never previously attempted. Added the first 5: Civil.ge (Georgia — first-ever South Caucasus source), TAP (Tunisia, state news agency — first-ever source), El Deber (Bolivia — first-ever source), Myanmar Now (Myanmar, independent, deeply reported ongoing-conflict coverage — first-ever source), Arab Times Kuwait (Kuwait, independent — first-ever source, chosen over the official KUNA whose Google News results were about 60% generic navigation pages).",
+  "v1.38: 3 more first-ever countries — OC Media (Armenia — independent Caucasus-regional outlet with substantial Armenia-specific coverage; Netanyahu blocking an Armenian Genocide bill after Azerbaijan pressure, Armenian mine sale, flower exports), Libya Review (Libya, independent), Yemen Monitor (Yemen — mixed but net-real, roughly 40% of its Google News results are generic tag pages, same judgment call as round 110/129 given the high-stakes, genuinely relevant content in the real portion). Mongolia (News.MN) and Azerbaijan (APA) were attempted but Mongolia's results were mostly generic archive/tag pages and Azerbaijan returned nothing — both unresolved."
  ],
  "sources": [
   {
@@ -3435,6 +3436,52 @@
    ],
    "url": "https://www.arabtimesonline.com",
    "rss": "https://news.google.com/rss/search?q=when:24h+site:arabtimesonline.com&hl=en-US&gl=US&ceid=US:en",
+   "state_affiliated": false
+  },
+  {
+   "id": "ocmedia-am",
+   "name": "OC Media",
+   "country": "Armenia",
+   "region": "Europe",
+   "language": "en",
+   "type": "digital",
+   "aspects": [
+    "general",
+    "politics"
+   ],
+   "url": "https://oc-media.org",
+   "rss": "https://oc-media.org/feed/",
+   "state_affiliated": false
+  },
+  {
+   "id": "libyareview",
+   "name": "Libya Review",
+   "country": "Libya",
+   "region": "Africa",
+   "language": "en",
+   "type": "digital",
+   "aspects": [
+    "general",
+    "politics"
+   ],
+   "url": "https://libyareview.com",
+   "rss": "https://libyareview.com/feed/",
+   "state_affiliated": false
+  },
+  {
+   "id": "yemenmonitor",
+   "name": "Yemen Monitor",
+   "country": "Yemen",
+   "region": "Middle East",
+   "language": "en",
+   "type": "digital",
+   "aspects": [
+    "general",
+    "politics",
+    "geopolitics"
+   ],
+   "url": "https://yemenmonitor.com",
+   "rss": "https://news.google.com/rss/search?q=when:24h+site:yemenmonitor.com&hl=en-US&gl=US&ceid=US:en",
    "state_affiliated": false
   }
  ]
