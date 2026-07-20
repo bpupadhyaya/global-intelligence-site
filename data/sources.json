@@ -1,6 +1,6 @@
 {
  "name": "Global Intelligence — News Source Registry",
- "version": "1.1.0",
+ "version": "1.2.0",
  "updated": "2026-07-19",
  "notes": [
   "Machine-readable registry of the world's important news media, consumed by the Global Intelligence pipelines and displayed on the site.",
@@ -17,7 +17,8 @@
   "v0.8: added Philippines (Philippine Daily Inquirer), Malaysia (The Star), Sri Lanka (Daily Mirror), Afghanistan (TOLOnews) — closing the remaining Southeast/South Asia gaps.",
   "v0.9: added Sudan (Sudan Tribune), Angola (ANGOP), Mali (Malijet), Mozambique (Club of Mozambique), Madagascar (Madagascar Tribune) — closing the last of the previously-documented Africa gap list. ANGOP is Angola's state news agency (state_affiliated=true, same precedent as Xinhua/TASS/CCTV already in this registry). For Mali, Journal du Mali's feed and Studio Tamani's feed were tested first but skewed heavily toward sports/soft-lifestyle content; Malijet's native rss.xml returned substantive hard news (security operations, flood-prevention infrastructure, regional diplomacy) and was used instead — a reminder that the first plausible-looking candidate for a country isn't always the best one available.",
   "v1.0: pivoted from breadth (new countries) to depth — added a second, independent source for 4 major countries that had only ever had one: Pakistan (The Express Tribune), Indonesia (Tempo.co), Nigeria (Vanguard), Turkey (Hürriyet Daily News, mainstream/private — pairs with the existing TRT World, which is state-affiliated=true, so Turkey now has both a state and an independent voice). A 5th candidate, Mexico, was attempted but every tested source (Milenio, Excelsior, Animal Político, Proceso, Infobae, El Universal via Google News) failed or returned empty — dropped rather than shipped unverified. Also rejected Hürriyet's Google-News-per-site-search results specifically because roughly half were generic topic-tag pages (\"X Latest News, Top Stories\") rather than real articles — used the site's own native /rss/turkey path instead, which returned clean, specific headlines throughout.",
-  "v1.1: continued the depth pivot, prioritizing a specific sub-case — countries whose ONLY source is state_affiliated=true, meaning zero independent domestic voice at all. Egypt (Al-Ahram, state) gained Mada Masr, a genuinely independent Egyptian outlet publishing substantive critical coverage of state institutions. Also added Mail & Guardian (South Africa, alongside News24) and Nation Thailand (Thailand, alongside Bangkok Post) — both showed thin volume in the standard 24h freshness window at verification time but confirmed as real, actively-publishing outlets via a wider 7-day check (same precedent as round 104). A 4th candidate, Pagina12 (Argentina, to pair with the right-leaning Clarín), had zero results via both native RSS and Google News in 24h and 7d windows — dropped rather than shipped unverified. Qatar (Al Jazeera) and Saudi Arabia (Al Arabiya) remain single-source-and-state-affiliated; no credible independent domestic outlet was identified for either given each country's press environment — flagged for a future round rather than forcing a low-quality addition."
+  "v1.1: continued the depth pivot, prioritizing a specific sub-case — countries whose ONLY source is state_affiliated=true, meaning zero independent domestic voice at all. Egypt (Al-Ahram, state) gained Mada Masr, a genuinely independent Egyptian outlet publishing substantive critical coverage of state institutions. Also added Mail & Guardian (South Africa, alongside News24) and Nation Thailand (Thailand, alongside Bangkok Post) — both showed thin volume in the standard 24h freshness window at verification time but confirmed as real, actively-publishing outlets via a wider 7-day check (same precedent as round 104). A 4th candidate, Pagina12 (Argentina, to pair with the right-leaning Clarín), had zero results via both native RSS and Google News in 24h and 7d windows — dropped rather than shipped unverified. Qatar (Al Jazeera) and Saudi Arabia (Al Arabiya) remain single-source-and-state-affiliated; no credible independent domestic outlet was identified for either given each country's press environment — flagged for a future round rather than forcing a low-quality addition.",
+  "v1.2: closed 3 more depth gaps — Mexico News Daily (Mexico — the prior round's Milenio/Excelsior/Animal Politico/Proceso/Infobae/El Universal attempts had all failed; this English-language outlet aimed at expats/travelers turned out to have real, substantive Mexico-specific reporting), Buenos Aires Times (Argentina, alongside Clarín — succeeded where the prior round's Página12 attempt found nothing), and Vietnam News (Vietnam, state_affiliated=true, alongside the existing state_affiliated=false VnExpress International — mirrors the Turkey TRT/Hürriyet pairing, giving readers both the official state framing and the more independent-leaning coverage for a country where all domestic media operates under Communist Party oversight to some degree)."
  ],
  "sources": [
   {
@@ -1861,6 +1862,51 @@
    "url": "https://www.nationthailand.com",
    "rss": "https://news.google.com/rss/search?q=when:24h+site:nationthailand.com&hl=en-US&gl=US&ceid=US:en",
    "state_affiliated": false
+  },
+  {
+   "id": "mexiconewsdaily",
+   "name": "Mexico News Daily",
+   "country": "Mexico",
+   "region": "Americas",
+   "language": "en",
+   "type": "digital",
+   "aspects": [
+    "general",
+    "politics"
+   ],
+   "url": "https://mexiconewsdaily.com",
+   "rss": "https://mexiconewsdaily.com/feed/",
+   "state_affiliated": false
+  },
+  {
+   "id": "batimes",
+   "name": "Buenos Aires Times",
+   "country": "Argentina",
+   "region": "Americas",
+   "language": "en",
+   "type": "digital",
+   "aspects": [
+    "general",
+    "politics"
+   ],
+   "url": "https://www.batimes.com.ar",
+   "rss": "https://www.batimes.com.ar/feed",
+   "state_affiliated": false
+  },
+  {
+   "id": "vietnamnews",
+   "name": "Vietnam News",
+   "country": "Vietnam",
+   "region": "Asia",
+   "language": "en",
+   "type": "wire",
+   "aspects": [
+    "general",
+    "politics"
+   ],
+   "url": "https://vietnamnews.vn",
+   "rss": "https://vietnamnews.vn/rss/politics-laws.rss",
+   "state_affiliated": true
   }
  ]
 }
