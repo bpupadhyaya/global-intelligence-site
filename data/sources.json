@@ -1,6 +1,6 @@
 {
  "name": "Global Intelligence — News Source Registry",
- "version": "1.6.0",
+ "version": "1.7.0",
  "updated": "2026-07-19",
  "notes": [
   "Machine-readable registry of the world's important news media, consumed by the Global Intelligence pipelines and displayed on the site.",
@@ -22,7 +22,8 @@
   "v1.3: found 3 more single-source-and-state-affiliated countries (same category as Egypt/Qatar/Saudi Arabia from v1.1) and fixed the 3 that had a viable independent candidate: IraqiNews.com (Iraq, alongside the KRG-linked Rudaw), Roya News (Jordan, independent broadcaster, alongside the state-run Jordan Times), Khaleej Times (UAE, private Dubai-based paper, alongside the state-run The National). Rejected Shafaq News and 7iber (empty feeds in both 24h and 7d windows) as Iraq/Jordan alternates before landing on the ones actually used.",
   "v1.4: fixed the inverse of the v1.1-v1.3 gap — countries whose only source is an EXILE/OPPOSITION outlet rather than a domestic one, meaning zero official-state perspective exists (the mirror image of \"state-only, no independent voice\"). Iran's only source, Iran International, is a London-based opposition broadcaster; added IRNA, Iran's official state news agency (state_affiliated=true), for the government's own framing — same reasoning as the Turkey TRT/Hürriyet and Vietnam News/VnExpress pairings. Also added Naharnet (Lebanon, independent, alongside L'Orient Today) after rejecting 2 other Lebanese candidates: Daily Star Lebanon's Google News results were pure sports-betting-odds spam unrelated to Lebanon, and Al Manar's were entirely generic topic-tag pages — both matched the round-109/117 garbage-result pattern and were dropped.",
   "v1.5: found 3 more single-source-and-state-affiliated countries — Ghana (Graphic Online), Denmark (DR Nyheder), Sweden (SVT Nyheter) — and fixed all 3 with independent alternatives: MyJoyOnline (Ghana), Politiken (Denmark, Danish-language, matching the existing native-language precedent), Dagens Nyheter (Sweden, Swedish-language, same precedent).",
-  "v1.6: 3 more single-source-and-state-affiliated fixes — Helsingin Sanomat (Finland, Finnish-language, alongside the state broadcaster Yle), KT Press (Rwanda, alongside the state-run New Times — The Chronicles was tried first but turned out to be a Rwanda/Uganda safari-tourism blog, not a news outlet, and was dropped), Vlast.kz (Kazakhstan, alongside the state-run Astana Times — one of the few genuinely independent Kazakh digital outlets; showed thin volume in the 24h window at verification time, confirmed real via the round-104 wider-window method)."
+  "v1.6: 3 more single-source-and-state-affiliated fixes — Helsingin Sanomat (Finland, Finnish-language, alongside the state broadcaster Yle), KT Press (Rwanda, alongside the state-run New Times — The Chronicles was tried first but turned out to be a Rwanda/Uganda safari-tourism blog, not a news outlet, and was dropped), Vlast.kz (Kazakhstan, alongside the state-run Astana Times — one of the few genuinely independent Kazakh digital outlets; showed thin volume in the 24h window at verification time, confirmed real via the round-104 wider-window method).",
+  "v1.7: ran a systematic scan of every remaining single-source country's state_affiliated flag (rather than spot-checking a handful) and found only 5 left: Angola, New Zealand, Qatar, Russia, Saudi Arabia. Qatar/Saudi Arabia already flagged as likely-permanent gaps. Russia's TASS is offset in practice by the separately-labeled 'Russia (exile, Latvia)' independent source, just split across 2 country-label entries rather than a true single-source gap. Fixed New Zealand: added Stuff.co.nz (private, alongside the public broadcaster RNZ). Angola remains open — Novo Jornal, Expansão, and Valor Económico (via Google News) all returned zero results in this attempt; ANGOP remains the only working Angola feed found so far."
  ],
  "sources": [
   {
@@ -2077,6 +2078,21 @@
    ],
    "url": "https://vlast.kz",
    "rss": "https://news.google.com/rss/search?q=when:24h+site:vlast.kz&hl=en-US&gl=US&ceid=US:en",
+   "state_affiliated": false
+  },
+  {
+   "id": "stuff-nz",
+   "name": "Stuff",
+   "country": "New Zealand",
+   "region": "Oceania",
+   "language": "en",
+   "type": "digital",
+   "aspects": [
+    "general",
+    "politics"
+   ],
+   "url": "https://www.stuff.co.nz",
+   "rss": "https://www.stuff.co.nz/rss",
    "state_affiliated": false
   }
  ]
