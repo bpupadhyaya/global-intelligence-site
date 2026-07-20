@@ -1,6 +1,6 @@
 {
  "name": "Global Intelligence — News Source Registry",
- "version": "1.17.0",
+ "version": "1.18.0",
  "updated": "2026-07-20",
  "notes": [
   "Machine-readable registry of the world's important news media, consumed by the Global Intelligence pipelines and displayed on the site.",
@@ -33,7 +33,8 @@
   "v1.14: added a state perspective to 3 East African countries whose sole source was independent (inverse of the v1.1-v1.3/v1.5-v1.7 gap): Daily News (Tanzania, state, alongside the independent Citizen), New Vision (Uganda, state, alongside the independent Daily Monitor — mixed but net-real, roughly 60% substantive local hard news amid some navigation-page noise in the Google News feed, similar to round 110's Daily Mirror judgment call), EBC (Ethiopia, state, alongside the independent Addis Standard — same mixed-but-net-real pattern). Zimbabwe was attempted (Herald, the state paper) but dropped — zero results in both 24h and 7d windows.",
   "v1.15: 2 more North/Central African depth fixes — APS (Algeria, official state news agency, English, alongside the independent TSA), ActuCameroun (Cameroon, a 2nd independent voice alongside Journal du Cameroun). Zimbabwe retried again (Herald native feed, ZBC News) — both blocked with HTTP 403, a 2nd consecutive dead end; Senegal's RTS and Cameroon's CRTV state broadcasters were also tried and returned only generic station-identity placeholder pages via Google News, not real articles.",
   "v1.16: 3 more depth fixes — Le Soleil (Senegal, state, alongside the independent SenePlus), O País (Mozambique, a 2nd independent voice alongside Club of Mozambique), Midi Madagasikara (Madagascar, a 2nd independent voice alongside Madagascar Tribune). Mali was attempted again (ORTM, AMAP) but both returned only generic homepage/channel-identity placeholders via Google News, matching last round's Zimbabwe pattern — no working 2nd Mali source found across 2 attempts now.",
-  "v1.17: closes the last 2 African breadth-added countries still needing a depth pass — Actualite.cd (DR Congo, a 2nd independent voice alongside Radio Okapi) and Dabanga Sudan (Sudan, a 2nd independent voice alongside Sudan Tribune, deeply reported Darfur/conflict-focused journalism). Both countries' state news agencies (ACP for DR Congo, SUNA for Sudan) were tried first but returned only a placeholder page or zero results respectively — likely reflecting how each country's ongoing conflict has disrupted state media's own online publishing, not a search-method failure."
+  "v1.17: closes the last 2 African breadth-added countries still needing a depth pass — Actualite.cd (DR Congo, a 2nd independent voice alongside Radio Okapi) and Dabanga Sudan (Sudan, a 2nd independent voice alongside Sudan Tribune, deeply reported Darfur/conflict-focused journalism). Both countries' state news agencies (ACP for DR Congo, SUNA for Sudan) were tried first but returned only a placeholder page or zero results respectively — likely reflecting how each country's ongoing conflict has disrupted state media's own online publishing, not a search-method failure.",
+  "v1.18: pivoted the depth pass to non-African single-source countries that hadn't been prioritized — Italy and Spain (both G7/G20-tier European economies were somehow still single-source) plus Kenya and Bangladesh. Added El Mundo (Spain, center-right, alongside the center-left El País), La Repubblica (Italy, center-left, alongside the more centrist Corriere della Sera), Prothom Alo English (Bangladesh, alongside The Daily Star), Standard Media (Kenya, alongside the Nation)."
  ],
  "sources": [
   {
@@ -2615,6 +2616,66 @@
    ],
    "url": "https://www.dabangasudan.org",
    "rss": "https://www.dabangasudan.org/en/all-news/feed",
+   "state_affiliated": false
+  },
+  {
+   "id": "elmundo-es",
+   "name": "El Mundo",
+   "country": "Spain",
+   "region": "Europe",
+   "language": "es",
+   "type": "digital",
+   "aspects": [
+    "general",
+    "politics"
+   ],
+   "url": "https://www.elmundo.es",
+   "rss": "https://www.elmundo.es/rss/portada.xml",
+   "state_affiliated": false
+  },
+  {
+   "id": "repubblica-it",
+   "name": "La Repubblica",
+   "country": "Italy",
+   "region": "Europe",
+   "language": "it",
+   "type": "digital",
+   "aspects": [
+    "general",
+    "politics"
+   ],
+   "url": "https://www.repubblica.it",
+   "rss": "https://www.repubblica.it/rss/homepage/rss2.0.xml",
+   "state_affiliated": false
+  },
+  {
+   "id": "prothomalo-en",
+   "name": "Prothom Alo English",
+   "country": "Bangladesh",
+   "region": "Asia",
+   "language": "en",
+   "type": "digital",
+   "aspects": [
+    "general",
+    "politics"
+   ],
+   "url": "https://en.prothomalo.com",
+   "rss": "https://en.prothomalo.com/feed",
+   "state_affiliated": false
+  },
+  {
+   "id": "standardmedia-ke",
+   "name": "The Standard",
+   "country": "Kenya",
+   "region": "Africa",
+   "language": "en",
+   "type": "digital",
+   "aspects": [
+    "general",
+    "politics"
+   ],
+   "url": "https://www.standardmedia.co.ke",
+   "rss": "https://www.standardmedia.co.ke/rss/headlines.php",
    "state_affiliated": false
   }
  ]
