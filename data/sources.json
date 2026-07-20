@@ -1,6 +1,6 @@
 {
  "name": "Global Intelligence — News Source Registry",
- "version": "1.24.0",
+ "version": "1.25.0",
  "updated": "2026-07-20",
  "notes": [
   "Machine-readable registry of the world's important news media, consumed by the Global Intelligence pipelines and displayed on the site.",
@@ -40,7 +40,8 @@
   "v1.21: first depth pass on the small Caribbean/Pacific countries added in rounds 123-127 — Jamaica Gleaner (Jamaica, alongside Jamaica Observer), FBC News (Fiji, state broadcaster, alongside The Fiji Times), CNC3 (Trinidad and Tobago, alongside Trinidad Guardian). Costa Rica was attempted (CRhoy, La República) but both returned 404 — dropped.",
   "v1.22: continued the small-country depth batch — Tribune 242 (Bahamas, alongside Eyewitness News — retried after round 125 dropped it for one placeholder entry mixed with real content; this attempt returned entirely real, substantive headlines), Barbados Today (Barbados, alongside Nation News). Belize (Amandala) and Dominican Republic (El Caribe) were attempted but returned 404/empty — dropped.",
   "v1.23: HaitiLibre (Haiti, alongside Le Nouvelliste — real substantive content, e.g. a free surgical caravan in Nippes and the central bank's interest in AI, mixed with a couple of generic digest/tag entries, a net-positive case). El Salvador (La Prensa Gráfica), Guatemala (Nómada), Panama (TVN, Metro Libre) were all attempted this round but returned 403/empty/placeholder-only results — the lower hit rate predicted for this batch of small countries is holding.",
-  "v1.24: Talamua Online (Samoa, alongside Samoa Observer). Cuba's Granma (attempted as a state complement to the independent/dissident 14ymedio) was unreachable via both native fetch (DNS resolution failure) and Google News (0 results) — the domain may currently be down rather than a search-method problem. Papua New Guinea (PNG Loop — SSL certificate error; The National — Google News results ~80% generic navigation/column-name pages), Honduras (La Prensa — 404), and Solomon Islands (Solomon Times — empty) were also attempted and dropped."
+  "v1.24: Talamua Online (Samoa, alongside Samoa Observer). Cuba's Granma (attempted as a state complement to the independent/dissident 14ymedio) was unreachable via both native fetch (DNS resolution failure) and Google News (0 results) — the domain may currently be down rather than a search-method problem. Papua New Guinea (PNG Loop — SSL certificate error; The National — Google News results ~80% generic navigation/column-name pages), Honduras (La Prensa — 404), and Solomon Islands (Solomon Times — empty) were also attempted and dropped.",
+  "v1.25: SIBC (Solomon Islands, state broadcaster, alongside the independent Solomon Star News — a 2nd attempt at Solomon Islands after v1.24's Solomon Times dead end). Honduras (El Heraldo), Nicaragua (La Prensa Nicaragua — only 1 real headline, too thin to add confidently; 100% Noticias), Panama (El Siglo), and Vanuatu (Vanuatu Daily Post's own native feed, rate-limited) were all attempted but yielded nothing solid enough to ship."
  ],
  "sources": [
   {
@@ -2910,6 +2911,21 @@
    "url": "https://talamua.com",
    "rss": "https://news.google.com/rss/search?q=when:24h+site:talamua.com&hl=en-US&gl=US&ceid=US:en",
    "state_affiliated": false
+  },
+  {
+   "id": "sibc-sb",
+   "name": "SIBC",
+   "country": "Solomon Islands",
+   "region": "Oceania",
+   "language": "en",
+   "type": "broadcaster",
+   "aspects": [
+    "general",
+    "politics"
+   ],
+   "url": "https://www.sibconline.com.sb",
+   "rss": "https://www.sibconline.com.sb/feed/",
+   "state_affiliated": true
   }
  ]
 }
