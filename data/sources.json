@@ -1,6 +1,6 @@
 {
  "name": "Global Intelligence — News Source Registry",
- "version": "1.35.0",
+ "version": "1.36.0",
  "updated": "2026-07-20",
  "notes": [
   "Machine-readable registry of the world's important news media, consumed by the Global Intelligence pipelines and displayed on the site.",
@@ -51,7 +51,8 @@
   "v1.32: ran a systematic scan across the whole registry for the same gap — 16 more non-English-native countries (South Korea, Iran, India, Thailand, Vietnam, Indonesia, Pakistan, Bangladesh, Sri Lanka, Nepal, Israel, Ukraine, Turkey, Ethiopia, Tanzania, Kenya) had zero native-script representation despite an English source already existing. Fixed 4 of the highest-population ones this round: Hürriyet (Turkey, Turkish, alongside the existing Hürriyet Daily News English edition and TRT World), Amar Ujala (India, Hindi, independent), Yonhap Korean edition (South Korea, Korean, state, alongside the existing English edition — mixed but net-real, its Google News results include some bare hourly-digest placeholder entries alongside genuine headlines, same judgment call as round 110/129), ANTARA (Indonesia, Bahasa/Indonesian, state news agency). 12 more countries from this scan remain open for future rounds.",
   "v1.33: closed 5 more native-language gaps in one round — IRNA Persian edition (Iran, alongside the existing English IRNA), VnExpress Vietnamese edition (Vietnam, alongside the existing English VnExpress International), Jang (Pakistan, Urdu, independent, alongside the English Dawn), Prothom Alo Bengali edition (Bangladesh, alongside the existing English Prothom Alo), Ynet (Israel, Hebrew, independent, alongside the English Times of Israel and Haaretz). All 5 confirmed with genuine, substantive native-language content. Remaining open: Thailand (Thai), Sri Lanka (Sinhala), Nepal (Nepali), Ukraine (Ukrainian), Ethiopia (Amharic), Tanzania/Kenya (Swahili).",
   "v1.34: closed 4 more — Thairath (Thailand, Thai, independent, alongside the English Bangkok Post/Nation Thailand), Ukrinform Ukrainian edition (Ukraine, alongside the existing English Ukrinform and independent Kyiv Independent), Divaina (Sri Lanka, Sinhala, independent, alongside the English Daily Mirror/Daily FT), Setopati (Nepal, Nepali, independent, alongside the English Kathmandu Post/Onlinekhabar). Ethiopia (Amharic) and Tanzania/Kenya (Swahili) remain — domestic-outlet candidates for both failed this round (Mwananchi Tanzania 404, Taifa Leo Kenya 403), only BBC's regional-language services worked, which weren't used since they're not domestic outlets.",
-  "v1.35: Habari Leo (Tanzania, Swahili, state — Tanzania's official state newspaper, alongside the independent Citizen and state Daily News), a 2nd attempt after Mwananchi failed last round. Kenya (Taifa Leo) got only 1 real headline in a 7-day window and 0 in 24h — too thin to add confidently, unresolved. Ethiopia (Amharic) attempted again (EBC Amharic-locale search, Walta Info, Addis Admas) but all either returned English-language content despite the Amharic locale parameter or zero results — Ethiopia's Amharic gap persists across 2 rounds now."
+  "v1.35: Habari Leo (Tanzania, Swahili, state — Tanzania's official state newspaper, alongside the independent Citizen and state Daily News), a 2nd attempt after Mwananchi failed last round. Kenya (Taifa Leo) got only 1 real headline in a 7-day window and 0 in 24h — too thin to add confidently, unresolved. Ethiopia (Amharic) attempted again (EBC Amharic-locale search, Walta Info, Addis Admas) but all either returned English-language content despite the Amharic locale parameter or zero results — Ethiopia's Amharic gap persists across 2 rounds now.",
+  "v1.36: ran a broader fresh scan beyond the original 16-country list and found 3 more clear native-language gaps — Al Rakoba (Sudan, Arabic, alongside the English Sudan Tribune/Dabanga Sudan), Utusan (Malaysia, Bahasa Malaysia, alongside the English The Star/Malay Mail), Novo Jornal (Angola, Portuguese, alongside the English ANGOP — chosen over Jornal de Angola, whose Google News results were just a repeated site tagline). Several other candidate countries from the broader scan (Ghana, Nigeria, Rwanda, Zimbabwe, Uganda) were deliberately not pursued since English functions as a genuine primary/official media language there alongside many co-official local languages, unlike Sudan/Malaysia/Angola where a single dominant national language was clearly and completely unrepresented."
  ],
  "sources": [
   {
@@ -3313,6 +3314,51 @@
    "url": "https://habarileo.co.tz",
    "rss": "https://habarileo.co.tz/feed/",
    "state_affiliated": true
+  },
+  {
+   "id": "alrakoba",
+   "name": "الراكوبة",
+   "country": "Sudan",
+   "region": "Africa",
+   "language": "ar",
+   "type": "digital",
+   "aspects": [
+    "general",
+    "politics"
+   ],
+   "url": "https://alrakoba.net",
+   "rss": "https://news.google.com/rss/search?q=when:24h+site:alrakoba.net&hl=ar&gl=SD&ceid=SD:ar",
+   "state_affiliated": false
+  },
+  {
+   "id": "utusan-my",
+   "name": "Utusan Malaysia",
+   "country": "Malaysia",
+   "region": "Asia",
+   "language": "ms",
+   "type": "digital",
+   "aspects": [
+    "general",
+    "politics"
+   ],
+   "url": "https://www.utusan.com.my",
+   "rss": "https://www.utusan.com.my/feed/",
+   "state_affiliated": false
+  },
+  {
+   "id": "novojornal-ao",
+   "name": "Novo Jornal",
+   "country": "Angola",
+   "region": "Africa",
+   "language": "pt",
+   "type": "digital",
+   "aspects": [
+    "general",
+    "politics"
+   ],
+   "url": "https://novojornal.co.ao",
+   "rss": "https://news.google.com/rss/search?q=when:24h+site:novojornal.co.ao&hl=pt&gl=AO&ceid=AO:pt",
+   "state_affiliated": false
   }
  ]
 }
