@@ -1,6 +1,6 @@
 {
  "name": "Global Intelligence — News Source Registry",
- "version": "1.11.0",
+ "version": "1.12.0",
  "updated": "2026-07-19",
  "notes": [
   "Machine-readable registry of the world's important news media, consumed by the Global Intelligence pipelines and displayed on the site.",
@@ -27,7 +27,8 @@
   "v1.8: back to breadth after the depth pivot — added the registry's first Caribbean, Central American, and Pacific Island sources: Jamaica (Jamaica Observer), Trinidad & Tobago (Trinidad Guardian), Costa Rica (La Nación, Spanish-language), Fiji (The Fiji Times), Papua New Guinea (Post-Courier). Rejected Newsday Trinidad (its feed was entirely legal notices/classified ads, not news) in favor of Trinidad Guardian instead.",
   "v1.9: continued broadening the same 3 regions — Dominican Republic (Diario Libre, Spanish-language), Haiti (Le Nouvelliste, English edition), Samoa (Samoa Observer, thin 24h volume but confirmed real via the round-104 wider-window method). Guatemala (Prensa Libre) and Panama (La Prensa) were attempted but dropped — Prensa Libre's Google News results were bare '- Prensa Libre' placeholders with no headline text, and La Prensa returned zero results via both methods.",
   "v1.10: 5 more first-time countries — El Salvador (elsalvador.com, Spanish), Belize (Breaking Belize News), Barbados (Nation News), Nicaragua (Confidencial, Spanish — an independent/exile-adjacent outlet given Nicaragua's press restrictions under the Ortega government, publishing openly critical coverage including political-prisoner reporting), Bahamas (Eyewitness News — chosen over Tribune 242 after Tribune 242's Google News results included a bare placeholder entry alongside real content).",
-  "v1.11: 5 more first-time countries, closing out most of the remaining Caribbean/Central America/Pacific gap list — Honduras (Proceso), Cuba (14ymedio, Spanish — Cuba's leading independent/dissident outlet, largely produced in exile/underground given the domestic press environment; genuinely critical coverage of repression, blackouts, and political prisoners, a meaningfully different voice from the sole state-media alternative Granma), Tonga (Matangi Tonga — some entries are government procurement/tender notices rather than narrative news, but real local news (rugby, community) is present too, a small-market variant of the round-110 'mixed but net-real' case), Solomon Islands (Solomon Star), Vanuatu (Vanuatu Daily Post)."
+  "v1.11: 5 more first-time countries, closing out most of the remaining Caribbean/Central America/Pacific gap list — Honduras (Proceso), Cuba (14ymedio, Spanish — Cuba's leading independent/dissident outlet, largely produced in exile/underground given the domestic press environment; genuinely critical coverage of repression, blackouts, and political prisoners, a meaningfully different voice from the sole state-media alternative Granma), Tonga (Matangi Tonga — some entries are government procurement/tender notices rather than narrative news, but real local news (rugby, community) is present too, a small-market variant of the round-110 'mixed but net-real' case), Solomon Islands (Solomon Star), Vanuatu (Vanuatu Daily Post).",
+  "v1.12: retried Panama and Guatemala with fresh candidates after both were dead ends 2 rounds ago (round 124's La Prensa/Prensa Libre attempts both failed) — this time both worked: Panamá América (Panama) and República (Guatemala). This closes out essentially the entire Caribbean/Central America/Pacific gap list opened in round 123; a re-audit of category_context.json (last checked round 108) found it still clean — all entries are generic structural statements with no country-specific framing to fix."
  ],
  "sources": [
   {
@@ -2367,6 +2368,36 @@
    ],
    "url": "https://dailypost.vu",
    "rss": "https://news.google.com/rss/search?q=when:24h+site:dailypost.vu&hl=en-US&gl=US&ceid=US:en",
+   "state_affiliated": false
+  },
+  {
+   "id": "panamaamerica",
+   "name": "Panamá América",
+   "country": "Panama",
+   "region": "Americas",
+   "language": "es",
+   "type": "digital",
+   "aspects": [
+    "general",
+    "politics"
+   ],
+   "url": "https://www.panamaamerica.com.pa",
+   "rss": "https://www.panamaamerica.com.pa/rss.xml",
+   "state_affiliated": false
+  },
+  {
+   "id": "republica-gt",
+   "name": "República",
+   "country": "Guatemala",
+   "region": "Americas",
+   "language": "es",
+   "type": "digital",
+   "aspects": [
+    "general",
+    "politics"
+   ],
+   "url": "https://republica.gt",
+   "rss": "https://republica.gt/feed/",
    "state_affiliated": false
   }
  ]
