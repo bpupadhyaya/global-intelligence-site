@@ -1,6 +1,6 @@
 {
  "name": "Global Intelligence — News Source Registry",
- "version": "1.33.0",
+ "version": "1.34.0",
  "updated": "2026-07-20",
  "notes": [
   "Machine-readable registry of the world's important news media, consumed by the Global Intelligence pipelines and displayed on the site.",
@@ -49,7 +49,8 @@
   "v1.30: a 3rd round of Arabic-language attempts for Iraq/UAE/Jordan/Lebanon/Sudan all failed again (Rudaw Arabic, Al Dustour, Sky News Arabia, and Al Ittihad all empty or pure placeholder results) — pivoted mid-round to the small-country batch instead and found Crítica (Panama, alongside Panamá América) — a 4th attempt at a 2nd Panama source, succeeding after El Siglo/La Prensa/Metro Libre/TVN all failed across 3 prior rounds.",
   "v1.31: found an even bigger version of the round-127 Arabic-language discovery — checked China/Japan/South Korea/Russia/Hong Kong and found ALL 12 sources across these countries were English-only too, despite Chinese/Japanese/Korean/Russian being spoken natively by well over a billion people combined and these being some of the most significant countries the app covers. Added native-language editions of 3 existing English entities plus 1 genuinely new independent voice: People's Daily (China, Chinese, state_affiliated=true — CCP's official paper, matches Xinhua/Global Times' existing state classification), Yomiuri Shimbun (Japan, Japanese, state_affiliated=false — the world's largest-circulation newspaper), TASS Russian edition (Russia, Russian, state_affiliated=true, alongside the existing English TASS), Meduza Russian edition (Russia — exile, Latvia, Russian, state_affiliated=false, alongside the existing English Meduza — Russian speakers previously had zero native-language representation from either the state or independent side).",
   "v1.32: ran a systematic scan across the whole registry for the same gap — 16 more non-English-native countries (South Korea, Iran, India, Thailand, Vietnam, Indonesia, Pakistan, Bangladesh, Sri Lanka, Nepal, Israel, Ukraine, Turkey, Ethiopia, Tanzania, Kenya) had zero native-script representation despite an English source already existing. Fixed 4 of the highest-population ones this round: Hürriyet (Turkey, Turkish, alongside the existing Hürriyet Daily News English edition and TRT World), Amar Ujala (India, Hindi, independent), Yonhap Korean edition (South Korea, Korean, state, alongside the existing English edition — mixed but net-real, its Google News results include some bare hourly-digest placeholder entries alongside genuine headlines, same judgment call as round 110/129), ANTARA (Indonesia, Bahasa/Indonesian, state news agency). 12 more countries from this scan remain open for future rounds.",
-  "v1.33: closed 5 more native-language gaps in one round — IRNA Persian edition (Iran, alongside the existing English IRNA), VnExpress Vietnamese edition (Vietnam, alongside the existing English VnExpress International), Jang (Pakistan, Urdu, independent, alongside the English Dawn), Prothom Alo Bengali edition (Bangladesh, alongside the existing English Prothom Alo), Ynet (Israel, Hebrew, independent, alongside the English Times of Israel and Haaretz). All 5 confirmed with genuine, substantive native-language content. Remaining open: Thailand (Thai), Sri Lanka (Sinhala), Nepal (Nepali), Ukraine (Ukrainian), Ethiopia (Amharic), Tanzania/Kenya (Swahili)."
+  "v1.33: closed 5 more native-language gaps in one round — IRNA Persian edition (Iran, alongside the existing English IRNA), VnExpress Vietnamese edition (Vietnam, alongside the existing English VnExpress International), Jang (Pakistan, Urdu, independent, alongside the English Dawn), Prothom Alo Bengali edition (Bangladesh, alongside the existing English Prothom Alo), Ynet (Israel, Hebrew, independent, alongside the English Times of Israel and Haaretz). All 5 confirmed with genuine, substantive native-language content. Remaining open: Thailand (Thai), Sri Lanka (Sinhala), Nepal (Nepali), Ukraine (Ukrainian), Ethiopia (Amharic), Tanzania/Kenya (Swahili).",
+  "v1.34: closed 4 more — Thairath (Thailand, Thai, independent, alongside the English Bangkok Post/Nation Thailand), Ukrinform Ukrainian edition (Ukraine, alongside the existing English Ukrinform and independent Kyiv Independent), Divaina (Sri Lanka, Sinhala, independent, alongside the English Daily Mirror/Daily FT), Setopati (Nepal, Nepali, independent, alongside the English Kathmandu Post/Onlinekhabar). Ethiopia (Amharic) and Tanzania/Kenya (Swahili) remain — domestic-outlet candidates for both failed this round (Mwananchi Tanzania 404, Taifa Leo Kenya 403), only BBC's regional-language services worked, which weren't used since they're not domestic outlets."
  ],
  "sources": [
   {
@@ -3234,6 +3235,67 @@
    ],
    "url": "https://www.ynet.co.il",
    "rss": "https://www.ynet.co.il/Integration/StoryRss2.xml",
+   "state_affiliated": false
+  },
+  {
+   "id": "thairath",
+   "name": "ไทยรัฐ",
+   "country": "Thailand",
+   "region": "Asia",
+   "language": "th",
+   "type": "digital",
+   "aspects": [
+    "general",
+    "politics"
+   ],
+   "url": "https://www.thairath.co.th",
+   "rss": "https://www.thairath.co.th/rss/news",
+   "state_affiliated": false
+  },
+  {
+   "id": "ukrinform-uk",
+   "name": "Укрінформ",
+   "country": "Ukraine",
+   "region": "Europe",
+   "language": "uk",
+   "type": "wire",
+   "aspects": [
+    "general",
+    "politics",
+    "geopolitics"
+   ],
+   "url": "https://www.ukrinform.ua",
+   "rss": "https://www.ukrinform.ua/rss/rubric-polytics",
+   "state_affiliated": true
+  },
+  {
+   "id": "divaina",
+   "name": "දිවයින",
+   "country": "Sri Lanka",
+   "region": "Asia",
+   "language": "si",
+   "type": "digital",
+   "aspects": [
+    "general",
+    "politics"
+   ],
+   "url": "https://www.divaina.lk",
+   "rss": "https://www.divaina.lk/feed/",
+   "state_affiliated": false
+  },
+  {
+   "id": "setopati",
+   "name": "सेतोपाटी",
+   "country": "Nepal",
+   "region": "Asia",
+   "language": "ne",
+   "type": "digital",
+   "aspects": [
+    "general",
+    "politics"
+   ],
+   "url": "https://www.setopati.com",
+   "rss": "https://www.setopati.com/feed",
    "state_affiliated": false
   }
  ]
