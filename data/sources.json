@@ -1,6 +1,6 @@
 {
  "name": "Global Intelligence — News Source Registry",
- "version": "1.29.0",
+ "version": "1.30.0",
  "updated": "2026-07-20",
  "notes": [
   "Machine-readable registry of the world's important news media, consumed by the Global Intelligence pipelines and displayed on the site.",
@@ -45,7 +45,8 @@
   "v1.26: EMTV (Papua New Guinea, state broadcaster, alongside the independent Post-Courier — a 3rd attempt at PNG after 2 prior dead ends). A search for a Tongan RNZ feed turned out to just be RNZ (New Zealand) covering Tonga, not a Tonga-based outlet — the same wrong-candidate-type issue as an earlier Vanuatu attempt; correctly not added. Panama (Crítica) attempted again and still returned empty.",
   "v1.27: closed a significant, previously-undetected gap — checked the language distribution across the whole registry and found EVERY Middle East/North Africa source (23 sources across 10 countries: Qatar, Saudi Arabia, Turkey, Egypt, Morocco, Iran, Iraq, UAE, Jordan, Lebanon) was in English, despite Arabic being the majority native language across nearly all of them; European-language sources (Spanish/French/Portuguese/German/Italian/Danish/Swedish/Norwegian/Finnish) were kept native throughout the registry, but Arabic had zero representation anywhere. Added the FIRST 3 Arabic-language sources: Al Jazeera Arabic (Qatar, state_affiliated=true, matching the existing English edition's classification — same organization, native-language edition), Asharq Al-Awsat (Saudi Arabia, pan-Arab international paper historically owned by the Saudi royal family, state_affiliated=true — also gives Saudi Arabia its long-sought 2nd source, even though it isn't a truly independent one, since no credible independent Saudi outlet has been found across multiple rounds), Hespress Arabic (Morocco, state_affiliated=false, matching the existing English edition — same organization, native-language edition). Al-Ahram's Arabic edition was tried but returned HTTP 403.",
   "v1.28: continued the Arabic-language expansion — Youm7 (Egypt, state_affiliated=false — a major private Egyptian outlet, alongside the state-run Al-Ahram English). Iraq (Al Sumaria), UAE (Al Khaleej, Al Bayan), Jordan (Al Ghad), Lebanon (An-Nahar) were all attempted but returned empty/403/placeholder-only results — Arabic-language sources for these 4 countries remain an open gap.",
-  "v1.29: Ennahar (Algeria, state_affiliated=false, alongside the existing TSA French-language and APS English-language sources — Algeria now has all 3 of its major languages represented). Fresh attempts at Iraq (Al Mada, Shafaq Arabic), Jordan (Ammon News), Lebanon (Al Akhbar), UAE (WAM, Emarat Al Youm) all failed again — these 4 countries' Arabic-language gap persists across 2 rounds now."
+  "v1.29: Ennahar (Algeria, state_affiliated=false, alongside the existing TSA French-language and APS English-language sources — Algeria now has all 3 of its major languages represented). Fresh attempts at Iraq (Al Mada, Shafaq Arabic), Jordan (Ammon News), Lebanon (Al Akhbar), UAE (WAM, Emarat Al Youm) all failed again — these 4 countries' Arabic-language gap persists across 2 rounds now.",
+  "v1.30: a 3rd round of Arabic-language attempts for Iraq/UAE/Jordan/Lebanon/Sudan all failed again (Rudaw Arabic, Al Dustour, Sky News Arabia, and Al Ittihad all empty or pure placeholder results) — pivoted mid-round to the small-country batch instead and found Crítica (Panama, alongside Panamá América) — a 4th attempt at a 2nd Panama source, succeeding after El Siglo/La Prensa/Metro Libre/TVN all failed across 3 prior rounds."
  ],
  "sources": [
   {
@@ -3019,6 +3020,21 @@
    ],
    "url": "https://www.ennaharonline.com",
    "rss": "https://www.ennaharonline.com/feed/",
+   "state_affiliated": false
+  },
+  {
+   "id": "critica-pa",
+   "name": "Crítica",
+   "country": "Panama",
+   "region": "Americas",
+   "language": "es",
+   "type": "digital",
+   "aspects": [
+    "general",
+    "politics"
+   ],
+   "url": "https://www.critica.com.pa",
+   "rss": "https://www.critica.com.pa/rss.xml",
    "state_affiliated": false
   }
  ]
