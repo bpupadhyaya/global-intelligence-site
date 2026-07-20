@@ -1,6 +1,6 @@
 {
  "name": "Global Intelligence — News Source Registry",
- "version": "1.4.0",
+ "version": "1.5.0",
  "updated": "2026-07-19",
  "notes": [
   "Machine-readable registry of the world's important news media, consumed by the Global Intelligence pipelines and displayed on the site.",
@@ -20,7 +20,8 @@
   "v1.1: continued the depth pivot, prioritizing a specific sub-case — countries whose ONLY source is state_affiliated=true, meaning zero independent domestic voice at all. Egypt (Al-Ahram, state) gained Mada Masr, a genuinely independent Egyptian outlet publishing substantive critical coverage of state institutions. Also added Mail & Guardian (South Africa, alongside News24) and Nation Thailand (Thailand, alongside Bangkok Post) — both showed thin volume in the standard 24h freshness window at verification time but confirmed as real, actively-publishing outlets via a wider 7-day check (same precedent as round 104). A 4th candidate, Pagina12 (Argentina, to pair with the right-leaning Clarín), had zero results via both native RSS and Google News in 24h and 7d windows — dropped rather than shipped unverified. Qatar (Al Jazeera) and Saudi Arabia (Al Arabiya) remain single-source-and-state-affiliated; no credible independent domestic outlet was identified for either given each country's press environment — flagged for a future round rather than forcing a low-quality addition.",
   "v1.2: closed 3 more depth gaps — Mexico News Daily (Mexico — the prior round's Milenio/Excelsior/Animal Politico/Proceso/Infobae/El Universal attempts had all failed; this English-language outlet aimed at expats/travelers turned out to have real, substantive Mexico-specific reporting), Buenos Aires Times (Argentina, alongside Clarín — succeeded where the prior round's Página12 attempt found nothing), and Vietnam News (Vietnam, state_affiliated=true, alongside the existing state_affiliated=false VnExpress International — mirrors the Turkey TRT/Hürriyet pairing, giving readers both the official state framing and the more independent-leaning coverage for a country where all domestic media operates under Communist Party oversight to some degree).",
   "v1.3: found 3 more single-source-and-state-affiliated countries (same category as Egypt/Qatar/Saudi Arabia from v1.1) and fixed the 3 that had a viable independent candidate: IraqiNews.com (Iraq, alongside the KRG-linked Rudaw), Roya News (Jordan, independent broadcaster, alongside the state-run Jordan Times), Khaleej Times (UAE, private Dubai-based paper, alongside the state-run The National). Rejected Shafaq News and 7iber (empty feeds in both 24h and 7d windows) as Iraq/Jordan alternates before landing on the ones actually used.",
-  "v1.4: fixed the inverse of the v1.1-v1.3 gap — countries whose only source is an EXILE/OPPOSITION outlet rather than a domestic one, meaning zero official-state perspective exists (the mirror image of \"state-only, no independent voice\"). Iran's only source, Iran International, is a London-based opposition broadcaster; added IRNA, Iran's official state news agency (state_affiliated=true), for the government's own framing — same reasoning as the Turkey TRT/Hürriyet and Vietnam News/VnExpress pairings. Also added Naharnet (Lebanon, independent, alongside L'Orient Today) after rejecting 2 other Lebanese candidates: Daily Star Lebanon's Google News results were pure sports-betting-odds spam unrelated to Lebanon, and Al Manar's were entirely generic topic-tag pages — both matched the round-109/117 garbage-result pattern and were dropped."
+  "v1.4: fixed the inverse of the v1.1-v1.3 gap — countries whose only source is an EXILE/OPPOSITION outlet rather than a domestic one, meaning zero official-state perspective exists (the mirror image of \"state-only, no independent voice\"). Iran's only source, Iran International, is a London-based opposition broadcaster; added IRNA, Iran's official state news agency (state_affiliated=true), for the government's own framing — same reasoning as the Turkey TRT/Hürriyet and Vietnam News/VnExpress pairings. Also added Naharnet (Lebanon, independent, alongside L'Orient Today) after rejecting 2 other Lebanese candidates: Daily Star Lebanon's Google News results were pure sports-betting-odds spam unrelated to Lebanon, and Al Manar's were entirely generic topic-tag pages — both matched the round-109/117 garbage-result pattern and were dropped.",
+  "v1.5: found 3 more single-source-and-state-affiliated countries — Ghana (Graphic Online), Denmark (DR Nyheder), Sweden (SVT Nyheter) — and fixed all 3 with independent alternatives: MyJoyOnline (Ghana), Politiken (Denmark, Danish-language, matching the existing native-language precedent), Dagens Nyheter (Sweden, Swedish-language, same precedent)."
  ],
  "sources": [
   {
@@ -1985,6 +1986,51 @@
    ],
    "url": "https://www.naharnet.com",
    "rss": "https://news.google.com/rss/search?q=when:24h+site:naharnet.com&hl=en-US&gl=US&ceid=US:en",
+   "state_affiliated": false
+  },
+  {
+   "id": "myjoyonline",
+   "name": "MyJoyOnline",
+   "country": "Ghana",
+   "region": "Africa",
+   "language": "en",
+   "type": "digital",
+   "aspects": [
+    "general",
+    "politics"
+   ],
+   "url": "https://www.myjoyonline.com",
+   "rss": "https://www.myjoyonline.com/feed/",
+   "state_affiliated": false
+  },
+  {
+   "id": "politiken-dk",
+   "name": "Politiken",
+   "country": "Denmark",
+   "region": "Europe",
+   "language": "da",
+   "type": "digital",
+   "aspects": [
+    "general",
+    "politics"
+   ],
+   "url": "https://politiken.dk",
+   "rss": "https://politiken.dk/rss/senestenyt.rss",
+   "state_affiliated": false
+  },
+  {
+   "id": "dn-se",
+   "name": "Dagens Nyheter",
+   "country": "Sweden",
+   "region": "Europe",
+   "language": "sv",
+   "type": "digital",
+   "aspects": [
+    "general",
+    "politics"
+   ],
+   "url": "https://www.dn.se",
+   "rss": "https://www.dn.se/rss/",
    "state_affiliated": false
   }
  ]
