@@ -1,6 +1,6 @@
 {
  "name": "Global Intelligence — News Source Registry",
- "version": "1.39.0",
+ "version": "1.40.0",
  "updated": "2026-07-20",
  "notes": [
   "Machine-readable registry of the world's important news media, consumed by the Global Intelligence pipelines and displayed on the site.",
@@ -55,7 +55,8 @@
   "v1.36: ran a broader fresh scan beyond the original 16-country list and found 3 more clear native-language gaps — Al Rakoba (Sudan, Arabic, alongside the English Sudan Tribune/Dabanga Sudan), Utusan (Malaysia, Bahasa Malaysia, alongside the English The Star/Malay Mail), Novo Jornal (Angola, Portuguese, alongside the English ANGOP — chosen over Jornal de Angola, whose Google News results were just a repeated site tagline). Several other candidate countries from the broader scan (Ghana, Nigeria, Rwanda, Zimbabwe, Uganda) were deliberately not pursued since English functions as a genuine primary/official media language there alongside many co-official local languages, unlike Sudan/Malaysia/Angola where a single dominant national language was clearly and completely unrepresented.",
   "v1.37: Kenya (Swahili) and Ethiopia (Amharic) failed a 3rd/2nd time this round with fresh candidates — likely permanent gaps now. Pivoted to breadth and found a much bigger unaddressed problem: 35 countries had ZERO sources at all, never previously attempted. Added the first 5: Civil.ge (Georgia — first-ever South Caucasus source), TAP (Tunisia, state news agency — first-ever source), El Deber (Bolivia — first-ever source), Myanmar Now (Myanmar, independent, deeply reported ongoing-conflict coverage — first-ever source), Arab Times Kuwait (Kuwait, independent — first-ever source, chosen over the official KUNA whose Google News results were about 60% generic navigation pages).",
   "v1.38: 3 more first-ever countries — OC Media (Armenia — independent Caucasus-regional outlet with substantial Armenia-specific coverage; Netanyahu blocking an Armenian Genocide bill after Azerbaijan pressure, Armenian mine sale, flower exports), Libya Review (Libya, independent), Yemen Monitor (Yemen — mixed but net-real, roughly 40% of its Google News results are generic tag pages, same judgment call as round 110/129 given the high-stakes, genuinely relevant content in the real portion). Mongolia (News.MN) and Azerbaijan (APA) were attempted but Mongolia's results were mostly generic archive/tag pages and Azerbaijan returned nothing — both unresolved.",
-  "v1.39: 3 more first-ever countries — El Observador (Uruguay, independent — real hard news present including political criticism of the Interior Minister, a criminal homicide case, and UTE storm-repair coverage, amid heavy World Cup coverage given the current news cycle), El Comercio (Ecuador, independent — major Ecuadorian daily), Times of Oman (Oman, independent — genuine local coverage of consumer protection enforcement, industrial waste management, and the Dhofar Khareef tourist season amid some sports/opinion filler). Bahrain (BNA) and Paraguay (ABC, Ultima Hora) were attempted but failed — 405 error and 404 respectively."
+  "v1.39: 3 more first-ever countries — El Observador (Uruguay, independent — real hard news present including political criticism of the Interior Minister, a criminal homicide case, and UTE storm-repair coverage, amid heavy World Cup coverage given the current news cycle), El Comercio (Ecuador, independent — major Ecuadorian daily), Times of Oman (Oman, independent — genuine local coverage of consumer protection enforcement, industrial waste management, and the Dhofar Khareef tourist season amid some sports/opinion filler). Bahrain (BNA) and Paraguay (ABC, Ultima Hora) were attempted but failed — 405 error and 404 respectively.",
+  "v1.40: 3 more first-ever countries — Sunday Standard (Botswana, independent — real coverage of tourism revenue disputes and assassination-fear allegations against a former president), ZNBC (Zambia, state-affiliated — mixed feed with one placeholder entry alongside genuine coverage: an AI-organisation membership announcement, a national-team coaching appointment, an opposition candidate's death, a K4.3bn solar deal, and election-commission campaign guidance), Khmer Times (Cambodia, state-affiliated — mostly real domestic coverage of a scam-center deportation, a free medical mission, road-project inspections, ruling-party political education, and travel restrictions on women workers, alongside a couple of generic section-tag entries). Laos (Vientiane Times, both native feed and Google News fallback returned only repeated placeholder titles) and Guyana (Stabroek News, 404 on native feed and zero entries on Google News even at a 7-day window) were attempted but failed."
  ],
  "sources": [
   {
@@ -3528,6 +3529,51 @@
    ],
    "url": "https://timesofoman.com",
    "rss": "https://news.google.com/rss/search?q=when:24h+site:timesofoman.com&hl=en-US&gl=US&ceid=US:en",
+   "state_affiliated": false
+  },
+  {
+   "id": "sundaystandard-bw",
+   "name": "Sunday Standard",
+   "country": "Botswana",
+   "region": "Africa",
+   "language": "en",
+   "type": "digital",
+   "aspects": [
+    "general",
+    "politics"
+   ],
+   "url": "https://www.sundaystandard.info",
+   "rss": "https://news.google.com/rss/search?q=when:7d+site:sundaystandard.info&hl=en-US&gl=US&ceid=US:en",
+   "state_affiliated": false
+  },
+  {
+   "id": "znbc-zm",
+   "name": "ZNBC",
+   "country": "Zambia",
+   "region": "Africa",
+   "language": "en",
+   "type": "broadcaster",
+   "aspects": [
+    "general",
+    "politics"
+   ],
+   "url": "https://www.znbc.co.zm",
+   "rss": "https://news.google.com/rss/search?q=when:24h+site:znbc.co.zm&hl=en-US&gl=US&ceid=US:en",
+   "state_affiliated": true
+  },
+  {
+   "id": "khmertimeskh",
+   "name": "Khmer Times",
+   "country": "Cambodia",
+   "region": "Asia",
+   "language": "en",
+   "type": "digital",
+   "aspects": [
+    "general",
+    "politics"
+   ],
+   "url": "https://www.khmertimeskh.com",
+   "rss": "https://news.google.com/rss/search?q=when:24h+site:khmertimeskh.com&hl=en-US&gl=US&ceid=US:en",
    "state_affiliated": false
   }
  ]
