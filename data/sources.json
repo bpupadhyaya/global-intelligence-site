@@ -1,6 +1,6 @@
 {
  "name": "Global Intelligence — News Source Registry",
- "version": "1.31.0",
+ "version": "1.32.0",
  "updated": "2026-07-20",
  "notes": [
   "Machine-readable registry of the world's important news media, consumed by the Global Intelligence pipelines and displayed on the site.",
@@ -47,7 +47,8 @@
   "v1.28: continued the Arabic-language expansion — Youm7 (Egypt, state_affiliated=false — a major private Egyptian outlet, alongside the state-run Al-Ahram English). Iraq (Al Sumaria), UAE (Al Khaleej, Al Bayan), Jordan (Al Ghad), Lebanon (An-Nahar) were all attempted but returned empty/403/placeholder-only results — Arabic-language sources for these 4 countries remain an open gap.",
   "v1.29: Ennahar (Algeria, state_affiliated=false, alongside the existing TSA French-language and APS English-language sources — Algeria now has all 3 of its major languages represented). Fresh attempts at Iraq (Al Mada, Shafaq Arabic), Jordan (Ammon News), Lebanon (Al Akhbar), UAE (WAM, Emarat Al Youm) all failed again — these 4 countries' Arabic-language gap persists across 2 rounds now.",
   "v1.30: a 3rd round of Arabic-language attempts for Iraq/UAE/Jordan/Lebanon/Sudan all failed again (Rudaw Arabic, Al Dustour, Sky News Arabia, and Al Ittihad all empty or pure placeholder results) — pivoted mid-round to the small-country batch instead and found Crítica (Panama, alongside Panamá América) — a 4th attempt at a 2nd Panama source, succeeding after El Siglo/La Prensa/Metro Libre/TVN all failed across 3 prior rounds.",
-  "v1.31: found an even bigger version of the round-127 Arabic-language discovery — checked China/Japan/South Korea/Russia/Hong Kong and found ALL 12 sources across these countries were English-only too, despite Chinese/Japanese/Korean/Russian being spoken natively by well over a billion people combined and these being some of the most significant countries the app covers. Added native-language editions of 3 existing English entities plus 1 genuinely new independent voice: People's Daily (China, Chinese, state_affiliated=true — CCP's official paper, matches Xinhua/Global Times' existing state classification), Yomiuri Shimbun (Japan, Japanese, state_affiliated=false — the world's largest-circulation newspaper), TASS Russian edition (Russia, Russian, state_affiliated=true, alongside the existing English TASS), Meduza Russian edition (Russia — exile, Latvia, Russian, state_affiliated=false, alongside the existing English Meduza — Russian speakers previously had zero native-language representation from either the state or independent side)."
+  "v1.31: found an even bigger version of the round-127 Arabic-language discovery — checked China/Japan/South Korea/Russia/Hong Kong and found ALL 12 sources across these countries were English-only too, despite Chinese/Japanese/Korean/Russian being spoken natively by well over a billion people combined and these being some of the most significant countries the app covers. Added native-language editions of 3 existing English entities plus 1 genuinely new independent voice: People's Daily (China, Chinese, state_affiliated=true — CCP's official paper, matches Xinhua/Global Times' existing state classification), Yomiuri Shimbun (Japan, Japanese, state_affiliated=false — the world's largest-circulation newspaper), TASS Russian edition (Russia, Russian, state_affiliated=true, alongside the existing English TASS), Meduza Russian edition (Russia — exile, Latvia, Russian, state_affiliated=false, alongside the existing English Meduza — Russian speakers previously had zero native-language representation from either the state or independent side).",
+  "v1.32: ran a systematic scan across the whole registry for the same gap — 16 more non-English-native countries (South Korea, Iran, India, Thailand, Vietnam, Indonesia, Pakistan, Bangladesh, Sri Lanka, Nepal, Israel, Ukraine, Turkey, Ethiopia, Tanzania, Kenya) had zero native-script representation despite an English source already existing. Fixed 4 of the highest-population ones this round: Hürriyet (Turkey, Turkish, alongside the existing Hürriyet Daily News English edition and TRT World), Amar Ujala (India, Hindi, independent), Yonhap Korean edition (South Korea, Korean, state, alongside the existing English edition — mixed but net-real, its Google News results include some bare hourly-digest placeholder entries alongside genuine headlines, same judgment call as round 110/129), ANTARA (Indonesia, Bahasa/Indonesian, state news agency). 12 more countries from this scan remain open for future rounds."
  ],
  "sources": [
   {
@@ -3097,6 +3098,66 @@
    "url": "https://meduza.io",
    "rss": "https://meduza.io/rss/all",
    "state_affiliated": false
+  },
+  {
+   "id": "hurriyet-tr",
+   "name": "Hürriyet",
+   "country": "Turkey",
+   "region": "Middle East",
+   "language": "tr",
+   "type": "digital",
+   "aspects": [
+    "general",
+    "politics"
+   ],
+   "url": "https://www.hurriyet.com.tr",
+   "rss": "https://www.hurriyet.com.tr/rss/anasayfa",
+   "state_affiliated": false
+  },
+  {
+   "id": "amarujala",
+   "name": "Amar Ujala",
+   "country": "India",
+   "region": "Asia",
+   "language": "hi",
+   "type": "digital",
+   "aspects": [
+    "general",
+    "politics"
+   ],
+   "url": "https://www.amarujala.com",
+   "rss": "https://www.amarujala.com/rss/india-news.xml",
+   "state_affiliated": false
+  },
+  {
+   "id": "yonhap-ko",
+   "name": "연합뉴스",
+   "country": "South Korea",
+   "region": "Asia",
+   "language": "ko",
+   "type": "wire",
+   "aspects": [
+    "general",
+    "politics"
+   ],
+   "url": "https://www.yna.co.kr",
+   "rss": "https://news.google.com/rss/search?q=when:24h+site:yna.co.kr&hl=ko&gl=KR&ceid=KR:ko",
+   "state_affiliated": true
+  },
+  {
+   "id": "antaranews",
+   "name": "ANTARA",
+   "country": "Indonesia",
+   "region": "Asia",
+   "language": "id",
+   "type": "wire",
+   "aspects": [
+    "general",
+    "politics"
+   ],
+   "url": "https://www.antaranews.com",
+   "rss": "https://www.antaranews.com/rss/terkini.xml",
+   "state_affiliated": true
   }
  ]
 }
