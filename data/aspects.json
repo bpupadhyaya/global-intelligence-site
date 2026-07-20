@@ -1,6 +1,6 @@
 {
   "name": "Global Intelligence — Aspect Taxonomy",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "confirmed": "2026-07-11",
   "notes": [
     "Phase 1 = global lens only: 12 categories, 41 core aspects (confirmed by Bhim 2026-07-11).",
@@ -23,7 +23,16 @@
     "recognized the US State Department's own name for its advisories ('state department warning'),",
     "with no equivalent for any other country's travel-advisory body. Added 'foreign office warning'",
     "and 'fcdo advisory' for the UK's Foreign, Commonwealth & Development Office — the next most",
-    "commonly cited advisory source in English-language coverage after the US State Department."
+    "commonly cited advisory source in English-language coverage after the US State Department.",
+    "v1.4 (2026-07-20): a full keyword-list re-read (every aspect, not just the ones already known",
+    "to have gaps) found 3 more Western-institution-only keyword sets. technology.semiconductors",
+    "named TSMC/Nvidia/Intel/ASML but not Samsung or SK Hynix, 2 of the world's largest chipmakers —",
+    "added both. geopolitics.defense named only the Pentagon by institution; added 'pla'/'people's",
+    "liberation army' (China's military, frequently referenced by that acronym in English coverage).",
+    "technology.ai named OpenAI/Anthropic/DeepMind but not DeepSeek, whose January 2025 model",
+    "release triggered a real global market selloff — a concrete, high-impact omission, not just a",
+    "diversity gap. science-health.medicine named only the FDA; added 'ema approval' for the EU's",
+    "European Medicines Agency, the 2nd most commonly cited drug regulator in English coverage."
   ],
   "categories": [
     { "id": "economy", "name": "Economy" },
@@ -59,20 +68,20 @@
     { "id": "geopolitics.conflicts", "category": "geopolitics", "name": "Conflicts & wars", "keywords": ["war", "conflict", "strike", "missile", "attack", "offensive", "ceasefire", "troops", "airstrike", "invasion", "fighting", "military operation", "hostilities", "drone attack"], "influences": ["travel", "investments", "daily-life"] },
     { "id": "geopolitics.diplomacy", "category": "geopolitics", "name": "Diplomacy & summits", "keywords": ["summit", "diplomacy", "diplomatic", "talks", "negotiation", "treaty", "bilateral", "united nations", "g7", "g20", "nato", "peace deal", "foreign minister", "ambassador"], "influences": ["investments", "travel"] },
     { "id": "geopolitics.sanctions", "category": "geopolitics", "name": "Sanctions & export controls", "keywords": ["sanction", "export control", "embargo", "blacklist", "restriction", "export ban", "asset freeze", "trade restriction"], "influences": ["investments", "business"] },
-    { "id": "geopolitics.defense", "category": "geopolitics", "name": "Defense & military", "keywords": ["defense", "defence", "military", "weapons", "arms", "missile test", "nuclear", "army", "navy", "pentagon", "military exercise", "defense budget", "fighter jet"], "influences": ["investments", "business"] },
+    { "id": "geopolitics.defense", "category": "geopolitics", "name": "Defense & military", "keywords": ["defense", "defence", "military", "weapons", "arms", "missile test", "nuclear", "army", "navy", "pentagon", "pla", "people's liberation army", "military exercise", "defense budget", "fighter jet"], "influences": ["investments", "business"] },
 
     { "id": "energy.oil-gas", "category": "energy", "name": "Oil & gas", "keywords": ["oil", "crude", "opec", "natural gas", "lng", "brent", "wti", "petroleum", "refinery", "gas prices", "pipeline"], "influences": ["investments", "daily-life", "travel"] },
     { "id": "energy.electricity", "category": "energy", "name": "Electricity & grid", "keywords": ["electricity", "power grid", "blackout", "power outage", "utility", "energy prices", "power plant", "grid", "electric bill"], "influences": ["daily-life", "business"] },
     { "id": "energy.renewables", "category": "energy", "name": "Renewables & nuclear power", "keywords": ["solar", "wind power", "renewable", "nuclear power", "nuclear plant", "clean energy", "hydrogen", "battery storage", "geothermal", "hydropower", "reactor"], "influences": ["investments", "business"] },
 
-    { "id": "technology.ai", "category": "technology", "name": "AI", "keywords": ["artificial intelligence", "ai", "machine learning", "chatgpt", "openai", "anthropic", "llm", "generative", "ai model", "deepmind", "ai chip", "ai regulation"], "influences": ["investments", "business", "daily-life"] },
-    { "id": "technology.semiconductors", "category": "technology", "name": "Semiconductors", "keywords": ["semiconductor", "chip", "tsmc", "nvidia", "intel", "asml", "foundry", "wafer", "chipmaker", "gpu"], "influences": ["investments", "business"] },
+    { "id": "technology.ai", "category": "technology", "name": "AI", "keywords": ["artificial intelligence", "ai", "machine learning", "chatgpt", "openai", "anthropic", "deepseek", "llm", "generative", "ai model", "deepmind", "ai chip", "ai regulation"], "influences": ["investments", "business", "daily-life"] },
+    { "id": "technology.semiconductors", "category": "technology", "name": "Semiconductors", "keywords": ["semiconductor", "chip", "tsmc", "nvidia", "intel", "asml", "samsung", "sk hynix", "foundry", "wafer", "chipmaker", "gpu"], "influences": ["investments", "business"] },
     { "id": "technology.big-tech", "category": "technology", "name": "Big tech", "keywords": ["apple", "google", "microsoft", "amazon", "meta", "antitrust", "app store", "big tech", "alphabet", "tesla", "samsung", "tiktok", "alibaba", "tencent", "huawei", "bytedance", "baidu"], "influences": ["investments", "business"] },
     { "id": "technology.cybersecurity", "category": "technology", "name": "Cybersecurity", "keywords": ["cyberattack", "hack", "ransomware", "data breach", "cybersecurity", "malware", "phishing", "vulnerability", "zero-day", "breach"], "influences": ["business", "daily-life"] },
     { "id": "technology.space", "category": "technology", "name": "Space", "keywords": ["spacex", "nasa", "satellite", "rocket", "launch", "space station", "lunar", "mars", "orbit", "astronaut", "space mission"], "influences": ["investments", "business"] },
 
     { "id": "science-health.public-health", "category": "science-health", "name": "Public health & outbreaks", "keywords": ["outbreak", "epidemic", "pandemic", "virus", "vaccine", "world health organization", "public health", "infection", "disease spread", "health emergency", "flu", "measles"], "influences": ["daily-life", "travel"] },
-    { "id": "science-health.medicine", "category": "science-health", "name": "Medicine & drug breakthroughs", "keywords": ["drug", "fda approval", "clinical trial", "treatment", "therapy", "cancer", "alzheimer", "obesity drug", "pharma", "medical breakthrough", "gene therapy"], "influences": ["daily-life", "investments"] },
+    { "id": "science-health.medicine", "category": "science-health", "name": "Medicine & drug breakthroughs", "keywords": ["drug", "fda approval", "ema approval", "clinical trial", "treatment", "therapy", "cancer", "alzheimer", "obesity drug", "pharma", "medical breakthrough", "gene therapy"], "influences": ["daily-life", "investments"] },
     { "id": "science-health.research", "category": "science-health", "name": "Research frontiers", "keywords": ["research", "study finds", "scientists", "discovery", "breakthrough", "quantum", "physics", "biology", "genome", "nobel", "peer-reviewed"], "influences": ["daily-life"] },
 
     { "id": "climate.extreme-weather", "category": "climate", "name": "Extreme weather & disasters", "keywords": ["hurricane", "typhoon", "flood", "wildfire", "earthquake", "drought", "heatwave", "heat wave", "storm", "tornado", "cyclone", "landslide", "disaster", "evacuation"], "influences": ["travel", "daily-life"] },
