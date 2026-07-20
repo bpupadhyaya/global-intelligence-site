@@ -1,6 +1,6 @@
 {
  "name": "Global Intelligence — News Source Registry",
- "version": "1.18.0",
+ "version": "1.19.0",
  "updated": "2026-07-20",
  "notes": [
   "Machine-readable registry of the world's important news media, consumed by the Global Intelligence pipelines and displayed on the site.",
@@ -34,7 +34,8 @@
   "v1.15: 2 more North/Central African depth fixes — APS (Algeria, official state news agency, English, alongside the independent TSA), ActuCameroun (Cameroon, a 2nd independent voice alongside Journal du Cameroun). Zimbabwe retried again (Herald native feed, ZBC News) — both blocked with HTTP 403, a 2nd consecutive dead end; Senegal's RTS and Cameroon's CRTV state broadcasters were also tried and returned only generic station-identity placeholder pages via Google News, not real articles.",
   "v1.16: 3 more depth fixes — Le Soleil (Senegal, state, alongside the independent SenePlus), O País (Mozambique, a 2nd independent voice alongside Club of Mozambique), Midi Madagasikara (Madagascar, a 2nd independent voice alongside Madagascar Tribune). Mali was attempted again (ORTM, AMAP) but both returned only generic homepage/channel-identity placeholders via Google News, matching last round's Zimbabwe pattern — no working 2nd Mali source found across 2 attempts now.",
   "v1.17: closes the last 2 African breadth-added countries still needing a depth pass — Actualite.cd (DR Congo, a 2nd independent voice alongside Radio Okapi) and Dabanga Sudan (Sudan, a 2nd independent voice alongside Sudan Tribune, deeply reported Darfur/conflict-focused journalism). Both countries' state news agencies (ACP for DR Congo, SUNA for Sudan) were tried first but returned only a placeholder page or zero results respectively — likely reflecting how each country's ongoing conflict has disrupted state media's own online publishing, not a search-method failure.",
-  "v1.18: pivoted the depth pass to non-African single-source countries that hadn't been prioritized — Italy and Spain (both G7/G20-tier European economies were somehow still single-source) plus Kenya and Bangladesh. Added El Mundo (Spain, center-right, alongside the center-left El País), La Repubblica (Italy, center-left, alongside the more centrist Corriere della Sera), Prothom Alo English (Bangladesh, alongside The Daily Star), Standard Media (Kenya, alongside the Nation)."
+  "v1.18: pivoted the depth pass to non-African single-source countries that hadn't been prioritized — Italy and Spain (both G7/G20-tier European economies were somehow still single-source) plus Kenya and Bangladesh. Added El Mundo (Spain, center-right, alongside the center-left El País), La Repubblica (Italy, center-left, alongside the more centrist Corriere della Sera), Prothom Alo English (Bangladesh, alongside The Daily Star), Standard Media (Kenya, alongside the Nation).",
+  "v1.19: 4 more depth fixes — Ukrinform (Ukraine, state news agency, alongside the independent Kyiv Independent), NRK (Norway, state broadcaster, alongside the independent Aftenposten), Rappler (Philippines, independent, press-freedom-focused, alongside the Inquirer), Malay Mail (Malaysia, independent, alongside The Star). Free Malaysia Today and Bernama were tried first for Malaysia but returned HTTP 403/404 respectively."
  ],
  "sources": [
   {
@@ -2676,6 +2677,67 @@
    ],
    "url": "https://www.standardmedia.co.ke",
    "rss": "https://www.standardmedia.co.ke/rss/headlines.php",
+   "state_affiliated": false
+  },
+  {
+   "id": "ukrinform",
+   "name": "Ukrinform",
+   "country": "Ukraine",
+   "region": "Europe",
+   "language": "en",
+   "type": "wire",
+   "aspects": [
+    "general",
+    "politics",
+    "geopolitics"
+   ],
+   "url": "https://www.ukrinform.net",
+   "rss": "https://www.ukrinform.net/rss/rubric-polytics",
+   "state_affiliated": true
+  },
+  {
+   "id": "nrk-no",
+   "name": "NRK",
+   "country": "Norway",
+   "region": "Europe",
+   "language": "no",
+   "type": "broadcaster",
+   "aspects": [
+    "general",
+    "politics"
+   ],
+   "url": "https://www.nrk.no",
+   "rss": "https://www.nrk.no/toppsaker.rss",
+   "state_affiliated": true
+  },
+  {
+   "id": "rappler-ph",
+   "name": "Rappler",
+   "country": "Philippines",
+   "region": "Asia",
+   "language": "en",
+   "type": "digital",
+   "aspects": [
+    "general",
+    "politics"
+   ],
+   "url": "https://www.rappler.com",
+   "rss": "https://www.rappler.com/feed/",
+   "state_affiliated": false
+  },
+  {
+   "id": "malaymail",
+   "name": "Malay Mail",
+   "country": "Malaysia",
+   "region": "Asia",
+   "language": "en",
+   "type": "digital",
+   "aspects": [
+    "general",
+    "politics"
+   ],
+   "url": "https://www.malaymail.com",
+   "rss": "https://www.malaymail.com/feed/rss/malaysia",
    "state_affiliated": false
   }
  ]
