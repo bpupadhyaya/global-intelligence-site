@@ -1,6 +1,6 @@
 {
  "name": "Global Intelligence — News Source Registry",
- "version": "1.36.0",
+ "version": "1.37.0",
  "updated": "2026-07-20",
  "notes": [
   "Machine-readable registry of the world's important news media, consumed by the Global Intelligence pipelines and displayed on the site.",
@@ -52,7 +52,8 @@
   "v1.33: closed 5 more native-language gaps in one round — IRNA Persian edition (Iran, alongside the existing English IRNA), VnExpress Vietnamese edition (Vietnam, alongside the existing English VnExpress International), Jang (Pakistan, Urdu, independent, alongside the English Dawn), Prothom Alo Bengali edition (Bangladesh, alongside the existing English Prothom Alo), Ynet (Israel, Hebrew, independent, alongside the English Times of Israel and Haaretz). All 5 confirmed with genuine, substantive native-language content. Remaining open: Thailand (Thai), Sri Lanka (Sinhala), Nepal (Nepali), Ukraine (Ukrainian), Ethiopia (Amharic), Tanzania/Kenya (Swahili).",
   "v1.34: closed 4 more — Thairath (Thailand, Thai, independent, alongside the English Bangkok Post/Nation Thailand), Ukrinform Ukrainian edition (Ukraine, alongside the existing English Ukrinform and independent Kyiv Independent), Divaina (Sri Lanka, Sinhala, independent, alongside the English Daily Mirror/Daily FT), Setopati (Nepal, Nepali, independent, alongside the English Kathmandu Post/Onlinekhabar). Ethiopia (Amharic) and Tanzania/Kenya (Swahili) remain — domestic-outlet candidates for both failed this round (Mwananchi Tanzania 404, Taifa Leo Kenya 403), only BBC's regional-language services worked, which weren't used since they're not domestic outlets.",
   "v1.35: Habari Leo (Tanzania, Swahili, state — Tanzania's official state newspaper, alongside the independent Citizen and state Daily News), a 2nd attempt after Mwananchi failed last round. Kenya (Taifa Leo) got only 1 real headline in a 7-day window and 0 in 24h — too thin to add confidently, unresolved. Ethiopia (Amharic) attempted again (EBC Amharic-locale search, Walta Info, Addis Admas) but all either returned English-language content despite the Amharic locale parameter or zero results — Ethiopia's Amharic gap persists across 2 rounds now.",
-  "v1.36: ran a broader fresh scan beyond the original 16-country list and found 3 more clear native-language gaps — Al Rakoba (Sudan, Arabic, alongside the English Sudan Tribune/Dabanga Sudan), Utusan (Malaysia, Bahasa Malaysia, alongside the English The Star/Malay Mail), Novo Jornal (Angola, Portuguese, alongside the English ANGOP — chosen over Jornal de Angola, whose Google News results were just a repeated site tagline). Several other candidate countries from the broader scan (Ghana, Nigeria, Rwanda, Zimbabwe, Uganda) were deliberately not pursued since English functions as a genuine primary/official media language there alongside many co-official local languages, unlike Sudan/Malaysia/Angola where a single dominant national language was clearly and completely unrepresented."
+  "v1.36: ran a broader fresh scan beyond the original 16-country list and found 3 more clear native-language gaps — Al Rakoba (Sudan, Arabic, alongside the English Sudan Tribune/Dabanga Sudan), Utusan (Malaysia, Bahasa Malaysia, alongside the English The Star/Malay Mail), Novo Jornal (Angola, Portuguese, alongside the English ANGOP — chosen over Jornal de Angola, whose Google News results were just a repeated site tagline). Several other candidate countries from the broader scan (Ghana, Nigeria, Rwanda, Zimbabwe, Uganda) were deliberately not pursued since English functions as a genuine primary/official media language there alongside many co-official local languages, unlike Sudan/Malaysia/Angola where a single dominant national language was clearly and completely unrepresented.",
+  "v1.37: Kenya (Swahili) and Ethiopia (Amharic) failed a 3rd/2nd time this round with fresh candidates — likely permanent gaps now. Pivoted to breadth and found a much bigger unaddressed problem: 35 countries had ZERO sources at all, never previously attempted. Added the first 5: Civil.ge (Georgia — first-ever South Caucasus source), TAP (Tunisia, state news agency — first-ever source), El Deber (Bolivia — first-ever source), Myanmar Now (Myanmar, independent, deeply reported ongoing-conflict coverage — first-ever source), Arab Times Kuwait (Kuwait, independent — first-ever source, chosen over the official KUNA whose Google News results were about 60% generic navigation pages)."
  ],
  "sources": [
   {
@@ -3358,6 +3359,82 @@
    ],
    "url": "https://novojornal.co.ao",
    "rss": "https://news.google.com/rss/search?q=when:24h+site:novojornal.co.ao&hl=pt&gl=AO&ceid=AO:pt",
+   "state_affiliated": false
+  },
+  {
+   "id": "civilge",
+   "name": "Civil.ge",
+   "country": "Georgia",
+   "region": "Europe",
+   "language": "en",
+   "type": "digital",
+   "aspects": [
+    "general",
+    "politics"
+   ],
+   "url": "https://civil.ge",
+   "rss": "https://civil.ge/feed",
+   "state_affiliated": false
+  },
+  {
+   "id": "tap-tn",
+   "name": "TAP",
+   "country": "Tunisia",
+   "region": "Africa",
+   "language": "en",
+   "type": "wire",
+   "aspects": [
+    "general",
+    "politics"
+   ],
+   "url": "https://www.tap.info.tn",
+   "rss": "https://news.google.com/rss/search?q=when:24h+site:tap.info.tn&hl=en-US&gl=US&ceid=US:en",
+   "state_affiliated": true
+  },
+  {
+   "id": "eldeber-bo",
+   "name": "El Deber",
+   "country": "Bolivia",
+   "region": "Americas",
+   "language": "es",
+   "type": "digital",
+   "aspects": [
+    "general",
+    "politics"
+   ],
+   "url": "https://eldeber.com.bo",
+   "rss": "https://eldeber.com.bo/feed",
+   "state_affiliated": false
+  },
+  {
+   "id": "myanmarnow",
+   "name": "Myanmar Now",
+   "country": "Myanmar",
+   "region": "Asia",
+   "language": "en",
+   "type": "digital",
+   "aspects": [
+    "general",
+    "politics",
+    "geopolitics"
+   ],
+   "url": "https://myanmar-now.org",
+   "rss": "https://myanmar-now.org/en/feed",
+   "state_affiliated": false
+  },
+  {
+   "id": "arabtimes-kw",
+   "name": "Arab Times Kuwait",
+   "country": "Kuwait",
+   "region": "Middle East",
+   "language": "en",
+   "type": "digital",
+   "aspects": [
+    "general",
+    "politics"
+   ],
+   "url": "https://www.arabtimesonline.com",
+   "rss": "https://news.google.com/rss/search?q=when:24h+site:arabtimesonline.com&hl=en-US&gl=US&ceid=US:en",
    "state_affiliated": false
   }
  ]
