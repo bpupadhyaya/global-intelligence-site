@@ -1,6 +1,6 @@
 {
  "name": "Global Intelligence — News Source Registry",
- "version": "1.8.0",
+ "version": "1.9.0",
  "updated": "2026-07-19",
  "notes": [
   "Machine-readable registry of the world's important news media, consumed by the Global Intelligence pipelines and displayed on the site.",
@@ -24,7 +24,8 @@
   "v1.5: found 3 more single-source-and-state-affiliated countries — Ghana (Graphic Online), Denmark (DR Nyheder), Sweden (SVT Nyheter) — and fixed all 3 with independent alternatives: MyJoyOnline (Ghana), Politiken (Denmark, Danish-language, matching the existing native-language precedent), Dagens Nyheter (Sweden, Swedish-language, same precedent).",
   "v1.6: 3 more single-source-and-state-affiliated fixes — Helsingin Sanomat (Finland, Finnish-language, alongside the state broadcaster Yle), KT Press (Rwanda, alongside the state-run New Times — The Chronicles was tried first but turned out to be a Rwanda/Uganda safari-tourism blog, not a news outlet, and was dropped), Vlast.kz (Kazakhstan, alongside the state-run Astana Times — one of the few genuinely independent Kazakh digital outlets; showed thin volume in the 24h window at verification time, confirmed real via the round-104 wider-window method).",
   "v1.7: ran a systematic scan of every remaining single-source country's state_affiliated flag (rather than spot-checking a handful) and found only 5 left: Angola, New Zealand, Qatar, Russia, Saudi Arabia. Qatar/Saudi Arabia already flagged as likely-permanent gaps. Russia's TASS is offset in practice by the separately-labeled 'Russia (exile, Latvia)' independent source, just split across 2 country-label entries rather than a true single-source gap. Fixed New Zealand: added Stuff.co.nz (private, alongside the public broadcaster RNZ). Angola remains open — Novo Jornal, Expansão, and Valor Económico (via Google News) all returned zero results in this attempt; ANGOP remains the only working Angola feed found so far.",
-  "v1.8: back to breadth after the depth pivot — added the registry's first Caribbean, Central American, and Pacific Island sources: Jamaica (Jamaica Observer), Trinidad & Tobago (Trinidad Guardian), Costa Rica (La Nación, Spanish-language), Fiji (The Fiji Times), Papua New Guinea (Post-Courier). Rejected Newsday Trinidad (its feed was entirely legal notices/classified ads, not news) in favor of Trinidad Guardian instead."
+  "v1.8: back to breadth after the depth pivot — added the registry's first Caribbean, Central American, and Pacific Island sources: Jamaica (Jamaica Observer), Trinidad & Tobago (Trinidad Guardian), Costa Rica (La Nación, Spanish-language), Fiji (The Fiji Times), Papua New Guinea (Post-Courier). Rejected Newsday Trinidad (its feed was entirely legal notices/classified ads, not news) in favor of Trinidad Guardian instead.",
+  "v1.9: continued broadening the same 3 regions — Dominican Republic (Diario Libre, Spanish-language), Haiti (Le Nouvelliste, English edition), Samoa (Samoa Observer, thin 24h volume but confirmed real via the round-104 wider-window method). Guatemala (Prensa Libre) and Panama (La Prensa) were attempted but dropped — Prensa Libre's Google News results were bare '- Prensa Libre' placeholders with no headline text, and La Prensa returned zero results via both methods."
  ],
  "sources": [
   {
@@ -2169,6 +2170,51 @@
    ],
    "url": "https://www.postcourier.com.pg",
    "rss": "https://www.postcourier.com.pg/feed/",
+   "state_affiliated": false
+  },
+  {
+   "id": "diariolibre",
+   "name": "Diario Libre",
+   "country": "Dominican Republic",
+   "region": "Americas",
+   "language": "es",
+   "type": "digital",
+   "aspects": [
+    "general",
+    "politics"
+   ],
+   "url": "https://www.diariolibre.com",
+   "rss": "https://www.diariolibre.com/rss/portada.xml",
+   "state_affiliated": false
+  },
+  {
+   "id": "lenouvelliste",
+   "name": "Le Nouvelliste",
+   "country": "Haiti",
+   "region": "Americas",
+   "language": "en",
+   "type": "digital",
+   "aspects": [
+    "general",
+    "politics"
+   ],
+   "url": "https://lenouvelliste.com",
+   "rss": "https://lenouvelliste.com/rss",
+   "state_affiliated": false
+  },
+  {
+   "id": "samoaobserver",
+   "name": "Samoa Observer",
+   "country": "Samoa",
+   "region": "Oceania",
+   "language": "en",
+   "type": "digital",
+   "aspects": [
+    "general",
+    "politics"
+   ],
+   "url": "https://www.samoaobserver.ws",
+   "rss": "https://news.google.com/rss/search?q=when:24h+site:samoaobserver.ws&hl=en-US&gl=US&ceid=US:en",
    "state_affiliated": false
   }
  ]
