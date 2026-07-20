@@ -1,6 +1,6 @@
 {
  "name": "Global Intelligence — News Source Registry",
- "version": "1.30.0",
+ "version": "1.31.0",
  "updated": "2026-07-20",
  "notes": [
   "Machine-readable registry of the world's important news media, consumed by the Global Intelligence pipelines and displayed on the site.",
@@ -46,7 +46,8 @@
   "v1.27: closed a significant, previously-undetected gap — checked the language distribution across the whole registry and found EVERY Middle East/North Africa source (23 sources across 10 countries: Qatar, Saudi Arabia, Turkey, Egypt, Morocco, Iran, Iraq, UAE, Jordan, Lebanon) was in English, despite Arabic being the majority native language across nearly all of them; European-language sources (Spanish/French/Portuguese/German/Italian/Danish/Swedish/Norwegian/Finnish) were kept native throughout the registry, but Arabic had zero representation anywhere. Added the FIRST 3 Arabic-language sources: Al Jazeera Arabic (Qatar, state_affiliated=true, matching the existing English edition's classification — same organization, native-language edition), Asharq Al-Awsat (Saudi Arabia, pan-Arab international paper historically owned by the Saudi royal family, state_affiliated=true — also gives Saudi Arabia its long-sought 2nd source, even though it isn't a truly independent one, since no credible independent Saudi outlet has been found across multiple rounds), Hespress Arabic (Morocco, state_affiliated=false, matching the existing English edition — same organization, native-language edition). Al-Ahram's Arabic edition was tried but returned HTTP 403.",
   "v1.28: continued the Arabic-language expansion — Youm7 (Egypt, state_affiliated=false — a major private Egyptian outlet, alongside the state-run Al-Ahram English). Iraq (Al Sumaria), UAE (Al Khaleej, Al Bayan), Jordan (Al Ghad), Lebanon (An-Nahar) were all attempted but returned empty/403/placeholder-only results — Arabic-language sources for these 4 countries remain an open gap.",
   "v1.29: Ennahar (Algeria, state_affiliated=false, alongside the existing TSA French-language and APS English-language sources — Algeria now has all 3 of its major languages represented). Fresh attempts at Iraq (Al Mada, Shafaq Arabic), Jordan (Ammon News), Lebanon (Al Akhbar), UAE (WAM, Emarat Al Youm) all failed again — these 4 countries' Arabic-language gap persists across 2 rounds now.",
-  "v1.30: a 3rd round of Arabic-language attempts for Iraq/UAE/Jordan/Lebanon/Sudan all failed again (Rudaw Arabic, Al Dustour, Sky News Arabia, and Al Ittihad all empty or pure placeholder results) — pivoted mid-round to the small-country batch instead and found Crítica (Panama, alongside Panamá América) — a 4th attempt at a 2nd Panama source, succeeding after El Siglo/La Prensa/Metro Libre/TVN all failed across 3 prior rounds."
+  "v1.30: a 3rd round of Arabic-language attempts for Iraq/UAE/Jordan/Lebanon/Sudan all failed again (Rudaw Arabic, Al Dustour, Sky News Arabia, and Al Ittihad all empty or pure placeholder results) — pivoted mid-round to the small-country batch instead and found Crítica (Panama, alongside Panamá América) — a 4th attempt at a 2nd Panama source, succeeding after El Siglo/La Prensa/Metro Libre/TVN all failed across 3 prior rounds.",
+  "v1.31: found an even bigger version of the round-127 Arabic-language discovery — checked China/Japan/South Korea/Russia/Hong Kong and found ALL 12 sources across these countries were English-only too, despite Chinese/Japanese/Korean/Russian being spoken natively by well over a billion people combined and these being some of the most significant countries the app covers. Added native-language editions of 3 existing English entities plus 1 genuinely new independent voice: People's Daily (China, Chinese, state_affiliated=true — CCP's official paper, matches Xinhua/Global Times' existing state classification), Yomiuri Shimbun (Japan, Japanese, state_affiliated=false — the world's largest-circulation newspaper), TASS Russian edition (Russia, Russian, state_affiliated=true, alongside the existing English TASS), Meduza Russian edition (Russia — exile, Latvia, Russian, state_affiliated=false, alongside the existing English Meduza — Russian speakers previously had zero native-language representation from either the state or independent side)."
  ],
  "sources": [
   {
@@ -3035,6 +3036,66 @@
    ],
    "url": "https://www.critica.com.pa",
    "rss": "https://www.critica.com.pa/rss.xml",
+   "state_affiliated": false
+  },
+  {
+   "id": "peoplesdaily-cn",
+   "name": "People's Daily",
+   "country": "China",
+   "region": "Asia",
+   "language": "zh",
+   "type": "wire",
+   "aspects": [
+    "general",
+    "politics"
+   ],
+   "url": "http://www.people.com.cn",
+   "rss": "http://www.people.com.cn/rss/politics.xml",
+   "state_affiliated": true
+  },
+  {
+   "id": "yomiuri-jp",
+   "name": "Yomiuri Shimbun",
+   "country": "Japan",
+   "region": "Asia",
+   "language": "ja",
+   "type": "digital",
+   "aspects": [
+    "general",
+    "politics"
+   ],
+   "url": "https://www.yomiuri.co.jp",
+   "rss": "https://news.google.com/rss/search?q=when:24h+site:yomiuri.co.jp&hl=ja&gl=JP&ceid=JP:ja",
+   "state_affiliated": false
+  },
+  {
+   "id": "tass-ru",
+   "name": "ТАСС",
+   "country": "Russia",
+   "region": "Europe",
+   "language": "ru",
+   "type": "wire",
+   "aspects": [
+    "general",
+    "politics"
+   ],
+   "url": "https://tass.ru",
+   "rss": "https://tass.ru/rss/v2.xml",
+   "state_affiliated": true
+  },
+  {
+   "id": "meduza-ru",
+   "name": "Медуза",
+   "country": "Russia (exile, Latvia)",
+   "region": "Europe",
+   "language": "ru",
+   "type": "digital",
+   "aspects": [
+    "politics",
+    "geopolitics"
+   ],
+   "url": "https://meduza.io",
+   "rss": "https://meduza.io/rss/all",
    "state_affiliated": false
   }
  ]
