@@ -218,7 +218,15 @@ def _rank_top_stories(
         ripple_effect = _match_ripple_effect(item, compiled_playbooks)
         category_context = None
         if not ripple_effect:
-            primary_category_id = min(entry["category_ids"], key=lambda cid: category_names[cid])
+            # Which category this story most belongs to, not just which one it merely
+            # touches — picked by how many of the story's matched aspects fall under each
+            # category (ties broken by category id) rather than by alphabetical category
+            # name, which had no relationship to relevance.
+            category_hits: dict[str, int] = {}
+            for aid in entry["aspect_ids"]:
+                cid = aspect_to_category[aid]
+                category_hits[cid] = category_hits.get(cid, 0) + 1
+            primary_category_id = max(sorted(category_hits), key=lambda cid: category_hits[cid])
             category_context = _category_context_for(primary_category_id, category_context_lookup)
         out.append(
             {
@@ -336,7 +344,7 @@ def main() -> None:
     tmp = out.with_suffix(".json.tmp")
     tmp.write_text(json.dumps(briefing, ensure_ascii=False, indent=1))
     os.replace(tmp, out)
-    print(f"ok={ok} failed/no-rss={failed} items={len(unique)} covered={covered}/41 top_stories={len(top_stories)} → {out}")
+    print(f"ok={ok} failed/no-rss={failed} items={len(unique)} covered={covered}/{len(taxonomy['aspects'])} top_stories={len(top_stories)} → {out}")
 
 
 if __name__ == "__main__":
