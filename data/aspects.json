@@ -1,6 +1,6 @@
 {
   "name": "Global Intelligence — Aspect Taxonomy",
-  "version": "1.7.0",
+  "version": "1.8.0",
   "confirmed": "2026-07-11",
   "notes": [
     "Phase 1 = global lens only: 12 categories, 41 core aspects (confirmed by Bhim 2026-07-11).",
@@ -57,7 +57,26 @@
     "continental European or Latin American index; added dax, cac 40, shanghai composite (China's own",
     "domestic index, distinct from the Hong Kong-based Hang Seng already listed), bovespa, and kospi.",
     "markets.bonds had gilt/bund for UK/Germany but nothing for Japan, the world's largest government",
-    "bond market; added jgb and japanese government bond."
+    "bond market; added jgb and japanese government bond.",
+    "v1.8 (2026-07-21): a fresh full re-read of every aspect's keyword list (first since v1.7) found",
+    "politics.leadership only covered 'prime minister'/'president' by title — zero coverage for",
+    "chancellor (Germany/Austria), premier (China's head of government), or any constitutional",
+    "monarch/emir/sultan, despite the source registry including 12 outlets from Gulf monarchies",
+    "(Qatar, Saudi Arabia, UAE, Kuwait, Oman, Bahrain) alone. Tested candidate keywords against live",
+    "fetched items before committing (not just in theory) and this caught two real problems: bare",
+    "'premier' flooded with French 'premier' meaning 'first' ('premier tour', 'premier plan',",
+    "extremely common across this registry's many Francophone African sources) plus 'Premier League'",
+    "and generic-adjective English uses — 47 matches, nearly all false positives; narrowed to",
+    "'chinese premier'. Bare 'emir' collided with 'Emir' as a personal first name (a real hit was",
+    "'saxofonista Emir Santacruz', a jazz musician, not a head of state) — narrowed to 'emir of',",
+    "which still matches the natural 'Emir of Qatar'/'Emir of Kuwait' phrasing but not a bare name.",
+    "'chancellor' and 'sultan' tested clean (Haiti's foreign minister and UK's Chancellor of the",
+    "Exchequer both correctly matched under 'chancellor'; Malaysian/Bruneian sultans matched cleanly).",
+    "Added the specific phrases 'king charles' and 'hong kong chief executive' rather than bare",
+    "'king'/'monarch'/'chief executive', since those bare forms collide heavily with unrelated",
+    "entertainment/sports references ('The Lion King', 'King James') and, for 'chief executive'",
+    "specifically, with the extremely common 'chief executive officer' (CEO) business usage that",
+    "would otherwise flood this political-leadership aspect with earnings/M&A stories."
   ],
   "categories": [
     { "id": "economy", "name": "Economy" },
@@ -88,7 +107,7 @@
 
     { "id": "politics.elections", "category": "politics", "name": "Elections", "keywords": ["election", "ballot", "vote", "voting", "campaign", "polls", "primary", "referendum", "electoral", "candidate"], "influences": ["daily-life", "investments"] },
     { "id": "politics.legislation", "category": "politics", "name": "Legislation & policy shifts", "keywords": ["bill", "legislation", "congress", "parliament", "senate", "law passed", "regulation", "policy", "executive order", "supreme court", "ruling", "tax reform"], "influences": ["daily-life", "business", "investments"] },
-    { "id": "politics.leadership", "category": "politics", "name": "Leadership changes", "keywords": ["resign", "cabinet", "prime minister", "president", "appointed", "sworn in", "impeach", "coalition", "successor", "reshuffle", "coup"], "influences": ["daily-life", "investments"] },
+    { "id": "politics.leadership", "category": "politics", "name": "Leadership changes", "keywords": ["resign", "cabinet", "prime minister", "president", "appointed", "sworn in", "impeach", "coalition", "successor", "reshuffle", "coup", "chancellor", "chinese premier", "emir of", "sultan", "king charles", "hong kong chief executive"], "influences": ["daily-life", "investments"] },
 
     { "id": "geopolitics.conflicts", "category": "geopolitics", "name": "Conflicts & wars", "keywords": ["war", "conflict", "strike", "missile", "attack", "offensive", "ceasefire", "troops", "airstrike", "invasion", "fighting", "military operation", "hostilities", "drone attack"], "influences": ["travel", "investments", "daily-life"] },
     { "id": "geopolitics.diplomacy", "category": "geopolitics", "name": "Diplomacy & summits", "keywords": ["summit", "diplomacy", "diplomatic", "talks", "negotiation", "treaty", "bilateral", "united nations", "g7", "g20", "nato", "brics", "african union", "asean", "arab league", "shanghai cooperation organisation", "sco summit", "peace deal", "foreign minister", "ambassador"], "influences": ["investments", "travel"] },
