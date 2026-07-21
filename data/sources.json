@@ -1,6 +1,6 @@
 {
  "name": "Global Intelligence — News Source Registry",
- "version": "1.56.0",
+ "version": "1.57.0",
  "updated": "2026-07-21",
  "notes": [
   "Machine-readable registry of the world's important news media, consumed by the Global Intelligence pipelines and displayed on the site.",
@@ -72,7 +72,8 @@
   "v1.53: 1 more second-source addition, closing out Kyrgyzstan -- Kloop (Kyrgyzstan, independent, run by the nonprofit Kloop Media Foundation founded 2007 by journalists Bektour Iskender and Rinat Tuhvatshin, grant-funded (NED, USAID) as an independent media outlet rather than a government broadcasting apparatus -- gasoline shortage coverage, political intrigue involving threats against presidential contenders, a prisoner's sentence reduction, low-quality fuel import permission; Kyrgyzstan's leading independent investigative outlet, comparable in caliber to Hetq in Armenia). Sputnik Kyrgyzstan (mostly Russian-state-media international wire content -- Zelensky/Syrsky speculation, NATO logistics framed in special-military-operation language -- with only 1-2 genuinely Kyrgyzstan-specific stories, the same 'wrong candidate type' pattern already seen with Sputnik Tajikistan) and Maldives (The Press and Maldives Independent both 404, PSM News turned out to be pure World Cup sports content with zero domestic news -- the 3rd distinct failed round for Maldives's 2nd source) were attempted and passed over.",
   "v1.54: 2 more second-source additions, closing out 2 long-stalled countries -- VBTC (Vanuatu, state-owned national public broadcaster established 1993 -- a women-led VT620M climate project, Pentecost Road completion, US reaffirming its Vanuatu partnership, Manaro Ash volcanic disruption to flights; Vanuatu had failed its 2nd-source search before when Vanuatu Independent turned out to be a broad Pacific-regional outlet, not genuinely Vanuatu-domestic), Adhadhu (Maldives, independent, registered with the Maldives Ministry of Home Affairs -- a murder conviction case, former president Nasheed calling for a USD-liquidity issue to be resolved before projects proceed, state-owned-enterprise workforce cuts, an affordable-housing development invitation across 13 islands; Maldives had failed 3 distinct rounds before via Mihaaru/Raajje.mv/The Edition/The Press/Maldives Independent/PSM News). A Tonga candidate (talamua.com) was tested but its content turned out to be genuinely Samoan (Samoan court cases and a Samoa youth-policy launch), not Tongan -- correctly rejected as a wrong-candidate-type mismatch rather than added under the wrong country.",
   "v1.55: first full registry-health audit -- checked all 290 entries for accidental duplicates (none found; the two same-domain pairs, Meduza/Meduza-ru and El Pais Spain/El Pais Uruguay, are both legitimate: the former is a deliberate English/Russian-edition pair matching the established native-language pattern, the latter are genuinely different outlets from different countries sharing a common Spanish newspaper name) and checked all 290 homepage 'url' fields (never exercised by the pipeline, unlike 'rss') for dead links. Fixed one genuine, fixable bug -- thevoicebw-bw's stored url pointed to https://www.thevoicebw.com, which fails DNS resolution reliably (confirmed NXDOMAIN via Google's public DNS), while the bare domain https://thevoicebw.com returns 200; corrected to the working URL. Most of the ~38 non-200 responses in the raw scan were confirmed false positives from anti-bot blocking on major outlets (Bloomberg, Reuters, WSJ, NPR, NDTV, The Economist, etc. -- all correctly operational for real browsers, just blocking non-browser traffic) or transient network blips that cleared on retry (ebc-et, ultimahora-py, turan-az all returned 200 on a follow-up check). Two sites -- tap-tn (Tunisia) and znbc-zm (Zambia) -- have a genuine, persistent SSL certificate misconfiguration on their own servers (confirmed via repeated checks and an http:// fallback attempt, which redirects into the same broken cert); left as-is since the stored domain is correct and there's no working alternative URL to substitute, and both sources' actual RSS feeds route through Google News rather than the broken domain directly, so pipeline functionality is completely unaffected -- only a user manually tapping 'visit source' would see a browser warning.",
-  "v1.56: schema-consistency audit -- checked all 290 entries for missing required fields (none), empty aspects arrays (none), whitespace/empty-string issues (none), duplicate RSS URLs across different source IDs (none), and non-https RSS/homepage URLs (3 found: cnn, bbc, peoplesdaily-cn). Also checked the per-source 'aspects' tagging field for non-standard values against the 12 real taxonomy category IDs (6 non-standard values found -- 'conflict', 'ai', 'tech', 'policy', 'health', 'science' -- likely near-miss abbreviations of real categories) but confirmed via a direct model-parsing check across both native apps' SourceRegistry models (neither parses an 'aspects' field on source entries at all) that this reconfirms round 141's earlier finding: the per-source aspects field is completely dead data, unused by the pipeline's matching logic, unparsed by either app's data model, and unrendered on the website's /sources/ page -- deliberately left as-is rather than spending effort tidying unused values with zero functional or visible effect. Fixed the genuinely actionable finding: upgraded bbc and peoplesdaily-cn's rss (and peoplesdaily-cn's url) from http:// to https://, verified both work identically over https (bbc: 33 entries, peoplesdaily: 100 entries). Left cnn's rss on http:// deliberately -- its https:// variant fails with a reproducible SSLError, confirming http:// is the only currently-working option for that specific subdomain, not an oversight."
+  "v1.56: schema-consistency audit -- checked all 290 entries for missing required fields (none), empty aspects arrays (none), whitespace/empty-string issues (none), duplicate RSS URLs across different source IDs (none), and non-https RSS/homepage URLs (3 found: cnn, bbc, peoplesdaily-cn). Also checked the per-source 'aspects' tagging field for non-standard values against the 12 real taxonomy category IDs (6 non-standard values found -- 'conflict', 'ai', 'tech', 'policy', 'health', 'science' -- likely near-miss abbreviations of real categories) but confirmed via a direct model-parsing check across both native apps' SourceRegistry models (neither parses an 'aspects' field on source entries at all) that this reconfirms round 141's earlier finding: the per-source aspects field is completely dead data, unused by the pipeline's matching logic, unparsed by either app's data model, and unrendered on the website's /sources/ page -- deliberately left as-is rather than spending effort tidying unused values with zero functional or visible effect. Fixed the genuinely actionable finding: upgraded bbc and peoplesdaily-cn's rss (and peoplesdaily-cn's url) from http:// to https://, verified both work identically over https (bbc: 33 entries, peoplesdaily: 100 entries). Left cnn's rss on http:// deliberately -- its https:// variant fails with a reproducible SSLError, confirming http:// is the only currently-working option for that specific subdomain, not an oversight.",
+  "v1.57: 3 more second-source additions, closing out 3 of the 6 'likely permanent' countries in one round -- Vecherka.tj (Tajikistan, independent, registered as OOO 'Vecherniy Dushanbe', founded 2011 after journalists broke away from a predecessor outlet, funded by ad revenue and project-based donor grants rather than state budget -- a Dushanbe cultural-days event, 23 people sanctioned for illegal social-media content, President Rahmon's state visit to Mongolia, an EU-Central Asia security dialogue in Brussels, forest restoration statistics; closes out Tajikistan's 2nd-source search after 4 prior failed attempts across Asia-Plus/Khovar/Sputnik), New Zimbabwe (Zimbabwe, independent, published by New Zimbabwe Media Ltd, distinct from the state-controlled Zimpapers group -- a musician's arrest on rape allegations, Zimbabwe's lithium exports reaching $746 million in H1 2026, a new direct Harare-London flight route, a pensioners' court case against NSSA, Zimbabwe processing 140,000 people fleeing South African xenophobia), Bamada.net (Mali, independent, published by Bamako Bamada Network SARL -- a fuel-shortage relief story in Macina, a military officer training-completion ceremony, Mali-UN/UNAIDS/UNDP cooperation meetings, a Mali-Morocco bilateral commission session). Studio Tamani (Mali, mostly daily-bulletin archive/pagination pages rather than individual article headlines) and a repeat Brunei attempt (The Scoop via Google News, still pure automotive/lifestyle content) were attempted and passed over."
  ],
  "sources": [
   {
@@ -4475,6 +4476,51 @@
    ],
    "url": "https://adhadhu.com",
    "rss": "https://news.google.com/rss/search?q=when:7d+site:adhadhu.com&hl=en-US&gl=US&ceid=US:en",
+   "state_affiliated": false
+  },
+  {
+   "id": "vecherka-tj",
+   "name": "Vecherka",
+   "country": "Tajikistan",
+   "region": "Asia",
+   "language": "ru",
+   "type": "digital",
+   "aspects": [
+    "general",
+    "politics"
+   ],
+   "url": "https://vecherka.tj",
+   "rss": "https://news.google.com/rss/search?q=when:7d+site:vecherka.tj&hl=ru&gl=TJ&ceid=TJ:ru",
+   "state_affiliated": false
+  },
+  {
+   "id": "newzimbabwe",
+   "name": "New Zimbabwe",
+   "country": "Zimbabwe",
+   "region": "Africa",
+   "language": "en",
+   "type": "digital",
+   "aspects": [
+    "general",
+    "politics"
+   ],
+   "url": "https://www.newzimbabwe.com",
+   "rss": "https://www.newzimbabwe.com/feed/",
+   "state_affiliated": false
+  },
+  {
+   "id": "bamada-ml",
+   "name": "Bamada.net",
+   "country": "Mali",
+   "region": "Africa",
+   "language": "fr",
+   "type": "digital",
+   "aspects": [
+    "general",
+    "politics"
+   ],
+   "url": "https://bamada.net",
+   "rss": "https://news.google.com/rss/search?q=when:7d+mali+site:bamada.net&hl=fr&gl=ML&ceid=ML:fr",
    "state_affiliated": false
   }
  ]
