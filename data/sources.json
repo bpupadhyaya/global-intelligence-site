@@ -1,6 +1,6 @@
 {
  "name": "Global Intelligence — News Source Registry",
- "version": "1.57.0",
+ "version": "1.58.0",
  "updated": "2026-07-21",
  "notes": [
   "Machine-readable registry of the world's important news media, consumed by the Global Intelligence pipelines and displayed on the site.",
@@ -73,7 +73,8 @@
   "v1.54: 2 more second-source additions, closing out 2 long-stalled countries -- VBTC (Vanuatu, state-owned national public broadcaster established 1993 -- a women-led VT620M climate project, Pentecost Road completion, US reaffirming its Vanuatu partnership, Manaro Ash volcanic disruption to flights; Vanuatu had failed its 2nd-source search before when Vanuatu Independent turned out to be a broad Pacific-regional outlet, not genuinely Vanuatu-domestic), Adhadhu (Maldives, independent, registered with the Maldives Ministry of Home Affairs -- a murder conviction case, former president Nasheed calling for a USD-liquidity issue to be resolved before projects proceed, state-owned-enterprise workforce cuts, an affordable-housing development invitation across 13 islands; Maldives had failed 3 distinct rounds before via Mihaaru/Raajje.mv/The Edition/The Press/Maldives Independent/PSM News). A Tonga candidate (talamua.com) was tested but its content turned out to be genuinely Samoan (Samoan court cases and a Samoa youth-policy launch), not Tongan -- correctly rejected as a wrong-candidate-type mismatch rather than added under the wrong country.",
   "v1.55: first full registry-health audit -- checked all 290 entries for accidental duplicates (none found; the two same-domain pairs, Meduza/Meduza-ru and El Pais Spain/El Pais Uruguay, are both legitimate: the former is a deliberate English/Russian-edition pair matching the established native-language pattern, the latter are genuinely different outlets from different countries sharing a common Spanish newspaper name) and checked all 290 homepage 'url' fields (never exercised by the pipeline, unlike 'rss') for dead links. Fixed one genuine, fixable bug -- thevoicebw-bw's stored url pointed to https://www.thevoicebw.com, which fails DNS resolution reliably (confirmed NXDOMAIN via Google's public DNS), while the bare domain https://thevoicebw.com returns 200; corrected to the working URL. Most of the ~38 non-200 responses in the raw scan were confirmed false positives from anti-bot blocking on major outlets (Bloomberg, Reuters, WSJ, NPR, NDTV, The Economist, etc. -- all correctly operational for real browsers, just blocking non-browser traffic) or transient network blips that cleared on retry (ebc-et, ultimahora-py, turan-az all returned 200 on a follow-up check). Two sites -- tap-tn (Tunisia) and znbc-zm (Zambia) -- have a genuine, persistent SSL certificate misconfiguration on their own servers (confirmed via repeated checks and an http:// fallback attempt, which redirects into the same broken cert); left as-is since the stored domain is correct and there's no working alternative URL to substitute, and both sources' actual RSS feeds route through Google News rather than the broken domain directly, so pipeline functionality is completely unaffected -- only a user manually tapping 'visit source' would see a browser warning.",
   "v1.56: schema-consistency audit -- checked all 290 entries for missing required fields (none), empty aspects arrays (none), whitespace/empty-string issues (none), duplicate RSS URLs across different source IDs (none), and non-https RSS/homepage URLs (3 found: cnn, bbc, peoplesdaily-cn). Also checked the per-source 'aspects' tagging field for non-standard values against the 12 real taxonomy category IDs (6 non-standard values found -- 'conflict', 'ai', 'tech', 'policy', 'health', 'science' -- likely near-miss abbreviations of real categories) but confirmed via a direct model-parsing check across both native apps' SourceRegistry models (neither parses an 'aspects' field on source entries at all) that this reconfirms round 141's earlier finding: the per-source aspects field is completely dead data, unused by the pipeline's matching logic, unparsed by either app's data model, and unrendered on the website's /sources/ page -- deliberately left as-is rather than spending effort tidying unused values with zero functional or visible effect. Fixed the genuinely actionable finding: upgraded bbc and peoplesdaily-cn's rss (and peoplesdaily-cn's url) from http:// to https://, verified both work identically over https (bbc: 33 entries, peoplesdaily: 100 entries). Left cnn's rss on http:// deliberately -- its https:// variant fails with a reproducible SSLError, confirming http:// is the only currently-working option for that specific subdomain, not an oversight.",
-  "v1.57: 3 more second-source additions, closing out 3 of the 6 'likely permanent' countries in one round -- Vecherka.tj (Tajikistan, independent, registered as OOO 'Vecherniy Dushanbe', founded 2011 after journalists broke away from a predecessor outlet, funded by ad revenue and project-based donor grants rather than state budget -- a Dushanbe cultural-days event, 23 people sanctioned for illegal social-media content, President Rahmon's state visit to Mongolia, an EU-Central Asia security dialogue in Brussels, forest restoration statistics; closes out Tajikistan's 2nd-source search after 4 prior failed attempts across Asia-Plus/Khovar/Sputnik), New Zimbabwe (Zimbabwe, independent, published by New Zimbabwe Media Ltd, distinct from the state-controlled Zimpapers group -- a musician's arrest on rape allegations, Zimbabwe's lithium exports reaching $746 million in H1 2026, a new direct Harare-London flight route, a pensioners' court case against NSSA, Zimbabwe processing 140,000 people fleeing South African xenophobia), Bamada.net (Mali, independent, published by Bamako Bamada Network SARL -- a fuel-shortage relief story in Macina, a military officer training-completion ceremony, Mali-UN/UNAIDS/UNDP cooperation meetings, a Mali-Morocco bilateral commission session). Studio Tamani (Mali, mostly daily-bulletin archive/pagination pages rather than individual article headlines) and a repeat Brunei attempt (The Scoop via Google News, still pure automotive/lifestyle content) were attempted and passed over."
+  "v1.57: 3 more second-source additions, closing out 3 of the 6 'likely permanent' countries in one round -- Vecherka.tj (Tajikistan, independent, registered as OOO 'Vecherniy Dushanbe', founded 2011 after journalists broke away from a predecessor outlet, funded by ad revenue and project-based donor grants rather than state budget -- a Dushanbe cultural-days event, 23 people sanctioned for illegal social-media content, President Rahmon's state visit to Mongolia, an EU-Central Asia security dialogue in Brussels, forest restoration statistics; closes out Tajikistan's 2nd-source search after 4 prior failed attempts across Asia-Plus/Khovar/Sputnik), New Zimbabwe (Zimbabwe, independent, published by New Zimbabwe Media Ltd, distinct from the state-controlled Zimpapers group -- a musician's arrest on rape allegations, Zimbabwe's lithium exports reaching $746 million in H1 2026, a new direct Harare-London flight route, a pensioners' court case against NSSA, Zimbabwe processing 140,000 people fleeing South African xenophobia), Bamada.net (Mali, independent, published by Bamako Bamada Network SARL -- a fuel-shortage relief story in Macina, a military officer training-completion ceremony, Mali-UN/UNAIDS/UNDP cooperation meetings, a Mali-Morocco bilateral commission session). Studio Tamani (Mali, mostly daily-bulletin archive/pagination pages rather than individual article headlines) and a repeat Brunei attempt (The Scoop via Google News, still pure automotive/lifestyle content) were attempted and passed over.",
+  "v1.58: fixed a systemic, high-impact Google-News-search locale-parameter bug found via a fresh registry-health check -- 11 sources (spiegel, corriere, dr-dk, svt-se, aftenposten-no, yle-fi, eltiempo-co, latercera-cl, elcomercio-pe, elnacional-ve, 14ymedio) used Google News per-site-search RSS URLs with hl=en-US&gl=US&ceid=US:en locale parameters despite being non-English-language sources (German, Italian, Danish, Swedish, Norwegian, Finnish, and several Spanish-language Latin American outlets). Discovered while investigating why several sources chronically returned 0 fresh items in pipeline runs -- Der Spiegel's en-US search returned exactly 1 entry, a 196-day-old crossword-puzzle landing page, while switching to hl=de&gl=DE&ceid=DE:de returned 100 genuinely fresh, substantive articles from the last few hours. Verified the same pattern across all 11: corriere 2->100 entries, dr-dk 3->38, svt-se 0->100, aftenposten-no 0->100, yle-fi 6->100, latercera-cl 13->100, elcomercio-pe 2->100, 14ymedio 0->19 (best result found at es-419/CU specifically, not es-419/US). eltiempo-co was already returning 100 entries under en-US (Spanish apparently tolerates the mismatch better than Germanic/Nordic languages) but was fixed anyway for consistency. elnacional-ve initially tested as 0 entries even after the fix in one isolated check, but a follow-up direct pipeline _fetch_one() call returned 35 fresh items -- confirming that was just momentary/transient variance on that specific request, not a persistent separate issue; the locale fix worked for all 11 sources without exception. This is likely one of the highest-impact fixes of the whole registry-health-audit thread (rounds 189-194) -- these 11 sources had been silently underperforming, most severely so, since the round each was added."
  ],
  "sources": [
   {
@@ -542,7 +543,7 @@
     "politics"
    ],
    "url": "https://www.spiegel.de",
-   "rss": "https://news.google.com/rss/search?q=when:24h+site:spiegel.de&hl=en-US&gl=US&ceid=US:en",
+   "rss": "https://news.google.com/rss/search?q=when:24h+site:spiegel.de&hl=de&gl=DE&ceid=DE:de",
    "state_affiliated": false
   },
   {
@@ -603,7 +604,7 @@
     "politics"
    ],
    "url": "https://www.corriere.it",
-   "rss": "https://news.google.com/rss/search?q=when:24h+site:corriere.it&hl=en-US&gl=US&ceid=US:en",
+   "rss": "https://news.google.com/rss/search?q=when:24h+site:corriere.it&hl=it&gl=IT&ceid=IT:it",
    "state_affiliated": false
   },
   {
@@ -1385,7 +1386,7 @@
     "politics"
    ],
    "url": "https://www.dr.dk/nyheder",
-   "rss": "https://news.google.com/rss/search?q=when:24h+site:dr.dk&hl=en-US&gl=US&ceid=US:en",
+   "rss": "https://news.google.com/rss/search?q=when:24h+site:dr.dk&hl=da&gl=DK&ceid=DK:da",
    "state_affiliated": true
   },
   {
@@ -1400,7 +1401,7 @@
     "politics"
    ],
    "url": "https://www.svt.se/nyheter",
-   "rss": "https://news.google.com/rss/search?q=when:24h+site:svt.se&hl=en-US&gl=US&ceid=US:en",
+   "rss": "https://news.google.com/rss/search?q=when:24h+site:svt.se&hl=sv&gl=SE&ceid=SE:sv",
    "state_affiliated": true
   },
   {
@@ -1416,7 +1417,7 @@
     "economy"
    ],
    "url": "https://www.aftenposten.no",
-   "rss": "https://news.google.com/rss/search?q=when:24h+site:aftenposten.no&hl=en-US&gl=US&ceid=US:en",
+   "rss": "https://news.google.com/rss/search?q=when:24h+site:aftenposten.no&hl=no&gl=NO&ceid=NO:no",
    "state_affiliated": false
   },
   {
@@ -1431,7 +1432,7 @@
     "politics"
    ],
    "url": "https://yle.fi/uutiset",
-   "rss": "https://news.google.com/rss/search?q=when:24h+site:yle.fi&hl=en-US&gl=US&ceid=US:en",
+   "rss": "https://news.google.com/rss/search?q=when:24h+site:yle.fi&hl=fi&gl=FI&ceid=FI:fi",
    "state_affiliated": true
   },
   {
@@ -1479,7 +1480,7 @@
     "economy"
    ],
    "url": "https://www.eltiempo.com",
-   "rss": "https://news.google.com/rss/search?q=when:24h+site:eltiempo.com&hl=en-US&gl=US&ceid=US:en",
+   "rss": "https://news.google.com/rss/search?q=when:24h+site:eltiempo.com&hl=es-419&gl=CO&ceid=CO:es-419",
    "state_affiliated": false
   },
   {
@@ -1495,7 +1496,7 @@
     "economy"
    ],
    "url": "https://www.latercera.com",
-   "rss": "https://news.google.com/rss/search?q=when:24h+site:latercera.com&hl=en-US&gl=US&ceid=US:en",
+   "rss": "https://news.google.com/rss/search?q=when:24h+site:latercera.com&hl=es-419&gl=CL&ceid=CL:es-419",
    "state_affiliated": false
   },
   {
@@ -1511,7 +1512,7 @@
     "economy"
    ],
    "url": "https://elcomercio.pe",
-   "rss": "https://news.google.com/rss/search?q=when:24h+site:elcomercio.pe&hl=en-US&gl=US&ceid=US:en",
+   "rss": "https://news.google.com/rss/search?q=when:24h+site:elcomercio.pe&hl=es-419&gl=PE&ceid=PE:es-419",
    "state_affiliated": false
   },
   {
@@ -1527,7 +1528,7 @@
     "economy"
    ],
    "url": "https://www.elnacional.com",
-   "rss": "https://news.google.com/rss/search?q=when:24h+site:elnacional.com&hl=en-US&gl=US&ceid=US:en",
+   "rss": "https://news.google.com/rss/search?q=when:24h+site:elnacional.com&hl=es-419&gl=VE&ceid=VE:es-419",
    "state_affiliated": false
   },
   {
@@ -2367,7 +2368,7 @@
     "politics"
    ],
    "url": "https://www.14ymedio.com",
-   "rss": "https://news.google.com/rss/search?q=when:24h+site:14ymedio.com&hl=en-US&gl=US&ceid=US:en",
+   "rss": "https://news.google.com/rss/search?q=when:24h+site:14ymedio.com&hl=es-419&gl=CU&ceid=CU:es-419",
    "state_affiliated": false
   },
   {
