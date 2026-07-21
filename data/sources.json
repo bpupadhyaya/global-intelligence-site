@@ -1,6 +1,6 @@
 {
  "name": "Global Intelligence — News Source Registry",
- "version": "1.59.0",
+ "version": "1.60.0",
  "updated": "2026-07-21",
  "notes": [
   "Machine-readable registry of the world's important news media, consumed by the Global Intelligence pipelines and displayed on the site.",
@@ -75,7 +75,8 @@
   "v1.56: schema-consistency audit -- checked all 290 entries for missing required fields (none), empty aspects arrays (none), whitespace/empty-string issues (none), duplicate RSS URLs across different source IDs (none), and non-https RSS/homepage URLs (3 found: cnn, bbc, peoplesdaily-cn). Also checked the per-source 'aspects' tagging field for non-standard values against the 12 real taxonomy category IDs (6 non-standard values found -- 'conflict', 'ai', 'tech', 'policy', 'health', 'science' -- likely near-miss abbreviations of real categories) but confirmed via a direct model-parsing check across both native apps' SourceRegistry models (neither parses an 'aspects' field on source entries at all) that this reconfirms round 141's earlier finding: the per-source aspects field is completely dead data, unused by the pipeline's matching logic, unparsed by either app's data model, and unrendered on the website's /sources/ page -- deliberately left as-is rather than spending effort tidying unused values with zero functional or visible effect. Fixed the genuinely actionable finding: upgraded bbc and peoplesdaily-cn's rss (and peoplesdaily-cn's url) from http:// to https://, verified both work identically over https (bbc: 33 entries, peoplesdaily: 100 entries). Left cnn's rss on http:// deliberately -- its https:// variant fails with a reproducible SSLError, confirming http:// is the only currently-working option for that specific subdomain, not an oversight.",
   "v1.57: 3 more second-source additions, closing out 3 of the 6 'likely permanent' countries in one round -- Vecherka.tj (Tajikistan, independent, registered as OOO 'Vecherniy Dushanbe', founded 2011 after journalists broke away from a predecessor outlet, funded by ad revenue and project-based donor grants rather than state budget -- a Dushanbe cultural-days event, 23 people sanctioned for illegal social-media content, President Rahmon's state visit to Mongolia, an EU-Central Asia security dialogue in Brussels, forest restoration statistics; closes out Tajikistan's 2nd-source search after 4 prior failed attempts across Asia-Plus/Khovar/Sputnik), New Zimbabwe (Zimbabwe, independent, published by New Zimbabwe Media Ltd, distinct from the state-controlled Zimpapers group -- a musician's arrest on rape allegations, Zimbabwe's lithium exports reaching $746 million in H1 2026, a new direct Harare-London flight route, a pensioners' court case against NSSA, Zimbabwe processing 140,000 people fleeing South African xenophobia), Bamada.net (Mali, independent, published by Bamako Bamada Network SARL -- a fuel-shortage relief story in Macina, a military officer training-completion ceremony, Mali-UN/UNAIDS/UNDP cooperation meetings, a Mali-Morocco bilateral commission session). Studio Tamani (Mali, mostly daily-bulletin archive/pagination pages rather than individual article headlines) and a repeat Brunei attempt (The Scoop via Google News, still pure automotive/lifestyle content) were attempted and passed over.",
   "v1.58: fixed a systemic, high-impact Google-News-search locale-parameter bug found via a fresh registry-health check -- 11 sources (spiegel, corriere, dr-dk, svt-se, aftenposten-no, yle-fi, eltiempo-co, latercera-cl, elcomercio-pe, elnacional-ve, 14ymedio) used Google News per-site-search RSS URLs with hl=en-US&gl=US&ceid=US:en locale parameters despite being non-English-language sources (German, Italian, Danish, Swedish, Norwegian, Finnish, and several Spanish-language Latin American outlets). Discovered while investigating why several sources chronically returned 0 fresh items in pipeline runs -- Der Spiegel's en-US search returned exactly 1 entry, a 196-day-old crossword-puzzle landing page, while switching to hl=de&gl=DE&ceid=DE:de returned 100 genuinely fresh, substantive articles from the last few hours. Verified the same pattern across all 11: corriere 2->100 entries, dr-dk 3->38, svt-se 0->100, aftenposten-no 0->100, yle-fi 6->100, latercera-cl 13->100, elcomercio-pe 2->100, 14ymedio 0->19 (best result found at es-419/CU specifically, not es-419/US). eltiempo-co was already returning 100 entries under en-US (Spanish apparently tolerates the mismatch better than Germanic/Nordic languages) but was fixed anyway for consistency. elnacional-ve initially tested as 0 entries even after the fix in one isolated check, but a follow-up direct pipeline _fetch_one() call returned 35 fresh items -- confirming that was just momentary/transient variance on that specific request, not a persistent separate issue; the locale fix worked for all 11 sources without exception. This is likely one of the highest-impact fixes of the whole registry-health-audit thread (rounds 189-194) -- these 11 sources had been silently underperforming, most severely so, since the round each was added.",
-  "v1.59: found and closed a real cross-check gap between the taxonomy and the source registry -- Belgium and Poland are both explicitly named in curated taxonomy content (ripple_effects.json's Belgium 541-day government-deadlock precedent added in round 198; aspects.json references to Belarus/cocoa-producing regions adjacent to both) but had zero source coverage in the registry despite being significant European economies. Added The Brussels Times (Belgium, independent English-language digital outlet, verified via Google News per-site-search with genuine recent content -- Brussels urban planning, a fraud-case pardon request, scooter regulation) and Notes From Poland (Poland, independent English-language digital outlet with a working native RSS feed -- verified with genuine recent content spanning politics, defense, economy, and society: EU satellite project, Belarus border crossings down 98%, a Baltic deepwater port, Tusk on Ukraine security guarantees). Belarus and Somalia -- also named in curated content with zero registry coverage -- were not added this round; left as an open lead for a future round."
+  "v1.59: found and closed a real cross-check gap between the taxonomy and the source registry -- Belgium and Poland are both explicitly named in curated taxonomy content (ripple_effects.json's Belgium 541-day government-deadlock precedent added in round 198; aspects.json references to Belarus/cocoa-producing regions adjacent to both) but had zero source coverage in the registry despite being significant European economies. Added The Brussels Times (Belgium, independent English-language digital outlet, verified via Google News per-site-search with genuine recent content -- Brussels urban planning, a fraud-case pardon request, scooter regulation) and Notes From Poland (Poland, independent English-language digital outlet with a working native RSS feed -- verified with genuine recent content spanning politics, defense, economy, and society: EU satellite project, Belarus border crossings down 98%, a Baltic deepwater port, Tusk on Ukraine security guarantees). Belarus and Somalia -- also named in curated content with zero registry coverage -- were not added this round; left as an open lead for a future round.",
+  "v1.60: closed the remaining 2 of the 4 taxonomy-registry cross-check gaps found in round 211 (Belarus, Ivory Coast, Somalia, Belgium named in curated taxonomy content with zero source coverage -- Belgium/Poland were fixed in v1.59). Added Belsat (Belarus, verified via Google News per-site-search -- genuine mixed content: a writer's obituary, a corruption investigation into state procurement, Uzbek migrant labor conditions, funeral-services regulation, political commentary, plus some pagination/archive-listing noise, net-real per this project's established 'mixed but net-real' standard) and Garowe Online (Somalia, Puntland-based independent outlet, verified with genuine bilingual English/Somali content -- piracy/tanker seizures, Turkey e-Visa exclusion, a court ruling on Somali piracy convictions, Egypt urging release of kidnapped sailors). Belsat is classified state_affiliated:true following the DVB/RFA precedent from round 175 -- it's funded by Poland's government (a third-party state, not Belarus's own) specifically to broadcast independent content INTO Belarus, so the classification reflects funding source, not editorial independence from its subject country. Ivory Coast, the 4th named-but-uncovered country from round 211, was not addressed this round -- remains an open lead."
  ],
  "sources": [
   {
@@ -4555,6 +4556,38 @@
    ],
    "url": "https://notesfrompoland.com",
    "rss": "https://notesfrompoland.com/feed/",
+   "state_affiliated": false
+  },
+  {
+   "id": "belsat",
+   "name": "Belsat",
+   "country": "Belarus",
+   "region": "Europe",
+   "language": "en",
+   "type": "digital",
+   "aspects": [
+    "general",
+    "politics",
+    "geopolitics"
+   ],
+   "url": "https://belsat.eu/en",
+   "rss": "https://news.google.com/rss/search?q=when:7d+site:belsat.eu&hl=en-US&gl=PL&ceid=PL:en",
+   "state_affiliated": true
+  },
+  {
+   "id": "garoweonline",
+   "name": "Garowe Online",
+   "country": "Somalia",
+   "region": "Africa",
+   "language": "en",
+   "type": "digital",
+   "aspects": [
+    "general",
+    "politics",
+    "geopolitics"
+   ],
+   "url": "https://www.garoweonline.com",
+   "rss": "https://news.google.com/rss/search?q=when:7d+site:garoweonline.com&hl=en-US&gl=SO&ceid=SO:en",
    "state_affiliated": false
   }
  ]
