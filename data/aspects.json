@@ -1,6 +1,6 @@
 {
   "name": "Global Intelligence — Aspect Taxonomy",
-  "version": "1.6.0",
+  "version": "1.7.0",
   "confirmed": "2026-07-11",
   "notes": [
     "Phase 1 = global lens only: 12 categories, 41 core aspects (confirmed by Bhim 2026-07-11).",
@@ -45,7 +45,19 @@
     "all Western/US-aligned multilateral bodies — with no equivalent for the major non-Western blocs",
     "that host their own regularly-covered diplomatic summits. Added brics (now a significant",
     "economic/geopolitical counterweight bloc following its 2024 expansion), african union, asean,",
-    "arab league, and shanghai cooperation organisation/sco summit."
+    "arab league, and shanghai cooperation organisation/sco summit.",
+    "v1.7 (2026-07-21): re-audited markets.currencies/stocks/bonds and economy.central-banks, which",
+    "v1.5 had checked lightly and called 'already reasonably diverse' — a closer pass found real",
+    "gaps. markets.currencies had no ruble, a striking omission given sustained Russia sanctions/war",
+    "coverage; added ruble, peso, brazilian real, naira, south korean won, south african rand, and",
+    "turkish lira (multi-word phrases used for won/rand specifically to avoid word-boundary collisions",
+    "with the common English words 'won' and the name 'Rand'). economy.central-banks named only 6",
+    "institutions (Fed/ECB/BOJ/BOE/RBI/PBOC); added bank of korea, banco central do brasil, south",
+    "african reserve bank, and bank of russia. markets.stocks had Nikkei/FTSE/Sensex/Hang Seng but no",
+    "continental European or Latin American index; added dax, cac 40, shanghai composite (China's own",
+    "domestic index, distinct from the Hong Kong-based Hang Seng already listed), bovespa, and kospi.",
+    "markets.bonds had gilt/bund for UK/Germany but nothing for Japan, the world's largest government",
+    "bond market; added jgb and japanese government bond."
   ],
   "categories": [
     { "id": "economy", "name": "Economy" },
@@ -63,14 +75,14 @@
   ],
   "aspects": [
     { "id": "economy.inflation", "category": "economy", "name": "Inflation", "keywords": ["inflation", "cpi", "consumer price", "price index", "cost of living", "deflation", "disinflation", "core prices", "pce"], "influences": ["investments", "daily-life"] },
-    { "id": "economy.central-banks", "category": "economy", "name": "Central banks & rates", "keywords": ["federal reserve", "fed", "ecb", "central bank", "interest rate", "rate cut", "rate hike", "monetary policy", "boj", "bank of england", "rbi", "fomc", "powell", "lagarde", "basis points", "pboc", "people's bank of china"], "influences": ["investments", "daily-life"] },
+    { "id": "economy.central-banks", "category": "economy", "name": "Central banks & rates", "keywords": ["federal reserve", "fed", "ecb", "central bank", "interest rate", "rate cut", "rate hike", "monetary policy", "boj", "bank of england", "rbi", "fomc", "powell", "lagarde", "basis points", "pboc", "people's bank of china", "bank of korea", "banco central do brasil", "south african reserve bank", "bank of russia"], "influences": ["investments", "daily-life"] },
     { "id": "economy.jobs", "category": "economy", "name": "Jobs & unemployment", "keywords": ["unemployment", "jobs report", "jobless", "payroll", "hiring", "labor market", "labour market", "employment", "wage growth", "job cuts"], "influences": ["daily-life", "investments"] },
     { "id": "economy.growth", "category": "economy", "name": "Growth & GDP", "keywords": ["gdp", "economic growth", "recession", "economic outlook", "pmi", "industrial output", "consumer spending", "retail sales", "stimulus", "economic slowdown"], "influences": ["investments", "business"] },
     { "id": "economy.trade", "category": "economy", "name": "Trade & tariffs", "keywords": ["tariff", "trade deal", "trade war", "import", "export", "wto", "trade deficit", "trade agreement", "customs", "protectionism", "trade talks"], "influences": ["investments", "business", "daily-life"] },
 
-    { "id": "markets.stocks", "category": "markets", "name": "Stocks", "keywords": ["stock market", "s&p 500", "nasdaq", "dow jones", "equities", "shares", "wall street", "stock rally", "sell-off", "selloff", "nikkei", "ftse", "sensex", "hang seng", "ipo"], "influences": ["investments"] },
-    { "id": "markets.bonds", "category": "markets", "name": "Bonds & yields", "keywords": ["bond", "treasury", "gilt", "bund", "sovereign debt", "credit spread", "fixed income", "debt auction", "bond yield", "bond yields", "treasury yield", "treasury yields", "yield curve", "10-year treasury", "10-year yield", "10-year note", "10-year bond"], "influences": ["investments"] },
-    { "id": "markets.currencies", "category": "markets", "name": "Currencies", "keywords": ["dollar", "euro", "yen", "yuan", "renminbi", "currency", "forex", "fx", "exchange rate", "devaluation", "rupee", "sterling", "swiss franc"], "influences": ["investments", "travel"] },
+    { "id": "markets.stocks", "category": "markets", "name": "Stocks", "keywords": ["stock market", "s&p 500", "nasdaq", "dow jones", "equities", "shares", "wall street", "stock rally", "sell-off", "selloff", "nikkei", "ftse", "sensex", "hang seng", "ipo", "dax", "cac 40", "shanghai composite", "bovespa", "kospi"], "influences": ["investments"] },
+    { "id": "markets.bonds", "category": "markets", "name": "Bonds & yields", "keywords": ["bond", "treasury", "gilt", "bund", "jgb", "japanese government bond", "sovereign debt", "credit spread", "fixed income", "debt auction", "bond yield", "bond yields", "treasury yield", "treasury yields", "yield curve", "10-year treasury", "10-year yield", "10-year note", "10-year bond"], "influences": ["investments"] },
+    { "id": "markets.currencies", "category": "markets", "name": "Currencies", "keywords": ["dollar", "euro", "yen", "yuan", "renminbi", "currency", "forex", "fx", "exchange rate", "devaluation", "rupee", "sterling", "swiss franc", "ruble", "peso", "brazilian real", "naira", "south korean won", "south african rand", "turkish lira"], "influences": ["investments", "travel"] },
     { "id": "markets.commodities", "category": "markets", "name": "Commodities", "keywords": ["gold", "silver", "copper", "commodity", "commodities", "iron ore", "lithium", "metals", "precious metal", "mining"], "exclude_keywords": ["jubilee", "medal", "medalist", "olympic", "olympics", "anniversary"], "influences": ["investments"] },
     { "id": "markets.crypto", "category": "markets", "name": "Crypto", "keywords": ["bitcoin", "ethereum", "crypto", "cryptocurrency", "stablecoin", "blockchain", "btc", "digital asset", "defi", "token"], "influences": ["investments"] },
 
