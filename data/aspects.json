@@ -1,6 +1,6 @@
 {
   "name": "Global Intelligence — Aspect Taxonomy",
-  "version": "1.8.0",
+  "version": "1.9.0",
   "confirmed": "2026-07-11",
   "notes": [
     "Phase 1 = global lens only: 12 categories, 41 core aspects (confirmed by Bhim 2026-07-11).",
@@ -76,7 +76,22 @@
     "'king'/'monarch'/'chief executive', since those bare forms collide heavily with unrelated",
     "entertainment/sports references ('The Lion King', 'King James') and, for 'chief executive'",
     "specifically, with the extremely common 'chief executive officer' (CEO) business usage that",
-    "would otherwise flood this political-leadership aspect with earnings/M&A stories."
+    "would otherwise flood this political-leadership aspect with earnings/M&A stories.",
+    "v1.9 (2026-07-21): applied v1.8's empirical false-positive-testing technique to the *existing*",
+    "keyword set, not just new additions — a sweep never done systematically before. Fetched live",
+    "items and inspected actual matches for several structurally ambiguous bare-word keywords.",
+    "Confirmed real false positives in three: 'strike' (geopolitics.conflicts) caught cricket's",
+    "'strike-rate' batting statistic ('Tilak Varma hits back at strike-rate criticism'); 'attack'",
+    "(geopolitics.conflicts) caught animal attacks (bear/tiger/bison) and a football 'striker'",
+    "signing; 'campaign' (politics.elections) caught an unrelated pharma ad-campaign lawsuit, a",
+    "cricket-league 'campaign' (season), and an environmental tree-planting campaign. Only fixed the",
+    "one with a clean, complete, zero-recall-cost solution: added 'strike rate'/'strike-rate' as",
+    "exclude_keywords on geopolitics.conflicts — an unambiguous cricket/baseball statistics term with",
+    "no legitimate conflict-news overlap. Left 'attack' and 'campaign' unfixed: their false positives",
+    "come from diffuse, open-ended categories (dozens of animal species; ad/sports/environmental",
+    "campaign usage) that a small exclude_keywords list couldn't meaningfully cover without becoming",
+    "whack-a-mole busywork — documented here as a known, low-severity limitation rather than churned",
+    "on with a partial, incomplete fix."
   ],
   "categories": [
     { "id": "economy", "name": "Economy" },
@@ -109,7 +124,7 @@
     { "id": "politics.legislation", "category": "politics", "name": "Legislation & policy shifts", "keywords": ["bill", "legislation", "congress", "parliament", "senate", "law passed", "regulation", "policy", "executive order", "supreme court", "ruling", "tax reform"], "influences": ["daily-life", "business", "investments"] },
     { "id": "politics.leadership", "category": "politics", "name": "Leadership changes", "keywords": ["resign", "cabinet", "prime minister", "president", "appointed", "sworn in", "impeach", "coalition", "successor", "reshuffle", "coup", "chancellor", "chinese premier", "emir of", "sultan", "king charles", "hong kong chief executive"], "influences": ["daily-life", "investments"] },
 
-    { "id": "geopolitics.conflicts", "category": "geopolitics", "name": "Conflicts & wars", "keywords": ["war", "conflict", "strike", "missile", "attack", "offensive", "ceasefire", "troops", "airstrike", "invasion", "fighting", "military operation", "hostilities", "drone attack"], "influences": ["travel", "investments", "daily-life"] },
+    { "id": "geopolitics.conflicts", "category": "geopolitics", "name": "Conflicts & wars", "keywords": ["war", "conflict", "strike", "missile", "attack", "offensive", "ceasefire", "troops", "airstrike", "invasion", "fighting", "military operation", "hostilities", "drone attack"], "exclude_keywords": ["strike rate", "strike-rate"], "influences": ["travel", "investments", "daily-life"] },
     { "id": "geopolitics.diplomacy", "category": "geopolitics", "name": "Diplomacy & summits", "keywords": ["summit", "diplomacy", "diplomatic", "talks", "negotiation", "treaty", "bilateral", "united nations", "g7", "g20", "nato", "brics", "african union", "asean", "arab league", "shanghai cooperation organisation", "sco summit", "peace deal", "foreign minister", "ambassador"], "influences": ["investments", "travel"] },
     { "id": "geopolitics.sanctions", "category": "geopolitics", "name": "Sanctions & export controls", "keywords": ["sanction", "export control", "embargo", "blacklist", "restriction", "export ban", "asset freeze", "trade restriction"], "influences": ["investments", "business"] },
     { "id": "geopolitics.defense", "category": "geopolitics", "name": "Defense & military", "keywords": ["defense", "defence", "military", "weapons", "arms", "missile test", "nuclear", "army", "navy", "pentagon", "pla", "people's liberation army", "military exercise", "defense budget", "fighter jet"], "influences": ["investments", "business"] },
