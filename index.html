@@ -305,6 +305,8 @@
                 if (top10Root && stories.length) {
                     stories.forEach(function (s) {
                         var ageLabel = s.age_hours < 1 ? 'just now' : Math.round(s.age_hours) + 'h ago';
+                        var langTag = (s.language && s.language !== 'en') ?
+                            ' · [' + esc(s.language.toUpperCase()) + ']' : '';
                         var tags = s.categories.slice(0, 3).map(function (c) {
                             return '<span class="tag">' + esc(c) + '</span>';
                         }).join('');
@@ -315,7 +317,7 @@
                             '<div style="flex:1;min-width:0;">' +
                             '<h3><a href="' + esc(s.url) + '" rel="noopener" target="_blank">' + esc(s.title) + '</a></h3>' +
                             '<div class="tags">' + tags + '</div>' +
-                            '<div class="top10-meta">' + esc(s.source) + ' · ' + ageLabel + ' · affects ' +
+                            '<div class="top10-meta">' + esc(s.source) + langTag + ' · ' + ageLabel + ' · affects ' +
                             s.aspect_count + ' aspect' + (s.aspect_count === 1 ? '' : 's') + '</div></div>';
                         top10Root.appendChild(row);
                     });
@@ -349,7 +351,9 @@
                         link.textContent = e.h.title;
                         var meta = document.createElement('span');
                         meta.className = 'live-meta';
-                        meta.textContent = e.aspect + ' · ' + e.h.source + ' · ' +
+                        var langTag = (e.h.language && e.h.language !== 'en') ?
+                            ' · [' + e.h.language.toUpperCase() + ']' : '';
+                        meta.textContent = e.aspect + ' · ' + e.h.source + langTag + ' · ' +
                             (e.h.age_hours < 1 ? 'just now' : Math.round(e.h.age_hours) + 'h ago');
                         li.appendChild(link);
                         li.appendChild(meta);

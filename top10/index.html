@@ -144,6 +144,8 @@
                 (b.categories || []).forEach(function (c) { catIdByName[c.name] = c.id; });
                 stories.forEach(function (s) {
                     var ageLabel = s.age_hours < 1 ? 'just now' : Math.round(s.age_hours) + 'h ago';
+                    var langTag = (s.language && s.language !== 'en') ?
+                        ' · [' + esc(s.language.toUpperCase()) + ']' : '';
                     var tags = s.categories.map(function (c) {
                         var id = catIdByName[c];
                         return id
@@ -158,7 +160,7 @@
                             '<span class="rank-badge">1</span>' +
                             '<h2><a href="' + esc(s.url) + '" rel="noopener" target="_blank" style="color:inherit;text-decoration:none;">' + esc(s.title) + '</a></h2>' +
                             '<div class="tags">' + tags + '</div>' +
-                            '<div class="top10-meta"><span>' + esc(s.source) + ' · ' + ageLabel + '</span>' +
+                            '<div class="top10-meta"><span>' + esc(s.source) + langTag + ' · ' + ageLabel + '</span>' +
                             '<span>Affects ' + s.aspect_count + ' aspect' + (s.aspect_count === 1 ? '' : 's') + '</span></div>' +
                             extra;
                         root.appendChild(hero);
@@ -171,7 +173,7 @@
                         '<div style="flex:1;min-width:0;">' +
                         '<h2><a href="' + esc(s.url) + '" rel="noopener" target="_blank">' + esc(s.title) + '</a></h2>' +
                         '<div class="tags">' + tags + '</div>' +
-                        '<div class="top10-meta">' + esc(s.source) + ' · ' + ageLabel + ' · affects ' + s.aspect_count + ' aspect' + (s.aspect_count === 1 ? '' : 's') + '</div>' +
+                        '<div class="top10-meta">' + esc(s.source) + langTag + ' · ' + ageLabel + ' · affects ' + s.aspect_count + ' aspect' + (s.aspect_count === 1 ? '' : 's') + '</div>' +
                         extra +
                         '</div>';
                     root.appendChild(row);

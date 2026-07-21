@@ -174,7 +174,9 @@
                                 link.textContent = hl.title;
                                 var meta = document.createElement('span');
                                 meta.className = 'live-meta';
-                                meta.textContent = hl.source + ' · ' +
+                                var langTag = (hl.language && hl.language !== 'en') ?
+                                    ' · [' + hl.language.toUpperCase() + ']' : '';
+                                meta.textContent = hl.source + langTag + ' · ' +
                                     (hl.age_hours < 1 ? 'just now' : Math.round(hl.age_hours) + 'h ago');
                                 li.appendChild(link); li.appendChild(meta);
                                 var extra = renderExtra(hl);

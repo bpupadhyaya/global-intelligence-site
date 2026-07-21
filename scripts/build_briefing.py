@@ -88,6 +88,7 @@ def _fetch_one(source: dict) -> tuple[dict, list[dict], str | None]:
                     "epoch": epoch or time.time(),
                     "source": source["name"],
                     "state_affiliated": source.get("state_affiliated", False),
+                    "language": source.get("language", "en"),
                 }
             )
         return source, items, None
@@ -226,6 +227,7 @@ def _rank_top_stories(
                 "source": item["source"],
                 "url": item["url"],
                 "age_hours": round(max(0.0, (now - item["epoch"]) / 3600), 1),
+                "language": item.get("language", "en"),
                 "categories": sorted(category_names[cid] for cid in entry["category_ids"]),
                 "aspect_count": len(entry["aspect_ids"]),
                 **({"ripple_effect": ripple_effect} if ripple_effect else {}),
@@ -297,6 +299,7 @@ def main() -> None:
                         "source": i["source"],
                         "url": i["url"],
                         "age_hours": round(max(0.0, (now - i["epoch"]) / 3600), 1),
+                        "language": i.get("language", "en"),
                         **({"ripple_effect": ripple_effect} if ripple_effect else {}),
                         **({"category_context": category_context} if category_context else {}),
                     }
