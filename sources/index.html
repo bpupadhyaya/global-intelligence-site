@@ -116,6 +116,10 @@
                                 var link = document.createElement('a');
                                 link.href = s.url; link.rel = 'noopener'; link.target = '_blank';
                                 link.textContent = s.name;
+                                // Several registry entries store the outlet's own native-script
+                                // name (e.g. Persian ایرنا, Urdu جنگ, Arabic الراكوبة) — dir="auto"
+                                // right-aligns those correctly without any language lookup.
+                                link.dir = 'auto';
                                 link.style.cssText = 'font-weight:700;color:var(--ink);text-decoration:none;font-size:16px;';
                                 name.appendChild(link);
                                 name.style.marginTop = '6px';

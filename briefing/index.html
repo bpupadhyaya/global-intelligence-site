@@ -172,6 +172,15 @@
                                 var link = document.createElement('a');
                                 link.href = hl.url; link.rel = 'noopener'; link.target = '_blank';
                                 link.textContent = hl.title;
+                                // Headline titles come from RSS feeds in their original language
+                                // (this project deliberately doesn't translate) — a pure-Arabic/
+                                // Hebrew/etc. title otherwise renders left-aligned like the page's
+                                // own LTR body text (Unicode's bidi algorithm still shapes/orders
+                                // the characters correctly, it just doesn't flip block alignment).
+                                // dir="auto" is a browser-native heuristic (no JS/locale lookup
+                                // needed) that right-aligns a predominantly-RTL title and leaves
+                                // LTR titles untouched.
+                                link.dir = 'auto';
                                 var meta = document.createElement('span');
                                 meta.className = 'live-meta';
                                 var langTag = (hl.language && hl.language !== 'en') ?
