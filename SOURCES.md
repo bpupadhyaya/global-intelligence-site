@@ -69,4 +69,6 @@ Nature News · Science (AAAS) · MIT Technology Review · Ars Technica · TechCr
 URLs in the JSON are candidates pending pipeline validation. This page shows a curated sample by
 region — see [`data/sources.json`](data/sources.json) or the
 [live sources page](https://equalinformation.com/global-intelligence-site/sources/) for the full,
-current list. To suggest a source, open an issue.*
+current list. For the engineering history behind every addition/fix, see
+[`SOURCES_CHANGELOG.md`](SOURCES_CHANGELOG.md) (kept separate from `data/sources.json` itself so
+the live sources page's payload stays lean). To suggest a source, open an issue.*
