@@ -13,7 +13,7 @@ consume is [`data/sources.json`](data/sources.json) — that file is the single 
 - **State-affiliated outlets are flagged** in the registry and weighted accordingly by the
   AI curation layer.
 - Coverage grows continuously toward all countries and regions. Started at v0.1 with 78
-  sources; the registry has since grown to 298 sources across 130 countries (v1.61).
+  sources; the registry has since grown to 299 sources across 131 countries (v1.62).
 
 ## Global wires & financial
 
@@ -65,7 +65,7 @@ Nature News · Science (AAAS) · MIT Technology Review · Ars Technica · TechCr
 
 ---
 
-*Registry version 1.61.0 — 2026-07-21 (started at v0.1.0 on 2026-07-11 with 78 sources). RSS
+*Registry version 1.62.0 — 2026-07-21 (started at v0.1.0 on 2026-07-11 with 78 sources). RSS
 URLs in the JSON are candidates pending pipeline validation. This page shows a curated sample by
 region — see [`data/sources.json`](data/sources.json) or the
 [live sources page](https://equalinformation.com/global-intelligence-site/sources/) for the full,

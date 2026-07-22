@@ -1,6 +1,6 @@
 {
  "name": "Global Intelligence — News Source Registry",
- "version": "1.61.0",
+ "version": "1.62.0",
  "updated": "2026-07-21",
  "notes": [
   "Machine-readable registry of the world's important news media, consumed by the Global Intelligence pipelines and displayed on the site.",
@@ -77,7 +77,8 @@
   "v1.58: fixed a systemic, high-impact Google-News-search locale-parameter bug found via a fresh registry-health check -- 11 sources (spiegel, corriere, dr-dk, svt-se, aftenposten-no, yle-fi, eltiempo-co, latercera-cl, elcomercio-pe, elnacional-ve, 14ymedio) used Google News per-site-search RSS URLs with hl=en-US&gl=US&ceid=US:en locale parameters despite being non-English-language sources (German, Italian, Danish, Swedish, Norwegian, Finnish, and several Spanish-language Latin American outlets). Discovered while investigating why several sources chronically returned 0 fresh items in pipeline runs -- Der Spiegel's en-US search returned exactly 1 entry, a 196-day-old crossword-puzzle landing page, while switching to hl=de&gl=DE&ceid=DE:de returned 100 genuinely fresh, substantive articles from the last few hours. Verified the same pattern across all 11: corriere 2->100 entries, dr-dk 3->38, svt-se 0->100, aftenposten-no 0->100, yle-fi 6->100, latercera-cl 13->100, elcomercio-pe 2->100, 14ymedio 0->19 (best result found at es-419/CU specifically, not es-419/US). eltiempo-co was already returning 100 entries under en-US (Spanish apparently tolerates the mismatch better than Germanic/Nordic languages) but was fixed anyway for consistency. elnacional-ve initially tested as 0 entries even after the fix in one isolated check, but a follow-up direct pipeline _fetch_one() call returned 35 fresh items -- confirming that was just momentary/transient variance on that specific request, not a persistent separate issue; the locale fix worked for all 11 sources without exception. This is likely one of the highest-impact fixes of the whole registry-health-audit thread (rounds 189-194) -- these 11 sources had been silently underperforming, most severely so, since the round each was added.",
   "v1.59: found and closed a real cross-check gap between the taxonomy and the source registry -- Belgium and Poland are both explicitly named in curated taxonomy content (ripple_effects.json's Belgium 541-day government-deadlock precedent added in round 198; aspects.json references to Belarus/cocoa-producing regions adjacent to both) but had zero source coverage in the registry despite being significant European economies. Added The Brussels Times (Belgium, independent English-language digital outlet, verified via Google News per-site-search with genuine recent content -- Brussels urban planning, a fraud-case pardon request, scooter regulation) and Notes From Poland (Poland, independent English-language digital outlet with a working native RSS feed -- verified with genuine recent content spanning politics, defense, economy, and society: EU satellite project, Belarus border crossings down 98%, a Baltic deepwater port, Tusk on Ukraine security guarantees). Belarus and Somalia -- also named in curated content with zero registry coverage -- were not added this round; left as an open lead for a future round.",
   "v1.60: closed the remaining 2 of the 4 taxonomy-registry cross-check gaps found in round 211 (Belarus, Ivory Coast, Somalia, Belgium named in curated taxonomy content with zero source coverage -- Belgium/Poland were fixed in v1.59). Added Belsat (Belarus, verified via Google News per-site-search -- genuine mixed content: a writer's obituary, a corruption investigation into state procurement, Uzbek migrant labor conditions, funeral-services regulation, political commentary, plus some pagination/archive-listing noise, net-real per this project's established 'mixed but net-real' standard) and Garowe Online (Somalia, Puntland-based independent outlet, verified with genuine bilingual English/Somali content -- piracy/tanker seizures, Turkey e-Visa exclusion, a court ruling on Somali piracy convictions, Egypt urging release of kidnapped sailors). Belsat is classified state_affiliated:true following the DVB/RFA precedent from round 175 -- it's funded by Poland's government (a third-party state, not Belarus's own) specifically to broadcast independent content INTO Belarus, so the classification reflects funding source, not editorial independence from its subject country. Ivory Coast, the 4th named-but-uncovered country from round 211, was not addressed this round -- remains an open lead.",
-  "v1.61: closed the 4th and final taxonomy-registry gap from round 211's original finding -- Ivory Coast, named via aspects.json's food-agriculture.prices 'cocoa' keyword (Ivory Coast is the world's largest cocoa producer) but with zero prior source coverage. Added Fraternite Matin (Ivory Coast's oldest daily newspaper, founded 1964, historically state-linked -- classified state_affiliated:true), verified via Google News per-site-search with genuine diverse content: a civil-drone training day, a Rwandan genocide-trial appeal verdict, an orphanage fire in Abengourou, telecom leadership at a regional Abuja summit, climate-finance advocacy by Ivorian parliamentarians. This completes the taxonomy-vs-registry cross-check thread opened in round 211 -- all 4 originally-found gaps (Belgium, Poland, Belarus, Somalia, Ivory Coast -- 5 countries across the 4 findings, Poland was an adjacent addition alongside Belgium) are now closed."
+  "v1.61: closed the 4th and final taxonomy-registry gap from round 211's original finding -- Ivory Coast, named via aspects.json's food-agriculture.prices 'cocoa' keyword (Ivory Coast is the world's largest cocoa producer) but with zero prior source coverage. Added Fraternite Matin (Ivory Coast's oldest daily newspaper, founded 1964, historically state-linked -- classified state_affiliated:true), verified via Google News per-site-search with genuine diverse content: a civil-drone training day, a Rwandan genocide-trial appeal verdict, an orphanage fire in Abengourou, telecom leadership at a regional Abuja summit, climate-finance advocacy by Ivorian parliamentarians. This completes the taxonomy-vs-registry cross-check thread opened in round 211 -- all 4 originally-found gaps (Belgium, Poland, Belarus, Somalia, Ivory Coast -- 5 countries across the 4 findings, Poland was an adjacent addition alongside Belgium) are now closed.",
+  "v1.62: found a genuinely high-value gap via a more systematic version of round 211's taxonomy-registry cross-check -- extracted every country name mentioned across ripple_effects.json and checked each against the registry programmatically (not just relying on manual noticing). Taiwan stood out: it's an explicit lowercase keyword in the manufacturing-hub-natural-disaster playbook ('taiwan earthquake', 'taiwan chip factory' -- Taiwan's TSMC dominates global advanced semiconductor manufacturing, making earthquake/factory-disruption news there a real, high-impact trigger for that playbook) but had zero source coverage. Added Taipei Times (Taiwan, independent English-language newspaper published by Liberty Times Group, working native RSS feed -- verified with genuine diverse content: a Chinese helicopter crossing the median line, Han Kuang defense drills, Trump's Canada tariffs, Philippines-China sea clash envoy summons, carbon credit cooperation, consumer-protection litigation over cooking oil). Also found Greece, Portugal, and Iceland mentioned in ripple_effects.json, but only as incidental narrative text within historical precedents (a 2011 Eurozone bond-yield mention, Iceland as the Eyjafjallajokull volcano's location) rather than active keyword triggers -- lower priority, not pursued this round."
  ],
  "sources": [
   {
@@ -4606,6 +4607,23 @@
    "url": "https://www.fratmat.info",
    "rss": "https://news.google.com/rss/search?q=when:7d+site:fratmat.info&hl=fr&gl=CI&ceid=CI:fr",
    "state_affiliated": true
+  },
+  {
+   "id": "taipeitimes",
+   "name": "Taipei Times",
+   "country": "Taiwan",
+   "region": "Asia",
+   "language": "en",
+   "type": "newspaper",
+   "aspects": [
+    "general",
+    "politics",
+    "geopolitics",
+    "technology"
+   ],
+   "url": "https://www.taipeitimes.com",
+   "rss": "https://www.taipeitimes.com/xml/index.rss",
+   "state_affiliated": false
   }
  ]
 }
