@@ -1,0 +1,50 @@
+name: world-intelligence
+
+# NEW, standalone workflow — deliberately NOT a change to briefing.yml. Builds
+# data/world_intelligence_latest.json (see scripts/build_world_intelligence.py) by fetching all
+# 1,149 country-outlet feeds in data/country_feeds.json, ~10x the outlet count briefing.yml
+# fetches (299), which is why it gets its own job/schedule rather than being folded into
+# briefing.yml. Real timed runs (private-repo prototype + this repo's mirror, 2026-08-12) both
+# completed in ~80-100s wall-clock, so the 12-hourly cadence below is intentionally conservative
+# for a first scheduled run of new/unproven automation, not a runtime necessity — can be
+# tightened once a few scheduled runs are observed to be reliable.
+
+on:
+  schedule:
+    - cron: "0 */12 * * *" # 2 runs/day — conservative first cadence for new automation, see above
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: world-intelligence
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      # Pinned to a commit SHA rather than the mutable @v4/@v5 tag, matching the convention
+      # already established in briefing.yml for this repo.
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v4
+
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - run: pip install -r requirements.txt
+
+      - name: Build world_intelligence_latest.json
+        run: python scripts/build_world_intelligence.py
+
+      - name: Commit and push
+        run: |
+          git config user.name "gi-world-intelligence"
+          git config user.email "actions@users.noreply.github.com"
+          git add data/world_intelligence_latest.json
+          git diff --cached --quiet || git commit -m "world-intelligence: $(date -u +%FT%H:%MZ)"
+          git pull --rebase origin main
+          git push
