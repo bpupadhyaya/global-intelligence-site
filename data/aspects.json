@@ -1,6 +1,6 @@
 {
   "name": "Global Intelligence — Aspect Taxonomy",
-  "version": "1.10.0",
+  "version": "1.11.0",
   "confirmed": "2026-07-11",
   "notes": [
     "Phase 1 = global lens only: 12 categories, 41 core aspects (confirmed by Bhim 2026-07-11).",
@@ -109,7 +109,16 @@
     "three (cross-border finance/trade stories, general tourism statistics, a grounded warship/",
     "grounded vehicles unrelated to aviation) — left unfixed for the same reason as v1.9's 'attack'/",
     "'campaign': no single short exclude list cleanly covers a genuinely open-ended false-positive",
-    "source without also risking missed genuine matches; documented as a known, accepted limitation."
+    "source without also risking missed genuine matches; documented as a known, accepted limitation.",
+    "v1.11 (2026-08-12): renamed 'Travel & Mobility' to 'Travel & Security' (id stays 'travel',",
+    "unchanged) and added two aspects Bhim asked for since travel affects many economic sectors",
+    "(airlines, hotels, tourism) and the category previously covered advisories/aviation/visas but",
+    "not weather or the tourism-industry economics angle: travel.weather-disruptions (storms,",
+    "hurricanes, heatwaves grounding flights or disrupting destinations — distinct from the",
+    "'climate' category, which covers policy/long-term trends, not day-to-day travel weather) and",
+    "travel.tourism-economics (hotel/airline/cruise revenue, tourist arrivals, tourism-dependent",
+    "economies — previously only mentioned in category_context.json prose, never a matchable",
+    "aspect with its own keywords)."
   ],
   "categories": [
     { "id": "economy", "name": "Economy" },
@@ -122,7 +131,7 @@
     { "id": "climate", "name": "Climate & Environment" },
     { "id": "business", "name": "Business & Industry" },
     { "id": "society", "name": "Society" },
-    { "id": "travel", "name": "Travel & Mobility" },
+    { "id": "travel", "name": "Travel & Security" },
     { "id": "food-agriculture", "name": "Food & Agriculture" }
   ],
   "aspects": [
@@ -175,6 +184,8 @@
     { "id": "travel.advisories", "category": "travel", "name": "Travel advisories & safety", "keywords": ["travel advisory", "travel warning", "tourists", "tourist", "travel alert", "safety warning", "state department warning", "foreign office warning", "fcdo advisory", "do not travel"], "influences": ["travel"] },
     { "id": "travel.aviation-disruptions", "category": "travel", "name": "Aviation & transit disruptions", "keywords": ["flights cancelled", "flight delays", "flight suspension", "flight suspensions", "airport", "air traffic", "rail strike", "airline strike", "grounded", "travel chaos", "disruption"], "influences": ["travel"] },
     { "id": "travel.visas", "category": "travel", "name": "Visas & borders", "keywords": ["visa", "passport", "border", "entry requirement", "schengen", "immigration rule", "travel ban", "border control", "e-visa"], "influences": ["travel"] },
+    { "id": "travel.weather-disruptions", "category": "travel", "name": "Weather-driven travel disruptions", "keywords": ["storm grounds flights", "hurricane evacuation", "airport closed weather", "flight cancellations weather", "blizzard travel", "winter storm travel", "snowstorm airport", "typhoon flights", "tropical storm travel", "heatwave travel warning", "flooding airport", "weather delays", "storm travel advisory", "cyclone evacuation"], "influences": ["travel", "daily-life"] },
+    { "id": "travel.tourism-economics", "category": "travel", "name": "Tourism & hospitality economics", "keywords": ["tourism revenue", "hotel occupancy", "tourist arrivals", "cruise industry", "tourism-dependent economy", "hospitality industry", "peak travel season", "overtourism", "airline earnings", "airline profits", "tourism board", "visitor numbers", "tourism recovery", "package holidays"], "influences": ["travel", "business", "investments"] },
 
     { "id": "food-agriculture.prices", "category": "food-agriculture", "name": "Food prices", "keywords": ["food price", "grocery", "food inflation", "wheat", "rice", "corn", "soybean", "grain", "coffee", "cocoa", "sugar"], "exclude_keywords": ["coffee shop", "coffee table"], "influences": ["daily-life", "investments"] },
     { "id": "food-agriculture.security", "category": "food-agriculture", "name": "Harvests & food security", "keywords": ["harvest", "crop", "famine", "food security", "food shortage", "agriculture", "farmers", "drought crop", "fertilizer", "hunger", "crop yield", "crop yields", "harvest yield"], "exclude_keywords": ["hunger strike", "hunger-strike"], "influences": ["daily-life"] }
