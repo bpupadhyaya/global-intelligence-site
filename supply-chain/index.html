@@ -389,9 +389,42 @@
             });
         });
 
+        // Search is plain substring against each path's commodity text, which misses same-
+        // substance names that don't share characters (searching "oil" won't find "gasoline"
+        // or "refined petroleum products" — no shared letters to match on). A small curated
+        // table closes the common gaps without going fuzzy/AI: typing any trigger expands the
+        // match set to the whole family. Deliberately narrow (same substance/industry, not
+        // "same category" — the category chips already do broad-theme filtering) and each
+        // family only adds terms that are unambiguous on their own (no bare "crude", which
+        // would also pull in "crude helium"/"crude heparin").
+        var SEARCH_SYNONYM_GROUPS = [
+            { triggers: ['oil', 'petroleum', 'crude'],
+              expand: ['oil', 'petroleum', 'gasoline', 'diesel', 'jet fuel', 'naphtha', 'bitumen', 'condensate'] },
+            { triggers: ['gas', 'lng', 'lpg'],
+              expand: ['gas', 'lng', 'liquefied natural gas', 'liquefied petroleum gas'] },
+            { triggers: ['solar', 'photovoltaic', 'pv'],
+              expand: ['solar', 'photovoltaic', 'pv'] },
+            { triggers: ['semiconductor', 'semiconductors', 'chip', 'chips', 'microchip'],
+              expand: ['semiconductor', 'chip', 'integrated circuit', 'dram', 'nand flash', 'memory', 'wafer'] }
+        ];
+
+        // Below 3 characters, skip synonym expansion entirely — a 1-2 char query would
+        // otherwise "prefix-match" into a trigger (e.g. "g" into "gas") and pull in an
+        // unrelated flood of results.
+        function expandSearchTerms(q) {
+            if (!q || q.length < 3) return [q];
+            var terms = [q];
+            SEARCH_SYNONYM_GROUPS.forEach(function (g) {
+                var hit = g.triggers.some(function (t) { return t.indexOf(q) !== -1 || q.indexOf(t) !== -1; });
+                if (hit) terms = terms.concat(g.expand);
+            });
+            return terms;
+        }
+
         // ---------- Filter / highlight state ----------
         var activeCategory = null;  // committed (clicked) category, or null
         var searchQuery = '';       // committed search text, lowercased
+        var searchTerms = [''];     // searchQuery expanded via SEARCH_SYNONYM_GROUPS (recomputed on input)
         var previewCategory = undefined; // hovered-but-not-clicked category preview; undefined = no preview
         var hoveredPathId = null;   // single-path hover (from map arc or sidebar row)
 
@@ -402,7 +435,10 @@
             if (!meta) return false;
             var cat = currentCategory();
             if (cat && meta.category !== cat) return false;
-            if (searchQuery && meta.commodityStr.indexOf(searchQuery) === -1) return false;
+            if (searchQuery) {
+                var found = searchTerms.some(function (t) { return meta.commodityStr.indexOf(t) !== -1; });
+                if (!found) return false;
+            }
             return true;
         }
 
@@ -538,6 +574,7 @@
         var searchInput = document.getElementById('commodity-search');
         searchInput.addEventListener('input', function () {
             searchQuery = searchInput.value.trim().toLowerCase();
+            searchTerms = expandSearchTerms(searchQuery);
             applyFilterChange();
         });
 
