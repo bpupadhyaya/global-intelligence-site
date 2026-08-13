@@ -41,6 +41,8 @@ repos) and commits the refreshed `data/briefing.json`.
 - `/` — homepage, live aspect previews + top-10 preview
 - `/briefing/` — the full live briefing, every aspect
 - `/top10/` — the 10 most influential current stories, ranked by breadth × recency
+- `/countries/` — every country's news media, 195 countries / 2,139 outlets, searchable
+- `/supply-chain/` — 133 curated global supply-chain paths across 9 categories
 - `/sources/` — the full, live source registry
 
 ## Running the pipeline locally

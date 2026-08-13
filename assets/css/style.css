@@ -362,6 +362,28 @@ details[open].ripple summary::after, details[open].context summary::after { tran
 .ripple-body li, .context-body li { margin-bottom: 4px; }
 .disclaimer { font-size: 11.5px; color: var(--ink-faint); font-style: italic; margin-bottom: 6px; }
 
+/* ---------- Country directory cards (foldable) ---------- */
+.country-card summary {
+    cursor: pointer; list-style: none; display: flex; align-items: baseline; gap: 8px;
+}
+.country-card summary::-webkit-details-marker { display: none; }
+.country-card summary::after {
+    content: "▾"; margin-left: auto; color: var(--ink-faint); transition: transform 0.15s; flex-shrink: 0;
+}
+.country-card[open] summary::after { transform: rotate(180deg); }
+.country-card .live-list { margin-top: 10px; }
+
+/* ---------- Supply-chain path cards ---------- */
+.path-card h3 { font-size: 16px; font-weight: 700; color: var(--ink); margin-top: 6px; line-height: 1.35; }
+.path-route { margin-top: 8px; font-size: 12.5px; color: var(--ink-faint); }
+
+/* ---------- Search input ---------- */
+.search-input {
+    width: 100%; font: inherit; font-size: 15px; padding: 11px 16px; border-radius: 999px;
+    border: 1px solid var(--line); background: #fff; color: var(--ink);
+}
+.search-input:focus { outline: 2px solid var(--green-600); outline-offset: 1px; }
+
 /* ---------- Responsive ---------- */
 @media (max-width: 860px) {
     .grid, .grid.four { grid-template-columns: repeat(2, 1fr); }

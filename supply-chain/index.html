@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self';">
+    <title>Supply Chain — Global Intelligence</title>
+    <meta name="description" content="133 curated global supply-chain paths across 9 categories — chokepoints, shipping lanes, and trade corridors — each with sourced, current context on what's disrupting it.">
+    <link rel="canonical" href="https://equalinformation.com/global-intelligence-site/supply-chain/">
+    <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="../assets/img/apple-touch-icon.png">
+    <link rel="manifest" href="../site.webmanifest">
+    <meta name="theme-color" content="#0b3d2e">
+    <meta property="og:title" content="Supply Chain — Global Intelligence">
+    <meta property="og:description" content="133 curated global supply-chain paths across 9 categories — chokepoints, shipping lanes, and trade corridors — each with sourced, current context on what's disrupting it.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://equalinformation.com/global-intelligence-site/supply-chain/">
+    <meta property="og:image" content="https://equalinformation.com/global-intelligence-site/assets/img/og-share.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Supply Chain — Global Intelligence">
+    <meta name="twitter:description" content="133 curated global supply-chain paths across 9 categories — chokepoints, shipping lanes, and trade corridors — each with sourced, current context on what's disrupting it.">
+    <meta name="twitter:image" content="https://equalinformation.com/global-intelligence-site/assets/img/og-share.png">
+    <link rel="stylesheet" href="../assets/fonts/inter.css">
+    <link rel="stylesheet" href="../assets/css/style.css?v=b3a9f35b">
+</head>
+<body>
+
+<a class="skip-link" href="#supply-chain-root">Skip to content</a>
+
+<nav>
+    <div class="nav-inner">
+        <a href="../" class="nav-logo"><span class="globe" aria-hidden="true">🌐</span> Global Intelligence</a>
+        <ul class="nav-links">
+            <li><a href="../briefing/">Live briefing</a></li>
+            <li><a href="../top10/">Top 10</a></li>
+            <li><a href="../countries/">Countries</a></li>
+            <li><a href="./" aria-current="page">Supply Chain</a></li>
+            <li><a href="../sources/">Sources</a></li>
+        </ul>
+        <span class="nav-utc"><span class="live" aria-hidden="true">●</span> <span id="utc">— UTC</span></span>
+        <button class="mobile-menu-btn" aria-label="Menu" aria-expanded="false" onclick="var l=document.querySelector('.nav-links'); var open=l.classList.toggle('show'); this.setAttribute('aria-expanded', open);">&#9776;</button>
+    </div>
+</nav>
+
+<header class="hero hero-sub">
+    <div class="wrap">
+        <h1>Every trade route that <span class="accent">matters</span></h1>
+        <p class="tagline" id="paths-stamp">Loading…</p>
+        <p class="lede">Curated, hand-researched global supply-chain paths — chokepoints,
+        shipping lanes, and trade corridors — each with why it matters, historical precedents,
+        and real, fetched citations preferring authoritative government/UN/IMF/World Bank
+        sources. Neutral, professional framing throughout. In the app: Menu → Supply Chain,
+        part of Global Intelligence Premium.</p>
+        <div class="chips" id="cat-nav" style="margin-top:26px;"></div>
+    </div>
+</header>
+
+<main class="wrap" id="supply-chain-root" style="padding: 28px 24px 64px;">
+    <noscript><p>This page needs JavaScript — or read the raw data at
+    <a href="../data/supply_chain_paths.json">data/supply_chain_paths.json</a>.</p></noscript>
+</main>
+
+<footer>
+    <div class="footer-inner">
+        <ul class="footer-links">
+            <li><a href="../">Home</a></li>
+            <li><a href="../briefing/">Live briefing</a></li>
+            <li><a href="../top10/">Top 10</a></li>
+            <li><a href="../countries/">Countries</a></li>
+            <li><a href="./">Supply Chain</a></li>
+            <li><a href="../sources/">Source registry</a></li>
+            <li><a href="../privacy/">Privacy</a></li>
+            <li><a href="../terms/">Terms</a></li>
+            <li><a href="https://github.com/bpupadhyaya/global-intelligence-site">GitHub</a></li>
+        </ul>
+        <p class="footer-copy">© 2026 Global Intelligence · Sourced from authoritative government/UN/IMF/World Bank reporting ·
+        <a href="https://github.com/bpupadhyaya/global-intelligence-site/blob/main/data/supply_chain_paths.json">supply_chain_paths.json</a></p>
+    </div>
+</footer>
+
+<script>
+    (function () {
+        var utc = document.getElementById('utc');
+        function tick() {
+            var d = new Date(), p = function (n) { return String(n).padStart(2, '0'); };
+            utc.textContent = p(d.getUTCHours()) + ':' + p(d.getUTCMinutes()) + ':' + p(d.getUTCSeconds()) + ' UTC';
+        }
+        tick(); setInterval(tick, 1000);
+    })();
+
+    function esc(s) {
+        return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    }
+
+    // Same fixed pipeline order + display names as the native apps' SupplyChainCategoryStyle
+    // (iOS SupplyChainView.swift / Android SupplyChainScreens.kt) — most-influential first.
+    var CATEGORY_ORDER = ['energy', 'minerals-metals', 'fertilizer', 'agriculture', 'industrial',
+        'pharmaceuticals-medical-supplies', 'chemicals-plastics', 'coal', 'renewable-energy-equipment'];
+    var CATEGORY_NAMES = {
+        'energy': 'Energy',
+        'minerals-metals': 'Minerals & Metals',
+        'fertilizer': 'Fertilizer',
+        'agriculture': 'Agriculture',
+        'industrial': 'Industrial',
+        'pharmaceuticals-medical-supplies': 'Pharmaceuticals & Medical Supplies',
+        'chemicals-plastics': 'Chemicals & Plastics',
+        'coal': 'Coal',
+        'renewable-energy-equipment': 'Renewable Energy Equipment'
+    };
+    function categoryName(id) { return CATEGORY_NAMES[id] || id; }
+
+    (function () {
+        var root = document.getElementById('supply-chain-root');
+        fetch('../data/supply_chain_paths.json?t=' + Date.now())
+            .then(function (r) { return r.json(); })
+            .then(function (d) {
+                document.getElementById('paths-stamp').textContent =
+                    d.paths.length + ' paths · ' + d.categories.length + ' categories · updated ' + d.generated;
+
+                var byCategory = {};
+                d.paths.forEach(function (p) { (byCategory[p.category] = byCategory[p.category] || []).push(p); });
+
+                var catNav = document.getElementById('cat-nav');
+                var order = CATEGORY_ORDER.concat(d.categories.filter(function (c) { return CATEGORY_ORDER.indexOf(c) < 0; }));
+
+                order.forEach(function (catId) {
+                    var paths = byCategory[catId];
+                    if (!paths || !paths.length) return;
+
+                    var chip = document.createElement('a');
+                    chip.className = 'chip';
+                    chip.href = '#' + catId;
+                    chip.textContent = categoryName(catId);
+                    chip.style.textDecoration = 'none';
+                    catNav.appendChild(chip);
+
+                    var section = document.createElement('section');
+                    section.id = catId;
+                    section.style.padding = '26px 0 6px';
+                    var h = document.createElement('h2');
+                    h.textContent = categoryName(catId) + ' (' + paths.length + ')';
+                    h.style.cssText = 'color:var(--green-900);font-size:22px;letter-spacing:-0.02em;margin-bottom:14px;';
+                    section.appendChild(h);
+
+                    var grid = document.createElement('div');
+                    grid.className = 'brief-grid';
+                    paths
+                        .slice()
+                        .sort(function (a, b) { return a.name.localeCompare(b.name); })
+                        .forEach(function (p) {
+                            var card = document.createElement('article');
+                            card.className = 'briefing brief-card path-card';
+
+                            var kicker = document.createElement('div');
+                            kicker.className = 'aspect-path';
+                            kicker.textContent = categoryName(p.category);
+                            card.appendChild(kicker);
+
+                            var h3 = document.createElement('h3');
+                            h3.textContent = p.name;
+                            card.appendChild(h3);
+
+                            if (p.commodities && p.commodities.length) {
+                                var tags = document.createElement('div');
+                                tags.className = 'tags';
+                                tags.style.marginTop = '10px';
+                                p.commodities.forEach(function (c) {
+                                    var tag = document.createElement('span');
+                                    tag.className = 'tag';
+                                    tag.textContent = c;
+                                    tags.appendChild(tag);
+                                });
+                                card.appendChild(tags);
+                            }
+
+                            var details = document.createElement('details');
+                            details.className = 'context';
+                            var summary = document.createElement('summary');
+                            summary.innerHTML = '<span aria-hidden="true">💡</span> Why this matters';
+                            details.appendChild(summary);
+                            var body = document.createElement('div');
+                            body.className = 'context-body';
+                            var why = document.createElement('p');
+                            why.textContent = p.why_it_matters || '';
+                            body.appendChild(why);
+                            if (p.estimated_global_share) {
+                                var shareH = document.createElement('h3');
+                                shareH.textContent = 'Estimated global share';
+                                body.appendChild(shareH);
+                                var shareP = document.createElement('p');
+                                shareP.textContent = p.estimated_global_share;
+                                body.appendChild(shareP);
+                            }
+                            if (p.historical_precedents && p.historical_precedents.length) {
+                                var precH = document.createElement('h3');
+                                precH.textContent = 'Historical precedents';
+                                body.appendChild(precH);
+                                var precUl = document.createElement('ul');
+                                p.historical_precedents.forEach(function (prec) {
+                                    var li = document.createElement('li');
+                                    li.textContent = prec;
+                                    precUl.appendChild(li);
+                                });
+                                body.appendChild(precUl);
+                            }
+                            // Field order (chokepoints → origin → destination regions) matches
+                            // the native apps' SupplyChainPathDetailView field order.
+                            [['Chokepoints', p.chokepoints], ['Origin regions', p.origin_regions],
+                                ['Destination regions', p.destination_regions]].forEach(function (pair) {
+                                var label = pair[0], values = pair[1];
+                                if (!values || !values.length) return;
+                                var h = document.createElement('h3');
+                                h.textContent = label;
+                                body.appendChild(h);
+                                var pEl = document.createElement('p');
+                                pEl.textContent = values.join(', ');
+                                body.appendChild(pEl);
+                            });
+                            if (p.sources && p.sources.length) {
+                                var srcH = document.createElement('h3');
+                                srcH.textContent = 'Sources';
+                                body.appendChild(srcH);
+                                var srcUl = document.createElement('ul');
+                                p.sources.forEach(function (s) {
+                                    var li = document.createElement('li');
+                                    var link = document.createElement('a');
+                                    link.href = s.url; link.rel = 'noopener'; link.target = '_blank';
+                                    link.textContent = s.title;
+                                    link.style.cssText = 'color:var(--green-700);font-weight:600;';
+                                    li.appendChild(link);
+                                    srcUl.appendChild(li);
+                                });
+                                body.appendChild(srcUl);
+                            }
+                            details.appendChild(body);
+                            card.appendChild(details);
+
+                            grid.appendChild(card);
+                        });
+                    section.appendChild(grid);
+                    root.appendChild(section);
+                });
+            })
+            .catch(function () {
+                root.innerHTML = '<p style="color:var(--ink-faint)">Could not load the supply-chain paths — try again shortly.</p>';
+            });
+    })();
+</script>
+
+</body>
+</html>
