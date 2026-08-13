@@ -249,7 +249,7 @@ a.tag:hover { border-color: var(--green-600); color: var(--green-700); }
     background: #fff; border: 1px solid var(--line); border-radius: 999px;
     padding: 6px 14px; font-size: 13px; font-weight: 600; color: var(--green-700);
 }
-a.chip:hover { border-color: var(--green-600); text-decoration: none; }
+a.chip:hover, button.chip:hover { border-color: var(--green-600); text-decoration: none; }
 
 /* ---------- Privacy banner ---------- */
 .privacy-banner {
@@ -384,9 +384,52 @@ details[open].ripple summary::after, details[open].context summary::after { tran
 }
 .search-input:focus { outline: 2px solid var(--green-600); outline-offset: 1px; }
 
+/* ---------- Supply-chain map ---------- */
+.map-layout { display: grid; grid-template-columns: 1fr 340px; gap: 20px; align-items: start; }
+.map-pane {
+    background: #fff; border: 1px solid var(--line); border-radius: var(--radius);
+    box-shadow: var(--shadow); padding: 16px;
+}
+.map-pane svg { width: 100%; height: auto; display: block; }
+.map-caption { margin-top: 10px; font-size: 12.5px; color: var(--ink-faint); text-align: center; }
+.map-sidebar { display: flex; flex-direction: column; gap: 14px; position: sticky; top: 78px; }
+.map-sidebar .chips { justify-content: flex-start; gap: 8px; }
+.map-sidebar .chip {
+    cursor: pointer; user-select: none; font-size: 12.5px; padding: 5px 12px;
+    background: none; font-family: inherit; transition: background 0.12s, border-color 0.12s, color 0.12s;
+}
+.map-sidebar .chip.active { background: var(--green-600); color: #fff; border-color: var(--green-600); }
+.map-sidebar-head { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-faint); }
+.map-path-list { max-height: 420px; overflow-y: auto; display: flex; flex-direction: column; gap: 8px; }
+.map-path-row {
+    padding: 10px 12px; border-radius: 10px; border: 1px solid var(--line); cursor: pointer;
+    background: #fff; text-align: left; width: 100%; font: inherit;
+    transition: background 0.12s, border-color 0.12s;
+}
+.map-path-row:hover, .map-path-row.hovered { border-color: var(--green-600); background: var(--green-100); }
+.map-path-row .mprow-name { font-size: 13px; font-weight: 700; color: var(--ink); line-height: 1.35; }
+.map-path-row .mprow-meta { font-size: 11.5px; color: var(--ink-faint); margin-top: 3px; }
+.map-empty { font-size: 13px; color: var(--ink-faint); padding: 12px 2px; }
+.geo-country { fill: #e9f1ec; stroke: #d3e3da; stroke-width: 0.5; }
+.geo-arc-hit { fill: none; stroke: transparent; stroke-width: 14px; cursor: pointer; }
+.geo-arc {
+    fill: none; stroke: var(--ink-faint); stroke-opacity: 0.28; stroke-width: 1.1px;
+    pointer-events: none; transition: stroke 0.15s, stroke-opacity 0.15s, stroke-width 0.15s;
+}
+.geo-arc.mm-active { stroke: var(--green-600); stroke-opacity: 0.9; stroke-width: 2px; }
+.geo-arc.mm-dim { stroke-opacity: 0.05; }
+.geo-dot { fill: var(--ink-faint); fill-opacity: 0.55; stroke: #fff; stroke-width: 1px; pointer-events: none; }
+.geo-dot.mm-active { fill: var(--green-700); fill-opacity: 1; }
+.geo-dot.mm-dim { fill-opacity: 0.12; }
+.geo-dot.choke { fill: var(--amber-500); fill-opacity: 0.85; }
+.geo-dot.choke.mm-dim { fill-opacity: 0.12; }
+
 /* ---------- Responsive ---------- */
 @media (max-width: 860px) {
     .grid, .grid.four { grid-template-columns: repeat(2, 1fr); }
+    .map-layout { grid-template-columns: 1fr; }
+    .map-sidebar { position: static; }
+    .map-path-list { max-height: 320px; }
 }
 @media (max-width: 768px) {
     .nav-links {

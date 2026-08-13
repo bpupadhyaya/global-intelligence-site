@@ -42,7 +42,8 @@ repos) and commits the refreshed `data/briefing.json`.
 - `/briefing/` — the full live briefing, every aspect
 - `/top10/` — the 10 most influential current stories, ranked by breadth × recency
 - `/countries/` — every country's news media, 195 countries / 2,139 outlets, searchable
-- `/supply-chain/` — 133 curated global supply-chain paths across 9 categories
+- `/supply-chain/` — 133 curated global supply-chain paths across 9 categories, on an
+  interactive world map (search a commodity or hover a category to highlight its routes)
 - `/sources/` — the full, live source registry
 
 ## Running the pipeline locally
@@ -53,6 +54,14 @@ python scripts/build_briefing.py
 ```
 
 Writes `data/briefing.json`. No API keys or paid services required.
+
+`scripts/build_supply_chain_geo.py` resolves `data/supply_chain_paths.json`'s free-text
+origin/destination/chokepoint strings into map coordinates — country name matching (with an
+alias table) plus a small hand-curated table of composite regions and physical chokepoints
+(straits, canals, named ports/pipelines) — and writes `data/supply_chain_geo.json`, which the
+`/supply-chain/` map reads. Deterministic, no AI/LLM cost, same as the rest of this repo; most
+strings that aren't real places (company names, "global markets") are left unresolved on
+purpose rather than guessed at.
 
 ## Related
 

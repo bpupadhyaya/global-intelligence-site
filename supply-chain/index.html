@@ -5,20 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self';">
     <title>Supply Chain — Global Intelligence</title>
-    <meta name="description" content="133 curated global supply-chain paths across 9 categories — chokepoints, shipping lanes, and trade corridors — each with sourced, current context on what's disrupting it.">
+    <meta name="description" content="133 curated global supply-chain paths across 9 categories, on an interactive world map — chokepoints, shipping lanes, and trade corridors — each with sourced, current context on what's disrupting it.">
     <link rel="canonical" href="https://equalinformation.com/global-intelligence-site/supply-chain/">
     <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="../assets/img/apple-touch-icon.png">
     <link rel="manifest" href="../site.webmanifest">
     <meta name="theme-color" content="#0b3d2e">
     <meta property="og:title" content="Supply Chain — Global Intelligence">
-    <meta property="og:description" content="133 curated global supply-chain paths across 9 categories — chokepoints, shipping lanes, and trade corridors — each with sourced, current context on what's disrupting it.">
+    <meta property="og:description" content="133 curated global supply-chain paths across 9 categories, on an interactive world map — chokepoints, shipping lanes, and trade corridors — each with sourced, current context on what's disrupting it.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://equalinformation.com/global-intelligence-site/supply-chain/">
     <meta property="og:image" content="https://equalinformation.com/global-intelligence-site/assets/img/og-share.png">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Supply Chain — Global Intelligence">
-    <meta name="twitter:description" content="133 curated global supply-chain paths across 9 categories — chokepoints, shipping lanes, and trade corridors — each with sourced, current context on what's disrupting it.">
+    <meta name="twitter:description" content="133 curated global supply-chain paths across 9 categories, on an interactive world map — chokepoints, shipping lanes, and trade corridors — each with sourced, current context on what's disrupting it.">
     <meta name="twitter:image" content="https://equalinformation.com/global-intelligence-site/assets/img/og-share.png">
     <link rel="stylesheet" href="../assets/fonts/inter.css">
     <link rel="stylesheet" href="../assets/css/style.css?v=b3a9f35b">
@@ -49,11 +49,40 @@
         <p class="lede">Curated, hand-researched global supply-chain paths — chokepoints,
         shipping lanes, and trade corridors — each with why it matters, historical precedents,
         and real, fetched citations preferring authoritative government/UN/IMF/World Bank
-        sources. Neutral, professional framing throughout. In the app: Menu → Supply Chain,
-        part of Global Intelligence Premium.</p>
-        <div class="chips" id="cat-nav" style="margin-top:26px;"></div>
+        sources. In the app: Menu → Supply Chain, part of Global Intelligence Premium.</p>
     </div>
 </header>
+
+<section class="tint" id="map-explore">
+    <div class="wrap" style="padding-top:28px; padding-bottom:28px;">
+        <div class="section-head" style="margin-bottom:20px;">
+            <span class="kicker">Explore on the map</span>
+            <h2>Hover a category, or search a commodity</h2>
+            <p>Every resolvable path plotted on a real map — search "oil", "copper", "wheat",
+            or hover a category below to bold its routes. Points are approximate (country-level);
+            physical chokepoints (straits, canals, named ports/pipelines) are marked in amber —
+            everything else in a path's data stays in the detail cards below.</p>
+        </div>
+        <div class="map-layout">
+            <div class="map-pane">
+                <svg id="world-map" viewBox="0 0 960 500" role="img" aria-label="World map of supply-chain paths"></svg>
+                <p class="map-caption" id="map-caption">Loading map…</p>
+            </div>
+            <aside class="map-sidebar">
+                <input type="search" id="commodity-search" class="search-input"
+                    placeholder="Search a commodity…" aria-label="Search a commodity">
+                <div>
+                    <div class="map-sidebar-head" style="margin-bottom:8px;">Categories</div>
+                    <div class="chips" id="map-cat-chips"></div>
+                </div>
+                <div>
+                    <div class="map-sidebar-head" style="margin-bottom:8px;" id="map-list-head">All 133 paths</div>
+                    <div class="map-path-list" id="map-path-list"></div>
+                </div>
+            </aside>
+        </div>
+    </div>
+</section>
 
 <main class="wrap" id="supply-chain-root" style="padding: 28px 24px 64px;">
     <noscript><p>This page needs JavaScript — or read the raw data at
@@ -74,10 +103,13 @@
             <li><a href="https://github.com/bpupadhyaya/global-intelligence-site">GitHub</a></li>
         </ul>
         <p class="footer-copy">© 2026 Global Intelligence · Sourced from authoritative government/UN/IMF/World Bank reporting ·
-        <a href="https://github.com/bpupadhyaya/global-intelligence-site/blob/main/data/supply_chain_paths.json">supply_chain_paths.json</a></p>
+        <a href="https://github.com/bpupadhyaya/global-intelligence-site/blob/main/data/supply_chain_paths.json">supply_chain_paths.json</a> ·
+        map built with <a href="https://d3js.org/">D3</a> and <a href="https://github.com/topojson/world-atlas">Natural Earth</a></p>
     </div>
 </footer>
 
+<script src="../assets/vendor/d3.v7.min.js"></script>
+<script src="../assets/vendor/topojson-client.v3.min.js"></script>
 <script>
     (function () {
         var utc = document.getElementById('utc');
@@ -109,142 +141,424 @@
     };
     function categoryName(id) { return CATEGORY_NAMES[id] || id; }
 
-    (function () {
+    var pathCardEls = {}; // pathId -> <details> element in the grid below, filled in by renderCards()
+
+    function renderCards(d) {
         var root = document.getElementById('supply-chain-root');
-        fetch('../data/supply_chain_paths.json?t=' + Date.now())
-            .then(function (r) { return r.json(); })
-            .then(function (d) {
-                document.getElementById('paths-stamp').textContent =
-                    d.paths.length + ' paths · ' + d.categories.length + ' categories · updated ' + d.generated;
+        document.getElementById('paths-stamp').textContent =
+            d.paths.length + ' paths · ' + d.categories.length + ' categories · updated ' + d.generated;
 
-                var byCategory = {};
-                d.paths.forEach(function (p) { (byCategory[p.category] = byCategory[p.category] || []).push(p); });
+        var byCategory = {};
+        d.paths.forEach(function (p) { (byCategory[p.category] = byCategory[p.category] || []).push(p); });
+        var order = CATEGORY_ORDER.concat(d.categories.filter(function (c) { return CATEGORY_ORDER.indexOf(c) < 0; }));
 
-                var catNav = document.getElementById('cat-nav');
-                var order = CATEGORY_ORDER.concat(d.categories.filter(function (c) { return CATEGORY_ORDER.indexOf(c) < 0; }));
+        order.forEach(function (catId) {
+            var paths = byCategory[catId];
+            if (!paths || !paths.length) return;
 
-                order.forEach(function (catId) {
-                    var paths = byCategory[catId];
-                    if (!paths || !paths.length) return;
+            var section = document.createElement('section');
+            section.id = catId;
+            section.style.padding = '26px 0 6px';
+            var h = document.createElement('h2');
+            h.textContent = categoryName(catId) + ' (' + paths.length + ')';
+            h.style.cssText = 'color:var(--green-900);font-size:22px;letter-spacing:-0.02em;margin-bottom:14px;';
+            section.appendChild(h);
 
-                    var chip = document.createElement('a');
-                    chip.className = 'chip';
-                    chip.href = '#' + catId;
-                    chip.textContent = categoryName(catId);
-                    chip.style.textDecoration = 'none';
-                    catNav.appendChild(chip);
+            var grid = document.createElement('div');
+            grid.className = 'brief-grid';
+            paths
+                .slice()
+                .sort(function (a, b) { return a.name.localeCompare(b.name); })
+                .forEach(function (p) {
+                    var card = document.createElement('article');
+                    card.className = 'briefing brief-card path-card';
+                    card.id = 'path-' + p.id;
 
-                    var section = document.createElement('section');
-                    section.id = catId;
-                    section.style.padding = '26px 0 6px';
-                    var h = document.createElement('h2');
-                    h.textContent = categoryName(catId) + ' (' + paths.length + ')';
-                    h.style.cssText = 'color:var(--green-900);font-size:22px;letter-spacing:-0.02em;margin-bottom:14px;';
-                    section.appendChild(h);
-
-                    var grid = document.createElement('div');
-                    grid.className = 'brief-grid';
-                    paths
-                        .slice()
-                        .sort(function (a, b) { return a.name.localeCompare(b.name); })
-                        .forEach(function (p) {
-                            var card = document.createElement('article');
-                            card.className = 'briefing brief-card path-card';
-
-                            var kicker = document.createElement('div');
-                            kicker.className = 'aspect-path';
-                            kicker.textContent = categoryName(p.category);
-                            card.appendChild(kicker);
-
-                            var h3 = document.createElement('h3');
-                            h3.textContent = p.name;
-                            card.appendChild(h3);
-
-                            if (p.commodities && p.commodities.length) {
-                                var tags = document.createElement('div');
-                                tags.className = 'tags';
-                                tags.style.marginTop = '10px';
-                                p.commodities.forEach(function (c) {
-                                    var tag = document.createElement('span');
-                                    tag.className = 'tag';
-                                    tag.textContent = c;
-                                    tags.appendChild(tag);
-                                });
-                                card.appendChild(tags);
-                            }
-
-                            var details = document.createElement('details');
-                            details.className = 'context';
-                            var summary = document.createElement('summary');
-                            summary.innerHTML = '<span aria-hidden="true">💡</span> Why this matters';
-                            details.appendChild(summary);
-                            var body = document.createElement('div');
-                            body.className = 'context-body';
-                            var why = document.createElement('p');
-                            why.textContent = p.why_it_matters || '';
-                            body.appendChild(why);
-                            if (p.estimated_global_share) {
-                                var shareH = document.createElement('h3');
-                                shareH.textContent = 'Estimated global share';
-                                body.appendChild(shareH);
-                                var shareP = document.createElement('p');
-                                shareP.textContent = p.estimated_global_share;
-                                body.appendChild(shareP);
-                            }
-                            if (p.historical_precedents && p.historical_precedents.length) {
-                                var precH = document.createElement('h3');
-                                precH.textContent = 'Historical precedents';
-                                body.appendChild(precH);
-                                var precUl = document.createElement('ul');
-                                p.historical_precedents.forEach(function (prec) {
-                                    var li = document.createElement('li');
-                                    li.textContent = prec;
-                                    precUl.appendChild(li);
-                                });
-                                body.appendChild(precUl);
-                            }
-                            // Field order (chokepoints → origin → destination regions) matches
-                            // the native apps' SupplyChainPathDetailView field order.
-                            [['Chokepoints', p.chokepoints], ['Origin regions', p.origin_regions],
-                                ['Destination regions', p.destination_regions]].forEach(function (pair) {
-                                var label = pair[0], values = pair[1];
-                                if (!values || !values.length) return;
-                                var h = document.createElement('h3');
-                                h.textContent = label;
-                                body.appendChild(h);
-                                var pEl = document.createElement('p');
-                                pEl.textContent = values.join(', ');
-                                body.appendChild(pEl);
-                            });
-                            if (p.sources && p.sources.length) {
-                                var srcH = document.createElement('h3');
-                                srcH.textContent = 'Sources';
-                                body.appendChild(srcH);
-                                var srcUl = document.createElement('ul');
-                                p.sources.forEach(function (s) {
-                                    var li = document.createElement('li');
-                                    var link = document.createElement('a');
-                                    link.href = s.url; link.rel = 'noopener'; link.target = '_blank';
-                                    link.textContent = s.title;
-                                    link.style.cssText = 'color:var(--green-700);font-weight:600;';
-                                    li.appendChild(link);
-                                    srcUl.appendChild(li);
-                                });
-                                body.appendChild(srcUl);
-                            }
-                            details.appendChild(body);
-                            card.appendChild(details);
-
-                            grid.appendChild(card);
+                    var kicker = document.createElement('div');
+                    kicker.className = 'aspect-path';
+                    kicker.textContent = categoryName(p.category);
+                    card.appendChild(kicker);
+                    var h3 = document.createElement('h3');
+                    h3.textContent = p.name;
+                    card.appendChild(h3);
+                    if (p.commodities && p.commodities.length) {
+                        var tags = document.createElement('div');
+                        tags.className = 'tags';
+                        tags.style.marginTop = '10px';
+                        p.commodities.forEach(function (c) {
+                            var tag = document.createElement('span');
+                            tag.className = 'tag';
+                            tag.textContent = c;
+                            tags.appendChild(tag);
                         });
-                    section.appendChild(grid);
-                    root.appendChild(section);
+                        card.appendChild(tags);
+                    }
+
+                    var details = document.createElement('details');
+                    details.className = 'context';
+                    var innerSummary = document.createElement('summary');
+                    innerSummary.innerHTML = '<span aria-hidden="true">💡</span> Why this matters';
+                    details.appendChild(innerSummary);
+                    var body = document.createElement('div');
+                    body.className = 'context-body';
+                    var why = document.createElement('p');
+                    why.textContent = p.why_it_matters || '';
+                    body.appendChild(why);
+                    if (p.estimated_global_share) {
+                        var shareH = document.createElement('h3');
+                        shareH.textContent = 'Estimated global share';
+                        body.appendChild(shareH);
+                        var shareP = document.createElement('p');
+                        shareP.textContent = p.estimated_global_share;
+                        body.appendChild(shareP);
+                    }
+                    if (p.historical_precedents && p.historical_precedents.length) {
+                        var precH = document.createElement('h3');
+                        precH.textContent = 'Historical precedents';
+                        body.appendChild(precH);
+                        var precUl = document.createElement('ul');
+                        p.historical_precedents.forEach(function (prec) {
+                            var li = document.createElement('li');
+                            li.textContent = prec;
+                            precUl.appendChild(li);
+                        });
+                        body.appendChild(precUl);
+                    }
+                    [['Chokepoints', p.chokepoints], ['Origin regions', p.origin_regions],
+                        ['Destination regions', p.destination_regions]].forEach(function (pair) {
+                        var label = pair[0], values = pair[1];
+                        if (!values || !values.length) return;
+                        var lh = document.createElement('h3');
+                        lh.textContent = label;
+                        body.appendChild(lh);
+                        var pEl = document.createElement('p');
+                        pEl.textContent = values.join(', ');
+                        body.appendChild(pEl);
+                    });
+                    if (p.sources && p.sources.length) {
+                        var srcH = document.createElement('h3');
+                        srcH.textContent = 'Sources';
+                        body.appendChild(srcH);
+                        var srcUl = document.createElement('ul');
+                        p.sources.forEach(function (s) {
+                            var li = document.createElement('li');
+                            var link = document.createElement('a');
+                            link.href = s.url; link.rel = 'noopener'; link.target = '_blank';
+                            link.textContent = s.title;
+                            link.style.cssText = 'color:var(--green-700);font-weight:600;';
+                            li.appendChild(link);
+                            srcUl.appendChild(li);
+                        });
+                        body.appendChild(srcUl);
+                    }
+                    details.appendChild(body);
+                    card.appendChild(details);
+
+                    grid.appendChild(card);
+                    pathCardEls[p.id] = card;
                 });
-            })
-            .catch(function () {
-                root.innerHTML = '<p style="color:var(--ink-faint)">Could not load the supply-chain paths — try again shortly.</p>';
+            section.appendChild(grid);
+            root.appendChild(section);
+        });
+    }
+
+    function openAndScrollToCard(pathId) {
+        var card = pathCardEls[pathId];
+        if (!card) return;
+        var whyDetails = card.querySelector('details.context');
+        if (whyDetails) whyDetails.open = true;
+        card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        card.style.outline = '2px solid var(--green-600)';
+        card.style.outlineOffset = '3px';
+        setTimeout(function () { card.style.outline = ''; }, 1600);
+    }
+
+    // ---------- Map ----------
+
+    // d3.geoCentroid() on a country's actual polygon lands somewhere misleading for a
+    // handful of countries (mid-ocean between islands, or skewed toward a huge sparsely-
+    // populated region) — override those with a single hand-picked representative point.
+    var CENTROID_OVERRIDES = {
+        'United States of America': [39.8, -98.5],
+        'Russia': [55.75, 37.6],
+        'France': [46.6, 2.2],
+        'Indonesia': [-6.2, 106.8],
+        'Norway': [61.0, 9.0],
+        'Philippines': [14.6, 121.0],
+        'New Zealand': [-41.3, 174.8]
+    };
+
+    function initMap(atlasTopo, geo) {
+        var svg = d3.select('#world-map');
+        var width = 960, height = 500;
+        var countries = topojson.feature(atlasTopo, atlasTopo.objects.countries);
+
+        var projection = d3.geoNaturalEarth1().fitSize([width, height], countries);
+        var geoPathGen = d3.geoPath(projection);
+
+        svg.append('g').selectAll('path.geo-country')
+            .data(countries.features)
+            .join('path')
+            .attr('class', 'geo-country')
+            .attr('d', geoPathGen);
+
+        var centroidByName = {};
+        countries.features.forEach(function (f) {
+            var name = f.properties.name;
+            centroidByName[name] = CENTROID_OVERRIDES[name] ?
+                [CENTROID_OVERRIDES[name][1], CENTROID_OVERRIDES[name][0]] : // to [lng,lat]
+                d3.geoCentroid(f);
+        });
+        function countryLngLat(name) { return centroidByName[name] || null; }
+
+        function projPoint(lngLat) {
+            var xy = projection(lngLat);
+            return xy;
+        }
+
+        // Build every (origin, destination) arc + every point (country centroid, region
+        // point, or curated chokepoint) once, tagged with the path's id/category/commodities.
+        var arcsGroup = svg.append('g').attr('id', 'geo-arcs');
+        var dotsGroup = svg.append('g').attr('id', 'geo-dots');
+
+        var arcEls = []; // {pathId, category, commodities(lower, joined), elHit, elLine}
+        var dotEls = [];
+        var pathMeta = {}; // pathId -> {name, category, commodityStr}
+        var seenPoints = {};
+
+        function addDot(lngLat, pathId, cls) {
+            var xy = projPoint(lngLat);
+            if (!xy) return;
+            var key = xy[0].toFixed(1) + ',' + xy[1].toFixed(1) + ',' + cls;
+            if (seenPoints[key]) { seenPoints[key].pathIds.push(pathId); return; }
+            var c = dotsGroup.append('circle')
+                .attr('class', 'geo-dot' + (cls ? ' ' + cls : ''))
+                .attr('cx', xy[0]).attr('cy', xy[1]).attr('r', cls === 'choke' ? 3 : 2.2);
+            var rec = { el: c, pathIds: [pathId] };
+            seenPoints[key] = rec;
+            dotEls.push(rec);
+        }
+
+        function arcD(p1, p2) {
+            var dx = p2[0] - p1[0], dy = p2[1] - p1[1];
+            var dr = Math.sqrt(dx * dx + dy * dy) * 0.55;
+            return 'M' + p1[0] + ',' + p1[1] + ' A' + dr + ',' + dr + ' 0 0,1 ' + p2[0] + ',' + p2[1];
+        }
+
+        geo.paths.forEach(function (p) {
+            pathMeta[p.id] = {
+                name: p.name,
+                category: p.category,
+                commodityStr: (p.commodities || []).join(' | ').toLowerCase()
+            };
+
+            var origins = [];
+            p.origin_countries.forEach(function (c) {
+                var ll = countryLngLat(c);
+                if (ll) origins.push(ll);
             });
-    })();
+            p.origin_regions.forEach(function (r) { origins.push([r.lng, r.lat]); });
+
+            var dests = [];
+            p.destination_countries.forEach(function (c) {
+                var ll = countryLngLat(c);
+                if (ll) dests.push(ll);
+            });
+            p.destination_regions.forEach(function (r) { dests.push([r.lng, r.lat]); });
+
+            origins.forEach(function (o) { addDot(o, p.id, ''); });
+            dests.forEach(function (d) { addDot(d, p.id, ''); });
+            (p.chokepoint_points || []).forEach(function (cp) { addDot([cp.lng, cp.lat], p.id, 'choke'); });
+
+            origins.forEach(function (o) {
+                dests.forEach(function (dd) {
+                    var p1 = projPoint(o), p2 = projPoint(dd);
+                    if (!p1 || !p2) return;
+                    var d = arcD(p1, p2);
+                    var hit = arcsGroup.append('path').attr('class', 'geo-arc-hit').attr('d', d);
+                    var line = arcsGroup.append('path').attr('class', 'geo-arc').attr('d', d);
+                    var titleEl = document.createElementNS('http://www.w3.org/2000/svg', 'title');
+                    titleEl.textContent = p.name;
+                    hit.node().appendChild(titleEl);
+                    var rec = { pathId: p.id, category: p.category, commodityStr: pathMeta[p.id].commodityStr, elHit: hit, elLine: line };
+                    arcEls.push(rec);
+                    hit.on('mouseenter', function () { hoverPath(p.id); })
+                        .on('mouseleave', function () { hoverPath(null); })
+                        .on('click', function () { openAndScrollToCard(p.id); });
+                });
+            });
+        });
+
+        // ---------- Filter / highlight state ----------
+        var activeCategory = null;  // committed (clicked) category, or null
+        var searchQuery = '';       // committed search text, lowercased
+        var previewCategory = undefined; // hovered-but-not-clicked category preview; undefined = no preview
+        var hoveredPathId = null;   // single-path hover (from map arc or sidebar row)
+
+        function currentCategory() { return previewCategory !== undefined ? previewCategory : activeCategory; }
+
+        function pathMatches(pathId) {
+            var meta = pathMeta[pathId];
+            if (!meta) return false;
+            var cat = currentCategory();
+            if (cat && meta.category !== cat) return false;
+            if (searchQuery && meta.commodityStr.indexOf(searchQuery) === -1) return false;
+            return true;
+        }
+
+        function computeMatches() {
+            var anyFilterActive = !!currentCategory() || !!searchQuery;
+            var matchedIds = {}, matchCount = 0;
+            Object.keys(pathMeta).forEach(function (id) { if (pathMatches(id)) { matchedIds[id] = true; matchCount++; } });
+            return { anyFilterActive: anyFilterActive, matchedIds: matchedIds, matchCount: matchCount };
+        }
+
+        // Cheap: updates arc/dot classes, the caption, and the .hovered class on whichever
+        // row buttons already exist — never touches the list's DOM structure. Safe to call
+        // on every mouseenter/mouseleave without risking a rebuild mid-click (see rebuildList).
+        function applyHighlight(m) {
+            arcEls.forEach(function (a) {
+                var el = a.elLine;
+                if (hoveredPathId) {
+                    el.classed('mm-active', a.pathId === hoveredPathId);
+                    el.classed('mm-dim', a.pathId !== hoveredPathId);
+                } else if (m.anyFilterActive) {
+                    var match = m.matchedIds[a.pathId];
+                    el.classed('mm-active', !!match);
+                    el.classed('mm-dim', !match);
+                } else {
+                    el.classed('mm-active', false);
+                    el.classed('mm-dim', false);
+                }
+            });
+            dotEls.forEach(function (rec) {
+                var relevant = rec.pathIds.some(function (id) {
+                    return hoveredPathId ? id === hoveredPathId : (m.anyFilterActive ? m.matchedIds[id] : false);
+                });
+                var anyDim = hoveredPathId ? !relevant : (m.anyFilterActive && !relevant);
+                rec.el.classed('mm-active', relevant && (hoveredPathId || m.anyFilterActive));
+                rec.el.classed('mm-dim', anyDim);
+            });
+
+            var cap = document.getElementById('map-caption');
+            if (hoveredPathId) {
+                cap.textContent = pathMeta[hoveredPathId] ? pathMeta[hoveredPathId].name : '';
+            } else if (m.anyFilterActive) {
+                cap.textContent = m.matchCount + ' of ' + geo.paths.length + ' paths shown on the map match this filter.';
+            } else {
+                cap.textContent = 'Showing all ' + geo.paths.length + ' paths (light gray) · hover a category or search a commodity to highlight.';
+            }
+
+            document.querySelectorAll('.map-path-row').forEach(function (row) {
+                row.classList.toggle('hovered', row.dataset.pathId === hoveredPathId);
+            });
+        }
+
+        // Rebuilds the sidebar list's row buttons. Only call when the MATCHED SET can have
+        // changed (category/search filter) — never on hover, or a click mid-render can land
+        // on an element that's already been replaced (see git history for the bug this fixed).
+        function rebuildList(m) {
+            var listEl = document.getElementById('map-path-list');
+            var headEl = document.getElementById('map-list-head');
+            var ids = m.anyFilterActive ? Object.keys(m.matchedIds) : Object.keys(pathMeta);
+            ids.sort(function (a, b) { return pathMeta[a].name.localeCompare(pathMeta[b].name); });
+            headEl.textContent = m.anyFilterActive ? (ids.length + ' matching path' + (ids.length === 1 ? '' : 's')) : ('All ' + ids.length + ' paths');
+
+            listEl.innerHTML = '';
+            if (!ids.length) {
+                var empty = document.createElement('p');
+                empty.className = 'map-empty';
+                empty.textContent = 'No paths match. Try a different commodity or category.';
+                listEl.appendChild(empty);
+                return;
+            }
+            ids.forEach(function (id) {
+                var meta = pathMeta[id];
+                var row = document.createElement('button');
+                row.type = 'button';
+                row.className = 'map-path-row';
+                row.dataset.pathId = id;
+                if (id === hoveredPathId) row.classList.add('hovered');
+                var nameEl = document.createElement('div');
+                nameEl.className = 'mprow-name';
+                nameEl.textContent = meta.name;
+                row.appendChild(nameEl);
+                var metaEl = document.createElement('div');
+                metaEl.className = 'mprow-meta';
+                metaEl.textContent = categoryName(meta.category);
+                row.appendChild(metaEl);
+                row.addEventListener('mouseenter', function () { hoverPath(id); });
+                row.addEventListener('mouseleave', function () { hoverPath(null); });
+                row.addEventListener('click', function () { openAndScrollToCard(id); });
+                listEl.appendChild(row);
+            });
+        }
+
+        function renderChips() {
+            var container = document.getElementById('map-cat-chips');
+            container.querySelectorAll('.chip').forEach(function (chip) {
+                chip.classList.toggle('active', chip.dataset.cat === activeCategory);
+            });
+        }
+
+        function hoverPath(pathId) {
+            hoveredPathId = pathId;
+            applyHighlight(computeMatches());
+        }
+
+        // Filter changed (category chip hover/click, or search input) — the matched set can
+        // be different now, so the list needs a real rebuild, not just a highlight pass.
+        function applyFilterChange() {
+            var m = computeMatches();
+            rebuildList(m);
+            applyHighlight(m);
+            renderChips();
+        }
+
+        // ---------- Sidebar controls ----------
+        var chipsContainer = document.getElementById('map-cat-chips');
+        var presentCategories = {};
+        geo.paths.forEach(function (p) { presentCategories[p.category] = true; });
+        CATEGORY_ORDER.filter(function (c) { return presentCategories[c]; }).forEach(function (catId) {
+            var chip = document.createElement('button');
+            chip.type = 'button';
+            chip.className = 'chip';
+            chip.dataset.cat = catId;
+            chip.textContent = categoryName(catId);
+            chip.addEventListener('mouseenter', function () { previewCategory = catId; applyFilterChange(); });
+            chip.addEventListener('mouseleave', function () { previewCategory = undefined; applyFilterChange(); });
+            chip.addEventListener('click', function () {
+                activeCategory = (activeCategory === catId) ? null : catId;
+                previewCategory = undefined;
+                applyFilterChange();
+            });
+            chipsContainer.appendChild(chip);
+        });
+
+        var searchInput = document.getElementById('commodity-search');
+        searchInput.addEventListener('input', function () {
+            searchQuery = searchInput.value.trim().toLowerCase();
+            applyFilterChange();
+        });
+
+        applyFilterChange();
+    }
+
+    // ---------- Load everything ----------
+    Promise.all([
+        fetch('../data/supply_chain_paths.json?t=' + Date.now()).then(function (r) { return r.json(); }),
+        fetch('../data/world-atlas-countries-110m.json').then(function (r) { return r.json(); }),
+        fetch('../data/supply_chain_geo.json?t=' + Date.now()).then(function (r) { return r.json(); })
+    ]).then(function (results) {
+        var pathsData = results[0], atlasTopo = results[1], geo = results[2];
+        renderCards(pathsData);
+        initMap(atlasTopo, geo);
+    }).catch(function (err) {
+        document.getElementById('supply-chain-root').innerHTML =
+            '<p style="color:var(--ink-faint)">Could not load the supply-chain data — try again shortly.</p>';
+        document.getElementById('map-caption').textContent = 'Could not load the map.';
+        console.error(err);
+    });
 </script>
 
 </body>
