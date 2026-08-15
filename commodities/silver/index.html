@@ -4,21 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self';">
-    <title>Gold — Global Intelligence</title>
-    <meta name="description" content="Who holds the world's gold and who mines it — official reserves by country and major producing mines on an interactive map, in kilograms and current USD value.">
-    <link rel="canonical" href="https://equalinformation.com/global-intelligence-site/commodities/gold/">
+    <title>Silver — Global Intelligence</title>
+    <meta name="description" content="Who has the world's silver in the ground and who mines it — geological reserves by country and major producing mines on an interactive map, in kilograms and current USD value.">
+    <link rel="canonical" href="https://equalinformation.com/global-intelligence-site/commodities/silver/">
     <link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="../../assets/img/apple-touch-icon.png">
     <link rel="manifest" href="../../site.webmanifest">
     <meta name="theme-color" content="#0b3d2e">
-    <meta property="og:title" content="Gold — Global Intelligence">
-    <meta property="og:description" content="Who holds the world's gold and who mines it — official reserves by country and major producing mines on an interactive map, in kilograms and current USD value.">
+    <meta property="og:title" content="Silver — Global Intelligence">
+    <meta property="og:description" content="Who has the world's silver in the ground and who mines it — geological reserves by country and major producing mines on an interactive map, in kilograms and current USD value.">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://equalinformation.com/global-intelligence-site/commodities/gold/">
+    <meta property="og:url" content="https://equalinformation.com/global-intelligence-site/commodities/silver/">
     <meta property="og:image" content="https://equalinformation.com/global-intelligence-site/assets/img/og-share.png">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Gold — Global Intelligence">
-    <meta name="twitter:description" content="Who holds the world's gold and who mines it — official reserves by country and major producing mines on an interactive map, in kilograms and current USD value.">
+    <meta name="twitter:title" content="Silver — Global Intelligence">
+    <meta name="twitter:description" content="Who has the world's silver in the ground and who mines it — geological reserves by country and major producing mines on an interactive map, in kilograms and current USD value.">
     <meta name="twitter:image" content="https://equalinformation.com/global-intelligence-site/assets/img/og-share.png">
     <link rel="stylesheet" href="../../assets/fonts/inter.css">
     <link rel="stylesheet" href="../../assets/css/style.css?v=b3a9f35b">
@@ -38,8 +38,8 @@
             <li class="nav-dropdown">
                 <a href="../">Commodities <span class="caret" aria-hidden="true">▾</span></a>
                 <ul class="nav-dropdown-menu">
-                    <li><a href="./" aria-current="page">Gold</a></li>
-                    <li><a href="../silver/">Silver</a></li>
+                    <li><a href="../gold/">Gold</a></li>
+                    <li><a href="./" aria-current="page">Silver</a></li>
                     <li><a href="../copper/">Copper</a></li>
                     <li><a href="../" class="nav-dropdown-all">All commodities</a></li>
                 </ul>
@@ -53,12 +53,13 @@
 
 <header class="hero hero-sub">
     <div class="wrap">
-        <h1>Every ounce, <span class="accent">accounted for</span></h1>
-        <p class="tagline" id="commodity-price-stamp">Loading gold price…</p>
-        <p class="lede">Official gold reserves by country and the world's major producing
-        mines, each in tonnes, kilograms, and current USD value at today's spot price.
-        Sourced from the World Gold Council / IMF and USGS Mineral Commodity Summaries.
-        In the app: Menu → Commodities → Gold, part of Global Intelligence Premium.</p>
+        <h1>Every ounce, <span class="accent">in the ground and out</span></h1>
+        <p class="tagline" id="commodity-price-stamp">Loading silver price…</p>
+        <p class="lede">Geological (proven + probable, mineable) silver reserves by country
+        and the world's major producing mines, each in tonnes, kilograms, and current USD
+        value at today's spot price. Sourced from USGS Mineral Commodity Summaries and
+        company reporting. In the app: Menu → Commodities → Silver, part of Global
+        Intelligence Premium.</p>
     </div>
 </header>
 
@@ -67,9 +68,9 @@
         <div class="section-head" style="margin-bottom:20px;">
             <span class="kicker">Explore on the map</span>
             <h2>Reserves or mines — search a country or mine</h2>
-            <p>Bubble size is proportional to tonnes — the country holding the most gold, or
-            the mine producing the most, gets the largest bubble. Switch layers below, or
-            search for a specific country or mine name.</p>
+            <p>Bubble size is proportional to tonnes — the country with the most silver in
+            the ground, or the mine producing the most, gets the largest bubble. Switch
+            layers below, or search for a specific country or mine name.</p>
         </div>
         <div class="map-layout">
             <div class="map-pane">
@@ -77,7 +78,7 @@
                     <button type="button" id="layer-reserves" class="active reserves">Reserves by country</button>
                     <button type="button" id="layer-mines" class="mines">Major mines</button>
                 </div>
-                <svg id="world-map" viewBox="0 0 960 500" role="img" aria-label="World map of gold reserves and mines"></svg>
+                <svg id="world-map" viewBox="0 0 960 500" role="img" aria-label="World map of silver reserves and mines"></svg>
                 <p class="map-caption" id="map-caption">Loading map…</p>
                 <div class="map-legend" id="map-legend"></div>
             </div>
@@ -95,8 +96,8 @@
 
 <main class="wrap" id="commodity-root" style="padding: 28px 24px 64px;">
     <noscript><p>This page needs JavaScript — or read the raw data at
-    <a href="../../data/commodities/gold_reserves.json">gold_reserves.json</a> and
-    <a href="../../data/commodities/gold_mines.json">gold_mines.json</a>.</p></noscript>
+    <a href="../../data/commodities/silver_reserves.json">silver_reserves.json</a> and
+    <a href="../../data/commodities/silver_mines.json">silver_mines.json</a>.</p></noscript>
 </main>
 
 <footer>
@@ -108,17 +109,16 @@
             <li><a href="../../countries/">Countries</a></li>
             <li><a href="../../supply-chain/">Supply Chain</a></li>
             <li><a href="../">Commodities</a></li>
-            <li><a href="./" aria-current="page">Gold</a></li>
+            <li><a href="./" aria-current="page">Silver</a></li>
             <li><a href="../../sources/">Source registry</a></li>
             <li><a href="../../privacy/">Privacy</a></li>
             <li><a href="../../terms/">Terms</a></li>
             <li><a href="https://github.com/bpupadhyaya/global-intelligence-site">GitHub</a></li>
         </ul>
-        <p class="footer-copy">© 2026 Global Intelligence · Reserves sourced from World Gold Council / IMF IFS ·
-        mine production from USGS Mineral Commodity Summaries and company reporting ·
+        <p class="footer-copy">© 2026 Global Intelligence · Reserves and mine production sourced from USGS Mineral Commodity Summaries and company reporting ·
         spot price from <a href="https://gold-api.com/">gold-api.com</a>, refreshed hourly ·
-        <a href="https://github.com/bpupadhyaya/global-intelligence-site/blob/main/data/commodities/gold_reserves.json">gold_reserves.json</a> ·
-        <a href="https://github.com/bpupadhyaya/global-intelligence-site/blob/main/data/commodities/gold_mines.json">gold_mines.json</a> ·
+        <a href="https://github.com/bpupadhyaya/global-intelligence-site/blob/main/data/commodities/silver_reserves.json">silver_reserves.json</a> ·
+        <a href="https://github.com/bpupadhyaya/global-intelligence-site/blob/main/data/commodities/silver_mines.json">silver_mines.json</a> ·
         map built with <a href="https://d3js.org/">D3</a> and <a href="https://github.com/topojson/world-atlas">Natural Earth</a></p>
     </div>
 </footer>
@@ -139,19 +139,16 @@
 
     GICommodityPage.init({
         rootId: 'commodity-root',
-        commodityName: 'Gold',
-        reservesUrl: '../../data/commodities/gold_reserves.json',
-        minesUrl: '../../data/commodities/gold_mines.json',
-        priceUrl: '../../data/commodities/gold_price.json',
+        commodityName: 'Silver',
+        reservesUrl: '../../data/commodities/silver_reserves.json',
+        minesUrl: '../../data/commodities/silver_mines.json',
+        priceUrl: '../../data/commodities/silver_price.json',
         atlasUrl: '../../data/world-atlas-countries-110m.json',
         priceUnit: 'oz',
-        reservesSectionLabel: 'Official reserves by country',
+        reservesSectionLabel: 'Geological reserves by country',
         minesSectionLabel: 'Major producing mines',
-        reservesNoun: 'countries holding gold reserves',
-        minesNoun: 'major producing mines',
-        reserveExtraLine: function (r) {
-            return r.pct_of_forex_reserves ? '<p class="path-route">' + r.pct_of_forex_reserves + '% of forex reserves</p>' : '';
-        }
+        reservesNoun: 'countries holding silver reserves',
+        minesNoun: 'major producing mines'
     });
 </script>
 

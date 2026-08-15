@@ -1,15 +1,15 @@
-name: gold_price
+name: metal_prices
 
 on:
   schedule:
-    - cron: "0 * * * *" # hourly -- gold spot price moves faster than the briefing's 4h cadence
+    - cron: "0 * * * *" # hourly -- spot metal prices move faster than the briefing's 4h cadence
   workflow_dispatch:
 
 permissions:
   contents: write
 
 concurrency:
-  group: gold_price
+  group: metal_prices
   cancel-in-progress: false
 
 jobs:
@@ -28,14 +28,14 @@ jobs:
 
       - run: pip install -r requirements.txt
 
-      - name: Build gold_price.json
-        run: python scripts/build_gold_price.py
+      - name: Build gold/silver/copper price.json files
+        run: python scripts/build_metal_price.py
 
       - name: Commit and push
         run: |
-          git config user.name "gi-gold-price"
+          git config user.name "gi-metal-prices"
           git config user.email "actions@users.noreply.github.com"
-          git add data/commodities/gold_price.json
-          git diff --cached --quiet || git commit -m "gold price: $(date -u +%FT%H:%MZ)"
+          git add data/commodities/gold_price.json data/commodities/silver_price.json data/commodities/copper_price.json
+          git diff --cached --quiet || git commit -m "metal prices: $(date -u +%FT%H:%MZ)"
           git pull --rebase origin main
           git push

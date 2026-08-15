@@ -35,10 +35,10 @@ jobs:
       # Both scripts have an `if __name__ == "__main__":` guard, so importing them exercises
       # every top-level import and function/class definition (catching e.g. a dependency bump
       # that renamed something a script relies on) without making any real network calls or
-      # writing data/briefing.json / data/commodities/gold_price.json — no live fetch needed
-      # just to validate the code still loads.
+      # writing data/briefing.json / data/commodities/*_price.json — no live fetch needed just
+      # to validate the code still loads.
       - name: Import-check the pipeline scripts
         working-directory: scripts
         run: |
           python -c "import build_briefing"
-          python -c "import build_gold_price"
+          python -c "import build_metal_price"
