@@ -88,6 +88,32 @@ nav {
 }
 .nav-links a { color: var(--ink-soft); font-size: 15px; font-weight: 500; }
 .nav-links a:hover { color: var(--green-700); text-decoration: none; }
+
+/* Commodities nav dropdown — pure-CSS hover/focus reveal on desktop; on mobile (see the
+   768px breakpoint below) it's just always expanded inline under the .nav-links stack, so
+   no JS toggle logic is needed for the submenu itself. */
+.nav-dropdown { position: relative; }
+.nav-dropdown > a { display: inline-flex; align-items: center; gap: 4px; }
+.nav-dropdown .caret { font-size: 11px; color: var(--ink-faint); transition: transform 0.12s; }
+.nav-dropdown:hover .caret, .nav-dropdown:focus-within .caret { transform: rotate(180deg); }
+.nav-dropdown-menu {
+    list-style: none; position: absolute; top: 100%; left: 0; margin-top: 10px;
+    background: #fff; border: 1px solid var(--line); border-radius: 12px;
+    box-shadow: var(--shadow); padding: 8px; min-width: 190px;
+    opacity: 0; visibility: hidden; transform: translateY(-4px);
+    transition: opacity 0.12s, transform 0.12s, visibility 0.12s;
+}
+.nav-dropdown:hover .nav-dropdown-menu, .nav-dropdown:focus-within .nav-dropdown-menu {
+    opacity: 1; visibility: visible; transform: translateY(0);
+}
+.nav-dropdown-menu li a {
+    display: block; padding: 8px 12px; border-radius: 8px; font-size: 14px; white-space: nowrap;
+}
+.nav-dropdown-menu li a:hover { background: var(--green-100); color: var(--green-700); text-decoration: none; }
+.nav-dropdown-menu li a.nav-dropdown-all {
+    border-top: 1px solid var(--line); margin-top: 4px; padding-top: 10px;
+    font-size: 12.5px; font-weight: 700; color: var(--green-600);
+}
 .nav-utc { font-size: 13px; font-weight: 600; color: var(--ink-faint); white-space: nowrap; }
 .nav-utc .live { color: var(--green-600); }
 .mobile-menu-btn {
@@ -424,6 +450,30 @@ details[open].ripple summary::after, details[open].context summary::after { tran
 .geo-dot.choke { fill: var(--amber-500); fill-opacity: 0.85; }
 .geo-dot.choke.mm-dim { fill-opacity: 0.12; }
 
+/* ---------- Commodity bubble map (Gold, and future commodities) ---------- */
+/* Unlike .geo-dot (a fixed-size point that's just a label anchor, hit-tested via a separate
+   invisible arc), a .geo-bubble IS the interactive element — its own radius encodes magnitude
+   (tonnes held / produced) and it owns its own hover/click handlers directly. */
+.geo-bubble { cursor: pointer; stroke: #fff; stroke-width: 1px; transition: fill-opacity 0.15s, stroke-width 0.15s; }
+.geo-bubble.reserves { fill: var(--blue-600); fill-opacity: 0.55; }
+.geo-bubble.mines { fill: var(--amber-500); fill-opacity: 0.6; }
+.geo-bubble.mm-active { fill-opacity: 0.92; stroke-width: 2px; }
+.geo-bubble.mm-dim { fill-opacity: 0.1; }
+.layer-toggle { display: flex; gap: 8px; }
+.layer-toggle button {
+    flex: 1; font: inherit; font-size: 13px; font-weight: 700; padding: 9px 10px;
+    border-radius: 10px; border: 1px solid var(--line); background: #fff; color: var(--ink-soft);
+    cursor: pointer; transition: background 0.12s, border-color 0.12s, color 0.12s;
+}
+.layer-toggle button.active.reserves { background: var(--blue-600); border-color: var(--blue-600); color: #fff; }
+.layer-toggle button.active.mines { background: var(--amber-500); border-color: var(--amber-500); color: #fff; }
+.map-legend {
+    display: flex; flex-wrap: wrap; gap: 8px 20px; align-items: center; justify-content: center;
+    margin-top: 12px; font-size: 12px; color: var(--ink-faint);
+}
+.map-legend-swatch { display: inline-flex; align-items: center; gap: 6px; }
+.map-legend-swatch .dot { display: inline-block; border-radius: 50%; background: currentColor; }
+
 /* ---------- Responsive ---------- */
 @media (max-width: 860px) {
     .grid, .grid.four { grid-template-columns: repeat(2, 1fr); }
@@ -440,6 +490,13 @@ details[open].ripple summary::after, details[open].context summary::after { tran
     .nav-links.show { display: flex; }
     .mobile-menu-btn { display: block; }
     .nav-utc { display: none; }
+    .nav-dropdown { width: 100%; }
+    .nav-dropdown-menu {
+        position: static; opacity: 1; visibility: visible; transform: none;
+        box-shadow: none; border: none; padding: 2px 0 0 14px; margin-top: 6px; min-width: 0;
+    }
+    .nav-dropdown-menu li a { padding: 6px 0; }
+    .nav-dropdown-menu li a.nav-dropdown-all { border-top: none; margin-top: 2px; padding-top: 6px; }
 }
 @media (max-width: 560px) {
     .grid, .grid.four, .grid.two { grid-template-columns: 1fr; }

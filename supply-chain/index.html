@@ -35,6 +35,13 @@
             <li><a href="../top10/">Top 10</a></li>
             <li><a href="../countries/">Countries</a></li>
             <li><a href="./" aria-current="page">Supply Chain</a></li>
+            <li class="nav-dropdown">
+                <a href="../commodities/">Commodities <span class="caret" aria-hidden="true">▾</span></a>
+                <ul class="nav-dropdown-menu">
+                    <li><a href="../commodities/gold/">Gold</a></li>
+                    <li><a href="../commodities/" class="nav-dropdown-all">All commodities</a></li>
+                </ul>
+            </li>
             <li><a href="../sources/">Sources</a></li>
         </ul>
         <span class="nav-utc"><span class="live" aria-hidden="true">●</span> <span id="utc">— UTC</span></span>
@@ -97,6 +104,7 @@
             <li><a href="../top10/">Top 10</a></li>
             <li><a href="../countries/">Countries</a></li>
             <li><a href="./">Supply Chain</a></li>
+            <li><a href="../commodities/">Commodities</a></li>
             <li><a href="../sources/">Source registry</a></li>
             <li><a href="../privacy/">Privacy</a></li>
             <li><a href="../terms/">Terms</a></li>
@@ -110,6 +118,7 @@
 
 <script src="../assets/vendor/d3.v7.min.js"></script>
 <script src="../assets/vendor/topojson-client.v3.min.js"></script>
+<script src="../assets/js/world-map.js"></script>
 <script>
     (function () {
         var utc = document.getElementById('utc');
@@ -275,46 +284,11 @@
 
     // ---------- Map ----------
 
-    // d3.geoCentroid() on a country's actual polygon lands somewhere misleading for a
-    // handful of countries (mid-ocean between islands, or skewed toward a huge sparsely-
-    // populated region) — override those with a single hand-picked representative point.
-    var CENTROID_OVERRIDES = {
-        'United States of America': [39.8, -98.5],
-        'Russia': [55.75, 37.6],
-        'France': [46.6, 2.2],
-        'Indonesia': [-6.2, 106.8],
-        'Norway': [61.0, 9.0],
-        'Philippines': [14.6, 121.0],
-        'New Zealand': [-41.3, 174.8]
-    };
-
     function initMap(atlasTopo, geo) {
-        var svg = d3.select('#world-map');
-        var width = 960, height = 500;
-        var countries = topojson.feature(atlasTopo, atlasTopo.objects.countries);
-
-        var projection = d3.geoNaturalEarth1().fitSize([width, height], countries);
-        var geoPathGen = d3.geoPath(projection);
-
-        svg.append('g').selectAll('path.geo-country')
-            .data(countries.features)
-            .join('path')
-            .attr('class', 'geo-country')
-            .attr('d', geoPathGen);
-
-        var centroidByName = {};
-        countries.features.forEach(function (f) {
-            var name = f.properties.name;
-            centroidByName[name] = CENTROID_OVERRIDES[name] ?
-                [CENTROID_OVERRIDES[name][1], CENTROID_OVERRIDES[name][0]] : // to [lng,lat]
-                d3.geoCentroid(f);
-        });
-        function countryLngLat(name) { return centroidByName[name] || null; }
-
-        function projPoint(lngLat) {
-            var xy = projection(lngLat);
-            return xy;
-        }
+        var map = GIMap.init('#world-map', atlasTopo);
+        var svg = map.svg;
+        function countryLngLat(name) { return map.countryLngLat(name); }
+        function projPoint(lngLat) { return map.project(lngLat); }
 
         // Build every (origin, destination) arc + every point (country centroid, region
         // point, or curated chokepoint) once, tagged with the path's id/category/commodities.
