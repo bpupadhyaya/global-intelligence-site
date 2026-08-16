@@ -80,22 +80,25 @@
     <div class="wrap" style="padding-top:28px; padding-bottom:28px;">
         <div class="section-head" style="margin-bottom:20px;">
             <span class="kicker">By country</span>
-            <h2>Where the tracked value actually is</h2>
-            <p>Every country holding gold, silver, or copper reserves, combined into one bubble
-            per country — same map idiom as the Gold/Silver/Copper pages. Items without a
-            published per-country split (Supply Chain, Banana) aren't on this map — see "By
-            category" below for those.</p>
+            <h2>Combined gold + silver + copper reserve value, by country</h2>
+            <p><strong>Not a measure of GDP or the size of a country's economy</strong> — this is
+            specifically the value of gold, silver, and copper reserves held in the ground in
+            each country, at current spot prices, combined into one bubble. Chile ranks #1
+            because it holds the world's largest copper reserves (~180 million tonnes, USGS) —
+            its actual GDP is roughly 1% of the United States'. Items without a published
+            per-country breakdown (Supply Chain, Banana) aren't on this map — see "By category"
+            below for those.</p>
         </div>
         <div class="map-layout">
             <div class="map-pane">
-                <svg id="dash-country-map" viewBox="0 0 960 500" role="img" aria-label="World map of combined tracked value by country"></svg>
+                <svg id="dash-country-map" viewBox="0 0 960 500" role="img" aria-label="World map of combined gold, silver, and copper reserve value by country"></svg>
                 <p class="map-caption" id="country-map-caption">Loading map…</p>
             </div>
             <aside class="map-sidebar">
                 <input type="search" id="dash-country-search" class="search-input"
                     placeholder="Search a country…" aria-label="Search a country">
                 <div>
-                    <div class="map-sidebar-head" style="margin-bottom:8px;" id="dash-country-list-head">Top countries</div>
+                    <div class="map-sidebar-head" style="margin-bottom:8px;" id="dash-country-list-head">Top countries by reserve value</div>
                     <div class="map-path-list" id="dash-country-list"></div>
                 </div>
                 <div id="dash-country-detail"></div>
@@ -183,7 +186,7 @@
 <script src="../assets/vendor/d3.v7.min.js?v=6d64bd2f"></script>
 <script src="../assets/vendor/topojson-client.v3.min.js?v=bc057598"></script>
 <script src="../assets/js/world-map.js?v=da19417c"></script>
-<script src="../assets/js/dashboard.js?v=0ea251e0"></script>
+<script src="../assets/js/dashboard.js?v=98813253"></script>
 <script>
     (function () {
         var utc = document.getElementById('utc');

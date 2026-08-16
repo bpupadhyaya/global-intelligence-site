@@ -45,7 +45,7 @@ def build_country_totals():
     aren't -- Supply Chain has no per-path $ figure and Banana's $10B is a single global total
     with no country split published anywhere, so neither can honestly be attributed to a
     country; they stay off this map rather than being guessed at)."""
-    per_country = {}  # country name -> {"usd": total, "breakdown": {metal: usd}}
+    per_country = {}  # country name -> {"usd": total, "breakdown": {metal: {...}}}
     for metal in COUNTRY_METALS:
         reserves = json.loads((COMMODITIES_DIR / f"{metal}_reserves.json").read_text())
         price = json.loads((COMMODITIES_DIR / f"{metal}_price.json").read_text())
@@ -53,7 +53,14 @@ def build_country_totals():
             usd = c["tonnes"] * 1000 * price["usd_per_kg"]
             entry = per_country.setdefault(c["country"], {"usd": 0.0, "breakdown": {}})
             entry["usd"] += usd
-            entry["breakdown"][metal] = round(usd, 2)
+            # Carry the SAME per-country citation already published on that metal's own page --
+            # never invent a new one here, just point at the real source behind this number.
+            entry["breakdown"][metal] = {
+                "usd": round(usd, 2),
+                "tonnes": c["tonnes"],
+                "as_of": c.get("as_of"),
+                "sources": c.get("sources", []),
+            }
 
     countries = [
         {"country": name, "usd": round(v["usd"], 2), "breakdown": v["breakdown"]}

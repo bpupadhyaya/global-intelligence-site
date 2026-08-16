@@ -185,7 +185,10 @@
             var trackedEl = document.getElementById(config.trackedStatId);
             if (data.world_gdp && data.world_gdp.usd !== null) {
                 gdpEl.querySelector('.num').textContent = formatUsd(data.world_gdp.usd);
-                gdpEl.querySelector('.stat-caption').textContent = 'World GDP, as of ' + data.world_gdp.as_of;
+                var gdpSrc = (data.world_gdp.sources || [])[0];
+                var gdpCaption = gdpEl.querySelector('.stat-caption');
+                gdpCaption.innerHTML = 'World GDP, as of ' + esc(data.world_gdp.as_of) +
+                    (gdpSrc ? ' · <a href="' + esc(gdpSrc.url) + '" rel="noopener" target="_blank" style="color:inherit;text-decoration:underline;">' + esc(gdpSrc.title) + '</a>' : '');
             } else {
                 gdpEl.querySelector('.num').textContent = '—';
                 gdpEl.querySelector('.stat-caption').textContent = 'World GDP figure not yet added';
@@ -291,27 +294,36 @@
                     b.classed('mm-active', n === name).classed('mm-dim', n !== name);
                 });
                 var cap = document.getElementById(config.captionId);
-                cap.textContent = name ? name + ' — ' + formatUsd(items[name].data.usd) : 'Bubble size ∝ combined tracked value · showing ' + countries.length + ' countries.';
+                cap.textContent = name ? name + ' — ' + formatUsd(items[name].data.usd) + ' in gold+silver+copper reserves' : 'Bubble size ∝ combined gold+silver+copper reserve value (not GDP) · showing ' + countries.length + ' countries.';
             }
 
             function showDetail(name) {
                 var el = document.getElementById(config.detailId);
                 if (!name) { el.innerHTML = ''; return; }
                 var c = items[name].data;
-                var breakdownHtml = Object.keys(c.breakdown).sort(function (a, b) { return c.breakdown[b] - c.breakdown[a]; })
-                    .map(function (metal) { return '<div class="meta">' + metal.charAt(0).toUpperCase() + metal.slice(1) + ': ' + formatUsd(c.breakdown[metal]) + '</div>'; })
-                    .join('');
+                var metals = Object.keys(c.breakdown).sort(function (a, b) { return c.breakdown[b].usd - c.breakdown[a].usd; });
+                var breakdownHtml = metals.map(function (metal) {
+                    var m = c.breakdown[metal];
+                    var label = metal.charAt(0).toUpperCase() + metal.slice(1);
+                    var srcHtml = (m.sources || []).map(function (s) {
+                        return '<a href="' + esc(s.url) + '" rel="noopener" target="_blank" style="color:var(--green-700);font-weight:600;">' + esc(s.title) + '</a>';
+                    }).join(' · ');
+                    return '<div class="meta" style="margin-top:8px;"><strong style="color:var(--ink)">' + label + ':</strong> ' +
+                        formatUsd(m.usd) + ' (' + m.tonnes.toLocaleString('en-US') + ' t, as of ' + esc(m.as_of || 'unknown') + ')' +
+                        (srcHtml ? '<br>' + srcHtml : '') + '</div>';
+                }).join('');
                 el.innerHTML = '<div class="dash-node-detail"><h3>' + esc(name) + '</h3>' +
                     '<div class="val">' + formatUsd(c.usd) + '</div>' +
-                    '<div class="meta">#' + c.rank + ' of ' + countries.length + ' tracked countries</div>' +
-                    breakdownHtml + '</div>';
+                    '<div class="meta">Combined gold+silver+copper reserve value · #' + c.rank + ' of ' + countries.length + '</div>' +
+                    breakdownHtml +
+                    '<p class="note">Not a measure of GDP or overall economic size — reserves of these 3 metals only.</p></div>';
             }
 
             function renderList(filterQuery) {
                 var listEl = document.getElementById(config.listId);
                 var headEl = document.getElementById(config.listHeadId);
                 var filtered = countries.filter(function (c) { return !filterQuery || c.country.toLowerCase().indexOf(filterQuery) !== -1; });
-                headEl.textContent = (filterQuery ? filtered.length + ' matching' : 'Top countries') + ' (' + countries.length + ' tracked)';
+                headEl.textContent = (filterQuery ? filtered.length + ' matching' : 'Top countries by reserve value') + ' (' + countries.length + ' tracked)';
                 listEl.innerHTML = '';
                 filtered.slice(0, 25).forEach(function (c) {
                     var row = document.createElement('button');
