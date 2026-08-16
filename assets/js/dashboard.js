@@ -241,5 +241,101 @@
         });
     }
 
-    global.GIDashboard = { init: init };
+    // ---------- Country map: combined tracked value per country ----------
+    // A separate, simpler view from the treemap above -- one sequential-hue bubble per country
+    // (magnitude only, no categorical color, per the dataviz skill's color-by-job rule), summed
+    // across every item that actually has real per-country data (gold/silver/copper reserves
+    // today). Items without a country-level breakdown (Supply Chain, Banana) are honestly
+    // absent from this map rather than guessed at -- see country_totals.json's own note.
+    function initCountryMap(config) {
+        var MIN_R = 3, MAX_R = 24;
+
+        Promise.all([
+            fetch(config.atlasUrl).then(function (r) { return r.json(); }),
+            fetch(config.countryTotalsUrl + '?t=' + Date.now()).then(function (r) { return r.json(); })
+        ]).then(function (results) {
+            var atlasTopo = results[0], totalsData = results[1];
+            var countries = totalsData.countries;
+            var map = GIMap.init(config.svgSelector, atlasTopo);
+            var bubblesGroup = map.svg.append('g');
+
+            var maxUsd = countries.reduce(function (m, c) { return Math.max(m, c.usd); }, 0);
+            function radiusScale(v) { return maxUsd ? MIN_R + (MAX_R - MIN_R) * Math.sqrt(v / maxUsd) : MIN_R; }
+
+            var items = {}; // country name -> {bubble, data}
+            countries.forEach(function (c) {
+                var ll = map.countryLngLat(c.country);
+                if (!ll) return; // name didn't resolve against the atlas -- skip rather than mis-plot
+                var xy = map.project(ll);
+                if (!xy) return;
+                var b = bubblesGroup.append('circle')
+                    .attr('class', 'geo-bubble reserves')
+                    .attr('cx', xy[0]).attr('cy', xy[1])
+                    .attr('r', radiusScale(c.usd));
+                var titleEl = document.createElementNS('http://www.w3.org/2000/svg', 'title');
+                titleEl.textContent = c.country + ' — ' + formatUsd(c.usd);
+                b.node().appendChild(titleEl);
+                items[c.country] = { bubble: b, data: c };
+            });
+
+            Object.keys(items).forEach(function (name) {
+                items[name].bubble
+                    .on('mouseenter', function () { showDetail(name); highlight(name); })
+                    .on('mouseleave', function () { highlight(null); });
+            });
+
+            function highlight(name) {
+                Object.keys(items).forEach(function (n) {
+                    var b = items[n].bubble;
+                    if (!name) { b.classed('mm-active', false).classed('mm-dim', false); return; }
+                    b.classed('mm-active', n === name).classed('mm-dim', n !== name);
+                });
+                var cap = document.getElementById(config.captionId);
+                cap.textContent = name ? name + ' — ' + formatUsd(items[name].data.usd) : 'Bubble size ∝ combined tracked value · showing ' + countries.length + ' countries.';
+            }
+
+            function showDetail(name) {
+                var el = document.getElementById(config.detailId);
+                if (!name) { el.innerHTML = ''; return; }
+                var c = items[name].data;
+                var breakdownHtml = Object.keys(c.breakdown).sort(function (a, b) { return c.breakdown[b] - c.breakdown[a]; })
+                    .map(function (metal) { return '<div class="meta">' + metal.charAt(0).toUpperCase() + metal.slice(1) + ': ' + formatUsd(c.breakdown[metal]) + '</div>'; })
+                    .join('');
+                el.innerHTML = '<div class="dash-node-detail"><h3>' + esc(name) + '</h3>' +
+                    '<div class="val">' + formatUsd(c.usd) + '</div>' +
+                    '<div class="meta">#' + c.rank + ' of ' + countries.length + ' tracked countries</div>' +
+                    breakdownHtml + '</div>';
+            }
+
+            function renderList(filterQuery) {
+                var listEl = document.getElementById(config.listId);
+                var headEl = document.getElementById(config.listHeadId);
+                var filtered = countries.filter(function (c) { return !filterQuery || c.country.toLowerCase().indexOf(filterQuery) !== -1; });
+                headEl.textContent = (filterQuery ? filtered.length + ' matching' : 'Top countries') + ' (' + countries.length + ' tracked)';
+                listEl.innerHTML = '';
+                filtered.slice(0, 25).forEach(function (c) {
+                    var row = document.createElement('button');
+                    row.type = 'button';
+                    row.className = 'map-path-row';
+                    row.innerHTML = '<div class="mprow-name">#' + c.rank + ' ' + esc(c.country) + '</div><div class="mprow-meta">' + formatUsd(c.usd) + '</div>';
+                    row.addEventListener('mouseenter', function () { showDetail(c.country); highlight(c.country); });
+                    row.addEventListener('mouseleave', function () { highlight(null); });
+                    listEl.appendChild(row);
+                });
+            }
+
+            renderList('');
+            highlight(null);
+            if (config.searchId) {
+                document.getElementById(config.searchId).addEventListener('input', function (e) {
+                    renderList(e.target.value.trim().toLowerCase());
+                });
+            }
+        }).catch(function (err) {
+            document.getElementById(config.captionId).textContent = 'Could not load the country map — try again shortly.';
+            console.error(err);
+        });
+    }
+
+    global.GIDashboard = { init: init, initCountryMap: initCountryMap };
 })(window);

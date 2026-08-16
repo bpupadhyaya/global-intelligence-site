@@ -30,7 +30,50 @@ ROOT = Path(__file__).resolve().parent.parent
 DASH_DIR = ROOT / "data" / "dashboard"
 STRUCTURE_FILE = DASH_DIR / "taxonomy_structure.json"
 OUT_FILE = DASH_DIR / "taxonomy.json"
+COUNTRY_OUT_FILE = DASH_DIR / "country_totals.json"
 COMMODITIES_DIR = ROOT / "data" / "commodities"
+
+# Which commodities currently have real per-country reserve data -- extend this list as new
+# geographic items are added (e.g. a future item with its own per-country breakdown).
+COUNTRY_METALS = ["gold", "silver", "copper"]
+
+
+def build_country_totals():
+    """Aggregate gold+silver+copper reserve value by country -- the Global Dashboard's country
+    map wants ONE combined bubble per country, not three separate metal maps stacked on top of
+    each other. Only items with real per-country data are included (Supply Chain and Banana
+    aren't -- Supply Chain has no per-path $ figure and Banana's $10B is a single global total
+    with no country split published anywhere, so neither can honestly be attributed to a
+    country; they stay off this map rather than being guessed at)."""
+    per_country = {}  # country name -> {"usd": total, "breakdown": {metal: usd}}
+    for metal in COUNTRY_METALS:
+        reserves = json.loads((COMMODITIES_DIR / f"{metal}_reserves.json").read_text())
+        price = json.loads((COMMODITIES_DIR / f"{metal}_price.json").read_text())
+        for c in reserves["countries"]:
+            usd = c["tonnes"] * 1000 * price["usd_per_kg"]
+            entry = per_country.setdefault(c["country"], {"usd": 0.0, "breakdown": {}})
+            entry["usd"] += usd
+            entry["breakdown"][metal] = round(usd, 2)
+
+    countries = [
+        {"country": name, "usd": round(v["usd"], 2), "breakdown": v["breakdown"]}
+        for name, v in per_country.items()
+    ]
+    countries.sort(key=lambda c: c["usd"], reverse=True)
+    for i, c in enumerate(countries, start=1):
+        c["rank"] = i
+
+    out = {
+        "schema_version": "1.0.0",
+        "generated": datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "generated_from": "scripts/build_dashboard_taxonomy.py",
+        "unit": "usd",
+        "note": "Combined value of gold + silver + copper reserves held in each country, at current spot prices. Only items with a real, published per-country breakdown are included -- Supply Chain and Banana are tracked in the taxonomy (see taxonomy.json) but have no per-country $ split to attribute, so they're intentionally absent from this map rather than guessed at.",
+        "included_items": COUNTRY_METALS,
+        "countries": countries,
+    }
+    COUNTRY_OUT_FILE.write_text(json.dumps(out, indent=2, ensure_ascii=False) + "\n")
+    print(f"country totals: {len(countries)} countries, top holder {countries[0]['country']} at ${countries[0]['usd']:,.0f}" if countries else "country totals: no countries")
 
 
 def valuation_commodity_reserves(vs):
@@ -140,6 +183,8 @@ def main():
 
     print(f"nodes: {total_nodes}, leaf nodes with a real valuation: {valued_leaves}")
     print(f"tracked total: {out['tracked_total']}")
+
+    build_country_totals()
 
 
 if __name__ == "__main__":

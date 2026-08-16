@@ -79,11 +79,40 @@
 <section class="tint" id="map-explore">
     <div class="wrap" style="padding-top:28px; padding-bottom:28px;">
         <div class="section-head" style="margin-bottom:20px;">
-            <span class="kicker">Explore the dashboard</span>
+            <span class="kicker">By country</span>
+            <h2>Where the tracked value actually is</h2>
+            <p>Every country holding gold, silver, or copper reserves, combined into one bubble
+            per country — same map idiom as the Gold/Silver/Copper pages. Items without a
+            published per-country split (Supply Chain, Banana) aren't on this map — see "By
+            category" below for those.</p>
+        </div>
+        <div class="map-layout">
+            <div class="map-pane">
+                <svg id="dash-country-map" viewBox="0 0 960 500" role="img" aria-label="World map of combined tracked value by country"></svg>
+                <p class="map-caption" id="country-map-caption">Loading map…</p>
+            </div>
+            <aside class="map-sidebar">
+                <input type="search" id="dash-country-search" class="search-input"
+                    placeholder="Search a country…" aria-label="Search a country">
+                <div>
+                    <div class="map-sidebar-head" style="margin-bottom:8px;" id="dash-country-list-head">Top countries</div>
+                    <div class="map-path-list" id="dash-country-list"></div>
+                </div>
+                <div id="dash-country-detail"></div>
+            </aside>
+        </div>
+    </div>
+</section>
+
+<section id="dash-category-explore">
+    <div class="wrap" style="padding-top:28px; padding-bottom:28px;">
+        <div class="section-head" style="margin-bottom:20px;">
+            <span class="kicker">By category</span>
             <h2>Global Economy → category → item</h2>
             <p>Cell size is proportional to $ value. Categories with no valued items yet still
             show up (dashed outline) — nothing is hidden just because it doesn't have a price
-            tag.</p>
+            tag. This view also covers items with no single geography (Trade as a whole) and
+            lets you drill into arbitrarily deep categories (Food → Agriculture → Fruits → …).</p>
         </div>
         <div class="map-layout">
             <div class="map-pane">
@@ -125,7 +154,8 @@
         </table>
     </div>
     <noscript><p>This page needs JavaScript — or read the raw data at
-    <a href="../data/dashboard/taxonomy.json">taxonomy.json</a>.</p></noscript>
+    <a href="../data/dashboard/taxonomy.json">taxonomy.json</a> and
+    <a href="../data/dashboard/country_totals.json">country_totals.json</a>.</p></noscript>
 </main>
 
 <footer>
@@ -144,11 +174,15 @@
             <li><a href="https://github.com/bpupadhyaya/global-intelligence-site">GitHub</a></li>
         </ul>
         <p class="footer-copy">© 2026 Global Intelligence · Every valuation is either a real computed figure (reserves × live spot price), a directly cited published total, or honestly marked unavailable — never estimated ·
-        <a href="https://github.com/bpupadhyaya/global-intelligence-site/blob/main/data/dashboard/taxonomy.json">taxonomy.json</a></p>
+        <a href="https://github.com/bpupadhyaya/global-intelligence-site/blob/main/data/dashboard/taxonomy.json">taxonomy.json</a> ·
+        <a href="https://github.com/bpupadhyaya/global-intelligence-site/blob/main/data/dashboard/country_totals.json">country_totals.json</a> ·
+        map built with <a href="https://d3js.org/">D3</a> and <a href="https://github.com/topojson/world-atlas">Natural Earth</a></p>
     </div>
 </footer>
 
 <script src="../assets/vendor/d3.v7.min.js"></script>
+<script src="../assets/vendor/topojson-client.v3.min.js"></script>
+<script src="../assets/js/world-map.js"></script>
 <script src="../assets/js/dashboard.js"></script>
 <script>
     (function () {
@@ -159,6 +193,17 @@
         }
         tick(); setInterval(tick, 1000);
     })();
+
+    GIDashboard.initCountryMap({
+        atlasUrl: '../data/world-atlas-countries-110m.json',
+        countryTotalsUrl: '../data/dashboard/country_totals.json',
+        svgSelector: '#dash-country-map',
+        captionId: 'country-map-caption',
+        listId: 'dash-country-list',
+        listHeadId: 'dash-country-list-head',
+        detailId: 'dash-country-detail',
+        searchId: 'dash-country-search'
+    });
 
     GIDashboard.init({
         taxonomyUrl: '../data/dashboard/taxonomy.json',
