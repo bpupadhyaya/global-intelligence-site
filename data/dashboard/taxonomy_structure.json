@@ -1,0 +1,108 @@
+{
+  "schema_version": "1.0.0",
+  "note": "Hand-curated shape of the Global Dashboard taxonomy -- which nodes exist, how they nest, and where each leaf's valuation comes from. scripts/build_dashboard_taxonomy.py reads this and computes actual $ valuations from each item's real data files, writing data/dashboard/taxonomy.json. Add new nodes here (not in the generated file) when a new item/category is added.",
+  "world_gdp": {
+    "usd": 111669432109121,
+    "as_of": "2024",
+    "sources": [
+      {"title": "World Bank -- GDP (current US$), World", "url": "https://data.worldbank.org/indicator/NY.GDP.MKTP.CD?locations=1W"}
+    ],
+    "note": "2024 is the last fully finalized year in the World Bank series (a 2025 figure, ~$118.35T, also exists in the same series but is a preliminary/near-final estimate, not yet closed out)."
+  },
+  "root": {
+    "id": "global",
+    "name": "Global Economy",
+    "children": [
+      {
+        "id": "commodities",
+        "name": "Commodities",
+        "color": "commodities",
+        "page": "../commodities/",
+        "children": [
+          {
+            "id": "gold",
+            "name": "Gold",
+            "page": "../commodities/gold/",
+            "valuation_source": {
+              "type": "commodity_reserves",
+              "reserves_file": "gold_reserves.json",
+              "price_file": "gold_price.json",
+              "note": "Sum of official (central-bank) reserve tonnes across all listed countries, at current spot price. Does not include annual mine production value -- that's a flow, not a held asset. Per-country detail and sourcing lives on the Gold page itself."
+            }
+          },
+          {
+            "id": "silver",
+            "name": "Silver",
+            "page": "../commodities/silver/",
+            "valuation_source": {
+              "type": "commodity_reserves",
+              "reserves_file": "silver_reserves.json",
+              "price_file": "silver_price.json",
+              "note": "Sum of geological (USGS, in-ground) reserve tonnes across all listed countries, at current spot price. Does not include annual mine production value. Per-country detail and sourcing lives on the Silver page itself."
+            }
+          },
+          {
+            "id": "copper",
+            "name": "Copper",
+            "page": "../commodities/copper/",
+            "valuation_source": {
+              "type": "commodity_reserves",
+              "reserves_file": "copper_reserves.json",
+              "price_file": "copper_price.json",
+              "note": "Sum of geological (USGS, in-ground) reserve tonnes across all listed countries, at current spot price. Does not include annual mine production value. Per-country detail and sourcing lives on the Copper page itself."
+            }
+          }
+        ]
+      },
+      {
+        "id": "trade",
+        "name": "Trade",
+        "color": "trade",
+        "children": [
+          {
+            "id": "supply-chain",
+            "name": "Supply Chain",
+            "page": "../supply-chain/",
+            "valuation_source": {
+              "type": "unavailable",
+              "note": "133 curated global trade routes/chokepoints -- no single standard published $ figure exists for 'the value of the world's supply chain' as a whole, and individual paths carry qualitative 'estimated global share' text, not consistent $ figures. Marked unavailable rather than estimated. A future pass could derive a real, cited $ value per path from trade-volume data where a citable figure exists."
+            }
+          }
+        ]
+      },
+      {
+        "id": "food",
+        "name": "Food",
+        "color": "food",
+        "children": [
+          {
+            "id": "agriculture",
+            "name": "Agriculture",
+            "children": [
+              {
+                "id": "fruits",
+                "name": "Fruits",
+                "children": [
+                  {
+                    "id": "banana",
+                    "name": "Banana",
+                    "valuation_source": {
+                      "type": "published_total",
+                      "usd": 10000000000,
+                      "as_of": "undated (FAO World Banana Forum, standing characterization -- not a dated annual statistic)",
+                      "sources": [
+                        {"title": "FAO World Banana Forum -- \"Bananas are the world's most exported fresh fruit (US$10bn/year)\"", "url": "https://www.fao.org/world-banana-forum/en"},
+                        {"title": "FAO -- Banana Market Review 2024 (19.65 million tonnes exported, 2024; volumes and per-country unit prices only, no aggregate global $ figure published)", "url": "https://www.fao.org/3/cd6159en/cd6159en.pdf"}
+                      ],
+                      "note": "This is a real, FAO-sourced figure, but an approximate/undated order-of-magnitude characterization, not a precise year-stamped statistic -- FAO's own Banana Market Review series publishes export volumes (19.65 million tonnes in 2024) and per-country per-tonne unit prices, but no aggregate global export-value total in USD. Presented with that caveat rather than as false precision. (Global production, for context only, not used in this valuation: ~135.1 million tonnes in 2022 per FAOSTAT via Wikipedia -- FAOSTAT itself was unreachable, HTTP 521, during research.)"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

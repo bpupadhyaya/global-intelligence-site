@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self';">
+    <title>Global Dashboard — Global Intelligence</title>
+    <meta name="description" content="Every item Global Intelligence tracks, in one scalable summary — drill down from the global economy into any category, down to a single item, each with a real, sourced $ valuation where one exists.">
+    <link rel="canonical" href="https://equalinformation.com/global-intelligence-site/dashboard/">
+    <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="../assets/img/apple-touch-icon.png">
+    <link rel="manifest" href="../site.webmanifest">
+    <meta name="theme-color" content="#0b3d2e">
+    <meta property="og:title" content="Global Dashboard — Global Intelligence">
+    <meta property="og:description" content="Every item Global Intelligence tracks, in one scalable summary — drill down from the global economy into any category, down to a single item, each with a real, sourced $ valuation where one exists.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://equalinformation.com/global-intelligence-site/dashboard/">
+    <meta property="og:image" content="https://equalinformation.com/global-intelligence-site/assets/img/og-share.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Global Dashboard — Global Intelligence">
+    <meta name="twitter:description" content="Every item Global Intelligence tracks, in one scalable summary — drill down from the global economy into any category, down to a single item, each with a real, sourced $ valuation where one exists.">
+    <meta name="twitter:image" content="https://equalinformation.com/global-intelligence-site/assets/img/og-share.png">
+    <link rel="stylesheet" href="../assets/fonts/inter.css">
+    <link rel="stylesheet" href="../assets/css/style.css?v=b3a9f35b">
+</head>
+<body>
+
+<a class="skip-link" href="#dashboard-root">Skip to content</a>
+
+<nav>
+    <div class="nav-inner">
+        <a href="../" class="nav-logo"><span class="globe" aria-hidden="true">🌐</span> Global Intelligence</a>
+        <ul class="nav-links">
+            <li><a href="./" aria-current="page">Dashboard</a></li>
+            <li><a href="../briefing/">Live briefing</a></li>
+            <li><a href="../top10/">Top 10</a></li>
+            <li><a href="../countries/">Countries</a></li>
+            <li><a href="../supply-chain/">Supply Chain</a></li>
+            <li class="nav-dropdown">
+                <a href="../commodities/">Commodities <span class="caret" aria-hidden="true">▾</span></a>
+                <ul class="nav-dropdown-menu">
+                    <li><a href="../commodities/gold/">Gold</a></li>
+                    <li><a href="../commodities/silver/">Silver</a></li>
+                    <li><a href="../commodities/copper/">Copper</a></li>
+                    <li><a href="../commodities/" class="nav-dropdown-all">All commodities</a></li>
+                </ul>
+            </li>
+            <li><a href="../sources/">Sources</a></li>
+        </ul>
+        <span class="nav-utc"><span class="live" aria-hidden="true">●</span> <span id="utc">— UTC</span></span>
+        <button class="mobile-menu-btn" aria-label="Menu" aria-expanded="false" onclick="var l=document.querySelector('.nav-links'); var open=l.classList.toggle('show'); this.setAttribute('aria-expanded', open);">&#9776;</button>
+    </div>
+</nav>
+
+<header class="hero hero-sub">
+    <div class="wrap">
+        <h1>Everything we track, <span class="accent">one map</span></h1>
+        <p class="tagline">Zoom in from the global economy to a single item</p>
+        <p class="lede">Every category and item Global Intelligence covers — Supply Chain,
+        Gold, Silver, Copper today, more added over time — summarized on one interactive map.
+        Click a category to zoom in, click an item to open it. Each node carries a real, sourced
+        $ valuation where a legitimate one exists; where it doesn't, that's shown honestly
+        rather than guessed.</p>
+        <div class="dash-stats">
+            <div class="stat" id="dash-stat-gdp">
+                <div class="num">—</div>
+                <div class="label">World economy</div>
+                <span class="stat-caption">Loading…</span>
+            </div>
+            <div class="stat" id="dash-stat-tracked">
+                <div class="num">—</div>
+                <div class="label">Tracked in this dashboard</div>
+                <span class="stat-caption">Loading…</span>
+            </div>
+        </div>
+    </div>
+</header>
+
+<section class="tint" id="map-explore">
+    <div class="wrap" style="padding-top:28px; padding-bottom:28px;">
+        <div class="section-head" style="margin-bottom:20px;">
+            <span class="kicker">Explore the dashboard</span>
+            <h2>Global Economy → category → item</h2>
+            <p>Cell size is proportional to $ value. Categories with no valued items yet still
+            show up (dashed outline) — nothing is hidden just because it doesn't have a price
+            tag.</p>
+        </div>
+        <div class="map-layout">
+            <div class="map-pane">
+                <nav class="dash-breadcrumb" id="dash-breadcrumb" aria-label="Dashboard drill-down path"></nav>
+                <svg id="dash-treemap" viewBox="0 0 900 460" role="img" aria-label="Treemap of Global Intelligence's tracked items by value"></svg>
+                <p class="map-caption" id="map-caption">Loading dashboard…</p>
+                <div class="map-legend" id="dash-legend">
+                    <span class="map-legend-swatch"><span class="dot" style="color:var(--blue-600)"></span>Commodities</span>
+                    <span class="map-legend-swatch"><span class="dot" style="color:var(--green-600)"></span>Trade</span>
+                    <span class="map-legend-swatch"><span class="dot" style="color:var(--amber-700)"></span>Food</span>
+                    <span class="map-legend-swatch"><span class="dot" style="background:var(--paper-tint); border:1px dashed var(--ink-faint)"></span>No value yet</span>
+                </div>
+            </div>
+            <aside class="map-sidebar">
+                <div>
+                    <div class="map-sidebar-head" style="margin-bottom:8px;" id="dash-list-head">Items</div>
+                    <div class="map-path-list" id="dash-list"></div>
+                </div>
+                <div id="dash-detail"></div>
+            </aside>
+        </div>
+    </div>
+</section>
+
+<main class="wrap" id="dashboard-root" style="padding: 28px 24px 64px;">
+    <div class="section-head" style="margin-bottom:20px;">
+        <span class="kicker">Full table</span>
+        <h2>Every node, flat</h2>
+        <p>The same tree as a plain table — every category and item, indented by depth, with
+        its valuation method spelled out.</p>
+    </div>
+    <input type="search" id="dash-table-search" class="search-input" style="max-width:420px;margin:0 auto 18px;display:block;"
+        placeholder="Filter by name…" aria-label="Filter the table by name">
+    <div class="dash-table-wrap">
+        <table class="dash-table">
+            <caption>Global Dashboard taxonomy — name, $ valuation, and how it was derived</caption>
+            <thead><tr><th>Item</th><th>Value</th><th>Method</th></tr></thead>
+            <tbody id="dash-table-body"></tbody>
+        </table>
+    </div>
+    <noscript><p>This page needs JavaScript — or read the raw data at
+    <a href="../data/dashboard/taxonomy.json">taxonomy.json</a>.</p></noscript>
+</main>
+
+<footer>
+    <div class="footer-inner">
+        <ul class="footer-links">
+            <li><a href="../">Home</a></li>
+            <li><a href="./" aria-current="page">Dashboard</a></li>
+            <li><a href="../briefing/">Live briefing</a></li>
+            <li><a href="../top10/">Top 10</a></li>
+            <li><a href="../countries/">Countries</a></li>
+            <li><a href="../supply-chain/">Supply Chain</a></li>
+            <li><a href="../commodities/">Commodities</a></li>
+            <li><a href="../sources/">Source registry</a></li>
+            <li><a href="../privacy/">Privacy</a></li>
+            <li><a href="../terms/">Terms</a></li>
+            <li><a href="https://github.com/bpupadhyaya/global-intelligence-site">GitHub</a></li>
+        </ul>
+        <p class="footer-copy">© 2026 Global Intelligence · Every valuation is either a real computed figure (reserves × live spot price), a directly cited published total, or honestly marked unavailable — never estimated ·
+        <a href="https://github.com/bpupadhyaya/global-intelligence-site/blob/main/data/dashboard/taxonomy.json">taxonomy.json</a></p>
+    </div>
+</footer>
+
+<script src="../assets/vendor/d3.v7.min.js"></script>
+<script src="../assets/js/dashboard.js"></script>
+<script>
+    (function () {
+        var utc = document.getElementById('utc');
+        function tick() {
+            var d = new Date(), p = function (n) { return String(n).padStart(2, '0'); };
+            utc.textContent = p(d.getUTCHours()) + ':' + p(d.getUTCMinutes()) + ':' + p(d.getUTCSeconds()) + ' UTC';
+        }
+        tick(); setInterval(tick, 1000);
+    })();
+
+    GIDashboard.init({
+        taxonomyUrl: '../data/dashboard/taxonomy.json',
+        svgSelector: '#dash-treemap',
+        breadcrumbId: 'dash-breadcrumb',
+        captionId: 'map-caption',
+        listId: 'dash-list',
+        listHeadId: 'dash-list-head',
+        detailId: 'dash-detail',
+        gdpStatId: 'dash-stat-gdp',
+        trackedStatId: 'dash-stat-tracked',
+        tableBodyId: 'dash-table-body'
+    });
+
+    document.getElementById('dash-table-search').addEventListener('input', function (e) {
+        var q = e.target.value.trim().toLowerCase();
+        document.querySelectorAll('#dash-table-body tr').forEach(function (tr) {
+            var name = tr.querySelector('.node-name').textContent.toLowerCase();
+            tr.style.display = !q || name.indexOf(q) !== -1 ? '' : 'none';
+        });
+    });
+</script>
+
+</body>
+</html>
