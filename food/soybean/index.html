@@ -4,21 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self';">
-    <title>Wheat — Global Intelligence</title>
-    <meta name="description" content="The world's most-traded food crop — production by country and the biggest exporters, on an interactive map. Real, sourced figures.">
-    <link rel="canonical" href="https://equalinformation.com/global-intelligence-site/food/wheat/">
+    <title>Soybean — Global Intelligence</title>
+    <meta name="description" content="The world's most concentrated major food trade — two countries supply ~85% of global soybean exports. Production and exports by country, on an interactive map.">
+    <link rel="canonical" href="https://equalinformation.com/global-intelligence-site/food/soybean/">
     <link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="../../assets/img/apple-touch-icon.png">
     <link rel="manifest" href="../../site.webmanifest">
     <meta name="theme-color" content="#0b3d2e">
-    <meta property="og:title" content="Wheat — Global Intelligence">
-    <meta property="og:description" content="The world's most-traded food crop — production by country and the biggest exporters, on an interactive map. Real, sourced figures.">
+    <meta property="og:title" content="Soybean — Global Intelligence">
+    <meta property="og:description" content="The world's most concentrated major food trade — two countries supply ~85% of global soybean exports. Production and exports by country, on an interactive map.">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://equalinformation.com/global-intelligence-site/food/wheat/">
+    <meta property="og:url" content="https://equalinformation.com/global-intelligence-site/food/soybean/">
     <meta property="og:image" content="https://equalinformation.com/global-intelligence-site/assets/img/og-share.png">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Wheat — Global Intelligence">
-    <meta name="twitter:description" content="The world's most-traded food crop — production by country and the biggest exporters, on an interactive map. Real, sourced figures.">
+    <meta name="twitter:title" content="Soybean — Global Intelligence">
+    <meta name="twitter:description" content="The world's most concentrated major food trade — two countries supply ~85% of global soybean exports. Production and exports by country, on an interactive map.">
     <meta name="twitter:image" content="https://equalinformation.com/global-intelligence-site/assets/img/og-share.png">
     <link rel="stylesheet" href="../../assets/fonts/inter.css">
     <link rel="stylesheet" href="../../assets/css/style.css?v=b3a9f35b">
@@ -44,9 +44,9 @@
                     <li><a href="../../commodities/silver/">Silver</a></li>
                     <li><a href="../../commodities/copper/">Copper</a></li>
                     <li class="nav-group-label">Food</li>
-                    <li><a href="./" aria-current="page">Wheat</a></li>
+                    <li><a href="../wheat/">Wheat</a></li>
                     <li><a href="../corn/">Corn</a></li>
-                    <li><a href="../soybean/">Soybean</a></li>
+                    <li><a href="./" aria-current="page">Soybean</a></li>
                     <li><a href="../../items/" class="nav-dropdown-all">All items</a></li>
                 </ul>
             </li>
@@ -59,13 +59,14 @@
 
 <header class="hero hero-sub">
     <div class="wrap">
-        <h1>Every tonne, <span class="accent">grown and shipped</span></h1>
-        <p class="tagline" id="commodity-price-stamp">Loading wheat data…</p>
-        <p class="lede">Wheat is the world's most-traded food crop — per Wikipedia's summary of
-        the historical record, "world trade in wheat... was greater than for all other crops
-        combined." Production by country and the world's biggest exporters, each in tonnes.
-        Sourced from FAOSTAT and USDA. No live price feed yet — tonnes, not dollars, is the
-        number that actually matters for food security.</p>
+        <h1>Two countries, <span class="accent">most of the world's supply</span></h1>
+        <p class="tagline" id="commodity-price-stamp">Loading soybean data…</p>
+        <p class="lede">Soybean is the world's third-most-traded food crop by tonnage — and by
+        far the most concentrated: Brazil and the United States alone supply roughly 85% of
+        global exports, and China absorbs over 60% of global imports on its own, mostly to
+        crush into livestock feed and cooking oil. Production by country and the world's
+        biggest exporters, each in tonnes. Sourced from FAOSTAT and USDA. No live price feed
+        yet — tonnes, not dollars, is the number that actually matters here.</p>
     </div>
 </header>
 
@@ -84,7 +85,7 @@
                     <button type="button" id="layer-reserves" class="active reserves">Production by country</button>
                     <button type="button" id="layer-mines" class="mines">Exports by country</button>
                 </div>
-                <svg id="world-map" viewBox="0 0 960 500" role="img" aria-label="World map of wheat production and exports"></svg>
+                <svg id="world-map" viewBox="0 0 960 500" role="img" aria-label="World map of soybean production and exports"></svg>
                 <p class="map-caption" id="map-caption">Loading map…</p>
                 <div class="map-legend" id="map-legend"></div>
             </div>
@@ -102,8 +103,8 @@
 
 <main class="wrap" id="commodity-root" style="padding: 28px 24px 64px;">
     <noscript><p>This page needs JavaScript — or read the raw data at
-    <a href="../../data/food/wheat_production.json">wheat_production.json</a> and
-    <a href="../../data/food/wheat_exports.json">wheat_exports.json</a>.</p></noscript>
+    <a href="../../data/food/soybean_production.json">soybean_production.json</a> and
+    <a href="../../data/food/soybean_exports.json">soybean_exports.json</a>.</p></noscript>
 </main>
 
 <footer>
@@ -117,16 +118,15 @@
             <li><a href="../../supply-chain/">Supply Chain</a></li>
             <li><a href="../../items/">Items</a></li>
             <li><a href="../">Food</a></li>
-            <li><a href="./" aria-current="page">Wheat</a></li>
+            <li><a href="./" aria-current="page">Soybean</a></li>
             <li><a href="../../sources/">Source registry</a></li>
             <li><a href="../../privacy/">Privacy</a></li>
             <li><a href="../../terms/">Terms</a></li>
             <li><a href="https://github.com/bpupadhyaya/global-intelligence-site">GitHub</a></li>
         </ul>
         <p class="footer-copy">© 2026 Global Intelligence · Production sourced from
-        <a href="https://www.fao.org/faostat/en/#data/QCL">FAOSTAT</a> (2022) · exports sourced from
-        <a href="https://www.indexmundi.com/agriculture/?commodity=wheat&graph=exports">USDA, via IndexMundi</a> (2024)
-        and FAOSTAT (2023, for EU member states) ·
+        <a href="https://en.wikipedia.org/wiki/List_of_countries_by_soybean_production">FAOSTAT</a> (2022) · exports sourced from
+        <a href="https://www.indexmundi.com/agriculture/?commodity=soybean-oilseed&graph=exports">USDA, via IndexMundi</a> (2024) ·
         map built with <a href="https://d3js.org/">D3</a> and <a href="https://github.com/topojson/world-atlas">Natural Earth</a></p>
     </div>
 </footer>
@@ -147,15 +147,15 @@
 
     GICommodityPage.init({
         rootId: 'commodity-root',
-        commodityName: 'Wheat',
-        reservesUrl: '../../data/food/wheat_production.json',
-        minesUrl: '../../data/food/wheat_exports.json',
+        commodityName: 'Soybean',
+        reservesUrl: '../../data/food/soybean_production.json',
+        minesUrl: '../../data/food/soybean_exports.json',
         atlasUrl: '../../data/world-atlas-countries-110m.json',
         priceUrl: null,
-        noPriceStamp: 'Wheat: 40 producing countries, 30 exporting countries tracked',
+        noPriceStamp: 'Soybean: 35 producing countries, 32 exporting countries tracked',
         reservesSectionLabel: 'Production by country',
         minesSectionLabel: 'Exports by country',
-        reservesNoun: 'countries growing wheat',
+        reservesNoun: 'countries growing soybean',
         minesNoun: 'exporting countries',
         reservesListLabel: 'Top producers',
         minesListLabel: 'Top exporters',
