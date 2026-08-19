@@ -18,12 +18,14 @@
     // reserves (especially copper, reported in millions of tonnes) run past readable plain
     // numbers.
     function formatUsd(n) {
+        if (n === null || n === undefined || isNaN(n)) return null; // no price data (e.g. Wheat) -- callers must handle null, never print "$NaN"
         var abs = Math.abs(n);
         if (abs >= 1e12) return '$' + (n / 1e12).toFixed(2) + 'T';
         if (abs >= 1e9) return '$' + (n / 1e9).toFixed(2) + 'B';
         if (abs >= 1e6) return '$' + (n / 1e6).toFixed(1) + 'M';
         return '$' + Math.round(n).toLocaleString('en-US');
     }
+    function usdFor(tonnes, usdPerKg) { return usdPerKg != null ? formatUsd(tonnes * 1000 * usdPerKg) : null; }
     // Same compaction for tonnage -- copper reserves run into the hundreds of millions of
     // tonnes, unreadable as a plain comma-grouped number.
     function formatTonnes(t) {
@@ -56,7 +58,17 @@
             minesSectionLabel: 'Major producing mines',
             reservesNoun: 'countries holding reserves',
             minesNoun: 'major producing mines',
-            priceUnit: 'oz', // 'oz' or 'lb'
+            reservesListLabel: 'Top holders',
+            minesListLabel: 'Top mines',
+            priceUnit: 'oz', // 'oz' or 'lb' -- ignored if priceUrl is not set
+            priceUrl: null, // optional -- if omitted, no $ values are computed or shown anywhere (e.g. Wheat, which has no live price feed)
+            // Gold/Silver/Copper's "mines" layer is real point locations (lat/lng). Some items
+            // (e.g. Wheat's "exports by country") have no point data, only a second per-country
+            // aggregate -- set this true to resolve that layer via country centroid instead,
+            // exactly like the reserves layer does.
+            minesAreCountries: false,
+            minesCardKicker: 'Mine', // e.g. 'Exports' when minesAreCountries is true
+            reservesCardKicker: 'Reserves', // e.g. 'Production' for a crop like Wheat
             reserveExtraLine: function () { return ''; }
         }, config);
 
@@ -81,17 +93,16 @@
 
             var reserveGrid = section(cfg.reservesSectionLabel + ' (' + reserves.length + ')');
             reserves.forEach(function (r) {
-                var kg = r.tonnes * 1000;
-                var usd = kg * usdPerKg;
+                var usdStr = usdFor(r.tonnes, usdPerKg);
                 var domId = 'reserve-' + r.id;
                 var card = document.createElement('article');
                 card.className = 'briefing brief-card path-card';
                 card.id = domId;
                 card.innerHTML =
-                    '<div class="aspect-path">#' + r.rank + ' · Reserves</div>' +
+                    '<div class="aspect-path">#' + r.rank + ' · ' + cfg.reservesCardKicker + '</div>' +
                     '<h3>' + esc(r.country) + '</h3>' +
-                    '<p class="path-route">' + formatTonnes(r.tonnes) + ' · ' + formatKg(r.tonnes) + ' · ' +
-                        '<strong style="color:var(--green-700)">' + formatUsd(usd) + '</strong></p>' +
+                    '<p class="path-route">' + formatTonnes(r.tonnes) + ' · ' + formatKg(r.tonnes) +
+                        (usdStr ? ' · <strong style="color:var(--green-700)">' + usdStr + '</strong>' : '') + '</p>' +
                     cfg.reserveExtraLine(r) +
                     '<details class="context"><summary><span aria-hidden="true">💡</span> Details</summary>' +
                     '<div class="context-body"><p>As of ' + esc(r.as_of || 'unknown') + '.</p>' + sourceLinks(r.sources) + '</div></details>';
@@ -105,14 +116,14 @@
                 var card = document.createElement('article');
                 card.className = 'briefing brief-card path-card';
                 card.id = domId;
-                var kg = m.annual_output_tonnes * 1000;
-                var usd = kg * usdPerKg;
+                var usdStr = usdFor(m.annual_output_tonnes, usdPerKg);
+                var kicker = cfg.minesAreCountries && m.rank ? ('#' + m.rank + ' · ' + cfg.minesCardKicker) : (cfg.minesCardKicker + ' · ' + esc(m.country));
                 card.innerHTML =
-                    '<div class="aspect-path">Mine · ' + esc(m.country) + '</div>' +
+                    '<div class="aspect-path">' + kicker + '</div>' +
                     '<h3>' + esc(m.name) + '</h3>' +
-                    '<p class="path-route">' + esc(m.operator || '') + '</p>' +
-                    '<p class="path-route">' + formatTonnes(m.annual_output_tonnes) + '/yr · ' + formatKg(m.annual_output_tonnes) + '/yr · ' +
-                        '<strong style="color:var(--amber-500)">' + formatUsd(usd) + '</strong>/yr at current price</p>' +
+                    (m.operator ? '<p class="path-route">' + esc(m.operator) + '</p>' : '') +
+                    '<p class="path-route">' + formatTonnes(m.annual_output_tonnes) + '/yr · ' + formatKg(m.annual_output_tonnes) + '/yr' +
+                        (usdStr ? ' · <strong style="color:var(--amber-500)">' + usdStr + '</strong>/yr at current price' : '') + '</p>' +
                     '<details class="context"><summary><span aria-hidden="true">💡</span> Details</summary>' +
                     '<div class="context-body"><p>As of ' + esc(m.as_of || 'unknown') + '.</p>' + sourceLinks(m.sources) + '</div></details>';
                 mineGrid.appendChild(card);
@@ -154,7 +165,7 @@
                 var xy = map.project(ll);
                 if (!xy) return;
                 var domId = 'reserve-' + r.id;
-                var kg = r.tonnes * 1000, usd = kg * usdPerKg;
+                var usdStr = usdFor(r.tonnes, usdPerKg);
                 var b = bubblesGroup.append('circle')
                     .attr('class', 'geo-bubble reserves')
                     .attr('cx', xy[0]).attr('cy', xy[1])
@@ -163,23 +174,30 @@
                 var titleEl = document.createElementNS('http://www.w3.org/2000/svg', 'title');
                 titleEl.textContent = r.country + ' — ' + formatTonnes(r.tonnes);
                 b.node().appendChild(titleEl);
-                items[domId] = { domId: domId, label: r.country, meta: '#' + r.rank + ' · ' + formatTonnes(r.tonnes) + ' · ' + formatUsd(usd), layer: 'reserves', value: r.tonnes, bubble: b, searchText: r.country.toLowerCase() };
+                items[domId] = { domId: domId, label: r.country, meta: '#' + r.rank + ' · ' + formatTonnes(r.tonnes) + (usdStr ? ' · ' + usdStr : ''), layer: 'reserves', value: r.tonnes, bubble: b, searchText: r.country.toLowerCase() };
             });
 
             mines.forEach(function (m) {
-                var xy = map.project([m.lng, m.lat]);
-                if (!xy) return;
+                var xy;
+                if (cfg.minesAreCountries) {
+                    var ll = map.countryLngLat(m.country);
+                    xy = ll ? map.project(ll) : null;
+                } else {
+                    xy = map.project([m.lng, m.lat]);
+                }
+                if (!xy) return; // country/point didn't resolve -- skip rather than mis-plot
                 var domId = 'mine-' + m.id;
-                var kg = m.annual_output_tonnes * 1000, usd = kg * usdPerKg;
+                var usdStr = usdFor(m.annual_output_tonnes, usdPerKg);
                 var b = bubblesGroup.append('circle')
                     .attr('class', 'geo-bubble mines')
                     .attr('cx', xy[0]).attr('cy', xy[1])
                     .attr('r', radiusScale(m.annual_output_tonnes, maxMine))
                     .attr('data-layer', 'mines');
                 var titleEl = document.createElementNS('http://www.w3.org/2000/svg', 'title');
-                titleEl.textContent = m.name + ' (' + m.country + ') — ' + formatTonnes(m.annual_output_tonnes) + '/yr';
+                titleEl.textContent = (cfg.minesAreCountries ? m.country : (m.name + ' (' + m.country + ')')) + ' — ' + formatTonnes(m.annual_output_tonnes) + '/yr';
                 b.node().appendChild(titleEl);
-                items[domId] = { domId: domId, label: m.name, meta: m.country + ' · ' + formatTonnes(m.annual_output_tonnes) + '/yr · ' + formatUsd(usd) + '/yr', layer: 'mines', value: m.annual_output_tonnes, bubble: b, searchText: (m.name + ' ' + m.country + ' ' + (m.operator || '')).toLowerCase() };
+                var metaPrefix = cfg.minesAreCountries && m.rank ? '#' + m.rank + ' · ' : m.country + ' · ';
+                items[domId] = { domId: domId, label: m.name, meta: metaPrefix + formatTonnes(m.annual_output_tonnes) + '/yr' + (usdStr ? ' · ' + usdStr + '/yr' : ''), layer: 'mines', value: m.annual_output_tonnes, bubble: b, searchText: (m.name + ' ' + m.country + ' ' + (m.operator || '')).toLowerCase() };
             });
 
             Object.keys(items).forEach(function (id) {
@@ -243,7 +261,7 @@
                 var headEl = document.getElementById('map-list-head');
                 var ids = currentLayerItems().filter(matchesSearch);
                 ids.sort(function (a, b) { return items[b].value - items[a].value; });
-                headEl.textContent = (activeLayer === 'reserves' ? 'Top holders' : 'Top mines') +
+                headEl.textContent = (activeLayer === 'reserves' ? cfg.reservesListLabel : cfg.minesListLabel) +
                     (searchQuery ? ' (' + ids.length + ' matching)' : '');
                 listEl.innerHTML = '';
                 if (!ids.length) {
@@ -310,13 +328,14 @@
         Promise.all([
             fetch(cfg.reservesUrl + '?t=' + Date.now()).then(function (r) { return r.json(); }),
             fetch(cfg.minesUrl + '?t=' + Date.now()).then(function (r) { return r.json(); }),
-            fetch(cfg.priceUrl + '?t=' + Date.now()).then(function (r) { return r.json(); }),
+            cfg.priceUrl ? fetch(cfg.priceUrl + '?t=' + Date.now()).then(function (r) { return r.json(); }) : Promise.resolve(null),
             fetch(cfg.atlasUrl).then(function (r) { return r.json(); })
         ]).then(function (results) {
             var reservesData = results[0], minesData = results[1], priceData = results[2], atlasTopo = results[3];
-            var reserves = reservesData.countries, mines = minesData.mines, usdPerKg = priceData.usd_per_kg;
+            var reserves = reservesData.countries, mines = minesData.mines, usdPerKg = priceData ? priceData.usd_per_kg : null;
 
-            document.getElementById('commodity-price-stamp').textContent = formatPriceStamp(priceData);
+            var stampEl = document.getElementById('commodity-price-stamp');
+            if (stampEl) stampEl.textContent = priceData ? formatPriceStamp(priceData) : cfg.noPriceStamp || (cfg.commodityName + ' — ' + reserves.length + ' countries tracked');
 
             renderCards(reserves, mines, usdPerKg);
             initMap(atlasTopo, reserves, mines, usdPerKg);
@@ -324,7 +343,8 @@
             document.getElementById(cfg.rootId).innerHTML =
                 '<p style="color:var(--ink-faint)">Could not load the ' + cfg.commodityName.toLowerCase() + ' data — try again shortly.</p>';
             document.getElementById('map-caption').textContent = 'Could not load the map.';
-            document.getElementById('commodity-price-stamp').textContent = cfg.commodityName + ' price unavailable';
+            var stampEl = document.getElementById('commodity-price-stamp');
+            if (stampEl) stampEl.textContent = cfg.commodityName + ' data unavailable';
             console.error(err);
         });
     }
