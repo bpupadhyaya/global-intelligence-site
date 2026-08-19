@@ -77,7 +77,7 @@ nav {
     display: flex; align-items: center; gap: 28px;
 }
 .nav-logo {
-    display: flex; align-items: center; gap: 10px;
+    display: flex; align-items: center; gap: 10px; flex-shrink: 0; white-space: nowrap;
     font-weight: 800; font-size: 17px; color: var(--green-900);
     letter-spacing: -0.02em;
 }
@@ -88,9 +88,12 @@ nav {
     font-size: 18px;
 }
 .nav-links {
-    display: flex; gap: 22px; list-style: none; margin-left: auto; align-items: center;
+    display: flex; flex-wrap: wrap; gap: 10px 22px; list-style: none; margin-left: auto;
+    align-items: center; justify-content: flex-start;
 }
-.nav-links a { color: var(--ink-soft); font-size: 15px; font-weight: 500; }
+/* Each item stays on one line -- if the full row doesn't fit, whole items wrap down to a
+   new row (flex-wrap above) rather than an individual item's own text breaking mid-word. */
+.nav-links a { color: var(--ink-soft); font-size: 15px; font-weight: 500; white-space: nowrap; }
 .nav-links a:hover { color: var(--green-700); text-decoration: none; }
 
 /* Commodities nav dropdown — pure-CSS hover/focus reveal on desktop; on mobile (see the
