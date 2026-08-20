@@ -541,6 +541,50 @@ details[open].ripple summary::after, details[open].context summary::after { tran
 .dash-node-detail .note { font-size: 12.5px; color: var(--ink-soft); margin-top: 8px; line-height: 1.5; }
 .dash-node-detail a.btn { margin-top: 12px; padding: 8px 16px; font-size: 13.5px; }
 
+/* ---------- Endeavor (category reference) pages ---------- */
+.endeavor-scale {
+    background: #fff; border: 1px solid var(--line); border-radius: var(--radius);
+    box-shadow: var(--shadow); padding: 20px 24px; margin: 28px auto 0; max-width: 720px;
+    display: flex; gap: 14px; align-items: baseline; text-align: left;
+}
+.endeavor-tag {
+    font-size: 10.5px; font-weight: 800; letter-spacing: 0.05em; text-transform: uppercase;
+    flex-shrink: 0; padding: 3px 9px; border-radius: 999px; position: relative; top: -1px;
+}
+.endeavor-tag.cited { background: var(--green-100); color: var(--green-700); }
+.endeavor-tag.adjacent { background: #fdf1de; color: #8a4b06; }
+.endeavor-tag.unverified { background: var(--paper-tint); color: var(--ink-faint); border: 1px solid var(--line); }
+.endeavor-scale .txt { font-size: 14.5px; color: var(--ink-soft); }
+.endeavor-scale .txt a { color: var(--ink-soft); text-decoration: underline; text-decoration-color: var(--line); font-weight: 600; }
+.endeavor-scale .txt a:hover { color: var(--green-700); text-decoration-color: var(--green-600); }
+
+.endeavor-items {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 4px 32px; margin-top: 8px;
+}
+.endeavor-item {
+    display: flex; gap: 10px; align-items: baseline; padding: 9px 0;
+    border-bottom: 1px solid var(--line); font-size: 14.5px;
+}
+.endeavor-item .i-n { color: var(--ink-faintest, var(--ink-faint)); font-size: 12.5px; font-variant-numeric: tabular-nums; min-width: 1.3em; }
+.endeavor-item .i-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; margin-top: 5px; }
+.endeavor-item.sourced .i-dot { background: var(--green-600); }
+.endeavor-item.judgment .i-dot { background: var(--ink-faint); opacity: 0.5; }
+.endeavor-item .i-name { color: var(--ink); }
+.endeavor-item a.i-link { color: var(--green-700); font-weight: 600; text-decoration: none; }
+.endeavor-item a.i-link:hover { text-decoration: underline; }
+
+.endeavor-note {
+    margin: 22px 0 0; font-size: 13px; color: var(--ink-faint); max-width: 760px;
+    border-left: 2px solid var(--line); padding-left: 14px; line-height: 1.6;
+}
+.endeavor-note a { color: var(--ink-faint); text-decoration: underline; text-decoration-color: var(--line); }
+.endeavor-note a:hover { color: var(--green-700); text-decoration-color: var(--green-600); }
+.endeavor-legend {
+    display: flex; flex-wrap: wrap; gap: 8px 20px; margin-top: 18px; font-size: 12px; color: var(--ink-faint);
+}
+.endeavor-legend span { display: inline-flex; align-items: center; gap: 6px; }
+.endeavor-legend .i-dot { width: 7px; height: 7px; border-radius: 50%; }
+
 .dash-table-wrap { overflow-x: auto; margin-top: 8px; }
 .dash-table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
 .dash-table caption { text-align: left; font-size: 12px; color: var(--ink-faint); margin-bottom: 8px; }
