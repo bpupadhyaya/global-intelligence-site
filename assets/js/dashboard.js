@@ -206,6 +206,55 @@
             return b;
         }
 
+        var TABLE_PAGE_SIZE = 50;
+        var tableShowAll = false;
+        var tableRows = [];
+        var tableShowAllBtn = null;
+
+        function applyTablePaging() {
+            var total = tableRows.length;
+            tableRows.forEach(function (tr, i) {
+                tr.style.display = (tableShowAll || i < TABLE_PAGE_SIZE) ? '' : 'none';
+            });
+            if (total > TABLE_PAGE_SIZE) {
+                if (!tableShowAllBtn) {
+                    var tbody = document.getElementById(config.tableBodyId);
+                    var wrap = tbody.closest('.dash-table-wrap') || tbody.closest('table').parentNode;
+                    tableShowAllBtn = document.createElement('button');
+                    tableShowAllBtn.type = 'button';
+                    tableShowAllBtn.className = 'btn outline';
+                    tableShowAllBtn.style.cssText = 'display:block;margin:18px auto 0;';
+                    tableShowAllBtn.addEventListener('click', function () {
+                        tableShowAll = true;
+                        applyTablePaging();
+                    });
+                    wrap.parentNode.insertBefore(tableShowAllBtn, wrap.nextSibling);
+                }
+                tableShowAllBtn.textContent = tableShowAll
+                    ? 'Showing all ' + total + ' rows'
+                    : 'Show all ' + total + ' rows (' + TABLE_PAGE_SIZE + ' shown)';
+                tableShowAllBtn.disabled = tableShowAll;
+                tableShowAllBtn.style.display = '';
+            } else if (tableShowAllBtn) {
+                tableShowAllBtn.style.display = 'none';
+            }
+        }
+
+        function filterTable(query) {
+            var q = (query || '').trim().toLowerCase();
+            if (!q) {
+                if (tableShowAllBtn) tableShowAllBtn.style.display = tableRows.length > TABLE_PAGE_SIZE ? '' : 'none';
+                applyTablePaging();
+                return;
+            }
+            if (tableShowAllBtn) tableShowAllBtn.style.display = 'none';
+            tableRows.forEach(function (tr) {
+                var name = tr.querySelector('.node-name').textContent.toLowerCase();
+                tr.style.display = name.indexOf(q) !== -1 ? '' : 'none';
+            });
+        }
+        global.GIDashboard.filterTable = filterTable;
+
         function renderTable() {
             var tbody = document.getElementById(config.tableBodyId);
             tbody.innerHTML = '';
@@ -221,6 +270,9 @@
                 (node.children || []).forEach(function (c) { walk(c, depth + 1); });
             }
             walk(data.root, 0);
+            tableRows = Array.prototype.slice.call(tbody.children);
+            tableShowAll = false;
+            applyTablePaging();
         }
 
         function renderAll() {

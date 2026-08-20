@@ -62,11 +62,11 @@
     <div class="wrap">
         <h1>Everything we track, <span class="accent">one map</span></h1>
         <p class="tagline">Zoom in from the global economy to a single item</p>
-        <p class="lede">Every category and item Global Intelligence covers — Supply Chain,
-        Gold, Silver, Copper today, more added over time — summarized on one interactive map.
-        Click a category to zoom in, click an item to open it. Each node carries a real, sourced
-        $ valuation where a legitimate one exists; where it doesn't, that's shown honestly
-        rather than guessed.</p>
+        <p class="lede">All 20 Human Endeavors categories and their 397 items, summarized on one
+        interactive map. Click a category to zoom in, click an item to open its own page. Each
+        node carries a real, sourced $ valuation where a legitimate one exists; where it doesn't,
+        that's shown honestly rather than guessed — most items are tracked with a real citation
+        on their own page even where no $ figure exists to aggregate here.</p>
         <div class="dash-stats">
             <div class="stat" id="dash-stat-gdp">
                 <div class="num">—</div>
@@ -118,10 +118,11 @@
         <div class="section-head" style="margin-bottom:20px;">
             <span class="kicker">By category</span>
             <h2>Global Economy → category → item</h2>
-            <p>Cell size is proportional to $ value. Categories with no valued items yet still
-            show up (dashed outline) — nothing is hidden just because it doesn't have a price
-            tag. This view also covers items with no single geography (Trade as a whole) and
-            lets you drill into arbitrarily deep categories (Food → Agriculture → Fruits → …).</p>
+            <p>Cell size is proportional to $ value. Categories and items with no valued items
+            yet still show up (dashed outline) — nothing is hidden just because it doesn't have
+            a price tag. All 20 categories and their up to 20 items each are here, drillable two
+            levels deep; only 4 of 397 items carry a real $ figure today, the rest link straight
+            to their own cited page.</p>
         </div>
         <div class="map-layout">
             <div class="map-pane">
@@ -129,9 +130,10 @@
                 <svg id="dash-treemap" viewBox="0 0 900 460" role="img" aria-label="Treemap of Global Intelligence's tracked items by value"></svg>
                 <p class="map-caption" id="map-caption">Loading dashboard…</p>
                 <div class="map-legend" id="dash-legend">
-                    <span class="map-legend-swatch"><span class="dot" style="color:var(--blue-600)"></span>Commodities</span>
-                    <span class="map-legend-swatch"><span class="dot" style="color:var(--green-600)"></span>Trade</span>
-                    <span class="map-legend-swatch"><span class="dot" style="color:var(--amber-700)"></span>Food</span>
+                    <span class="map-legend-swatch"><span class="dot" style="color:var(--blue-600)"></span>Metals &amp; Mining</span>
+                    <span class="map-legend-swatch"><span class="dot" style="color:var(--green-600)"></span>Supply Chain &amp; Trade Routes</span>
+                    <span class="map-legend-swatch"><span class="dot" style="color:var(--amber-700)"></span>Food &amp; Agriculture</span>
+                    <span class="map-legend-swatch"><span class="dot" style="color:var(--ink-faint)"></span>17 other categories</span>
                     <span class="map-legend-swatch"><span class="dot" style="background:var(--paper-tint); border:1px dashed var(--ink-faint)"></span>No value yet</span>
                 </div>
             </div>
@@ -190,7 +192,7 @@
 <script src="../assets/vendor/d3.v7.min.js?v=6d64bd2f"></script>
 <script src="../assets/vendor/topojson-client.v3.min.js?v=bc057598"></script>
 <script src="../assets/js/world-map.js?v=da19417c"></script>
-<script src="../assets/js/dashboard.js?v=98813253"></script>
+<script src="../assets/js/dashboard.js?v=122e8a4b"></script>
 <script>
     (function () {
         var utc = document.getElementById('utc');
@@ -226,11 +228,7 @@
     });
 
     document.getElementById('dash-table-search').addEventListener('input', function (e) {
-        var q = e.target.value.trim().toLowerCase();
-        document.querySelectorAll('#dash-table-body tr').forEach(function (tr) {
-            var name = tr.querySelector('.node-name').textContent.toLowerCase();
-            tr.style.display = !q || name.indexOf(q) !== -1 ? '' : 'none';
-        });
+        GIDashboard.filterTable(e.target.value);
     });
 </script>
 
