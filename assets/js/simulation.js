@@ -46,7 +46,7 @@
     function init(config) {
         var map, canvas, ctx, dpr, wrap;
         var data = null; // {nodes, edges, item_links}
-        var nodeById = {}, edgesByNodeId = {}; // adjacency for propagation
+        var nodeById = {}, edgeById = {}, edgesByNodeId = {}; // adjacency for propagation
         var sim, forceLinks;
         var disabled = {}; // id -> true, for both node and edge ids
         var affected = {}; // id -> hop distance (0 = disabled itself), across nodes+edges
@@ -59,6 +59,8 @@
         function buildAdjacency() {
             nodeById = {};
             data.nodes.forEach(function (n) { nodeById[n.id] = n; });
+            edgeById = {};
+            data.edges.forEach(function (e) { edgeById[e.id] = e; });
             edgesByNodeId = {};
             data.edges.forEach(function (e) {
                 (e.nodes || []).forEach(function (nid) {
@@ -126,16 +128,23 @@
                 .on('end', function () { fitToBounds(); draw(); });
         }
 
+        // Deliberately does NOT fit the whole graph into view -- showing everything at once on
+        // load proves the diagram is bounded, which is exactly the "infinite diagram" feel this
+        // page is supposed to have. Instead centers on the pinned physical backbone at a normal
+        // reading zoom, so category-hub/item/financial constellations sit mostly off-screen and
+        // have to be discovered by panning outward -- the diagram keeps going past the frame.
         function fitToBounds() {
             if (fitted || !data.nodes.length) return;
             fitted = true;
-            var xs = data.nodes.map(function (n) { return n.x; });
-            var ys = data.nodes.map(function (n) { return n.y; });
+            var anchors = data.nodes.filter(function (n) { return n.fx !== undefined; });
+            var pts = anchors.length ? anchors : data.nodes;
+            var xs = pts.map(function (n) { return n.x; });
+            var ys = pts.map(function (n) { return n.y; });
             var minX = Math.min.apply(null, xs), maxX = Math.max.apply(null, xs);
             var minY = Math.min.apply(null, ys), maxY = Math.max.apply(null, ys);
             var w = Math.max(1, maxX - minX), h = Math.max(1, maxY - minY);
             var rect = wrap.getBoundingClientRect();
-            var k = Math.max(0.06, Math.min(2, 0.9 * Math.min(rect.width / w, rect.height / h)));
+            var k = Math.max(0.3, Math.min(3, 0.75 * Math.min(rect.width / w, rect.height / h)));
             var cx = (minX + maxX) / 2, cy = (minY + maxY) / 2;
             var t = d3.zoomIdentity.translate(rect.width / 2 - cx * k, rect.height / 2 - cy * k).scale(k);
             d3.select(canvas).call(zoomBehavior.transform, t);
@@ -177,13 +186,14 @@
                 if (pts.length < 1) return;
                 var isDisabled = !!disabled[e.id];
                 var hop = affected[e.id];
+                var isHovered = e.id === hoveredId || e.id === selectedId;
                 var base = e.edge_type === 'supply_chain' ? EDGE_COLOR.supply_chain : EDGE_COLOR.structural;
-                var color = isDisabled ? '#dc2626' : (hop !== undefined ? '#8a5a06' : base);
+                var color = isDisabled ? '#dc2626' : (hop !== undefined ? '#8a5a06' : isHovered ? '#12211b' : base);
                 var baseAlpha = e.edge_type === 'supply_chain' ? 0.35 : e.edge_type === 'hub_backbone' ? 0.22 : 0.15;
-                var alpha = isDisabled ? 1 : (hop !== undefined ? Math.max(0.25, 1 - hop * HOP_DECAY) : baseAlpha);
+                var alpha = isDisabled ? 1 : (hop !== undefined ? Math.max(0.25, 1 - hop * HOP_DECAY) : isHovered ? 0.9 : baseAlpha);
                 ctx.strokeStyle = color;
                 ctx.globalAlpha = alpha;
-                ctx.lineWidth = (isDisabled ? 2.5 : hop !== undefined ? 1.8 : 0.8) / transform.k;
+                ctx.lineWidth = (isDisabled ? 2.5 : hop !== undefined ? 1.8 : isHovered ? 2 : 0.8) / transform.k;
                 if (pts.length === 1) {
                     ctx.beginPath();
                     ctx.arc(pts[0].x, pts[0].y, 6 / transform.k, 0, Math.PI * 2);
@@ -222,6 +232,14 @@
             ctx.restore();
         }
 
+        function distToSegment(px, py, ax, ay, bx, by) {
+            var dx = bx - ax, dy = by - ay;
+            var len2 = dx * dx + dy * dy;
+            var t = len2 ? Math.max(0, Math.min(1, ((px - ax) * dx + (py - ay) * dy) / len2)) : 0;
+            var cx = ax + t * dx, cy = ay + t * dy;
+            return Math.hypot(px - cx, py - cy);
+        }
+
         function hitTest(clientX, clientY) {
             var rect = canvas.getBoundingClientRect();
             var localX = (clientX - rect.left - transform.x) / transform.k;
@@ -231,6 +249,16 @@
                 if (n.x === undefined || n.y === undefined) return;
                 var d = Math.hypot(n.x - localX, n.y - localY);
                 if (d < bestDist) { bestDist = d; best = { type: 'node', id: n.id }; }
+            });
+            if (best) return best;
+            // No node close enough -- check edges (distance to nearest segment of each polyline).
+            var edgeBestDist = 6 / transform.k;
+            data.edges.forEach(function (e) {
+                var pts = (e.nodes || []).map(function (nid) { return nodeById[nid]; }).filter(Boolean);
+                for (var i = 0; i < pts.length - 1; i++) {
+                    var d = distToSegment(localX, localY, pts[i].x, pts[i].y, pts[i + 1].x, pts[i + 1].y);
+                    if (d < edgeBestDist) { edgeBestDist = d; best = { type: 'edge', id: e.id }; }
+                }
             });
             return best;
         }
@@ -268,20 +296,36 @@
         function renderDetail(id) {
             var el = document.getElementById(config.detailId);
             var n = nodeById[id];
-            if (!n) { el.innerHTML = ''; return; }
+            var e = !n ? edgeById[id] : null;
+            if (!n && !e) { el.innerHTML = ''; return; }
             selectedId = id;
             var isDis = !!disabled[id];
-            var metaBits = [n.type || 'node'];
-            if (n.lat !== null && n.lat !== undefined) metaBits.push(n.lat.toFixed(2) + ', ' + n.lng.toFixed(2));
-            else if (n.country) metaBits.push(n.country);
-            el.innerHTML =
-                '<div class="sim-node-detail">' +
+            var html;
+            if (n) {
+                var metaBits = [n.type || 'node'];
+                if (n.lat !== null && n.lat !== undefined) metaBits.push(n.lat.toFixed(2) + ', ' + n.lng.toFixed(2));
+                else if (n.country) metaBits.push(n.country);
+                html =
                     '<h3>' + esc(n.name) + '</h3>' +
                     '<div class="meta">' + metaBits.map(esc).join(' · ') + '</div>' +
                     (n.vulnerability_factors && n.vulnerability_factors.length
                         ? '<p class="note">' + n.vulnerability_factors.map(function (v) { return esc(v.text); }).join(' ') + '</p>'
                         : '') +
-                    (n.type === 'item' && n.page ? '<p class="note"><a href="' + esc(n.page) + '">View item page →</a></p>' : '') +
+                    (n.type === 'item' && n.page ? '<p class="note"><a href="' + esc(n.page) + '">View item page →</a></p>' : '');
+            } else {
+                var edgeMetaBits = [(e.edge_type || 'connection').replace(/_/g, ' ')];
+                if (e.category) edgeMetaBits.push(e.category);
+                if (e.estimated_global_share) edgeMetaBits.push(e.estimated_global_share);
+                html =
+                    '<h3>' + esc(e.name) + '</h3>' +
+                    '<div class="meta">' + edgeMetaBits.map(esc).join(' · ') + '</div>' +
+                    (e.commodities && e.commodities.length
+                        ? '<p class="note">Commodities: ' + esc(e.commodities.join(', ')) + '</p>' : '') +
+                    (e.match_basis ? '<p class="note">' + esc(e.match_basis) + '</p>' : '') +
+                    (e.sources && e.sources.length
+                        ? '<p class="note">Source: <a href="' + esc(e.sources[0]) + '">' + esc(e.sources[0]) + '</a></p>' : '');
+            }
+            el.innerHTML = '<div class="sim-node-detail">' + html +
                     '<button class="' + (isDis ? 'restore' : '') + '" id="sim-toggle-btn">' + (isDis ? 'Restore' : 'Disable') + '</button>' +
                 '</div>';
             document.getElementById('sim-toggle-btn').addEventListener('click', function () { toggleDisabled(id); });
@@ -304,9 +348,11 @@
 
         function renderAffectedItems() {
             var el = document.getElementById(config.affectedItemsId);
+            var wrapEl = config.affectedWrapId ? document.getElementById(config.affectedWrapId) : null;
             var anyDisabled = Object.keys(disabled).some(function (k) { return disabled[k]; });
             if (!anyDisabled) {
-                el.innerHTML = '<p class="aspect-foot" style="grid-column:1/-1;">Nothing disabled yet — click a node or route on the diagram above.</p>';
+                el.innerHTML = '';
+                if (wrapEl) wrapEl.hidden = true;
                 return;
             }
             var rows = [];
@@ -328,22 +374,32 @@
                 rows.push({ link: { item_name: n.name, item_page: n.page, category: n.category_id, item_page_full: n.page }, hop: h, isGraphNode: true });
             });
             rows.sort(function (a, b) { return a.hop - b.hop; });
+            if (wrapEl) wrapEl.hidden = false;
             if (!rows.length) {
-                el.innerHTML = '<p class="aspect-foot" style="grid-column:1/-1;">No linked items are reachable from what\'s currently disabled.</p>';
+                el.innerHTML = '<p class="mprow-meta">No linked items reachable from what\'s currently disabled.</p>';
                 return;
             }
             el.innerHTML = rows.slice(0, 60).map(function (r) {
                 var page = r.link.item_page || r.link.item_page_full || '#';
-                return '<a class="card" href="' + esc(page) + '" style="display:block; text-decoration:none;">' +
-                    '<h3>' + esc(r.link.item_name) + '</h3>' +
-                    '<p>' + esc(r.link.category || '') + ' · ' + (r.hop === 0 ? 'directly disabled' : r.hop + ' hop' + (r.hop > 1 ? 's' : '') + ' away') + '</p>' +
+                return '<a class="map-path-row" style="display:block; text-decoration:none;" href="' + esc(page) + '">' +
+                    '<div class="mprow-name">' + esc(r.link.item_name) + '</div>' +
+                    '<div class="mprow-meta">' + esc(r.link.category || '') + ' · ' + (r.hop === 0 ? 'directly disabled' : r.hop + ' hop' + (r.hop > 1 ? 's' : '') + ' away') + '</div>' +
                 '</a>';
             }).join('');
         }
 
+        function nameOf(hit) {
+            if (!hit) return '';
+            var obj = hit.type === 'node' ? nodeById[hit.id] : edgeById[hit.id];
+            return obj ? obj.name : '';
+        }
+
         function setupInteraction() {
+            var tooltipEl = config.tooltipId ? document.getElementById(config.tooltipId) : null;
+
             zoomBehavior = d3.zoom().scaleExtent([0.04, 24]).on('zoom', function (event) {
                 transform = event.transform;
+                if (tooltipEl) tooltipEl.hidden = true;
                 draw();
             });
             d3.select(canvas).call(zoomBehavior);
@@ -357,6 +413,20 @@
                 var newHover = hit ? hit.id : null;
                 if (newHover !== hoveredId) { hoveredId = newHover; draw(); }
                 canvas.style.cursor = hit ? 'pointer' : 'grab';
+                if (tooltipEl) {
+                    if (hit) {
+                        var rect = canvas.getBoundingClientRect();
+                        tooltipEl.textContent = nameOf(hit);
+                        tooltipEl.style.left = (event.clientX - rect.left) + 'px';
+                        tooltipEl.style.top = (event.clientY - rect.top) + 'px';
+                        tooltipEl.hidden = false;
+                    } else {
+                        tooltipEl.hidden = true;
+                    }
+                }
+            });
+            canvas.addEventListener('mouseleave', function () {
+                if (tooltipEl) tooltipEl.hidden = true;
             });
         }
 
@@ -396,12 +466,9 @@
             var stampEl = document.getElementById(config.stampId);
             stampEl.textContent = data.nodes.length + ' nodes (' + itemCount + ' items), ' + data.edges.length + ' connections' +
                 (data.generated ? ' · updated ' + data.generated : '');
-            document.getElementById(config.captionId).textContent =
-                'Click a node to disable it and watch the effect ripple outward. Drag to pan, scroll to zoom — the diagram has no edge.';
             document.getElementById(config.listHeadId).textContent = data.nodes.length + ' nodes';
         }).catch(function (err) {
             document.getElementById(config.stampId).textContent = 'Graph data unavailable';
-            document.getElementById(config.captionId).textContent = 'Could not load the simulation graph.';
             console.error('GISimulation load error:', err);
         });
     }
