@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self';">
+    <title>Global Simulation — Global Intelligence</title>
+    <meta name="description" content="The world's trade routes and chokepoints as one connected graph — disable a port or strait and see which items and paths are affected. Real, sourced data, updated automatically.">
+    <link rel="canonical" href="https://equalinformation.com/global-intelligence-site/simulation/">
+    <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="../assets/img/apple-touch-icon.png">
+    <link rel="manifest" href="../site.webmanifest">
+    <meta name="theme-color" content="#0b3d2e">
+    <meta property="og:title" content="Global Simulation — Global Intelligence">
+    <meta property="og:description" content="The world's trade routes and chokepoints as one connected graph — disable a port or strait and see which items and paths are affected. Real, sourced data, updated automatically.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://equalinformation.com/global-intelligence-site/simulation/">
+    <meta property="og:image" content="https://equalinformation.com/global-intelligence-site/assets/img/og-share.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Global Simulation — Global Intelligence">
+    <meta name="twitter:description" content="The world's trade routes and chokepoints as one connected graph — disable a port or strait and see which items and paths are affected. Real, sourced data, updated automatically.">
+    <meta name="twitter:image" content="https://equalinformation.com/global-intelligence-site/assets/img/og-share.png">
+    <link rel="stylesheet" href="../assets/fonts/inter.css">
+    <link rel="stylesheet" href="../assets/css/style.css?v=c7968b15">
+</head>
+<body>
+
+<a class="skip-link" href="#sim-root">Skip to content</a>
+
+<nav>
+    <div class="nav-inner">
+        <a href="../" class="nav-logo"><span class="globe" aria-hidden="true">🌐</span> Global Intelligence</a>
+        <ul class="nav-links">
+            <li><a href="./" aria-current="page">Simulation</a></li>
+            <li><a href="../dashboard/">Dashboard</a></li>
+            <li><a href="../briefing/">Live briefing</a></li>
+            <li><a href="../top10/">Top 10</a></li>
+            <li><a href="../countries/">Countries</a></li>
+            <li><a href="../supply-chain/">Supply Chain</a></li>
+            <li class="nav-dropdown">
+                <a href="../items/">Items <span class="caret" aria-hidden="true">▾</span></a>
+                <ul class="nav-dropdown-menu">
+                    <li class="nav-group-label">Metals</li>
+                    <li><a href="../commodities/gold/">Gold</a></li>
+                    <li><a href="../commodities/silver/">Silver</a></li>
+                    <li><a href="../commodities/copper/">Copper</a></li>
+                    <li class="nav-group-label">Food</li>
+                    <li><a href="../food/wheat/">Wheat</a></li>
+                    <li><a href="../food/corn/">Corn</a></li>
+                    <li><a href="../food/soybean/">Soybean</a></li>
+                    <li><a href="../items/" class="nav-dropdown-all">All 20 categories</a></li>
+                </ul>
+            </li>
+            <li><a href="../sources/">Sources</a></li>
+        </ul>
+        <span class="nav-utc"><span class="live" aria-hidden="true">●</span> <span id="utc">— UTC</span></span>
+        <button class="mobile-menu-btn" aria-label="Menu" aria-expanded="false" onclick="var l=document.querySelector('.nav-links'); var open=l.classList.toggle('show'); this.setAttribute('aria-expanded', open);">&#9776;</button>
+    </div>
+</nav>
+
+<header class="hero hero-sub">
+    <div class="wrap">
+        <h1>One <span class="accent">connected graph</span></h1>
+        <p class="tagline" id="sim-stamp">Loading the graph…</p>
+        <p class="lede">Every port, strait, and canal Global Intelligence tracks, connected by
+        the real trade routes carrying real commodities between them. Click a node or a route to
+        disable it — a war, a blockade, an accident — and see exactly which other routes and
+        items are affected, and how directly. Nothing here is predicted or guessed: every node,
+        route, and link is real and sourced; where an effect can't be traced to a real
+        connection, it isn't shown.</p>
+    </div>
+</header>
+
+<section class="tint" id="sim-explore">
+    <div class="wrap" style="padding-top:28px; padding-bottom:28px;">
+        <div class="section-head" style="margin-bottom:20px;">
+            <span class="kicker">Explore the graph</span>
+            <h2>Disable a node or route, see the effect</h2>
+            <p>Pan and zoom the map. Click a node (a port, strait, or canal) or a route to toggle
+            it disabled — the graph highlights every other node, route, and item reachable from
+            it, dimmed by how many hops away the effect travels. Click again to restore it.</p>
+        </div>
+        <div class="map-layout">
+            <div class="map-pane">
+                <div class="sim-canvas-wrap">
+                    <svg id="sim-basemap" viewBox="0 0 960 500" role="img" aria-label="World map base layer"></svg>
+                    <canvas id="sim-canvas" aria-label="Interactive supply chain graph"></canvas>
+                </div>
+                <p class="map-caption" id="sim-caption">Loading graph…</p>
+                <div class="map-legend" id="sim-legend">
+                    <span class="map-legend-swatch"><span class="dot" style="background:var(--green-600)"></span>Active node</span>
+                    <span class="map-legend-swatch"><span class="dot" style="background:var(--red-500)"></span>Disabled</span>
+                    <span class="map-legend-swatch"><span class="dot" style="background:var(--amber-700)"></span>Affected (propagated)</span>
+                </div>
+            </div>
+            <aside class="map-sidebar">
+                <input type="search" id="sim-search" class="search-input"
+                    placeholder="Search a node or route…" aria-label="Search a node or route">
+                <div>
+                    <div class="map-sidebar-head" style="margin-bottom:8px;" id="sim-list-head">All nodes</div>
+                    <div class="map-path-list" id="sim-node-list"></div>
+                </div>
+                <div id="sim-detail"></div>
+            </aside>
+        </div>
+    </div>
+</section>
+
+<main class="wrap" id="sim-root" style="padding: 28px 24px 64px;">
+    <div class="section-head" style="margin-bottom:20px;">
+        <span class="kicker">Affected items</span>
+        <h2>What's downstream of a disruption</h2>
+        <p>When a node or route is disabled, the real items linked to it (and to everything
+        connected to it) are listed here, closest effects first. Disable something on the map to
+        see this fill in.</p>
+    </div>
+    <div id="sim-affected-items" class="aspect-grid">
+        <p class="aspect-foot" style="grid-column:1/-1;">Nothing disabled yet — click a node or route on the map above.</p>
+    </div>
+    <noscript><p>This page needs JavaScript — or read the raw data at
+    <a href="../data/simulation/graph.json">graph.json</a>.</p></noscript>
+</main>
+
+<footer>
+    <div class="footer-inner">
+        <ul class="footer-links">
+            <li><a href="../">Home</a></li>
+            <li><a href="./" aria-current="page">Simulation</a></li>
+            <li><a href="../dashboard/">Dashboard</a></li>
+            <li><a href="../briefing/">Live briefing</a></li>
+            <li><a href="../top10/">Top 10</a></li>
+            <li><a href="../countries/">Countries</a></li>
+            <li><a href="../supply-chain/">Supply Chain</a></li>
+            <li><a href="../items/">Items</a></li>
+            <li><a href="../sources/">Source registry</a></li>
+            <li><a href="../privacy/">Privacy</a></li>
+            <li><a href="../terms/">Terms</a></li>
+            <li><a href="https://github.com/bpupadhyaya/global-intelligence-site">GitHub</a></li>
+        </ul>
+        <p class="footer-copy">© 2026 Global Intelligence · Graph built from the same sourced Supply Chain and Items data tracked across this site</p>
+    </div>
+</footer>
+
+<script src="../assets/vendor/d3.v7.min.js?v=6d64bd2f"></script>
+<script src="../assets/vendor/topojson-client.v3.min.js?v=bc057598"></script>
+<script src="../assets/js/world-map.js?v=da19417c"></script>
+<script src="../assets/js/simulation.js?v=c826ac9e"></script>
+<script>
+    (function () {
+        var utc = document.getElementById('utc');
+        function tick() {
+            var d = new Date(), p = function (n) { return String(n).padStart(2, '0'); };
+            utc.textContent = p(d.getUTCHours()) + ':' + p(d.getUTCMinutes()) + ':' + p(d.getUTCSeconds()) + ' UTC';
+        }
+        tick(); setInterval(tick, 1000);
+    })();
+
+    GISimulation.init({
+        basemapSelector: '#sim-basemap',
+        canvasId: 'sim-canvas',
+        canvasWrapSelector: '.sim-canvas-wrap',
+        atlasUrl: '../data/world-atlas-countries-110m.json',
+        graphUrl: '../data/simulation/graph.json',
+        stampId: 'sim-stamp',
+        captionId: 'sim-caption',
+        searchId: 'sim-search',
+        listHeadId: 'sim-list-head',
+        nodeListId: 'sim-node-list',
+        detailId: 'sim-detail',
+        affectedItemsId: 'sim-affected-items'
+    });
+</script>
+
+</body>
+</html>
