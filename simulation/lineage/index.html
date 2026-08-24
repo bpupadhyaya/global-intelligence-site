@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self';">
+    <title>Simulation Lineage — Global Intelligence</title>
+    <meta name="description" content="Every Human Endeavor category as its own lane, branching from the physical supply-chain backbone through category hubs to items and the financial layer — a lineage-chart view of the Global Simulation graph, unbounded in every direction.">
+    <link rel="canonical" href="https://equalinformation.com/global-intelligence-site/simulation/lineage/">
+    <link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="../../assets/img/apple-touch-icon.png">
+    <link rel="manifest" href="../../site.webmanifest">
+    <meta name="theme-color" content="#0b3d2e">
+    <meta property="og:title" content="Simulation Lineage — Global Intelligence">
+    <meta property="og:description" content="Every Human Endeavor category as its own lane, branching from the physical supply-chain backbone through category hubs to items and the financial layer.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://equalinformation.com/global-intelligence-site/simulation/lineage/">
+    <meta property="og:image" content="https://equalinformation.com/global-intelligence-site/assets/img/og-share.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Simulation Lineage — Global Intelligence">
+    <meta name="twitter:description" content="Every Human Endeavor category as its own lane, branching from the physical supply-chain backbone through category hubs to items and the financial layer.">
+    <meta name="twitter:image" content="https://equalinformation.com/global-intelligence-site/assets/img/og-share.png">
+    <link rel="stylesheet" href="../../assets/fonts/inter.css">
+    <link rel="stylesheet" href="../../assets/css/style.css?v=0dfcf7c3">
+</head>
+<body class="sim-page">
+
+<a class="skip-link" href="#sim-canvas-wrap">Skip to diagram</a>
+
+<header class="sim-page-header">
+    <a href="../../" class="sim-page-crumb-home"><span class="globe" aria-hidden="true">🌐</span> Global Intelligence</a>
+    <span class="sim-page-crumb-sep" aria-hidden="true">/</span>
+    <a href="../" class="sim-page-crumb-current" style="text-decoration:none;">Simulation</a>
+    <span class="sim-page-crumb-sep" aria-hidden="true">/</span>
+    <span class="sim-page-crumb-current">Lineage</span>
+    <span class="sim-page-hint">One lane per Human Endeavor category — scroll and zoom in any direction, click a node or line to disable it</span>
+    <span class="sim-page-stamp" id="sim-stamp">Loading the graph…</span>
+</header>
+
+<main class="sim-fullpage-wrap" id="sim-canvas-wrap">
+    <div class="sim-canvas-wrap">
+        <canvas id="sim-canvas" aria-label="Lineage diagram — every Human Endeavor category as a lane, branching from the supply-chain backbone"></canvas>
+        <div class="sim-tooltip" id="sim-tooltip" hidden></div>
+    </div>
+
+    <button class="sim-panel-toggle" id="sim-panel-toggle" aria-expanded="true" aria-controls="sim-panel">Search &amp; detail ▾</button>
+
+    <aside class="sim-overlay-panel" id="sim-panel">
+        <input type="search" id="sim-search" class="search-input"
+            placeholder="Search a node or route…" aria-label="Search a node or route">
+        <div class="sim-overlay-section">
+            <div class="sim-overlay-head" id="sim-list-head">All nodes</div>
+            <div class="map-path-list sim-overlay-list" id="sim-node-list"></div>
+        </div>
+        <div id="sim-detail"></div>
+        <div class="sim-overlay-section" id="sim-affected-wrap" hidden>
+            <div class="sim-overlay-head">Downstream items</div>
+            <div class="sim-overlay-list" id="sim-affected-items"></div>
+        </div>
+        <div class="sim-legend" id="sim-legend">
+            <span><span class="dot" style="background:#168158"></span>Supply chain</span>
+            <span><span class="dot" style="background:#1d4ed8"></span>Category hub</span>
+            <span><span class="dot" style="background:#7c8a83"></span>Item</span>
+            <span><span class="dot" style="background:#b45309"></span>Financial</span>
+            <span><span class="dot" style="background:var(--red-500)"></span>Disabled</span>
+            <span><span class="dot" style="background:var(--amber-700)"></span>Affected</span>
+        </div>
+    </aside>
+
+    <noscript><p style="padding:24px;">This page needs JavaScript — or read the raw data at
+    <a href="../../data/simulation/graph.json">graph.json</a>.</p></noscript>
+</main>
+
+<footer class="sim-page-footer">
+    <a href="../../">← Home</a>
+    <a href="../">Graph view</a>
+    <a href="../../supply-chain/">Supply Chain</a>
+    <a href="../../items/">Items</a>
+    <a href="../../sources/">Sources</a>
+</footer>
+
+<script src="../../assets/vendor/d3.v7.min.js?v=6d64bd2f"></script>
+<script src="../../assets/js/simulation-lineage.js?v=e5c435ab"></script>
+<script>
+    document.getElementById('sim-panel-toggle').addEventListener('click', function () {
+        var panel = document.getElementById('sim-panel');
+        var open = panel.classList.toggle('open');
+        this.setAttribute('aria-expanded', open);
+        this.textContent = 'Search & detail ' + (open ? '▴' : '▾');
+    });
+
+    GISimulationLineage.init({
+        canvasId: 'sim-canvas',
+        canvasWrapSelector: '.sim-canvas-wrap',
+        graphUrl: '../../data/simulation/graph.json',
+        stampId: 'sim-stamp',
+        tooltipId: 'sim-tooltip',
+        searchId: 'sim-search',
+        listHeadId: 'sim-list-head',
+        nodeListId: 'sim-node-list',
+        detailId: 'sim-detail',
+        affectedItemsId: 'sim-affected-items',
+        affectedWrapId: 'sim-affected-wrap',
+        panelId: 'sim-panel',
+        panelToggleId: 'sim-panel-toggle'
+    });
+</script>
+
+</body>
+</html>

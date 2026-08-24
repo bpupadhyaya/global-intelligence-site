@@ -452,8 +452,14 @@ body.sim-page { display: flex; flex-direction: column; overflow: hidden; margin:
 .sim-page-crumb-sep { color: var(--ink-faint); }
 .sim-page-crumb-current { font-weight: 600; color: var(--ink-soft); font-size: 14px; }
 .sim-page-hint { margin-left: 18px; font-size: 12.5px; color: var(--ink-soft); }
-.sim-page-stamp { margin-left: auto; font-size: 12.5px; color: var(--ink-faint); }
+.sim-page-lineage-link {
+    margin-left: 18px; font-size: 12.5px; font-weight: 700; color: var(--green-700);
+    text-decoration: none; white-space: nowrap;
+}
+.sim-page-lineage-link:hover { text-decoration: underline; }
+.sim-page-stamp { margin-left: auto; font-size: 12.5px; color: var(--ink-faint); padding-left: 12px; }
 @media (max-width: 900px) { .sim-page-hint { display: none; } }
+@media (max-width: 620px) { .sim-page-lineage-link { margin-left: auto; } }
 
 .sim-fullpage-wrap { position: relative; flex: 1 1 auto; min-height: 0; width: 100%; }
 
