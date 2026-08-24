@@ -291,6 +291,23 @@
             disabled[id] = !disabled[id];
             propagate();
             renderDetail(id);
+            // Guarantee the detail/impact panel is actually visible the moment something is
+            // disabled -- on narrow viewports it starts collapsed behind a toggle button, and a
+            // silent state change on a dense canvas is otherwise easy to miss entirely.
+            if (config.panelId) {
+                var panel = document.getElementById(config.panelId);
+                if (panel && !panel.classList.contains('open')) {
+                    panel.classList.add('open');
+                    if (config.panelToggleId) {
+                        var toggleBtn = document.getElementById(config.panelToggleId);
+                        if (toggleBtn) {
+                            toggleBtn.setAttribute('aria-expanded', 'true');
+                            toggleBtn.textContent = 'Search & detail ▴';
+                        }
+                    }
+                }
+                panel.scrollIntoView && panel.scrollIntoView({ block: 'nearest' });
+            }
         }
 
         function renderDetail(id) {
