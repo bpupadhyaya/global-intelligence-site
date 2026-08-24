@@ -5,23 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self';">
     <title>Global Simulation — Global Intelligence</title>
-    <meta name="description" content="The world's trade routes and chokepoints as one connected graph — disable a port or strait and see which items and paths are affected. Real, sourced data, updated automatically.">
+    <meta name="description" content="The world's trade routes, every Human Endeavor item, and the financial layer as one connected graph — disable a node and see what's really affected. Real, sourced data, updated automatically.">
     <link rel="canonical" href="https://equalinformation.com/global-intelligence-site/simulation/">
     <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="../assets/img/apple-touch-icon.png">
     <link rel="manifest" href="../site.webmanifest">
     <meta name="theme-color" content="#0b3d2e">
     <meta property="og:title" content="Global Simulation — Global Intelligence">
-    <meta property="og:description" content="The world's trade routes and chokepoints as one connected graph — disable a port or strait and see which items and paths are affected. Real, sourced data, updated automatically.">
+    <meta property="og:description" content="The world's trade routes, every Human Endeavor item, and the financial layer as one connected graph — disable a node and see what's really affected. Real, sourced data, updated automatically.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://equalinformation.com/global-intelligence-site/simulation/">
     <meta property="og:image" content="https://equalinformation.com/global-intelligence-site/assets/img/og-share.png">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Global Simulation — Global Intelligence">
-    <meta name="twitter:description" content="The world's trade routes and chokepoints as one connected graph — disable a port or strait and see which items and paths are affected. Real, sourced data, updated automatically.">
+    <meta name="twitter:description" content="The world's trade routes, every Human Endeavor item, and the financial layer as one connected graph — disable a node and see what's really affected. Real, sourced data, updated automatically.">
     <meta name="twitter:image" content="https://equalinformation.com/global-intelligence-site/assets/img/og-share.png">
     <link rel="stylesheet" href="../assets/fonts/inter.css">
-    <link rel="stylesheet" href="../assets/css/style.css?v=c7968b15">
+    <link rel="stylesheet" href="../assets/css/style.css?v=62bdd9f4">
 </head>
 <body>
 
@@ -62,12 +62,14 @@
     <div class="wrap">
         <h1>One <span class="accent">connected graph</span></h1>
         <p class="tagline" id="sim-stamp">Loading the graph…</p>
-        <p class="lede">Every port, strait, and canal Global Intelligence tracks, connected by
-        the real trade routes carrying real commodities between them. Click a node or a route to
-        disable it — a war, a blockade, an accident — and see exactly which other routes and
-        items are affected, and how directly. Nothing here is predicted or guessed: every node,
-        route, and link is real and sourced; where an effect can't be traced to a real
-        connection, it isn't shown.</p>
+        <p class="lede">The physical supply chain — every port, strait, canal, and route Global
+        Intelligence tracks — as the backbone, with all 397 Human Endeavor items and the
+        financial layer (currencies, central banks, exchanges, sovereign wealth funds) wired
+        into it. Click a node to disable it — a war, a blockade, a sanction — and watch the
+        effect ripple outward across everything really connected to it. Nothing here is
+        predicted or guessed: every node and link is real and sourced; where a connection can't
+        be traced to a real dependency, it isn't shown. The diagram itself has no edge — pan and
+        zoom as far as you like.</p>
     </div>
 </header>
 
@@ -75,20 +77,24 @@
     <div class="wrap" style="padding-top:28px; padding-bottom:28px;">
         <div class="section-head" style="margin-bottom:20px;">
             <span class="kicker">Explore the graph</span>
-            <h2>Disable a node or route, see the effect</h2>
-            <p>Pan and zoom the map. Click a node (a port, strait, or canal) or a route to toggle
-            it disabled — the graph highlights every other node, route, and item reachable from
-            it, dimmed by how many hops away the effect travels. Click again to restore it.</p>
+            <h2>Disable a node, see the effect</h2>
+            <p>Pan and zoom the diagram — it has no bounds, so keep going. Real chokepoints and
+            ports sit at their true position on the faded map beneath; every item, category, and
+            financial node is placed by what it connects to, not by geography. Click any node to
+            toggle it disabled — the graph highlights everything reachable from it, dimmed by how
+            many hops away the effect travels. Click again to restore it.</p>
         </div>
         <div class="map-layout">
             <div class="map-pane">
                 <div class="sim-canvas-wrap">
-                    <svg id="sim-basemap" viewBox="0 0 960 500" role="img" aria-label="World map base layer"></svg>
-                    <canvas id="sim-canvas" aria-label="Interactive supply chain graph"></canvas>
+                    <canvas id="sim-canvas" aria-label="Interactive global graph — supply chain, human endeavor items, and financial layer"></canvas>
                 </div>
                 <p class="map-caption" id="sim-caption">Loading graph…</p>
                 <div class="map-legend" id="sim-legend">
-                    <span class="map-legend-swatch"><span class="dot" style="background:var(--green-600)"></span>Active node</span>
+                    <span class="map-legend-swatch"><span class="dot" style="background:#168158"></span>Supply chain (pinned to map)</span>
+                    <span class="map-legend-swatch"><span class="dot" style="background:#1d4ed8"></span>Category hub</span>
+                    <span class="map-legend-swatch"><span class="dot" style="background:#7c8a83"></span>Human Endeavor item</span>
+                    <span class="map-legend-swatch"><span class="dot" style="background:#b45309"></span>Financial / logical layer</span>
                     <span class="map-legend-swatch"><span class="dot" style="background:var(--red-500)"></span>Disabled</span>
                     <span class="map-legend-swatch"><span class="dot" style="background:var(--amber-700)"></span>Affected (propagated)</span>
                 </div>
@@ -143,8 +149,8 @@
 
 <script src="../assets/vendor/d3.v7.min.js?v=6d64bd2f"></script>
 <script src="../assets/vendor/topojson-client.v3.min.js?v=bc057598"></script>
-<script src="../assets/js/world-map.js?v=da19417c"></script>
-<script src="../assets/js/simulation.js?v=c826ac9e"></script>
+<script src="../assets/js/world-map.js?v=5815203f"></script>
+<script src="../assets/js/simulation.js?v=34d49286"></script>
 <script>
     (function () {
         var utc = document.getElementById('utc');
@@ -156,7 +162,6 @@
     })();
 
     GISimulation.init({
-        basemapSelector: '#sim-basemap',
         canvasId: 'sim-canvas',
         canvasWrapSelector: '.sim-canvas-wrap',
         atlasUrl: '../data/world-atlas-countries-110m.json',

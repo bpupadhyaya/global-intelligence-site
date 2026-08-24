@@ -19,18 +19,24 @@
         'New Zealand': [-41.3, 174.8]
     };
 
+    // svgSelector is optional -- pass null/falsy to skip rendering the SVG country layer
+    // entirely and just get the projection/centroid helpers (e.g. for a Canvas-only caller
+    // that draws the map itself via d3.geoPath(projection).context(ctx)).
     function init(svgSelector, atlasTopo) {
-        var svg = d3.select(svgSelector);
         var countries = topojson.feature(atlasTopo, atlasTopo.objects.countries);
 
         var projection = d3.geoNaturalEarth1().fitSize([WIDTH, HEIGHT], countries);
         var geoPathGen = d3.geoPath(projection);
 
-        svg.append('g').selectAll('path.geo-country')
-            .data(countries.features)
-            .join('path')
-            .attr('class', 'geo-country')
-            .attr('d', geoPathGen);
+        var svg = null;
+        if (svgSelector) {
+            svg = d3.select(svgSelector);
+            svg.append('g').selectAll('path.geo-country')
+                .data(countries.features)
+                .join('path')
+                .attr('class', 'geo-country')
+                .attr('d', geoPathGen);
+        }
 
         var centroidByName = {};
         countries.features.forEach(function (f) {
@@ -44,6 +50,8 @@
             svg: svg,
             width: WIDTH,
             height: HEIGHT,
+            countries: countries,
+            projection: projection,
             countryNames: countries.features.map(function (f) { return f.properties.name; }),
             // Exact world-atlas name -> [lng,lat] centroid, or null if the name doesn't match.
             countryLngLat: function (name) { return centroidByName[name] || null; },
