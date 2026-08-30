@@ -1,115 +1,53 @@
 {
  "schema_version": "1.0.0",
- "generated_at": "2026-08-30T02:52:50Z",
+ "generated_at": "2026-08-30T15:50:50Z",
  "note": "World Intelligence signals: multilingual aspect + ripple-effect playbook matching (with one-hop linked_playbooks chains) and cross-source corroboration, run against every country-outlet feed discovered in data/country_feeds.json, PLUS scraped_headlines_fallback.json headline scrapes for feed-less outlets (source_type 'scraped_fallback' vs 'rss' -- scraped items can only ADD corroboration to a signal an RSS item already established as real, never create one on their own, since scraped headlines have no reliable publish timestamp). Zero-cost, zero-LLM, keyword-matching + curated playbook data only. NOT yet wired into data/briefing.json / the live Briefing tab — a standalone, additive dataset for now.",
  "stats": {
   "outlets_total_with_feed": 1149,
-  "outlets_ok": 1045,
-  "outlets_failed": 104,
-  "fresh_items": 11037,
-  "items_matched_aspect": 1628,
-  "items_matched_ripple_playbook": 24,
-  "items_with_linked_playbook_chain": 8,
-  "corroboration_clusters_total": 44,
-  "corroboration_clusters_playbook": 5,
-  "corroboration_clusters_topic_momentum": 39,
-  "signals_total": 9,
+  "outlets_ok": 1061,
+  "outlets_failed": 88,
+  "fresh_items": 10956,
+  "items_matched_aspect": 1611,
+  "items_matched_ripple_playbook": 41,
+  "items_with_linked_playbook_chain": 25,
+  "corroboration_clusters_total": 47,
+  "corroboration_clusters_playbook": 6,
+  "corroboration_clusters_topic_momentum": 41,
+  "signals_total": 17,
   "matched_language_distribution": {
-   "en": 6319,
-   "es": 1256,
-   "fr": 1053,
-   "ar": 583,
-   "ru": 385,
-   "de": 321,
-   "pt": 210,
-   "tr": 195,
+   "en": 6344,
+   "es": 1231,
+   "fr": 959,
+   "ar": 611,
+   "ru": 376,
+   "de": 318,
+   "pt": 216,
+   "tr": 194,
    "id": 190,
    "vi": 150,
+   "it": 71,
    "zh": 68,
-   "sw": 61,
-   "it": 61,
-   "bn": 57,
+   "bn": 59,
    "ko": 50,
    "ur": 43,
+   "sw": 42,
    "hi": 25,
-   "ja": 10
+   "ja": 9
   },
-  "fetch_elapsed_seconds": 58.1,
-  "total_elapsed_seconds": 167.3,
+  "fetch_elapsed_seconds": 45.8,
+  "total_elapsed_seconds": 129.3,
   "outlets_total_scraped_fallback": 567,
   "outlets_total_combined": 1716,
   "scraped_fallback_items_loaded": 7389,
   "scraped_fallback_items_matched": 1420,
-  "outlets_scraped_fallback_contributing": 8
+  "outlets_scraped_fallback_contributing": 11
  },
  "signals": [
   {
-   "signal_id": "0471688645a0d69d",
-   "signal_type": "playbook_single_source",
-   "headline": "RDC : Jean-Marc Kabund accable la gestion de l'épidémie d'Ebola par le régime Tshisekedi",
-   "matched_at": "2026-08-30T05:20:30Z",
-   "matched_language": "fr",
-   "aspects": [
-    {
-     "id": "science-health.public-health",
-     "score": 3.0
-    }
-   ],
-   "ripple_effect": {
-    "id": "disease-outbreak-phe-ic",
-    "name": "Disease outbreak with international health emergency",
-    "affected_domains": [],
-    "historical_precedents": [
-     {
-      "period": "2014–2016",
-      "event": "West Africa Ebola outbreak",
-      "what_happened": "The World Health Organization declared a Public Health Emergency of International Concern as Ebola spread across Guinea, Liberia, and Sierra Leone; several airlines suspended routes to the region and some countries imposed travel restrictions.",
-      "market_impact": "The World Bank estimated the outbreak cost the three hardest-hit countries over $2 billion in lost economic output."
-     },
-     {
-      "period": "2016",
-      "event": "Zika virus outbreak",
-      "what_happened": "The WHO declared a Public Health Emergency as Zika spread across the Americas, linked to birth defects; several countries issued travel advisories affecting tourism, notably ahead of the Rio de Janeiro Olympics.",
-      "market_impact": "Tourism-dependent economies in affected regions reported measurable declines in visitor bookings during the advisory period."
-     }
-    ],
-    "possibility_chains": [
-     "A WHO-declared public health emergency has historically triggered travel advisories and, in some cases, temporary route suspensions by airlines.",
-     "Disease outbreaks with international travel warnings have historically reduced tourism and business travel to the affected region for the duration of the advisory.",
-     "Outbreaks affecting agricultural or manufacturing regions have historically disrupted local labor supply and production.",
-     "Vaccine and treatment developers have historically seen increased investment and expedited regulatory review during major outbreaks."
-    ],
-    "why_it_matters": "Zika virus outbreak (2016): Tourism-dependent economies in affected regions reported measurable declines in visitor bookings during the advisory period. A WHO-declared public health emergency has historically triggered travel advisories and, in some cases, temporary route suspensions by airlines.",
-    "linked_playbooks": []
-   },
-   "category_context": null,
-   "corroboration": {
-    "tier": "single_source",
-    "source_count": 1,
-    "country_count": 1,
-    "countries": [
-     "Democratic Republic of the Congo"
-    ],
-    "label": "1 source",
-    "scraped_fallback_sources_added": 0
-   },
-   "sources": [
-    {
-     "title": "RDC : Jean-Marc Kabund accable la gestion de l'épidémie d'Ebola par le régime Tshisekedi",
-     "source_name": "Actualite.cd",
-     "country": "Democratic Republic of the Congo",
-     "language": "French",
-     "url": "https://actualite.cd/2026/08/30/rdc-jean-marc-kabund-accable-la-gestion-de-lepidemie-debola-par-le-regime-tshisekedi",
-     "source_type": "rss",
-     "age_hours": 0.0
-    }
-   ]
-  },
-  {
-   "signal_id": "8e03184aacb1f79f",
+   "signal_id": "741fe2a4b05fcd96",
    "signal_type": "playbook_corroboration",
    "headline": "Trump renames Lake Ontario as 'Lake America' amid Canada trade war",
-   "matched_at": "2026-08-30T02:50:21Z",
+   "matched_at": "2026-08-30T15:48:55Z",
    "matched_language": "en",
    "aspects": [
     {
@@ -123,14 +61,16 @@
    ],
    "corroboration": {
     "tier": "playbook_corroboration",
-    "source_count": 4,
-    "country_count": 3,
+    "source_count": 6,
+    "country_count": 5,
     "countries": [
      "Canada",
+     "Ireland",
      "Singapore",
+     "South Africa",
      "Sri Lanka"
     ],
-    "label": "4 sources across 3 countries",
+    "label": "6 sources across 5 countries",
     "scraped_fallback_sources_added": 1
    },
    "sources": [
@@ -144,22 +84,40 @@
      "age_hours": 0.0
     },
     {
+     "title": "Google Maps renames Lake Ontario 'Lake America' in US, but not Canada",
+     "source_name": "IOL (Independent Online)",
+     "country": "South Africa",
+     "language": "English",
+     "url": "https://iol.co.za/news/world/2026-08-30-google-maps-renames-lake-ontario-lake-america-in-us-but-not-canada/",
+     "source_type": "rss",
+     "age_hours": 0.4
+    },
+    {
+     "title": "Donald Trump has \"personal vendetta\" against Canada according to political expert",
+     "source_name": "Newstalk",
+     "country": "Ireland",
+     "language": "English",
+     "url": "https://www.newstalk.com/news/donald-trump-vendetta-against-canada-2306075",
+     "source_type": "rss",
+     "age_hours": 1.2
+    },
+    {
+     "title": "Opinion: It’s easier to support a trade war if you can afford one",
+     "source_name": "Global News",
+     "country": "Canada",
+     "language": "English",
+     "url": "https://globalnews.ca/news/12039651/opinion-its-easier-to-support-a-trade-war-if-you-can-afford-one/",
+     "source_type": "rss",
+     "age_hours": 5.8
+    },
+    {
      "title": "Guerre commerciale: les plaintes pour faux produits canadiens en hausse",
      "source_name": "Journal de Québec",
      "country": "Canada",
      "language": "French",
      "url": "https://www.journaldequebec.com/2026/08/29/guerre-commerciale-les-plaintes-pour-faux-produits-canadiens-en-hausse",
      "source_type": "rss",
-     "age_hours": 9.0
-    },
-    {
-     "title": "Alberta Premier Danielle Smith to meet with U.S. officials amid trade war",
-     "source_name": "Global News",
-     "country": "Canada",
-     "language": "English",
-     "url": "https://globalnews.ca/news/12040399/danielle-smith-us-trip-trade-war/",
-     "source_type": "rss",
-     "age_hours": 9.0
+     "age_hours": 21.9
     },
     {
      "title": "Southeast Asia remains 'a clear priority' despite concerns over Trump tariffs: US envoy to ASEAN",
@@ -206,31 +164,905 @@
    "category_context": null
   },
   {
-   "signal_id": "42407cf8bd1b3581",
+   "signal_id": "f26d440a5ddcee7d",
    "signal_type": "playbook_corroboration",
-   "headline": "« La bêtise d'un seul, le prix de tous » : Babacar Ba réagit à la dégradation de la note du pays par Moody's",
-   "matched_at": "2026-08-30T02:09:35Z",
-   "matched_language": "fr",
-   "aspects": [],
+   "headline": "Liệu Fed có tăng lãi suất sau bài phát biểu của ông Warsh?",
+   "matched_at": "2026-08-30T15:48:52Z",
+   "matched_language": "vi",
+   "aspects": [
+    {
+     "id": "economy.central-banks",
+     "score": 9.0
+    },
+    {
+     "id": "business.earnings",
+     "score": 3.0
+    }
+   ],
    "corroboration": {
     "tier": "playbook_corroboration",
     "source_count": 2,
     "country_count": 1,
     "countries": [
-     "Senegal"
+     "Vietnam"
     ],
     "label": "2 sources",
     "scraped_fallback_sources_added": 0
    },
    "sources": [
     {
-     "title": "« La bêtise d'un seul, le prix de tous » : Babacar Ba réagit à la dégradation de la note du pays par Moody's",
-     "source_name": "Seneweb",
+     "title": "Liệu Fed có tăng lãi suất sau bài phát biểu của ông Warsh?",
+     "source_name": "Tuổi Trẻ",
+     "country": "Vietnam",
+     "language": "Vietnamese",
+     "url": "https://tuoitre.vn/lieu-fed-co-tang-lai-suat-sau-bai-phat-bieu-cua-ong-warsh-100260830204431387.htm",
+     "source_type": "rss",
+     "age_hours": 0.0
+    },
+    {
+     "title": "Giá vàng trong nước tăng gần 8 triệu đồng/lượng trong tháng 8",
+     "source_name": "Nhân Dân",
+     "country": "Vietnam",
+     "language": "Vietnamese",
+     "url": "https://nhandan.vn/gia-vang-trong-nuoc-tang-gan-8-trieu-dongluong-trong-thang-8-post985547.html",
+     "source_type": "rss",
+     "age_hours": 1.1
+    }
+   ],
+   "ripple_effect": {
+    "id": "fed-hiking-cycle",
+    "name": "Central bank interest rate hikes",
+    "affected_domains": [],
+    "historical_precedents": [
+     {
+      "period": "2022–2023",
+      "event": "U.S. Federal Reserve's fastest rate-hiking cycle in decades",
+      "what_happened": "The Fed raised its benchmark interest rate from near zero to over 5% in about 16 months, responding to the highest inflation in roughly 40 years.",
+      "market_impact": "The average 30-year U.S. mortgage rate roughly doubled from around 3% to over 7%, home sales slowed sharply, and high-growth technology stocks — more sensitive to rate changes — fell substantially more than the broader market in 2022."
+     },
+     {
+      "period": "1979–1981",
+      "event": "Fed Chair Paul Volcker's rate hikes to break double-digit inflation",
+      "what_happened": "The Fed raised interest rates to nearly 20% to bring runaway inflation under control.",
+      "market_impact": "The policy triggered a deep recession and a sharp rise in unemployment before inflation was brought down over the following years."
+     },
+     {
+      "period": "April and July 2011",
+      "event": "European Central Bank rate hikes under Jean-Claude Trichet",
+      "what_happened": "The ECB raised its benchmark rate twice in 2011 (to 1.25% in April, then 1.5% in July) to fight headline inflation, even as the Eurozone sovereign debt crisis was worsening — Portugal's debt was downgraded to junk the same day as the July hike.",
+      "market_impact": "Peripheral Eurozone bond yields (Italy, Spain, Portugal, Greece) surged in the following months as the debt crisis deepened; the hikes are widely regarded in hindsight as a policy mistake, and the ECB reversed course with cuts in November and December 2011 after Mario Draghi succeeded Trichet as president — a case where a rate-hike decision, unlike the Fed episodes above, is broadly seen as having worsened rather than merely responded to a crisis."
+     }
+    ],
+    "possibility_chains": [
+     "Higher central bank interest rates have historically raised borrowing costs across the economy — mortgages, auto loans, and business credit — with mortgage and housing markets typically among the most sensitive.",
+     "Rate hikes have historically pressured stock valuations, particularly for growth-oriented companies whose profits are expected further in the future, since higher rates reduce the present value of those future earnings.",
+     "Aggressive rate-hiking cycles have historically raised the risk of an economic slowdown or recession, though the size and timing of that effect has varied a great deal across different hiking cycles."
+    ],
+    "why_it_matters": "European Central Bank rate hikes under Jean-Claude Trichet (April and July 2011): Peripheral Eurozone bond yields (Italy, Spain, Portugal, Greece) surged in the following months as the debt crisis deepened; the hikes are widely regarded in hindsight as a policy mistake, and the ECB reversed course with cuts in November and December 2011 after Mario Draghi succeeded Trichet as president — a case where a rate-hike decision, unlike the Fed episodes above, is broadly seen as having worsened rather than merely responded to a crisis. Higher central bank interest rates have historically raised borrowing costs across the economy — mortgages, auto loans, and business credit — with mortgage and housing markets typically among the most sensitive.",
+    "linked_playbooks": []
+   },
+   "category_context": null
+  },
+  {
+   "signal_id": "b7de74d88c97d5c8",
+   "signal_type": "playbook_corroboration",
+   "headline": "Puluhan prajurit di Niger ditahan usai gagal kudeta",
+   "matched_at": "2026-08-30T15:47:37Z",
+   "matched_language": "id",
+   "aspects": [
+    {
+     "id": "politics.leadership",
+     "score": 3.0
+    }
+   ],
+   "corroboration": {
+    "tier": "playbook_corroboration",
+    "source_count": 11,
+    "country_count": 10,
+    "countries": [
+     "Bahrain",
+     "Bangladesh",
+     "Côte d'Ivoire",
+     "Indonesia",
+     "Rwanda",
+     "Senegal",
+     "Syria",
+     "Tanzania",
+     "Turkey",
+     "United Arab Emirates"
+    ],
+    "label": "11 sources across 10 countries",
+    "scraped_fallback_sources_added": 0
+   },
+   "sources": [
+    {
+     "title": "Puluhan prajurit di Niger ditahan usai gagal kudeta",
+     "source_name": "ANTARA (state news agency)",
+     "country": "Indonesia",
+     "language": "Indonesian",
+     "url": "https://www.antaranews.com/berita/5717940/puluhan-prajurit-di-niger-ditahan-usai-gagal-kudeta",
+     "source_type": "rss",
+     "age_hours": 0.0
+    },
+    {
+     "title": "مصرع 7 أشخاص وإنقاذ 237 آخرين بغرق عبّارة شمال قبرص",
+     "source_name": "SANA (Syrian Arab News Agency)",
+     "country": "Syria",
+     "language": "Arabic",
+     "url": "https://sana.sy/international/2567023/",
+     "source_type": "rss",
+     "age_hours": 0.1
+    },
+    {
+     "title": "RAIS DKT. MWINYI AWASILI SERBIA KUMWAKILISHA RAIS SAMIA KATIKA MKUTANO WA KUMBUKUMBU YA MIAKA 65 YA NAM",
+     "source_name": "Michuzi Blog",
+     "country": "Tanzania",
+     "language": "Swahili",
+     "url": "https://www.michuzi.co.tz/2026/08/rais-dkt-mwinyi-awasili-serbia.html",
+     "source_type": "rss",
+     "age_hours": 1.4
+    },
+    {
+     "title": "6 قتلى حصيلة أولية لانقلاب عبّارة قبالة قبرص",
+     "source_name": "Al Bilad",
+     "country": "Bahrain",
+     "language": "Arabic",
+     "url": "https://www.albiladpress.com/news/2026/6530/arab-and-world/1016898.html",
+     "source_type": "rss",
+     "age_hours": 1.9
+    },
+    {
+     "title": "6 قتلى حصيلة أولية لانقلاب عبّارة قبالة قبرص",
+     "source_name": "Sky News Arabia",
+     "country": "United Arab Emirates",
+     "language": "Arabic",
+     "url": "https://www.skynewsarabia.com/world/1889002-6-%D9%82%D8%AA%D9%84%D9%89-%D8%AD%D8%B5%D9%8A%D9%84%D8%A9-%D8%A3%D9%88%D9%84%D9%8A%D8%A9-%D9%84%D8%A7%D9%86%D9%82%D9%84%D8%A7%D8%A8-%D8%B9%D8%A8%D8%A7%D8%B1%D8%A9-%D9%82%D8%A8%D8%A7%D9%84%D8%A9-%D9%82%D8%A8%D8%B1%D8%B5",
+     "source_type": "rss",
+     "age_hours": 2.3
+    },
+    {
+     "title": "Korkunç darbe rakibini hastanelik etti! Diziyle yüzüne vurdu",
+     "source_name": "Sözcü",
+     "country": "Turkey",
+     "language": "Turkish",
+     "url": "https://www.sozcu.com.tr/korkunc-darbe-rakibini-hastanelik-etti-diziyle-yuzune-vurdu-p353946",
+     "source_type": "rss",
+     "age_hours": 2.7
+    },
+    {
+     "title": "সেপটিক ট্যাংকে পড়ে জুলাই শহীদের পিতার মৃত্যু",
+     "source_name": "Independent Television (itvbd)",
+     "country": "Bangladesh",
+     "language": "Bengali",
+     "url": "https://www.itvbd.com/country/rajshahi/274163/july-martyr-father-dies-septic-tank-gas-nator",
+     "source_type": "rss",
+     "age_hours": 3.0
+    },
+    {
+     "title": "SMZ yachukua tahadhari ya El Nino, Mji Mkongwe hatarishi",
+     "source_name": "Mwananchi",
+     "country": "Tanzania",
+     "language": "Swahili",
+     "url": "https://www.mwananchi.co.tz/mw/zanzibar/habari/smz-yachukua-tahadhari-ya-el-nino-mji-mkongwe-hatarishi-5576490",
+     "source_type": "rss",
+     "age_hours": 3.1
+    },
+    {
+     "title": "An 3 du coup d'État au Gabon : Oligui Nguema célèbre la « libération » à Makokou",
+     "source_name": "Linfodrome",
+     "country": "Côte d'Ivoire",
+     "language": "French",
+     "url": "https://www.linfodrome.com/international/124894-an-3-du-coup-d-etat-au-gabon-oligui-nguema-celebre-la-liberation-a-makokou",
+     "source_type": "rss",
+     "age_hours": 4.3
+    },
+    {
+     "title": "كارثة قبالة قبرص.. انقلاب قارب يقل نحو 270 شخصا",
+     "source_name": "Sky News Arabia",
+     "country": "United Arab Emirates",
+     "language": "Arabic",
+     "url": "https://www.skynewsarabia.com/world/1888986-%D9%83%D8%A7%D8%B1%D8%AB%D8%A9-%D9%82%D8%A8%D8%A7%D9%84%D8%A9-%D9%82%D8%A8%D8%B1%D8%B5-%D8%A7%D9%86%D9%82%D9%84%D8%A7%D8%A8-%D9%82%D8%A7%D8%B1%D8%A8-%D9%8A%D9%82%D9%84-270-%D8%B4%D8%AE%D8%B5%D8%A7",
+     "source_type": "rss",
+     "age_hours": 4.4
+    }
+   ],
+   "ripple_effect": {
+    "id": "coup-regime-change-trade",
+    "name": "Coup or abrupt regime change disrupting trade relationships",
+    "affected_domains": [
+     "geopolitics",
+     "trade",
+     "mining-raw-materials",
+     "currency",
+     "banking-financial-stability",
+     "diplomacy"
+    ],
+    "historical_precedents": [
+     {
+      "period": "July 2023",
+      "event": "Niger military coup",
+      "what_happened": "On 26 July 2023, General Abdourahamane Tchiani led the presidential guard in removing President Mohamed Bazoum and installed a military council. The regional bloc ECOWAS responded with an ultimatum, then sanctions including closed land and air borders, a no-fly zone on commercial flights, suspension of financial transactions, and asset freezes; Nigeria cut electricity supply to Niger on 2 August 2023.",
+      "market_impact": "The West African regional central bank cancelled a planned 30 billion CFA franc (about $51 million) bond issuance for Niger, and the World Bank suspended disbursements to the country. Niger is a significant global uranium exporter, and the coup raised questions over the operations of French nuclear fuel company Orano's mining activities there."
+     },
+     {
+      "period": "February 2021",
+      "event": "Myanmar military coup",
+      "what_happened": "Senior General Min Aung Hlaing seized power on 1 February 2021, detaining civilian leader Aung San Suu Kyi and other elected officials. The Biden administration imposed sanctions on military leaders on 11 February 2021 and froze $1 billion in Myanmar government assets held in the U.S.",
+      "market_impact": "Foreign direct investment into Myanmar fell 22% to $3.8 billion in fiscal year 2020, and major foreign investors withdrew: Japan's Kirin ended a $1.7 billion brewery joint venture, Thailand's Amata halted a $1 billion industrial zone project, and India's Adani Ports terminated a $127 million port investment. The Yangon Stock Exchange suspended trading, and property sales reportedly dropped by nearly 100%."
+     }
+    ],
+    "possibility_chains": [
+     "A coup in a country that is a significant exporter of a specific commodity has historically raised questions about the continuity of that country's mining, energy, or agricultural exports, even when physical production is not immediately disrupted.",
+     "Coups have historically triggered sanctions and suspended aid or financing from regional blocs and international lenders, adding fiscal strain on top of the immediate political disruption.",
+     "Foreign companies operating in a country that experiences a coup have historically paused or withdrawn planned investment until the new government's posture toward existing contracts and foreign ownership becomes clearer."
+    ],
+    "why_it_matters": "Myanmar military coup (February 2021): Foreign direct investment into Myanmar fell 22% to $3.8 billion in fiscal year 2020, and major foreign investors withdrew: Japan's Kirin ended a $1.7 billion brewery joint venture, Thailand's Amata halted a $1 billion industrial zone project, and India's Adani Ports terminated a $127 million port investment. The Yangon Stock Exchange suspended trading, and property sales reportedly dropped by nearly 100%. A coup in a country that is a significant exporter of a specific commodity has historically raised questions about the continuity of that country's mining, energy, or agricultural exports, even when physical production is not immediately disrupted.",
+    "linked_playbooks": [
+     {
+      "id": "major-economy-sanctions",
+      "name": "Sanctions imposed on a major economy",
+      "affected_domains": [],
+      "why_it_matters": "International sanctions on Iran over its nuclear program (2010s): Iranian oil exports fell sharply, though global oil prices were also affected by supply from other producers filling the gap; Iran's own currency and economy experienced significant strain during the most restrictive sanctions periods. Sanctions targeting a major energy or commodity exporter have historically tightened global supply of that commodity, which has often (though not always, depending on how much other producers can offset the loss) pushed prices higher."
+     },
+     {
+      "id": "diplomatic-rupture-major-power",
+      "name": "Diplomatic rupture between major regional powers",
+      "affected_domains": [
+       "diplomacy",
+       "trade",
+       "shipping-transportation",
+       "currency",
+       "geopolitics",
+       "banking-financial-stability"
+      ],
+      "why_it_matters": "Saudi Arabia severs relations with Iran (January 2016): The rupture deepened the broader Saudi-Iran regional rivalry playing out through proxy conflicts in Yemen, Syria, and elsewhere; relations were not restored until a China-brokered agreement announced 10 March 2023, with embassies reopening in Riyadh in June 2023 and Tehran in August 2023. A sudden severing of diplomatic relations between neighboring major economies has historically disrupted direct trade, aviation, and financial flows between them, forcing rerouting of commerce through third countries at added cost."
+     },
+     {
+      "id": "currency-crisis",
+      "name": "Sharp currency devaluation / currency crisis",
+      "affected_domains": [],
+      "why_it_matters": "Turkish lira crisis (2018): The lira lost roughly 30–40% of its value against the U.S. dollar over the year, sharply raising the cost of imports and foreign-currency debt for Turkish businesses. A sharp currency devaluation has historically made imported goods, including fuel and food, significantly more expensive for consumers and businesses in the affected country."
+     }
+    ]
+   },
+   "category_context": null
+  },
+  {
+   "signal_id": "d30bbfeb866fb6ff",
+   "signal_type": "playbook_single_source",
+   "headline": "Đại sứ quán Việt Nam tại Tanzania tổ chức Lễ kỷ niệm Quốc khánh và 50 năm thiết lập quan hệ ngoại giao Việt Nam-Ethiopia",
+   "matched_at": "2026-08-30T15:29:37Z",
+   "matched_language": "vi",
+   "aspects": [
+    {
+     "id": "geopolitics.diplomacy",
+     "score": 9.0
+    }
+   ],
+   "ripple_effect": {
+    "id": "diplomatic-normalization-accord",
+    "name": "Diplomatic normalization between former adversaries",
+    "affected_domains": [
+     "diplomacy",
+     "trade",
+     "capital-markets",
+     "geopolitics",
+     "energy"
+    ],
+    "historical_precedents": [
+     {
+      "period": "September 2020 – January 2021",
+      "event": "Abraham Accords",
+      "what_happened": "The UAE and Bahrain signed agreements normalizing relations with Israel in Washington on 15 September 2020, the first Arab states to do so since Jordan in 1994. Morocco followed on 10 December 2020, with the U.S. agreeing to recognize Moroccan sovereignty over Western Sahara as part of the arrangement. Sudan signed a declaration in Khartoum on 6 January 2021, though it remained unratified by Sudan's legislature years later.",
+      "market_impact": "Israeli defense exports to the newly-normalized countries reached $791 million in 2020; Israeli and Emirati firms subsequently formed joint ventures in fintech and AI, and Emirati investors acquired stakes in Israeli companies. A proposed $3 billion Abraham Fund for regional development was announced but never received funding or began any projects."
+     }
+    ],
+    "possibility_chains": [
+     "Diplomatic normalization between countries without prior formal relations has historically been followed, over the subsequent one to two years, by new trade agreements, investment flows, and business partnerships, though the pace and scale have varied significantly by country pair.",
+     "Normalization deals that include side agreements on unrelated disputes, such as third-party territorial recognition, have historically drawn objections from other parties to those separate disputes.",
+     "Announced investment funds tied to diplomatic normalization agreements have historically taken longer to materialize into actual funded projects than the initial announcements suggested."
+    ],
+    "why_it_matters": "Abraham Accords (September 2020 – January 2021): Israeli defense exports to the newly-normalized countries reached $791 million in 2020; Israeli and Emirati firms subsequently formed joint ventures in fintech and AI, and Emirati investors acquired stakes in Israeli companies. A proposed $3 billion Abraham Fund for regional development was announced but never received funding or began any projects. Diplomatic normalization between countries without prior formal relations has historically been followed, over the subsequent one to two years, by new trade agreements, investment flows, and business partnerships, though the pace and scale have varied significantly by country pair.",
+    "linked_playbooks": [
+     {
+      "id": "diplomatic-rupture-major-power",
+      "name": "Diplomatic rupture between major regional powers",
+      "affected_domains": [
+       "diplomacy",
+       "trade",
+       "shipping-transportation",
+       "currency",
+       "geopolitics",
+       "banking-financial-stability"
+      ],
+      "why_it_matters": "Saudi Arabia severs relations with Iran (January 2016): The rupture deepened the broader Saudi-Iran regional rivalry playing out through proxy conflicts in Yemen, Syria, and elsewhere; relations were not restored until a China-brokered agreement announced 10 March 2023, with embassies reopening in Riyadh in June 2023 and Tehran in August 2023. A sudden severing of diplomatic relations between neighboring major economies has historically disrupted direct trade, aviation, and financial flows between them, forcing rerouting of commerce through third countries at added cost."
+     }
+    ]
+   },
+   "category_context": null,
+   "corroboration": {
+    "tier": "single_source",
+    "source_count": 1,
+    "country_count": 1,
+    "countries": [
+     "Vietnam"
+    ],
+    "label": "1 source",
+    "scraped_fallback_sources_added": 0
+   },
+   "sources": [
+    {
+     "title": "Đại sứ quán Việt Nam tại Tanzania tổ chức Lễ kỷ niệm Quốc khánh và 50 năm thiết lập quan hệ ngoại giao Việt Nam-Ethiopia",
+     "source_name": "Nhân Dân",
+     "country": "Vietnam",
+     "language": "Vietnamese",
+     "url": "https://nhandan.vn/dai-su-quan-viet-nam-tai-tanzania-to-chuc-le-ky-niem-quoc-khanh-va-50-nam-thiet-lap-quan-he-ngoai-giao-viet-nam-ethiopia-post985550.html",
+     "source_type": "rss",
+     "age_hours": 0.3
+    }
+   ]
+  },
+  {
+   "signal_id": "f437eeece7bef389",
+   "signal_type": "playbook_single_source",
+   "headline": "[Video] Kỷ niệm 81 năm Quốc khánh Việt Nam và 50 năm quan hệ Việt Nam-Thái Lan",
+   "matched_at": "2026-08-30T15:26:47Z",
+   "matched_language": "vi",
+   "aspects": [
+    {
+     "id": "geopolitics.diplomacy",
+     "score": 3.0
+    }
+   ],
+   "ripple_effect": {
+    "id": "diplomatic-normalization-accord",
+    "name": "Diplomatic normalization between former adversaries",
+    "affected_domains": [
+     "diplomacy",
+     "trade",
+     "capital-markets",
+     "geopolitics",
+     "energy"
+    ],
+    "historical_precedents": [
+     {
+      "period": "September 2020 – January 2021",
+      "event": "Abraham Accords",
+      "what_happened": "The UAE and Bahrain signed agreements normalizing relations with Israel in Washington on 15 September 2020, the first Arab states to do so since Jordan in 1994. Morocco followed on 10 December 2020, with the U.S. agreeing to recognize Moroccan sovereignty over Western Sahara as part of the arrangement. Sudan signed a declaration in Khartoum on 6 January 2021, though it remained unratified by Sudan's legislature years later.",
+      "market_impact": "Israeli defense exports to the newly-normalized countries reached $791 million in 2020; Israeli and Emirati firms subsequently formed joint ventures in fintech and AI, and Emirati investors acquired stakes in Israeli companies. A proposed $3 billion Abraham Fund for regional development was announced but never received funding or began any projects."
+     }
+    ],
+    "possibility_chains": [
+     "Diplomatic normalization between countries without prior formal relations has historically been followed, over the subsequent one to two years, by new trade agreements, investment flows, and business partnerships, though the pace and scale have varied significantly by country pair.",
+     "Normalization deals that include side agreements on unrelated disputes, such as third-party territorial recognition, have historically drawn objections from other parties to those separate disputes.",
+     "Announced investment funds tied to diplomatic normalization agreements have historically taken longer to materialize into actual funded projects than the initial announcements suggested."
+    ],
+    "why_it_matters": "Abraham Accords (September 2020 – January 2021): Israeli defense exports to the newly-normalized countries reached $791 million in 2020; Israeli and Emirati firms subsequently formed joint ventures in fintech and AI, and Emirati investors acquired stakes in Israeli companies. A proposed $3 billion Abraham Fund for regional development was announced but never received funding or began any projects. Diplomatic normalization between countries without prior formal relations has historically been followed, over the subsequent one to two years, by new trade agreements, investment flows, and business partnerships, though the pace and scale have varied significantly by country pair.",
+    "linked_playbooks": [
+     {
+      "id": "diplomatic-rupture-major-power",
+      "name": "Diplomatic rupture between major regional powers",
+      "affected_domains": [
+       "diplomacy",
+       "trade",
+       "shipping-transportation",
+       "currency",
+       "geopolitics",
+       "banking-financial-stability"
+      ],
+      "why_it_matters": "Saudi Arabia severs relations with Iran (January 2016): The rupture deepened the broader Saudi-Iran regional rivalry playing out through proxy conflicts in Yemen, Syria, and elsewhere; relations were not restored until a China-brokered agreement announced 10 March 2023, with embassies reopening in Riyadh in June 2023 and Tehran in August 2023. A sudden severing of diplomatic relations between neighboring major economies has historically disrupted direct trade, aviation, and financial flows between them, forcing rerouting of commerce through third countries at added cost."
+     }
+    ]
+   },
+   "category_context": null,
+   "corroboration": {
+    "tier": "single_source",
+    "source_count": 1,
+    "country_count": 1,
+    "countries": [
+     "Vietnam"
+    ],
+    "label": "1 source",
+    "scraped_fallback_sources_added": 0
+   },
+   "sources": [
+    {
+     "title": "[Video] Kỷ niệm 81 năm Quốc khánh Việt Nam và 50 năm quan hệ Việt Nam-Thái Lan",
+     "source_name": "Nhân Dân",
+     "country": "Vietnam",
+     "language": "Vietnamese",
+     "url": "https://nhandan.vn/video-ky-niem-81-nam-quoc-khanh-viet-nam-va-50-nam-quan-he-viet-nam-thai-lan-post985512.html",
+     "source_type": "rss",
+     "age_hours": 0.4
+    }
+   ]
+  },
+  {
+   "signal_id": "74f5e0412ab29b77",
+   "signal_type": "playbook_corroboration",
+   "headline": "\"المرحلة الرابعة\" من الحرب.. كيف تتراكم الضغوط على إيران؟",
+   "matched_at": "2026-08-30T15:19:54Z",
+   "matched_language": "ar",
+   "aspects": [],
+   "corroboration": {
+    "tier": "playbook_corroboration",
+    "source_count": 14,
+    "country_count": 11,
+    "countries": [
+     "Bahrain",
+     "Belarus",
+     "Egypt",
+     "Honduras",
+     "Iran",
+     "Iraq",
+     "Israel",
+     "Nigeria",
+     "Palestine",
+     "Russia",
+     "Tunisia"
+    ],
+    "label": "14 sources across 11 countries",
+    "scraped_fallback_sources_added": 7
+   },
+   "sources": [
+    {
+     "title": "\"المرحلة الرابعة\" من الحرب.. كيف تتراكم الضغوط على إيران؟",
+     "source_name": "Al Bilad",
+     "country": "Bahrain",
+     "language": "Arabic",
+     "url": "https://www.albiladpress.com/news/2026/6530/arab-and-world/1016912.html",
+     "source_type": "rss",
+     "age_hours": 0.5
+    },
+    {
+     "title": "Irán dice que el acuerdo con Omán para reabrir Ormuz depende de Estados Unidos",
+     "source_name": "HCH (Hondured Televisión)",
+     "country": "Honduras",
+     "language": "Spanish",
+     "url": "https://hch.tv/iran-dice-que-el-acuerdo-con-oman-para-reabrir-ormuz-depende-de-estados-unidos/",
+     "source_type": "rss",
+     "age_hours": 1.2
+    },
+    {
+     "title": "Iranian Leader Calls for Unity Among Gulf Countries",
+     "source_name": "Voice of Nigeria (VON)",
+     "country": "Nigeria",
+     "language": "English",
+     "url": "https://von.gov.ng/iranian-leader-calls-for-unity-among-gulf-countries/",
+     "source_type": "rss",
+     "age_hours": 1.8
+    },
+    {
+     "title": "Иран предотвратил незаконный проход 30 судов через Ормузский пролив за неделю",
+     "source_name": "BelTA",
+     "country": "Belarus",
+     "language": "Russian (Belarusian/English/other options)",
+     "url": "https://belta.by/world/view/iran-predotvratil-nezakonnyj-prohod-30-sudov-cherez-ormuzskij-proliv-za-nedelju-798527-2026/",
+     "source_type": "rss",
+     "age_hours": 2.1
+    },
+    {
+     "title": "В МИД Ирана заявили, что не откроют Ормуз до выполнения требований Тегерана",
+     "source_name": "Interfax",
+     "country": "Russia",
+     "language": "Russian",
+     "url": "https://www.interfax.ru/world/1112118",
+     "source_type": "rss",
+     "age_hours": 2.8
+    },
+    {
+     "title": "وساطات قطرية وباكستانية لاستئناف الحوار والعودة إلى \"مذكرة التفاهم\"",
+     "source_name": "Palestine News Network (PNN)",
+     "country": "Palestine",
+     "language": "Arabic (also English)",
+     "url": "https://pnn.ps/news/727155",
+     "source_type": "rss",
+     "age_hours": 10.1
+    },
+    {
+     "title": "Iran’s IRGC claims complete control of Hormuz as US forces redirect 82 ships under blockade",
+     "source_name": "Daily News Egypt",
+     "country": "Egypt",
+     "language": "English",
+     "url": "https://www.dailynewsegypt.com/2026/08/29/irans-irgc-claims-complete-control-of-hormuz-as-us-forces-redirect-82-ships-under-blockade/?utm_source=rss&utm_medium=rss&utm_campaign=irans-irgc-claims-complete-control-of-hormuz-as-us-forces-redirect-82-ships-under-blockade",
+     "source_type": "rss",
+     "age_hours": 20.8
+    },
+    {
+     "title": "عاجل.. 6 سفن فقط عبرت مضيق هرمز خلال يوم مع تلاشي آمال التوصل لاتفاق سلام",
+     "source_name": "Al-Dostor",
+     "country": "Egypt",
+     "language": "Arabic",
+     "url": "https://www.dostor.org/5664668",
+     "source_type": "scraped_fallback",
+     "age_hours": null
+    },
+    {
+     "title": "أمين المجلس الأعلى للأمن القومي: لن يفتح مضيق هرمز ما لم تقبل الولايات المتحدة شروط إيران",
+     "source_name": "Jawhara FM",
+     "country": "Tunisia",
+     "language": "Arabic/French",
+     "url": "https://www.jawharafm.net/ar/article/أمين-المجلس-الأعلى-للأمن-القومي-لن-يفتح-مضيق-هرمز-ما-لم-تقبل-الولايات-المتحدة-شروط-إيران/106/297518",
+     "source_type": "scraped_fallback",
+     "age_hours": null
+    },
+    {
+     "title": "Iran is not Venezuela: Hormuz Strait and limits of US power",
+     "source_name": "Tehran Times",
+     "country": "Iran",
+     "language": "English",
+     "url": "https://www.tehrantimes.com/news/529008/Iran-is-not-Venezuela-Hormuz-Strait-and-limits-of-US-power",
+     "source_type": "scraped_fallback",
+     "age_hours": null
+    }
+   ],
+   "ripple_effect": {
+    "id": "hormuz-gulf-oil-shock",
+    "name": "Persian Gulf oil supply shock",
+    "affected_domains": [],
+    "historical_precedents": [
+     {
+      "period": "1984–1988",
+      "event": "Iran–Iraq \"Tanker War\"",
+      "what_happened": "Iran and Iraq attacked oil tankers transiting the Persian Gulf and Strait of Hormuz, and Iran repeatedly threatened to close the strait.",
+      "market_impact": "Shipping insurance war-risk premiums in the Gulf rose sharply, and the U.S. Navy began escorting reflagged Kuwaiti tankers in 1987 to keep the strait open."
+     },
+     {
+      "period": "September 2019",
+      "event": "Drone and missile attack on Saudi Aramco's Abqaiq and Khurais facilities",
+      "what_happened": "The attack (which Saudi Arabia and the U.S. blamed on Iran, a claim Iran denied) temporarily knocked out roughly half of Saudi Arabia's oil output, about 5% of global supply.",
+      "market_impact": "Brent crude jumped about 15% in a single day — the largest one-day oil price increase since the 1990–91 Gulf War."
+     },
+     {
+      "period": "1990–1991",
+      "event": "Gulf War (Iraqi invasion of Kuwait)",
+      "what_happened": "Iraq's invasion of Kuwait removed a large share of Gulf oil exports from the market and raised fears of a wider regional war.",
+      "market_impact": "Oil prices roughly doubled in the months following the invasion before falling back once the war ended and supply concerns eased."
+     }
+    ],
+    "possibility_chains": [
+     "Roughly a fifth of the world's oil is estimated to pass through the Strait of Hormuz, so a sustained blockage or major disruption there has historically driven crude oil prices sharply higher.",
+     "Because ammonia-based fertilizer production is natural-gas intensive, and natural gas prices often move together with oil, a prolonged energy price spike has historically fed through into higher fertilizer costs over the following months.",
+     "Fertilizer is a major input cost in food production, so energy shocks of this kind have historically been followed — often with a lag — by higher food prices.",
+     "Shipping insurers have historically raised war-risk premiums for vessels transiting the Gulf during periods of heightened tension, adding to the landed cost of oil and other cargo."
+    ],
+    "why_it_matters": "Gulf War (Iraqi invasion of Kuwait) (1990–1991): Oil prices roughly doubled in the months following the invasion before falling back once the war ended and supply concerns eased. Roughly a fifth of the world's oil is estimated to pass through the Strait of Hormuz, so a sustained blockage or major disruption there has historically driven crude oil prices sharply higher.",
+    "linked_playbooks": []
+   },
+   "category_context": null
+  },
+  {
+   "signal_id": "ee5e1e77cc877dee",
+   "signal_type": "playbook_single_source",
+   "headline": "2027: ADC challenges Yari over N15.8trn reform gains",
+   "matched_at": "2026-08-30T14:50:13Z",
+   "matched_language": "en",
+   "aspects": [
+    {
+     "id": "politics.elections",
+     "score": 2.0
+    }
+   ],
+   "ripple_effect": {
+    "id": "fuel-subsidy-removal-unrest",
+    "name": "Fuel subsidy removal triggers public unrest",
+    "affected_domains": [
+     "fiscal-policy",
+     "energy",
+     "politics",
+     "social-programs"
+    ],
+    "historical_precedents": [
+     {
+      "period": "January 2012",
+      "event": "Nigeria's 'Occupy Nigeria' fuel subsidy protests",
+      "what_happened": "The government removed Nigeria's longstanding petrol subsidy on January 1, 2012, roughly doubling pump prices from 65 to at least 141 naira per litre; nationwide strikes and protests followed for nearly two weeks (January 2–14) across Lagos, Abuja, Kano, and other cities, with trade unions announcing an indefinite strike from January 9.",
+      "market_impact": "About 16 people were killed in clashes between protesters and police, and the government partially walked back the increase before the standoff ended."
+     },
+     {
+      "period": "October 2019",
+      "event": "Ecuador's Decree 883 fuel subsidy removal and reversal",
+      "what_happened": "President Lenín Moreno eliminated 40-year-old fuel subsidies on October 1, 2019 as part of an IMF-linked austerity package addressing $64 billion in debt, roughly doubling diesel prices and raising petrol prices about 30%; indigenous groups (CONAIE), transport workers, and students staged nationwide protests from October 3–14.",
+      "market_impact": "The unrest left 8 dead, over 1,300 injured, and nearly 1,200 detained; President Moreno reversed the policy by signing Decree 894 on October 14, 2019, restoring subsidies to previous levels after a televised agreement with indigenous leaders."
+     }
+    ],
+    "possibility_chains": [
+     "Sudden, large fuel subsidy removals (rather than gradual phase-outs) have historically triggered the fastest and largest public backlash, since the price change is immediate and highly visible to every driver and transport-dependent business at once.",
+     "Fuel subsidy cuts tied explicitly to IMF or multilateral lender conditions have historically been politically riskier for a government to sustain than domestically-initiated cuts, since opponents can frame the policy as externally imposed.",
+     "Governments facing sustained fuel-subsidy protests have historically had to choose between accepting significant political and fiscal cost from unrest or reversing the policy and returning to the fiscal drain the subsidy represented — full reversal has been a common outcome even after violent confrontations."
+    ],
+    "why_it_matters": "Ecuador's Decree 883 fuel subsidy removal and reversal (October 2019): The unrest left 8 dead, over 1,300 injured, and nearly 1,200 detained; President Moreno reversed the policy by signing Decree 894 on October 14, 2019, restoring subsidies to previous levels after a televised agreement with indigenous leaders. Sudden, large fuel subsidy removals (rather than gradual phase-outs) have historically triggered the fastest and largest public backlash, since the price change is immediate and highly visible to every driver and transport-dependent business at once.",
+    "linked_playbooks": [
+     {
+      "id": "imf-bailout-program",
+      "name": "IMF bailout or rescue program for a sovereign",
+      "affected_domains": [
+       "government-debt",
+       "currency",
+       "emerging-markets",
+       "employment"
+      ],
+      "why_it_matters": "Sri Lanka's IMF Extended Fund Facility after its 2022 default (2022–2024): The program aimed to raise Sri Lanka's tax-to-GDP ratio from 8.1% in 2021 to 15% by 2025, but the accompanying austerity coincided with unemployment rising from 5.7% to 8.3% between 2022 and 2023. IMF rescue programs have historically come attached to austerity conditions (tax increases, spending cuts, structural reforms) that have often produced short-term economic pain — higher unemployment, reduced public services — even where they are intended to restore longer-term stability."
+     },
+     {
+      "id": "fiscal-austerity-program",
+      "name": "Government austerity program (spending cuts and tax rises)",
+      "affected_domains": [
+       "fiscal-policy",
+       "public-services",
+       "government-debt",
+       "social-programs",
+       "politics"
+      ],
+      "why_it_matters": "Canada's 1995 federal budget under Finance Minister Paul Martin (1995): By shrinking the federal transfer, the reform shifted fiscal pressure onto provincial governments, which had to make their own cuts to health and social assistance spending to absorb the reduced federal contribution. Government austerity programs that cut public sector employment have historically taken years to fully play out in local labor markets, as affected workers and the local businesses that served them adjust gradually rather than all at once."
+     }
+    ]
+   },
+   "category_context": null,
+   "corroboration": {
+    "tier": "single_source",
+    "source_count": 1,
+    "country_count": 1,
+    "countries": [
+     "Nigeria"
+    ],
+    "label": "1 source",
+    "scraped_fallback_sources_added": 0
+   },
+   "sources": [
+    {
+     "title": "2027: ADC challenges Yari over N15.8trn reform gains",
+     "source_name": "Vanguard",
+     "country": "Nigeria",
+     "language": "English",
+     "url": "https://www.vanguardngr.com/2026/08/2027-adc-challenges-yari-over-n15-8trn-reform-gains/",
+     "source_type": "rss",
+     "age_hours": 1.0
+    }
+   ]
+  },
+  {
+   "signal_id": "ac6c5890a31ed53d",
+   "signal_type": "playbook_single_source",
+   "headline": "中國在南海民主礁巡航 進行漁業執法檢查",
+   "matched_at": "2026-08-30T14:45:51Z",
+   "matched_language": "zh",
+   "aspects": [],
+   "ripple_effect": {
+    "id": "south-china-sea-dispute",
+    "name": "South China Sea territorial and shipping dispute",
+    "affected_domains": [
+     "shipping-transportation",
+     "energy",
+     "diplomacy",
+     "geopolitics",
+     "trade"
+    ],
+    "historical_precedents": [
+     {
+      "period": "2013–2016",
+      "event": "Philippines v. China Permanent Court of Arbitration case",
+      "what_happened": "The Philippines brought a case to the Permanent Court of Arbitration in The Hague in January 2013 challenging China's expansive 'nine-dash line' claim over most of the South China Sea. The tribunal ruled on 12 July 2016 that China's historic-rights claim had no lawful basis under the UN Convention on the Law of the Sea, and that none of the disputed Spratly Islands features qualified as islands generating their own exclusive economic zone.",
+      "market_impact": "China rejected the ruling as null and void and continued its island-building and patrol activities in the disputed waters. The ruling did not resolve the underlying dispute, and multiple claimant states (Vietnam, Malaysia, Brunei, Taiwan) continue to assert overlapping claims to parts of the same waters, through which a large share of global seaborne trade transits."
+     }
+    ],
+    "possibility_chains": [
+     "Escalation of naval or coast guard confrontations in the South China Sea has historically raised shipping insurers' and carriers' attention to route risk in a corridor that carries a very large share of world seaborne trade, given the absence, so far, of a sustained blockade in the disputed waters.",
+     "Legal rulings against a claimant state in international tribunals have historically been rejected by the losing party when core territorial claims are involved, meaning such rulings have tended to shape diplomatic and legal leverage over years rather than immediately resolve the dispute.",
+     "Long-running territorial disputes in contested waters have historically constrained joint oil and gas exploration in the same areas, since companies are typically reluctant to invest amid unresolved sovereignty claims."
+    ],
+    "why_it_matters": "Philippines v. China Permanent Court of Arbitration case (2013–2016): China rejected the ruling as null and void and continued its island-building and patrol activities in the disputed waters. The ruling did not resolve the underlying dispute, and multiple claimant states (Vietnam, Malaysia, Brunei, Taiwan) continue to assert overlapping claims to parts of the same waters, through which a large share of global seaborne trade transits. Escalation of naval or coast guard confrontations in the South China Sea has historically raised shipping insurers' and carriers' attention to route risk in a corridor that carries a very large share of world seaborne trade, given the absence, so far, of a sustained blockade in the disputed waters.",
+    "linked_playbooks": [
+     {
+      "id": "shipping-chokepoint-disruption",
+      "name": "Critical shipping route disruption",
+      "affected_domains": [],
+      "why_it_matters": "Houthi attacks on commercial shipping in the Red Sea (Late 2023 – ongoing): Many major shipping lines rerouted around Africa's Cape of Good Hope, adding roughly 10–14 days to typical Asia–Europe voyages and pushing container freight rates sharply higher on affected routes. Disruption to a major shipping chokepoint has historically forced vessels onto longer alternate routes, raising fuel and time costs that carriers have often passed on as higher freight rates."
+     },
+     {
+      "id": "international-court-ruling-dispute",
+      "name": "International court ruling on a territorial or trade dispute",
+      "affected_domains": [
+       "law-regulation",
+       "diplomacy",
+       "geopolitics",
+       "energy",
+       "trade"
+      ],
+      "why_it_matters": "Philippines v. China South China Sea arbitration (2013–2016): China rejected the ruling outright and continued its activities in the disputed waters, showing that, unlike the Bakassi case where the losing party ultimately complied, an international ruling does not automatically compel compliance from a major power that rejects the tribunal's jurisdiction. International court rulings on territorial or maritime disputes have historically been complied with when the losing government has a political and diplomatic interest in maintaining its standing with the court system, as in the Bakassi case, but have been rejected outright by major powers unwilling to accept binding third-party jurisdiction over sovereignty claims, as in the South China Sea case."
+     },
+     {
+      "id": "taiwan-strait-tension",
+      "name": "Taiwan Strait military and political tension",
+      "affected_domains": [
+       "defense",
+       "shipping-transportation",
+       "technology",
+       "diplomacy",
+       "geopolitics",
+       "manufacturing"
+      ],
+      "why_it_matters": "China's military exercises following U.S. House Speaker Nancy Pelosi's visit to Taiwan (August 2022): Airlines and shipping operators rerouted some flights and vessels around the announced exercise and exclusion zones surrounding Taiwan for the duration of the drills. Periods of heightened Taiwan Strait tension have historically prompted temporary rerouting of commercial shipping and air traffic around announced exercise or exclusion zones, given Taiwan's location on major East Asia air and sea routes."
+     }
+    ]
+   },
+   "category_context": null,
+   "corroboration": {
+    "tier": "single_source",
+    "source_count": 3,
+    "country_count": 3,
+    "countries": [
+     "China",
+     "Indonesia",
+     "Taiwan"
+    ],
+    "label": "3 sources across 3 countries",
+    "scraped_fallback_sources_added": 2
+   },
+   "sources": [
+    {
+     "title": "中國在南海民主礁巡航 進行漁業執法檢查",
+     "source_name": "United Daily News (UDN)",
+     "country": "Taiwan",
+     "language": "Mandarin Chinese",
+     "url": "https://udn.com/news/story/7331/9723455",
+     "source_type": "rss",
+     "age_hours": 1.1
+    },
+    {
+     "title": "一年近200艘军舰、数万架次军机，谁在海上“窥伺”？ “在战略互信不足与风险管控机制短板相互叠加下，普通常态互动容易向高风险互动演变。” 据“南海战略态势感知计划”披露数据，2025年共有18个域外国家，累计近两百艘军舰在西太平洋海域活动，域外国家军机超两万架次。",
+     "source_name": "Southern Weekly",
+     "country": "China",
+     "language": "Chinese",
+     "url": "https://www.infzm.com/contents/328196?source=133&source_1=998",
+     "source_type": "scraped_fallback",
+     "age_hours": null
+    },
+    {
+     "title": "Academia Why Beijing must play a long game in South China Sea",
+     "source_name": "The Jakarta Post",
+     "country": "Indonesia",
+     "language": "English",
+     "url": "https://www.thejakartapost.com/opinion/2026/08/12/why-beijing-must-play-a-long-game-in-south-china-sea?utm_source=(direct)&utm_medium=home_latest",
+     "source_type": "scraped_fallback",
+     "age_hours": null
+    }
+   ]
+  },
+  {
+   "signal_id": "87ad18b9dec34e18",
+   "signal_type": "playbook_single_source",
+   "headline": "Healthcare data breach exposes 3.75M patient records",
+   "matched_at": "2026-08-30T13:17:44Z",
+   "matched_language": "en",
+   "aspects": [
+    {
+     "id": "technology.cybersecurity",
+     "score": 6.0
+    }
+   ],
+   "ripple_effect": {
+    "id": "major-data-breach-regulatory-fallout",
+    "name": "Major corporate data breach and regulatory fallout",
+    "affected_domains": [
+     "technology",
+     "regulation",
+     "capital-markets",
+     "consumer-confidence"
+    ],
+    "historical_precedents": [
+     {
+      "period": "May - September 2017",
+      "event": "Equifax data breach",
+      "what_happened": "Hackers exploited an unpatched web-application vulnerability at credit-reporting agency Equifax between May and July 2017; the company did not publicly disclose the intrusion until September 7, 2017, by which point the personal data - including Social Security numbers - of 147.9 million Americans, 15.2 million UK residents, and roughly 19,000 Canadians had been exposed.",
+      "market_impact": "In July 2019, Equifax agreed to a settlement of at least $575 million (potentially rising to $700 million) with the FTC, the CFPB, and 48 U.S. states, including a $300 million victim-compensation fund and $100 million in CFPB penalties; the UK's Financial Conduct Authority separately fined Equifax roughly £11.16 million."
+     },
+     {
+      "period": "June - September 2018 (fine issued October 2020)",
+      "event": "British Airways data breach and ICO fine",
+      "what_happened": "Attackers accessed British Airways' website and app between June 22 and September 5, 2018, exposing personal data on roughly 429,000 customers, including payment-card details for about 244,000 of them.",
+      "market_impact": "The UK Information Commissioner's Office initially proposed a fine of £183.39 million in 2019 under GDPR, then reduced it to £20 million in its final ruling on October 16, 2020 after accounting for mitigating factors including remediation steps and pandemic-related financial hardship - illustrating both the scale GDPR penalties can reach and how much regulators can discount them in practice."
+     }
+    ],
+    "possibility_chains": [
+     "A large consumer data breach has historically triggered a multi-year regulatory and litigation process whose final financial penalty often lands well below initial headline estimates.",
+     "Breaches involving financial or credit data have historically prompted broader legislative and regulatory scrutiny of the entire sector the breached company operates in, not just the company itself.",
+     "Companies that suffer high-profile breaches have historically faced elevated compliance and cybersecurity insurance costs for years afterward, independent of the direct settlement costs."
+    ],
+    "why_it_matters": "British Airways data breach and ICO fine (June - September 2018 (fine issued October 2020)): The UK Information Commissioner's Office initially proposed a fine of £183.39 million in 2019 under GDPR, then reduced it to £20 million in its final ruling on October 16, 2020 after accounting for mitigating factors including remediation steps and pandemic-related financial hardship - illustrating both the scale GDPR penalties can reach and how much regulators can discount them in practice. A large consumer data breach has historically triggered a multi-year regulatory and litigation process whose final financial penalty often lands well below initial headline estimates.",
+    "linked_playbooks": [
+     {
+      "id": "fintech-payments-fraud-collapse",
+      "name": "Fintech / payments company collapse from accounting fraud",
+      "affected_domains": [
+       "banking-financial-stability",
+       "technology",
+       "regulation",
+       "consumer-confidence"
+      ],
+      "why_it_matters": "Wirecard collapse, Germany (June–August 2020): Wirecard's stock fell 72% over two trading days and the company was removed from Germany's DAX index; German prosecutors opened criminal investigations and the German parliament launched an inquiry into regulatory failures by BaFin, the financial regulator that had repeatedly defended Wirecard against the fraud allegations. A fintech or payments company built on rapid growth and thin regulatory oversight has historically been vulnerable to accounting fraud going undetected for years, since fast-growing complex international operations can be harder for regulators and auditors to fully verify."
+     },
+     {
+      "id": "crypto-regulatory-shift",
+      "name": "Major cryptocurrency regulatory shift or exchange collapse",
+      "affected_domains": [
+       "capital-markets",
+       "banking",
+       "government-debt"
+      ],
+      "why_it_matters": "Collapse of the FTX cryptocurrency exchange (November 2022): FTX was found to owe as much as $8 billion, prompting SEC and CFTC investigations and federal charges against Bankman-Fried in December 2022; a bankruptcy court later ordered FTX's estate to pay $12.7 billion in compensation to former customers in August 2024. A major national ban or crackdown on cryptocurrency activity has historically caused an immediate drop in crypto prices, followed by a longer-run relocation of affected activity (such as mining) to jurisdictions with friendlier rules."
+     },
+     {
+      "id": "infrastructure-cyberattack",
+      "name": "Cyberattack on critical infrastructure",
+      "affected_domains": [],
+      "why_it_matters": "NotPetya malware outbreak (June 2017): Maersk had to reinstall its entire global IT infrastructure and briefly ran port terminal operations manually; total global damages were later estimated at over $10 billion, making it one of the most costly cyberattacks in history. A cyberattack that forces critical infrastructure offline (pipelines, ports, power grids) has historically caused localized shortages and price spikes in the directly affected region, even when the underlying supply elsewhere is unaffected."
+     }
+    ]
+   },
+   "category_context": null,
+   "corroboration": {
+    "tier": "single_source",
+    "source_count": 1,
+    "country_count": 1,
+    "countries": [
+     "United States"
+    ],
+    "label": "1 source",
+    "scraped_fallback_sources_added": 0
+   },
+   "sources": [
+    {
+     "title": "Healthcare data breach exposes 3.75M patient records",
+     "source_name": "Fox News",
+     "country": "United States",
+     "language": "English",
+     "url": "https://www.foxnews.com/tech/healthcare-data-breach-exposes-3-75m-patient-records",
+     "source_type": "rss",
+     "age_hours": 2.5
+    }
+   ]
+  },
+  {
+   "signal_id": "42407cf8bd1b3581",
+   "signal_type": "playbook_corroboration",
+   "headline": "Dégradation de la note du Sénégal par Moody’s : « C’est la guerre Kiiraay-Pastef qui a nourri la crise de confiance des marchés » (Thierno Alassane Sall)",
+   "matched_at": "2026-08-30T13:12:00Z",
+   "matched_language": "fr",
+   "aspects": [
+    {
+     "id": "geopolitics.conflicts",
+     "score": 3.0
+    }
+   ],
+   "corroboration": {
+    "tier": "playbook_corroboration",
+    "source_count": 3,
+    "country_count": 1,
+    "countries": [
+     "Senegal"
+    ],
+    "label": "3 sources",
+    "scraped_fallback_sources_added": 0
+   },
+   "sources": [
+    {
+     "title": "Dégradation de la note du Sénégal par Moody’s : « C’est la guerre Kiiraay-Pastef qui a nourri la crise de confiance des marchés » (Thierno Alassane Sall)",
+     "source_name": "Dakaractu",
      "country": "Senegal",
      "language": "French",
-     "url": "https://www.seneweb.com/fr/news/Societe/la-betise-dun-seul-le-prix-de-tous-babacar-ba-reagit-a-la-degradation-de-la-note-du-pays-par-moodys_n_502806.html",
+     "url": "https://www.dakaractu.com/Degradation-de-la-note-du-Senegal-par-Moody-s-C-est-la-guerre-Kiiraay-Pastef-qui-a-nourri-la-crise-de-confiance-des_a275487.html",
      "source_type": "rss",
-     "age_hours": 0.7
+     "age_hours": 2.6
+    },
+    {
+     "title": "Thierno Alassane Sall lie la dégradation de la note à la crise Diomaye-Sonko",
+     "source_name": "Senego",
+     "country": "Senegal",
+     "language": "French",
+     "url": "https://senego.com/thierno-alassane-sall-lie-la-degradation-de-la-note-a-la-crise-diomaye-sonko_1998236.html",
+     "source_type": "rss",
+     "age_hours": 3.0
     },
     {
      "title": "Moody’s dégrade la note souveraine du Sénégal à Caa2 et maintient une perspective négative",
@@ -239,7 +1071,7 @@
      "language": "French",
      "url": "https://www.xibaaru.sn/moodys-degrade-la-note-souveraine-du-senegal-a-caa2-et-maintient-une-perspective-negative/",
      "source_type": "rss",
-     "age_hours": 6.9
+     "age_hours": 19.8
     }
    ],
    "ripple_effect": {
@@ -307,60 +1139,61 @@
    "category_context": null
   },
   {
-   "signal_id": "6de10fccb261c752",
+   "signal_id": "e4083afc4c8012de",
    "signal_type": "playbook_single_source",
-   "headline": "В Ленинградской области из-за атаки БПЛА начался пожар на НПЗ",
-   "matched_at": "2026-08-30T02:02:25Z",
-   "matched_language": "ru",
+   "headline": "الدين الأميركي 40 تريليون دولار: هل يتجه العالم نحو أزمة؟",
+   "matched_at": "2026-08-30T12:54:00Z",
+   "matched_language": "ar",
    "aspects": [],
    "ripple_effect": {
-    "id": "major-refinery-fire-outage",
-    "name": "Major oil refinery fire or outage",
+    "id": "debt-ceiling-standoff",
+    "name": "US federal debt ceiling standoff",
     "affected_domains": [
-     "energy",
-     "manufacturing",
-     "inflation",
-     "transportation",
-     "regulation"
+     "government-debt",
+     "capital-markets"
     ],
     "historical_precedents": [
      {
-      "period": "June 2019",
-      "event": "Philadelphia Energy Solutions refinery explosion",
-      "what_happened": "A corroded, decades-old pipe elbow ruptured at the refinery, releasing hydrocarbon gas that ignited in a series of explosions, including a large boiling-liquid-expanding-vapor explosion that hurled a fragment roughly 2,000 feet across the Schuylkill River; the refinery, the largest and oldest on the US East Coast, ceased operations days later and its owner filed for bankruptcy the following month.",
-      "market_impact": "The closure permanently removed about 2% of total US refining capacity, and contemporary reporting warned it could raise gasoline prices in the northeastern US given the region's reliance on the plant."
+      "period": "July–August 2011",
+      "event": "2011 US debt ceiling crisis",
+      "what_happened": "A prolonged standoff in Congress over raising the federal debt ceiling was resolved with the Budget Control Act, signed August 1–2, 2011, which paired a $900 billion debt ceiling increase with $917 billion in spending cuts over a decade.",
+      "market_impact": "Days later, on August 5, 2011, S&P downgraded the US credit rating from AAA to AA+ for the first time in history, and major stock indices fell as much as 4% in the days around the downgrade — the largest drop since July 2009 — while crude oil and gold prices also fell amid broad-based selling."
+     },
+     {
+      "period": "January–June 2023",
+      "event": "2023 US debt ceiling crisis",
+      "what_happened": "The US hit its debt ceiling on January 19, 2023, prompting the Treasury to use 'extraordinary measures' as Republicans and Democrats deadlocked over spending conditions; President Biden and Speaker McCarthy reached a deal on May 27, 2023, and the resulting Fiscal Responsibility Act was signed into law by June 3, 2023.",
+      "market_impact": "The act suspended the debt limit until January 1, 2025; weeks later, on August 1, 2023, Fitch downgraded the US credit rating from AAA to AA+, citing repeated brinkmanship over the debt ceiling among its reasons."
      }
     ],
     "possibility_chains": [
-     "A major refinery outage has historically had a larger, more immediate effect on regional gasoline and diesel prices than on crude oil prices, since refining capacity — not crude supply — is the bottleneck during these events.",
-     "Refineries that are old, large, or geographically concentrated in a supply region have historically taken longer to replace than to repair, sometimes permanently reducing regional fuel-supply capacity.",
-     "Sustained loss of refining capacity in a region has historically pushed that region to import more refined fuel from elsewhere, exposing local prices to global shipping and refining-margin swings."
+     "A prolonged debt-ceiling standoff has historically raised short-term Treasury bill yields around the estimated 'X-date' as investors demand compensation for default risk, even when a default is ultimately avoided.",
+     "Debt-ceiling brinkmanship has historically been cited by credit rating agencies as a factor in sovereign rating actions, separate from the country's underlying fiscal metrics.",
+     "Extended standoffs have historically weighed on consumer and business confidence surveys in the weeks leading up to a deadline, even without an actual default occurring."
     ],
-    "why_it_matters": "Philadelphia Energy Solutions refinery explosion (June 2019): The closure permanently removed about 2% of total US refining capacity, and contemporary reporting warned it could raise gasoline prices in the northeastern US given the region's reliance on the plant. A major refinery outage has historically had a larger, more immediate effect on regional gasoline and diesel prices than on crude oil prices, since refining capacity — not crude supply — is the bottleneck during these events.",
+    "why_it_matters": "2023 US debt ceiling crisis (January–June 2023): The act suspended the debt limit until January 1, 2025; weeks later, on August 1, 2023, Fitch downgraded the US credit rating from AAA to AA+, citing repeated brinkmanship over the debt ceiling among its reasons. A prolonged debt-ceiling standoff has historically raised short-term Treasury bill yields around the estimated 'X-date' as investors demand compensation for default risk, even when a default is ultimately avoided.",
     "linked_playbooks": [
      {
-      "id": "gulf-coast-storm-energy",
-      "name": "Major storm hitting Gulf Coast energy infrastructure",
-      "affected_domains": [],
-      "why_it_matters": "Hurricanes Katrina and Rita (August–September 2005): U.S. gasoline prices jumped to record highs at the time, with some regions experiencing temporary shortages, and crude oil prices also rose on the loss of Gulf production. A major storm that damages Gulf Coast refineries or offshore production has historically caused a temporary spike in regional (and sometimes national) fuel prices, with the size of the spike depending on how much capacity is affected and for how long."
-     },
-     {
-      "id": "lng-export-terminal-outage",
-      "name": "LNG export terminal outage",
+      "id": "sovereign-credit-rating-downgrade",
+      "name": "Major sovereign credit rating downgrade",
       "affected_domains": [
-       "energy",
-       "trade",
-       "manufacturing",
-       "inflation",
-       "geopolitics"
+       "government-debt",
+       "capital-markets",
+       "currency"
       ],
-      "why_it_matters": "Freeport LNG explosion and shutdown (June 2022): Total losses from the incident were estimated at $6-8 billion; the outage removed a significant share of US LNG supply from the global market at a time when European buyers were competing hard for LNG cargoes to replace lost Russian pipeline gas, and it contributed to elevated international gas prices during the outage. An unplanned outage at a major LNG export terminal has historically tightened global LNG supply given how concentrated liquefaction capacity is among a relatively small number of large facilities."
+      "why_it_matters": "Moody's cuts the UK's rating outlook after the 2022 'mini-budget' (September–October 2022): The pound had already fallen to an all-time low of $1.0327 on September 26, 2022, and the Bank of England was forced into emergency long-dated gilt purchases (committing up to £40 billion from September 28) to stem a spiral in UK government bond yields that threatened pension funds. A sovereign credit rating downgrade has historically been followed by short-term market volatility, though the size of the reaction has depended heavily on whether the downgrade was already anticipated by investors."
      },
      {
-      "id": "infrastructure-cyberattack",
-      "name": "Cyberattack on critical infrastructure",
+      "id": "government-shutdown",
+      "name": "Government funding shutdown",
       "affected_domains": [],
-      "why_it_matters": "NotPetya malware outbreak (June 2017): Maersk had to reinstall its entire global IT infrastructure and briefly ran port terminal operations manually; total global damages were later estimated at over $10 billion, making it one of the most costly cyberattacks in history. A cyberattack that forces critical infrastructure offline (pipelines, ports, power grids) has historically caused localized shortages and price spikes in the directly affected region, even when the underlying supply elsewhere is unaffected."
+      "why_it_matters": "Belgium's 541-day government formation deadlock (June 2010 – December 2011): Belgium's borrowing costs rose during the deadlock, and S&P downgraded the country's credit rating in November 2011, citing the political impasse alongside its high debt load; a coalition finally formed and passed a new budget in December 2011. A government shutdown or prolonged inability to form a government has historically delayed the release of official economic data that markets and businesses rely on for decision-making."
+     },
+     {
+      "id": "stock-market-flash-crash",
+      "name": "Sudden stock market crash",
+      "affected_domains": [],
+      "why_it_matters": "China stock market circuit-breaker crash (January 2016): The Shanghai Composite fell roughly 7% in a single session on two separate days that week; the panic spread to European and US markets, contributing to one of the worst opening weeks for global stocks on record. A sudden, deep single-day stock decline has historically prompted exchanges to briefly halt trading via circuit breakers, giving markets time to reassess before reopening."
      }
     ]
    },
@@ -370,80 +1203,227 @@
     "source_count": 1,
     "country_count": 1,
     "countries": [
-     "Russia"
+     "Lebanon"
     ],
     "label": "1 source",
     "scraped_fallback_sources_added": 0
    },
    "sources": [
     {
-     "title": "В Ленинградской области из-за атаки БПЛА начался пожар на НПЗ",
-     "source_name": "RIA Novosti",
-     "country": "Russia",
-     "language": "Russian",
-     "url": "https://ria.ru/20260830/npz-2114091203.html",
+     "title": "الدين الأميركي 40 تريليون دولار: هل يتجه العالم نحو أزمة؟",
+     "source_name": "An-Nahar",
+     "country": "Lebanon",
+     "language": "Arabic",
+     "url": "https://www.annahar.com/economy/342589/الدين-الأميركي-40-تريليون-دولار-هل-يتجه-العالم-نحو-أزمة",
      "source_type": "rss",
-     "age_hours": 0.8
+     "age_hours": 2.9
     }
    ]
   },
   {
-   "signal_id": "4e8b558a905b8d87",
+   "signal_id": "bf15a9ae7a11f6fc",
    "signal_type": "playbook_corroboration",
-   "headline": "الحكومة الألمانية تعتزم فرض عقوبات على روسيا",
-   "matched_at": "2026-08-30T01:13:45Z",
-   "matched_language": "ar",
+   "headline": "Analysts warn of fallout from NCR wage dispute",
+   "matched_at": "2026-08-30T12:06:54Z",
+   "matched_language": "en",
    "aspects": [
     {
-     "id": "geopolitics.sanctions",
-     "score": 3.0
-    },
-    {
-     "id": "geopolitics.conflicts",
-     "score": 2.0
+     "id": "society.labor",
+     "score": 5.0
     }
    ],
    "corroboration": {
     "tier": "playbook_corroboration",
-    "source_count": 3,
-    "country_count": 3,
+    "source_count": 2,
+    "country_count": 1,
     "countries": [
-     "Austria",
-     "Egypt",
-     "Russia"
+     "Philippines"
     ],
-    "label": "3 sources across 3 countries",
+    "label": "2 sources",
     "scraped_fallback_sources_added": 0
    },
    "sources": [
     {
-     "title": "الحكومة الألمانية تعتزم فرض عقوبات على روسيا",
-     "source_name": "Sada El Balad",
-     "country": "Egypt",
-     "language": "Arabic",
-     "url": "https://www.elbalad.news/7089601",
+     "title": "Analysts warn of fallout from NCR wage dispute",
+     "source_name": "BusinessWorld",
+     "country": "Philippines",
+     "language": "English",
+     "url": "https://bworldonline.com/the-nation/2026/08/30/773312/analysts-warn-of-fallout-from-ncr-wage-dispute/",
      "source_type": "rss",
-     "age_hours": 1.6
+     "age_hours": 3.7
     },
     {
-     "title": "Berlin macht offenbar Moskau verantwortlich",
-     "source_name": "ORF (Österreichischer Rundfunk)",
-     "country": "Austria",
-     "language": "German",
-     "url": "https://orf.at/stories/3440622/",
+     "title": "Courts urged to drop wage suit",
+     "source_name": "BusinessWorld",
+     "country": "Philippines",
+     "language": "English",
+     "url": "https://bworldonline.com/the-nation/2026/08/30/773363/courts-urged-to-drop-wage-suit/",
      "source_type": "rss",
-     "age_hours": 5.5
+     "age_hours": 3.7
     },
     {
-     "title": "Мерц на следующей неделе планирует объявить о санкциях против РФ",
-     "source_name": "Interfax",
-     "country": "Russia",
-     "language": "Russian",
-     "url": "https://www.interfax.ru/world/1112020",
+     "title": "For labor group, NCR wage hike order technically in effect",
+     "source_name": "Manila Bulletin",
+     "country": "Philippines",
+     "language": "English",
+     "url": "https://mb.com.ph/article/10933641/philippines/national/for-labor-group-ncr-wage-hike-order-technically-in-effect",
      "source_type": "rss",
-     "age_hours": 8.4
+     "age_hours": 4.6
     }
    ],
+   "ripple_effect": {
+    "id": "minimum-wage-policy-shift",
+    "name": "Minimum wage policy shift",
+    "affected_domains": [
+     "employment",
+     "consumer-spending",
+     "inflation",
+     "politics"
+    ],
+    "historical_precedents": [
+     {
+      "period": "2012 (origin) – ongoing",
+      "event": "\"Fight for $15\" movement",
+      "what_happened": "The movement began in November 2012 when over 100 fast-food workers walked off the job in New York City demanding a $15 hourly wage and the right to unionize, at a time when the federal minimum wage had been frozen at $7.25 since 2009; it grew into coordinated multi-city strikes, including an April 2015 day of action across more than 200 cities that organizers called the largest protest by low-wage workers in US history.",
+      "market_impact": "By the mid-2020s seventeen US states plus Washington, D.C. had adopted $15-or-higher minimum wages, with organizers estimating roughly 26 million workers received a combined $151 billion in raises traceable to the movement's pressure on state and local policy."
+     },
+     {
+      "period": "2014–2019",
+      "event": "Seattle becomes the first major US city to adopt a $15 minimum wage",
+      "what_happened": "Seattle's city council, led by councilmember Kshama Sawant, passed an ordinance phasing in a $15 minimum wage starting in 2014, with the wage rising further to $15.45 in 2018 and $16 in 2019 under the city's indexing formula.",
+      "market_impact": "University of Washington and other researchers studying Seattle's rollout found no measurable decline in overall employment as the wage floor rose, making Seattle a frequently cited case study in the broader minimum-wage debate."
+     }
+    ],
+    "possibility_chains": [
+     "A minimum wage increase in one large city or state has historically prompted advocacy campaigns citing it as precedent for similar increases elsewhere, spreading policy change faster than pure economic modeling alone would predict.",
+     "Employers in low-margin, labor-intensive sectors (fast food, retail, hospitality) have historically responded to minimum wage increases through some combination of price increases, reduced hours, and accelerated investment in self-service or automation technology, with the mix varying by study and locality.",
+     "Higher minimum wages have historically raised the wage floor workers use as a reference point in unrelated wage negotiations nearby, a \"lighthouse effect\" observed in several minimum-wage studies."
+    ],
+    "why_it_matters": "Seattle becomes the first major US city to adopt a $15 minimum wage (2014–2019): University of Washington and other researchers studying Seattle's rollout found no measurable decline in overall employment as the wage floor rose, making Seattle a frequently cited case study in the broader minimum-wage debate. A minimum wage increase in one large city or state has historically prompted advocacy campaigns citing it as precedent for similar increases elsewhere, spreading policy change faster than pure economic modeling alone would predict.",
+    "linked_playbooks": [
+     {
+      "id": "gig-economy-worker-classification",
+      "name": "Gig-economy worker classification ruling",
+      "affected_domains": [
+       "employment",
+       "technology",
+       "law-regulation",
+       "consumer-spending"
+      ],
+      "why_it_matters": "California's Proposition 22 and its multi-year court challenge (November 2020 – July 2024): The nearly four-year legal uncertainty over Proposition 22's validity was itself a business risk for Uber, Lyft, DoorDash, and Instacart, which had spent over $200 million campaigning for the measure; its eventual affirmation cemented independent-contractor status for California gig drivers and became a template gig companies pushed for in other US states. A court or ballot-measure ruling on gig-worker classification in one jurisdiction has historically become a reference point cited by both labor advocates and gig companies lobbying for similar outcomes elsewhere, spreading the policy debate beyond the original jurisdiction."
+     },
+     {
+      "id": "great-resignation-labor-shortage",
+      "name": "Broad-based voluntary quits wave / labor shortage",
+      "affected_domains": [
+       "employment",
+       "inflation",
+       "consumer-spending"
+      ],
+      "why_it_matters": "The \"Great Resignation\" in the United States (March 2021 – mid-2023): Employers responded with the fastest wage growth in two decades — 4.5% year-over-year in December 2021 — while hospitality, healthcare, and education faced acute staffing shortages that pushed many businesses to accelerate investment in automation and self-service technology; quits rates did not return to pre-pandemic 2019 norms until mid-2023. A sustained period of unusually high voluntary quits has historically coincided with faster wage growth, as employers compete harder to retain and attract staff in a tight labor market."
+     }
+    ]
+   },
+   "category_context": null
+  },
+  {
+   "signal_id": "2b619257b93675fd",
+   "signal_type": "playbook_single_source",
+   "headline": "Miljardenmarkt zet farmaceuten Novo Nordisk en Eli Lilly aan tot jacht op na‑apers",
+   "matched_at": "2026-08-30T12:00:00Z",
+   "matched_language": "en",
+   "aspects": [],
+   "ripple_effect": {
+    "id": "glp1-obesity-drug-market-shift",
+    "name": "GLP-1 obesity/diabetes drugs reshaping healthcare cost and pharma markets",
+    "affected_domains": [
+     "public-health",
+     "healthcare",
+     "pharmaceuticals",
+     "capital-markets",
+     "insurance"
+    ],
+    "historical_precedents": [
+     {
+      "period": "2022–2025",
+      "event": "Novo Nordisk's Ozempic/Wegovy-driven rise to Europe's most valuable company, then competitive erosion",
+      "what_happened": "Demand for Novo Nordisk's GLP-1 drugs Ozempic (approved for diabetes, widely used off-label for weight loss) and Wegovy (approved for obesity) grew so rapidly that weight-loss drugs made up 55% of the company's 2023 revenue and its first-half 2023 profit rose 45% year-over-year; by March 2024 the company reached a $604 billion market capitalization, the 12th most valuable company in the world, and by April 2024 its roughly $570 billion market cap exceeded the size of Denmark's entire economy, with its roughly $2.3 billion Danish corporate tax bill alone driving nearly all of Denmark's measured economic growth that year.",
+      "market_impact": "US list prices for these drugs ran far above prices charged elsewhere (Ozempic around $969/month in the US versus $155 in Canada and $59 in Germany; Wegovy around $1,349/month in the US versus $140 in Germany and $92 in the UK), fueling a US health-insurance and employer-benefit-design debate over covering the drugs at scale; by July 2025, rising competitor pressure had pushed Novo down to the fifth most valuable drugmaker by market cap, prompting a CEO change effective August 7, 2025."
+     }
+    ],
+    "possibility_chains": [
+     "A single drug class becoming a large share of a national economy's growth, as with Novo Nordisk and Denmark, has historically made that country's headline GDP figures unusually sensitive to one company's product cycle.",
+     "Insurers and employers facing a costly new high-demand drug class have historically responded first with coverage restrictions (prior authorization, BMI thresholds) before broadening access as production scales and price competition emerges.",
+     "A manufacturer's inability to keep pace with demand for a breakout drug has historically triggered shortages, compounding-pharmacy workarounds, and counterfeit-product risk in the gap before supply catches up."
+    ],
+    "why_it_matters": "Novo Nordisk's Ozempic/Wegovy-driven rise to Europe's most valuable company, then competitive erosion (2022–2025): US list prices for these drugs ran far above prices charged elsewhere (Ozempic around $969/month in the US versus $155 in Canada and $59 in Germany; Wegovy around $1,349/month in the US versus $140 in Germany and $92 in the UK), fueling a US health-insurance and employer-benefit-design debate over covering the drugs at scale; by July 2025, rising competitor pressure had pushed Novo down to the fifth most valuable drugmaker by market cap, prompting a CEO change effective August 7, 2025. A single drug class becoming a large share of a national economy's growth, as with Novo Nordisk and Denmark, has historically made that country's headline GDP figures unusually sensitive to one company's product cycle.",
+    "linked_playbooks": [
+     {
+      "id": "pharmaceutical-patent-cliff",
+      "name": "Pharmaceutical patent cliff and blockbuster drug revenue loss",
+      "affected_domains": [
+       "public-health",
+       "healthcare",
+       "pharmaceuticals",
+       "capital-markets",
+       "regulation"
+      ],
+      "why_it_matters": "Lipitor (atorvastatin) patent expiration (1996–2012 (US patent expired November 30, 2011)): Generic prices stayed relatively elevated during that initial exclusivity window, then fell sharply once additional manufacturers entered in May 2012, pushing a month's supply down toward standard generic pricing of $10 or less — illustrating the two-stage price collapse (moderate initial generic discount, then a much steeper one once multiple generic makers compete) that characterizes a typical pharmaceutical patent-cliff event. A cluster of blockbuster drugs (defined in the industry as over $1 billion in annual sales) losing patent protection in the same multi-year window has historically pushed large pharmaceutical companies toward M&A, portfolio diversification, and 'evergreening' strategies (new formulations or delivery mechanisms) to offset the revenue drop."
+     },
+     {
+      "id": "aging-population-healthcare-cost-capacity",
+      "name": "Aging population driving healthcare system cost and capacity pressure",
+      "affected_domains": [
+       "public-health",
+       "healthcare",
+       "fiscal-policy",
+       "demographics",
+       "pensions"
+      ],
+      "why_it_matters": "Japan's healthcare spending rise under a super-aged population (2008–2018): Japan introduced a dedicated long-term care insurance system (Kaigo-Hoken), funded partly by a roughly 2% income contribution from residents over 40 and administered by municipal governments, specifically to fund elderly care costs separately from general health insurance as the aging-driven cost pressure became structural rather than cyclical; by 2016 the system was allocating tens of billions of dollars annually toward long-term care expenditures. A country crossing the 'super-aged society' threshold (21%+ population 65+) has historically required either new dedicated funding mechanisms, as with Japan's long-term-care insurance, or rising general healthcare spending as a share of GDP, or both."
+     }
+    ]
+   },
+   "category_context": null,
+   "corroboration": {
+    "tier": "single_source",
+    "source_count": 2,
+    "country_count": 2,
+    "countries": [
+     "Denmark",
+     "Netherlands"
+    ],
+    "label": "2 sources across 2 countries",
+    "scraped_fallback_sources_added": 1
+   },
+   "sources": [
+    {
+     "title": "Miljardenmarkt zet farmaceuten Novo Nordisk en Eli Lilly aan tot jacht op na‑apers",
+     "source_name": "Het Financieele Dagblad",
+     "country": "Netherlands",
+     "language": "Dutch",
+     "url": "https://fd.nl/bedrijfsleven/1610529/miljardenmarkt-zet-farmaceuten-novo-nordisk-en-eli-lilly-aan-tot-jacht-op-naapers",
+     "source_type": "rss",
+     "age_hours": 3.8
+    },
+    {
+     "title": "Amerikansk gigant udfordrer Novo Nordisk i Danmark med 'dybt problematisk' kampagne",
+     "source_name": "DR (Danmarks Radio)",
+     "country": "Denmark",
+     "language": "Danish",
+     "url": "https://www.dr.dk/nyheder/penge/ny-kampagne-fra-novo-rival-faar-kritik-de-vil-bare-saelge-vaegttabsmedicin",
+     "source_type": "scraped_fallback",
+     "age_hours": null
+    }
+   ]
+  },
+  {
+   "signal_id": "6d3e9e6b67992a55",
+   "signal_type": "playbook_single_source",
+   "headline": "EU Prepares New Sanctions Package Targeting 1,600 Russian Entities",
+   "matched_at": "2026-08-30T11:25:00Z",
+   "matched_language": "en",
+   "aspects": [],
    "ripple_effect": {
     "id": "major-economy-sanctions",
     "name": "Sanctions imposed on a major economy",
@@ -470,285 +1450,39 @@
     "why_it_matters": "International sanctions on Iran over its nuclear program (2010s): Iranian oil exports fell sharply, though global oil prices were also affected by supply from other producers filling the gap; Iran's own currency and economy experienced significant strain during the most restrictive sanctions periods. Sanctions targeting a major energy or commodity exporter have historically tightened global supply of that commodity, which has often (though not always, depending on how much other producers can offset the loss) pushed prices higher.",
     "linked_playbooks": []
    },
-   "category_context": null
-  },
-  {
-   "signal_id": "f7a09a048fada845",
-   "signal_type": "playbook_corroboration",
-   "headline": "İran Hürmüz için kapıyı açtı",
-   "matched_at": "2026-08-30T01:00:00Z",
-   "matched_language": "tr",
-   "aspects": [],
-   "corroboration": {
-    "tier": "playbook_corroboration",
-    "source_count": 14,
-    "country_count": 12,
-    "countries": [
-     "Egypt",
-     "Iran",
-     "Iraq",
-     "Israel",
-     "Lebanon",
-     "Libya",
-     "Palestine",
-     "Russia",
-     "Tunisia",
-     "Turkey",
-     "Uruguay",
-     "Yemen"
-    ],
-    "label": "14 sources across 12 countries",
-    "scraped_fallback_sources_added": 7
-   },
-   "sources": [
-    {
-     "title": "İran Hürmüz için kapıyı açtı",
-     "source_name": "Yeni Şafak",
-     "country": "Turkey",
-     "language": "Turkish (also EN/AR/FR/RU/UR editions)",
-     "url": "https://www.yenisafak.com/gundem/iran-hurmuz-icin-kapiyi-acti-4851827",
-     "source_type": "rss",
-     "age_hours": 1.9
-    },
-    {
-     "title": "أين وصلت المفاوضات الإيرانية الأمريكية؟ وما شروط طهران لفتح مضيق هرمز؟",
-     "source_name": "Aden al-Ghad",
-     "country": "Yemen",
-     "language": "Arabic",
-     "url": "https://www.adngad.net/news/877041",
-     "source_type": "rss",
-     "age_hours": 3.0
-    },
-    {
-     "title": "ما بعد أزمة هرمز.. سوق الطاقة في آسيا نحو خيارات أوسع",
-     "source_name": "Aden al-Ghad",
-     "country": "Yemen",
-     "language": "Arabic",
-     "url": "https://www.adngad.net/news/877034",
-     "source_type": "rss",
-     "age_hours": 3.4
-    },
-    {
-     "title": "إسرائيل: سنضرب إيران إذا استأنفت برنامجها النووي أو الصاروخي",
-     "source_name": "An-Nahar",
-     "country": "Lebanon",
-     "language": "Arabic",
-     "url": "https://www.annahar.com/international/israeli-issues/342537/إسرائيل-سنضرب-إيران-إذا-استأنفت-برنامجها-النووي-أو-الصاروخي",
-     "source_type": "rss",
-     "age_hours": 6.4
-    },
-    {
-     "title": "Iran’s IRGC claims complete control of Hormuz as US forces redirect 82 ships under blockade",
-     "source_name": "Daily News Egypt",
-     "country": "Egypt",
-     "language": "English",
-     "url": "https://www.dailynewsegypt.com/2026/08/29/irans-irgc-claims-complete-control-of-hormuz-as-us-forces-redirect-82-ships-under-blockade/?utm_source=rss&utm_medium=rss&utm_campaign=irans-irgc-claims-complete-control-of-hormuz-as-us-forces-redirect-82-ships-under-blockade",
-     "source_type": "rss",
-     "age_hours": 7.8
-    },
-    {
-     "title": "Libya Offers to Boost Energy Supplies to Europe Amid Hormuz Crisis",
-     "source_name": "Libya Review",
-     "country": "Libya",
-     "language": "English",
-     "url": "https://libyareview.com/67922/libya-offers-to-boost-energy-supplies-to-europe-amid-hormuz-crisis/",
-     "source_type": "rss",
-     "age_hours": 13.6
-    },
-    {
-     "title": "تقرير: 6 آلاف بحار عالقون في الخليج وسط استمرار تعطل الملاحة عبر مضيق هرمز",
-     "source_name": "Palestine News Network (PNN)",
-     "country": "Palestine",
-     "language": "Arabic (also English)",
-     "url": "https://pnn.ps/news/727138",
-     "source_type": "rss",
-     "age_hours": 18.1
-    },
-    {
-     "title": "Trump anunció un acuerdo para que su país controle reservas de petróleo de Venezuela",
-     "source_name": "La Diaria",
-     "country": "Uruguay",
-     "language": "Spanish",
-     "url": "https://ladiaria.com.uy/mundo/articulo/2026/8/trump-anuncio-un-acuerdo-para-que-su-pais-controle-reservas-de-petroleo-de-venezuela/",
-     "source_type": "rss",
-     "age_hours": 23.4
-    },
-    {
-     "title": "عاجل.. 6 سفن فقط عبرت مضيق هرمز خلال يوم مع تلاشي آمال التوصل لاتفاق سلام",
-     "source_name": "Al-Dostor",
-     "country": "Egypt",
-     "language": "Arabic",
-     "url": "https://www.dostor.org/5664668",
-     "source_type": "scraped_fallback",
-     "age_hours": null
-    },
-    {
-     "title": "أمين المجلس الأعلى للأمن القومي: لن يفتح مضيق هرمز ما لم تقبل الولايات المتحدة شروط إيران",
-     "source_name": "Jawhara FM",
-     "country": "Tunisia",
-     "language": "Arabic/French",
-     "url": "https://www.jawharafm.net/ar/article/أمين-المجلس-الأعلى-للأمن-القومي-لن-يفتح-مضيق-هرمز-ما-لم-تقبل-الولايات-المتحدة-شروط-إيران/106/297518",
-     "source_type": "scraped_fallback",
-     "age_hours": null
-    }
-   ],
-   "ripple_effect": {
-    "id": "hormuz-gulf-oil-shock",
-    "name": "Persian Gulf oil supply shock",
-    "affected_domains": [],
-    "historical_precedents": [
-     {
-      "period": "1984–1988",
-      "event": "Iran–Iraq \"Tanker War\"",
-      "what_happened": "Iran and Iraq attacked oil tankers transiting the Persian Gulf and Strait of Hormuz, and Iran repeatedly threatened to close the strait.",
-      "market_impact": "Shipping insurance war-risk premiums in the Gulf rose sharply, and the U.S. Navy began escorting reflagged Kuwaiti tankers in 1987 to keep the strait open."
-     },
-     {
-      "period": "September 2019",
-      "event": "Drone and missile attack on Saudi Aramco's Abqaiq and Khurais facilities",
-      "what_happened": "The attack (which Saudi Arabia and the U.S. blamed on Iran, a claim Iran denied) temporarily knocked out roughly half of Saudi Arabia's oil output, about 5% of global supply.",
-      "market_impact": "Brent crude jumped about 15% in a single day — the largest one-day oil price increase since the 1990–91 Gulf War."
-     },
-     {
-      "period": "1990–1991",
-      "event": "Gulf War (Iraqi invasion of Kuwait)",
-      "what_happened": "Iraq's invasion of Kuwait removed a large share of Gulf oil exports from the market and raised fears of a wider regional war.",
-      "market_impact": "Oil prices roughly doubled in the months following the invasion before falling back once the war ended and supply concerns eased."
-     }
-    ],
-    "possibility_chains": [
-     "Roughly a fifth of the world's oil is estimated to pass through the Strait of Hormuz, so a sustained blockage or major disruption there has historically driven crude oil prices sharply higher.",
-     "Because ammonia-based fertilizer production is natural-gas intensive, and natural gas prices often move together with oil, a prolonged energy price spike has historically fed through into higher fertilizer costs over the following months.",
-     "Fertilizer is a major input cost in food production, so energy shocks of this kind have historically been followed — often with a lag — by higher food prices.",
-     "Shipping insurers have historically raised war-risk premiums for vessels transiting the Gulf during periods of heightened tension, adding to the landed cost of oil and other cargo."
-    ],
-    "why_it_matters": "Gulf War (Iraqi invasion of Kuwait) (1990–1991): Oil prices roughly doubled in the months following the invasion before falling back once the war ended and supply concerns eased. Roughly a fifth of the world's oil is estimated to pass through the Strait of Hormuz, so a sustained blockage or major disruption there has historically driven crude oil prices sharply higher.",
-    "linked_playbooks": []
-   },
-   "category_context": null
-  },
-  {
-   "signal_id": "7aa88a916353910d",
-   "signal_type": "playbook_single_source",
-   "headline": "El paso bioceánico clave ante la crisis del Canal de Panamá que tensiona a Chile y Argentina: ¿a quién pertenece el estrecho de Magallanes?",
-   "matched_at": "2026-08-30T00:23:00Z",
-   "matched_language": "es",
-   "aspects": [
-    {
-     "id": "business.supply-chains",
-     "score": 3.0
-    }
-   ],
-   "ripple_effect": {
-    "id": "shipping-chokepoint-disruption",
-    "name": "Critical shipping route disruption",
-    "affected_domains": [],
-    "historical_precedents": [
-     {
-      "period": "March 2021",
-      "event": "The container ship Ever Given ran aground and blocked the Suez Canal",
-      "what_happened": "The vessel blocked the canal for about six days, backing up hundreds of ships that normally use the route connecting Europe and Asia.",
-      "market_impact": "The blockage was widely estimated to be holding up several billion dollars of trade per day, and briefly pushed up oil prices and freight rates as shippers weighed rerouting."
-     },
-     {
-      "period": "Late 2023 – ongoing",
-      "event": "Houthi attacks on commercial shipping in the Red Sea",
-      "what_happened": "Yemen's Houthi movement began attacking commercial vessels in the Red Sea and Bab-el-Mandeb strait, a route that normally carries a large share of Europe–Asia container traffic via the Suez Canal.",
-      "market_impact": "Many major shipping lines rerouted around Africa's Cape of Good Hope, adding roughly 10–14 days to typical Asia–Europe voyages and pushing container freight rates sharply higher on affected routes."
-     }
-    ],
-    "possibility_chains": [
-     "Disruption to a major shipping chokepoint has historically forced vessels onto longer alternate routes, raising fuel and time costs that carriers have often passed on as higher freight rates.",
-     "Longer transit times have historically strained \"just-in-time\" supply chains, sometimes causing component and inventory shortages for manufacturers who rely on predictable delivery schedules.",
-     "Higher freight and insurance costs on a major trade route have historically taken weeks to months to show up in the retail price of imported goods, given typical shipping and inventory lead times."
-    ],
-    "why_it_matters": "Houthi attacks on commercial shipping in the Red Sea (Late 2023 – ongoing): Many major shipping lines rerouted around Africa's Cape of Good Hope, adding roughly 10–14 days to typical Asia–Europe voyages and pushing container freight rates sharply higher on affected routes. Disruption to a major shipping chokepoint has historically forced vessels onto longer alternate routes, raising fuel and time costs that carriers have often passed on as higher freight rates.",
-    "linked_playbooks": []
-   },
    "category_context": null,
    "corroboration": {
     "tier": "single_source",
     "source_count": 1,
     "country_count": 1,
     "countries": [
-     "Peru"
+     "Ukraine"
     ],
     "label": "1 source",
     "scraped_fallback_sources_added": 0
    },
    "sources": [
     {
-     "title": "El paso bioceánico clave ante la crisis del Canal de Panamá que tensiona a Chile y Argentina: ¿a quién pertenece el estrecho de Magallanes?",
-     "source_name": "La República",
-     "country": "Peru",
-     "language": "Spanish",
-     "url": "https://larepublica.pe/mundo/2026/08/29/el-paso-bioceanico-clave-ante-la-crisis-del-canal-de-panama-que-tensiona-a-chile-y-argentina-a-quien-pertenece-el-estrecho-de-magallanes-1006184",
+     "title": "EU Prepares New Sanctions Package Targeting 1,600 Russian Entities",
+     "source_name": "Kyiv Post",
+     "country": "Ukraine",
+     "language": "English",
+     "url": "https://www.kyivpost.com/post/83381",
      "source_type": "rss",
-     "age_hours": 2.5
+     "age_hours": 4.4
     }
    ]
   },
   {
-   "signal_id": "bf7f14d64709d93c",
-   "signal_type": "playbook_corroboration",
-   "headline": "العاصمة.. وفاة شخص في انقلاب سيارة أمام ملعب مانديلا",
-   "matched_at": "2026-08-29T21:52:40Z",
-   "matched_language": "ar",
+   "signal_id": "06ee0aa574617306",
+   "signal_type": "playbook_single_source",
+   "headline": "Guinée-Bissau : un référendum sous la botte des militaires pour verrouiller le pouvoir avant même les urnes",
+   "matched_at": "2026-08-30T10:32:27Z",
+   "matched_language": "fr",
    "aspects": [
     {
-     "id": "politics.leadership",
-     "score": 3.0
-    }
-   ],
-   "corroboration": {
-    "tier": "playbook_corroboration",
-    "source_count": 4,
-    "country_count": 4,
-    "countries": [
-     "Algeria",
-     "Egypt",
-     "India",
-     "Rwanda"
-    ],
-    "label": "4 sources across 4 countries",
-    "scraped_fallback_sources_added": 0
-   },
-   "sources": [
-    {
-     "title": "العاصمة.. وفاة شخص في انقلاب سيارة أمام ملعب مانديلا",
-     "source_name": "Ennahar",
-     "country": "Algeria",
-     "language": "Arabic",
-     "url": "https://www.ennaharonline.com/%d8%a7%d9%84%d8%b9%d8%a7%d8%b5%d9%85%d8%a9-%d9%88%d9%81%d8%a7%d8%a9-%d8%b4%d8%ae%d8%b5-%d9%81%d9%8a-%d8%a7%d9%86%d9%82%d9%84%d8%a7%d8%a8-%d8%b3%d9%8a%d8%a7%d8%b1%d8%a9-%d8%a3%d9%85%d8%a7%d9%85/",
-     "source_type": "rss",
-     "age_hours": 5.0
-    },
-    {
-     "title": "नाइजर में फिर तख्तापलट की कोशिश! राष्ट्रपति भवन के पास फायरिंग",
-     "source_name": "Aaj Tak",
-     "country": "India",
-     "language": "Hindi",
-     "url": "https://www.aajtak.in/world/story/niger-failed-coup-attempt-soldiers-mutiny-niamey-airbase-ntc-apdy-dskc-2632472-2026-08-30?utm_source=rssfeed",
-     "source_type": "rss",
-     "age_hours": 7.8
-    },
-    {
-     "title": "Military Coup Thwarted in NIGER",
-     "source_name": "Taarifa Rwanda",
-     "country": "Rwanda",
-     "language": "English/Kinyarwanda",
-     "url": "https://taarifa.rw/2026/08/29/military-coup-thwarted-in-niger/",
-     "source_type": "rss",
-     "age_hours": 8.4
-    },
-    {
-     "title": "النيجر تعلن عن فشل محاولة انقلاب",
-     "source_name": "Nile News",
-     "country": "Egypt",
-     "language": "Arabic",
-     "url": "https://www.nile.eg/%d8%a7%d9%84%d9%86%d9%8a%d8%ac%d8%b1-%d8%aa%d8%b9%d9%84%d9%86-%d8%b9%d9%86-%d9%81%d8%b4%d9%84-%d9%85%d8%ad%d8%a7%d9%88%d9%84%d8%a9-%d8%a7%d9%86%d9%82%d9%84%d8%a7%d8%a8",
-     "source_type": "rss",
-     "age_hours": 15.0
+     "id": "politics.elections",
+     "score": 4.0
     }
    ],
    "ripple_effect": {
@@ -810,61 +1544,163 @@
      }
     ]
    },
-   "category_context": null
+   "category_context": null,
+   "corroboration": {
+    "tier": "single_source",
+    "source_count": 1,
+    "country_count": 1,
+    "countries": [
+     "Senegal"
+    ],
+    "label": "1 source",
+    "scraped_fallback_sources_added": 0
+   },
+   "sources": [
+    {
+     "title": "Guinée-Bissau : un référendum sous la botte des militaires pour verrouiller le pouvoir avant même les urnes",
+     "source_name": "Seneweb",
+     "country": "Senegal",
+     "language": "French",
+     "url": "https://www.seneweb.com/fr/news/Afrique/guinee-bissau-un-referendum-sous-la-botte-des-militaires-pour-verrouiller-le-pouvoir-avant-meme-les-urnes_n_502814.html",
+     "source_type": "rss",
+     "age_hours": 5.3
+    }
+   ]
   },
   {
-   "signal_id": "c8386052835ba4ee",
+   "signal_id": "0471688645a0d69d",
    "signal_type": "playbook_single_source",
-   "headline": "Kazakhstani diplomats and students hold anti-nuclear test run in Budapest",
-   "matched_at": "2026-08-29T14:17:00Z",
+   "headline": "RDC : Jean-Marc Kabund accable la gestion de l'épidémie d'Ebola par le régime Tshisekedi",
+   "matched_at": "2026-08-30T05:20:30Z",
+   "matched_language": "fr",
+   "aspects": [
+    {
+     "id": "science-health.public-health",
+     "score": 3.0
+    }
+   ],
+   "ripple_effect": {
+    "id": "disease-outbreak-phe-ic",
+    "name": "Disease outbreak with international health emergency",
+    "affected_domains": [],
+    "historical_precedents": [
+     {
+      "period": "2014–2016",
+      "event": "West Africa Ebola outbreak",
+      "what_happened": "The World Health Organization declared a Public Health Emergency of International Concern as Ebola spread across Guinea, Liberia, and Sierra Leone; several airlines suspended routes to the region and some countries imposed travel restrictions.",
+      "market_impact": "The World Bank estimated the outbreak cost the three hardest-hit countries over $2 billion in lost economic output."
+     },
+     {
+      "period": "2016",
+      "event": "Zika virus outbreak",
+      "what_happened": "The WHO declared a Public Health Emergency as Zika spread across the Americas, linked to birth defects; several countries issued travel advisories affecting tourism, notably ahead of the Rio de Janeiro Olympics.",
+      "market_impact": "Tourism-dependent economies in affected regions reported measurable declines in visitor bookings during the advisory period."
+     }
+    ],
+    "possibility_chains": [
+     "A WHO-declared public health emergency has historically triggered travel advisories and, in some cases, temporary route suspensions by airlines.",
+     "Disease outbreaks with international travel warnings have historically reduced tourism and business travel to the affected region for the duration of the advisory.",
+     "Outbreaks affecting agricultural or manufacturing regions have historically disrupted local labor supply and production.",
+     "Vaccine and treatment developers have historically seen increased investment and expedited regulatory review during major outbreaks."
+    ],
+    "why_it_matters": "Zika virus outbreak (2016): Tourism-dependent economies in affected regions reported measurable declines in visitor bookings during the advisory period. A WHO-declared public health emergency has historically triggered travel advisories and, in some cases, temporary route suspensions by airlines.",
+    "linked_playbooks": []
+   },
+   "category_context": null,
+   "corroboration": {
+    "tier": "single_source",
+    "source_count": 1,
+    "country_count": 1,
+    "countries": [
+     "Democratic Republic of the Congo"
+    ],
+    "label": "1 source",
+    "scraped_fallback_sources_added": 0
+   },
+   "sources": [
+    {
+     "title": "RDC : Jean-Marc Kabund accable la gestion de l'épidémie d'Ebola par le régime Tshisekedi",
+     "source_name": "Actualite.cd",
+     "country": "Democratic Republic of the Congo",
+     "language": "French",
+     "url": "https://actualite.cd/2026/08/30/rdc-jean-marc-kabund-accable-la-gestion-de-lepidemie-debola-par-le-regime-tshisekedi",
+     "source_type": "rss",
+     "age_hours": 10.5
+    }
+   ]
+  },
+  {
+   "signal_id": "51afa11465eef2aa",
+   "signal_type": "playbook_single_source",
+   "headline": "Military Coup Thwarted in NIGER",
+   "matched_at": "2026-08-29T18:30:22Z",
    "matched_language": "en",
    "aspects": [
+    {
+     "id": "politics.leadership",
+     "score": 3.0
+    },
     {
      "id": "geopolitics.defense",
      "score": 3.0
     }
    ],
    "ripple_effect": {
-    "id": "nuclear-missile-test-crisis",
-    "name": "Nuclear or long-range missile test triggering international sanctions",
+    "id": "coup-regime-change-trade",
+    "name": "Coup or abrupt regime change disrupting trade relationships",
     "affected_domains": [
-     "defense",
-     "diplomacy",
      "geopolitics",
      "trade",
-     "law-regulation"
+     "mining-raw-materials",
+     "currency",
+     "banking-financial-stability",
+     "diplomacy"
     ],
     "historical_precedents": [
      {
-      "period": "2017",
-      "event": "North Korea's sixth nuclear test and ICBM tests",
-      "what_happened": "North Korea conducted its sixth and largest nuclear test on 3 September 2017, with seismic activity assessed at roughly 10 times more powerful than its previous test and an estimated yield of around 250 kilotons; the U.S. Geological Survey recorded a magnitude 6.3 event. Earlier that year, North Korea also test-fired intercontinental ballistic missiles on 4 July and 28 July 2017 that analysts assessed were capable of reaching the continental United States.",
-      "market_impact": "The UN Security Council unanimously adopted Resolution 2375 on 11 September 2017, capping North Korea's refined petroleum imports (initially 500,000 barrels over three months, then 2 million barrels annually), banning all textile exports (an estimated $800 million annual revenue loss), and phasing out visas for North Korean overseas workers (estimated to cost North Korea another $500 million a year) — among the most restrictive sanctions the Council had imposed on the country to that point."
+      "period": "July 2023",
+      "event": "Niger military coup",
+      "what_happened": "On 26 July 2023, General Abdourahamane Tchiani led the presidential guard in removing President Mohamed Bazoum and installed a military council. The regional bloc ECOWAS responded with an ultimatum, then sanctions including closed land and air borders, a no-fly zone on commercial flights, suspension of financial transactions, and asset freezes; Nigeria cut electricity supply to Niger on 2 August 2023.",
+      "market_impact": "The West African regional central bank cancelled a planned 30 billion CFA franc (about $51 million) bond issuance for Niger, and the World Bank suspended disbursements to the country. Niger is a significant global uranium exporter, and the coup raised questions over the operations of French nuclear fuel company Orano's mining activities there."
+     },
+     {
+      "period": "February 2021",
+      "event": "Myanmar military coup",
+      "what_happened": "Senior General Min Aung Hlaing seized power on 1 February 2021, detaining civilian leader Aung San Suu Kyi and other elected officials. The Biden administration imposed sanctions on military leaders on 11 February 2021 and froze $1 billion in Myanmar government assets held in the U.S.",
+      "market_impact": "Foreign direct investment into Myanmar fell 22% to $3.8 billion in fiscal year 2020, and major foreign investors withdrew: Japan's Kirin ended a $1.7 billion brewery joint venture, Thailand's Amata halted a $1 billion industrial zone project, and India's Adani Ports terminated a $127 million port investment. The Yangon Stock Exchange suspended trading, and property sales reportedly dropped by nearly 100%."
      }
     ],
     "possibility_chains": [
-     "A major nuclear or long-range missile test has historically prompted the UN Security Council to negotiate new sanctions resolutions in the following days to weeks, though the scope of sanctions has depended on securing agreement from all five permanent members, including the tested country's key trading partners.",
-     "Sanctions that target a specific export sector, such as textiles, or a labor-export revenue stream have historically been calibrated to cut off specific, identifiable sources of foreign currency earnings for the sanctioned government.",
-     "Repeated missile and nuclear tests over time have historically produced diminishing market and diplomatic reaction with each subsequent test, as neighboring countries and investors adjust to a higher baseline level of tension."
+     "A coup in a country that is a significant exporter of a specific commodity has historically raised questions about the continuity of that country's mining, energy, or agricultural exports, even when physical production is not immediately disrupted.",
+     "Coups have historically triggered sanctions and suspended aid or financing from regional blocs and international lenders, adding fiscal strain on top of the immediate political disruption.",
+     "Foreign companies operating in a country that experiences a coup have historically paused or withdrawn planned investment until the new government's posture toward existing contracts and foreign ownership becomes clearer."
     ],
-    "why_it_matters": "North Korea's sixth nuclear test and ICBM tests (2017): The UN Security Council unanimously adopted Resolution 2375 on 11 September 2017, capping North Korea's refined petroleum imports (initially 500,000 barrels over three months, then 2 million barrels annually), banning all textile exports (an estimated $800 million annual revenue loss), and phasing out visas for North Korean overseas workers (estimated to cost North Korea another $500 million a year) — among the most restrictive sanctions the Council had imposed on the country to that point. A major nuclear or long-range missile test has historically prompted the UN Security Council to negotiate new sanctions resolutions in the following days to weeks, though the scope of sanctions has depended on securing agreement from all five permanent members, including the tested country's key trading partners.",
+    "why_it_matters": "Myanmar military coup (February 2021): Foreign direct investment into Myanmar fell 22% to $3.8 billion in fiscal year 2020, and major foreign investors withdrew: Japan's Kirin ended a $1.7 billion brewery joint venture, Thailand's Amata halted a $1 billion industrial zone project, and India's Adani Ports terminated a $127 million port investment. The Yangon Stock Exchange suspended trading, and property sales reportedly dropped by nearly 100%. A coup in a country that is a significant exporter of a specific commodity has historically raised questions about the continuity of that country's mining, energy, or agricultural exports, even when physical production is not immediately disrupted.",
     "linked_playbooks": [
-     {
-      "id": "arms-control-treaty-collapse",
-      "name": "Major arms control treaty withdrawal or collapse",
-      "affected_domains": [
-       "defense",
-       "diplomacy",
-       "geopolitics",
-       "law-regulation"
-      ],
-      "why_it_matters": "Intermediate-Range Nuclear Forces (INF) Treaty signing and collapse (1987–2019): Both the U.S. and Russia became free to develop and deploy previously-banned intermediate-range missile systems; Russia subsequently advanced hypersonic and Kalibr missile programs, and the collapse renewed debate over the future of New START, the last remaining major U.S.-Russia arms control agreement. The collapse of a major arms control treaty has historically prompted both sides to resume or accelerate development of previously-restricted weapons systems, a process that has typically unfolded over years given weapons-development timelines."
-     },
      {
       "id": "major-economy-sanctions",
       "name": "Sanctions imposed on a major economy",
       "affected_domains": [],
       "why_it_matters": "International sanctions on Iran over its nuclear program (2010s): Iranian oil exports fell sharply, though global oil prices were also affected by supply from other producers filling the gap; Iran's own currency and economy experienced significant strain during the most restrictive sanctions periods. Sanctions targeting a major energy or commodity exporter have historically tightened global supply of that commodity, which has often (though not always, depending on how much other producers can offset the loss) pushed prices higher."
+     },
+     {
+      "id": "diplomatic-rupture-major-power",
+      "name": "Diplomatic rupture between major regional powers",
+      "affected_domains": [
+       "diplomacy",
+       "trade",
+       "shipping-transportation",
+       "currency",
+       "geopolitics",
+       "banking-financial-stability"
+      ],
+      "why_it_matters": "Saudi Arabia severs relations with Iran (January 2016): The rupture deepened the broader Saudi-Iran regional rivalry playing out through proxy conflicts in Yemen, Syria, and elsewhere; relations were not restored until a China-brokered agreement announced 10 March 2023, with embassies reopening in Riyadh in June 2023 and Tehran in August 2023. A sudden severing of diplomatic relations between neighboring major economies has historically disrupted direct trade, aviation, and financial flows between them, forcing rerouting of commerce through third countries at added cost."
+     },
+     {
+      "id": "currency-crisis",
+      "name": "Sharp currency devaluation / currency crisis",
+      "affected_domains": [],
+      "why_it_matters": "Turkish lira crisis (2018): The lira lost roughly 30–40% of its value against the U.S. dollar over the year, sharply raising the cost of imports and foreign-currency debt for Turkish businesses. A sharp currency devaluation has historically made imported goods, including fuel and food, significantly more expensive for consumers and businesses in the affected country."
      }
     ]
    },
@@ -874,20 +1710,20 @@
     "source_count": 1,
     "country_count": 1,
     "countries": [
-     "Kazakhstan"
+     "Rwanda"
     ],
     "label": "1 source",
     "scraped_fallback_sources_added": 0
    },
    "sources": [
     {
-     "title": "Kazakhstani diplomats and students hold anti-nuclear test run in Budapest",
-     "source_name": "Qazinform (Kazinform)",
-     "country": "Kazakhstan",
-     "language": "Kazakh (multilingual: KZ/RU/EN/others)",
-     "url": "https://qazinform.com/news/kazakhstani-diplomats-and-students-hold-anti-nuclear-test-run-in-budapest-34cdf4",
+     "title": "Military Coup Thwarted in NIGER",
+     "source_name": "Taarifa Rwanda",
+     "country": "Rwanda",
+     "language": "English/Kinyarwanda",
+     "url": "https://taarifa.rw/2026/08/29/military-coup-thwarted-in-niger/",
      "source_type": "rss",
-     "age_hours": 12.6
+     "age_hours": 21.3
     }
    ]
   }
