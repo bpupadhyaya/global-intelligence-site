@@ -1,886 +1,115 @@
 {
  "schema_version": "1.0.0",
- "generated_at": "2026-10-10T03:43:41Z",
+ "generated_at": "2026-10-10T16:45:31Z",
  "note": "World Intelligence signals: multilingual aspect + ripple-effect playbook matching (with one-hop linked_playbooks chains) and cross-source corroboration, run against every country-outlet feed discovered in data/country_feeds.json, PLUS scraped_headlines_fallback.json headline scrapes for feed-less outlets (source_type 'scraped_fallback' vs 'rss' -- scraped items can only ADD corroboration to a signal an RSS item already established as real, never create one on their own, since scraped headlines have no reliable publish timestamp). Zero-cost, zero-LLM, keyword-matching + curated playbook data only. NOT yet wired into data/briefing.json / the live Briefing tab — a standalone, additive dataset for now.",
  "stats": {
   "outlets_total_with_feed": 1149,
-  "outlets_ok": 1040,
-  "outlets_failed": 109,
-  "fresh_items": 12403,
-  "items_matched_aspect": 2225,
-  "items_matched_ripple_playbook": 28,
-  "items_with_linked_playbook_chain": 13,
-  "corroboration_clusters_total": 45,
-  "corroboration_clusters_playbook": 5,
+  "outlets_ok": 1018,
+  "outlets_failed": 131,
+  "fresh_items": 11219,
+  "items_matched_aspect": 1782,
+  "items_matched_ripple_playbook": 20,
+  "items_with_linked_playbook_chain": 10,
+  "corroboration_clusters_total": 43,
+  "corroboration_clusters_playbook": 3,
   "corroboration_clusters_topic_momentum": 40,
-  "signals_total": 12,
+  "signals_total": 11,
   "matched_language_distribution": {
-   "en": 7147,
-   "es": 1391,
-   "fr": 1289,
+   "en": 6379,
+   "es": 1349,
+   "fr": 1120,
    "ar": 575,
-   "ru": 474,
-   "de": 357,
-   "pt": 220,
+   "ru": 388,
+   "de": 332,
    "id": 190,
-   "tr": 170,
+   "tr": 169,
+   "pt": 168,
    "vi": 150,
-   "bn": 99,
-   "zh": 86,
-   "sw": 79,
-   "it": 67,
+   "bn": 100,
+   "zh": 76,
+   "it": 72,
    "ko": 50,
-   "ur": 25,
+   "sw": 41,
    "hi": 25,
-   "ja": 9
+   "ur": 25,
+   "ja": 10
   },
-  "fetch_elapsed_seconds": 60.1,
-  "total_elapsed_seconds": 183.1,
+  "fetch_elapsed_seconds": 66.8,
+  "total_elapsed_seconds": 178.8,
   "outlets_total_scraped_fallback": 567,
   "outlets_total_combined": 1716,
   "scraped_fallback_items_loaded": 7389,
   "scraped_fallback_items_matched": 1420,
-  "outlets_scraped_fallback_contributing": 9
+  "outlets_scraped_fallback_contributing": 10
  },
  "signals": [
   {
-   "signal_id": "21ead0d7be54b3ba",
+   "signal_id": "16d28aa1c25dc440",
    "signal_type": "playbook_corroboration",
-   "headline": "Microsoft is being suspended from program to apply for green cards for H-1B visa workers, Vance says",
-   "matched_at": "2026-10-10T03:37:03Z",
-   "matched_language": "en",
+   "headline": "رضائي: لا تجرؤ أي قطعة بحرية أمريكية اجتياز مضيق هرمز",
+   "matched_at": "2026-10-10T16:31:34Z",
+   "matched_language": "ar",
    "aspects": [
     {
-     "id": "technology.big-tech",
-     "score": 3.0
-    },
-    {
-     "id": "society.labor",
-     "score": 3.0
-    },
-    {
-     "id": "travel.visas",
+     "id": "geopolitics.defense",
      "score": 3.0
     }
    ],
    "corroboration": {
     "tier": "playbook_corroboration",
-    "source_count": 2,
-    "country_count": 2,
+    "source_count": 11,
+    "country_count": 10,
     "countries": [
-     "Oman",
-     "South Korea"
-    ],
-    "label": "2 sources across 2 countries",
-    "scraped_fallback_sources_added": 0
-   },
-   "sources": [
-    {
-     "title": "Microsoft is being suspended from program to apply for green cards for H-1B visa workers, Vance says",
-     "source_name": "The Korea Times",
-     "country": "South Korea",
-     "language": "English",
-     "url": "https://www.koreatimes.co.kr/world/20261010/microsoft-is-being-suspended-from-program-to-apply-for-green-cards-for-h-1b-visa-workers-vance-says?utm_source=rss",
-     "source_type": "rss",
-     "age_hours": 0.1
-    },
-    {
-     "title": "“Deeply offensive': MEA condemns Vance’s 'indentured servants' remark on H-1B workers,",
-     "source_name": "Times of Oman",
-     "country": "Oman",
-     "language": "English",
-     "url": "https://timesofoman.com//article/177829-deeply-offensive-mea-condemns-vances-indentured-servants-remark-on-h-1b-workers",
-     "source_type": "rss",
-     "age_hours": 17.6
-    }
-   ],
-   "ripple_effect": {
-    "id": "h1b-skilled-immigration-policy-shift",
-    "name": "Skilled-worker visa policy shift",
-    "affected_domains": [
-     "labor",
-     "immigration",
-     "technology",
-     "politics"
-    ],
-    "historical_precedents": [
-     {
-      "period": "22 April 2020 – 1 April 2021",
-      "event": "Trump administration's suspension of H-1B and other work-visa entry",
-      "what_happened": "Citing the risk that visa holders would \"displace and disadvantage\" US workers during the pandemic-era economic recovery, President Trump signed a proclamation on April 22, 2020 suspending entry for several nonimmigrant visa categories including H-1B, extended it through December 31, 2020, then again through March 31, 2021, before President Biden allowed the suspension to expire on April 1, 2021.",
-      "market_impact": "The roughly year-long suspension left many US employers, especially in technology, unable to bring new H-1B hires into the country during the suspension window, adding to pandemic-era hiring disruption for visa-dependent roles."
-     },
-     {
-      "period": "19 September 2025 – ongoing",
-      "event": "$100,000 H-1B application fee",
-      "what_happened": "President Trump signed a proclamation requiring employers to pay a one-time $100,000 fee for new H-1B petitions filed between September 21, 2025 and September 21, 2026 — a roughly 65-fold increase over the prior ~$1,500 filing cost — with waivers available only where the Department of Homeland Security judged the hire to be in the national interest.",
-      "market_impact": "A federal judge ruled the $100,000 fee unlawful on June 8, 2026, but the year-plus of uncertainty in between affected employer hiring and budget planning for new skilled-visa hires, particularly in technology and healthcare roles that rely heavily on the H-1B category."
-     }
-    ],
-    "possibility_chains": [
-     "A sudden increase in the cost or difficulty of hiring skilled foreign workers has historically pushed some employers to shift new hiring or entire teams to countries with more accessible immigration systems, a process that has typically played out over a year or more rather than immediately.",
-     "Restrictions on skilled-worker visas have historically had a concentrated impact on the specific industries (technology, healthcare, academia) that rely most heavily on that visa category, rather than spreading evenly across the labor market.",
-     "Because a large share of skilled-visa holders are early in their careers, sudden restrictions have historically had a disproportionate effect on entry-level hiring pipelines at affected employers, showing up gradually as those cohorts would otherwise have been promoted into more senior roles."
-    ],
-    "why_it_matters": "$100,000 H-1B application fee (19 September 2025 – ongoing): A federal judge ruled the $100,000 fee unlawful on June 8, 2026, but the year-plus of uncertainty in between affected employer hiring and budget planning for new skilled-visa hires, particularly in technology and healthcare roles that rely heavily on the H-1B category. A sudden increase in the cost or difficulty of hiring skilled foreign workers has historically pushed some employers to shift new hiring or entire teams to countries with more accessible immigration systems, a process that has typically played out over a year or more rather than immediately.",
-    "linked_playbooks": [
-     {
-      "id": "tech-sector-mass-layoffs",
-      "name": "Large-scale tech industry layoffs",
-      "affected_domains": [
-       "employment",
-       "technology",
-       "capital-markets",
-       "real-estate"
-      ],
-      "why_it_matters": "Elon Musk's mass layoffs at Twitter after his acquisition (November 2022 – April 2023): By January 2023 Twitter's headcount had fallen to roughly 2,300, and by April 2023 fewer than 1,500 active employees remained — an approximately 80% reduction from pre-acquisition levels — while the company also faced worker lawsuits alleging inadequate notice under the WARN Act. A wave of layoffs at one large tech employer has historically been followed within months by similar cuts at competitors, as boards and investors reward visible cost discipline during the same macro conditions."
-     },
-     {
-      "id": "agricultural-guest-worker-policy-shift",
-      "name": "Agricultural guest-worker / farm labor immigration policy shift",
-      "affected_domains": [
-       "labor",
-       "agriculture",
-       "immigration",
-       "consumer-spending"
-      ],
-      "why_it_matters": "Growth of the H-2A agricultural guest-worker visa program (1997–2020): By the late 2010s several major farm states (North Carolina, Washington, Florida, Georgia, California) had come to rely on H-2A workers for more than half of their certified agricultural labor positions, making the program a structural feature of US farm labor supply rather than a marginal one — and making farm output in those states sensitive to any future federal changes to the visa's rules or processing speed. Tightening immigration enforcement or guest-worker visa availability in a major agricultural region has historically raised the risk of unharvested crops and higher farm labor costs during peak harvest windows, since domestic labor has rarely fully filled the resulting gap on short notice."
-     }
-    ]
-   },
-   "category_context": null
-  },
-  {
-   "signal_id": "b0f029c3f0d910ad",
-   "signal_type": "playbook_corroboration",
-   "headline": "Los bolsonaristas que buscaron refugio en Argentina apuestan al regreso de Bolsonaro en Brasil",
-   "matched_at": "2026-10-10T02:55:00Z",
-   "matched_language": "es",
-   "aspects": [],
-   "corroboration": {
-    "tier": "playbook_corroboration",
-    "source_count": 2,
-    "country_count": 2,
-    "countries": [
-     "Argentina",
-     "Peru"
-    ],
-    "label": "2 sources across 2 countries",
-    "scraped_fallback_sources_added": 0
-   },
-   "sources": [
-    {
-     "title": "Los bolsonaristas que buscaron refugio en Argentina apuestan al regreso de Bolsonaro en Brasil",
-     "source_name": "Perfil",
-     "country": "Argentina",
-     "language": "Spanish",
-     "url": "https://www.perfil.com/noticias/politica/los-bolsonaristas-que-buscaron-refugio-en-argentina-apuestan-al-regreso-de-bolsonaro-en-brasil.phtml",
-     "source_type": "rss",
-     "age_hours": 0.8
-    },
-    {
-     "title": "Alessia reaccionó a la extraña promesa de Juana y Juan Pablo",
-     "source_name": "América Televisión",
-     "country": "Peru",
-     "language": "Spanish",
-     "url": "https://www.americatv.com.pe/al-fondo-hay-sitio/alessia-reacciono-extrana-promesa-juana-y-juan-pablo-noticia-168154",
-     "source_type": "rss",
-     "age_hours": 1.1
-    }
-   ],
-   "ripple_effect": {
-    "id": "territorial-debt-crisis",
-    "name": "US territory / sub-sovereign debt restructuring crisis",
-    "affected_domains": [
-     "government-debt",
-     "public-services",
-     "capital-markets",
-     "pensions"
-    ],
-    "historical_precedents": [
-     {
-      "period": "2014–2022",
-      "event": "Puerto Rico's government-debt crisis and PROMESA restructuring",
-      "what_happened": "Puerto Rico's bonds were downgraded to junk status in February 2014, and Governor García Padilla declared the roughly $74 billion in bond debt (plus $49 billion in unfunded pension liabilities) 'not payable' on June 28, 2015; after Puerto Rico missed a $422 million payment on May 1, 2016, Congress passed PROMESA, which President Obama signed June 30, 2016, creating a federal oversight board with authority over the territory's budget and debt restructuring.",
-      "market_impact": "Puerto Rico's poverty rate reached roughly 45% by mid-2017, unemployment hit 12.4% in December 2016, and its sales tax rose to 11% alongside teacher retirement-age increases (47 to 62) and 10% pension cuts under the oversight board's austerity plan; nearly 70% of US municipal bond funds held Puerto Rico exposure, and its general obligation bonds fell to roughly 32 cents on the dollar after Hurricane Maria in 2017 before the territory exited bankruptcy in March 2022."
-     }
-    ],
-    "possibility_chains": [
-     "A US territory's debt crisis has historically been resolved through federal oversight mechanisms different from either a state (which cannot file Chapter 9 the way cities can) or an independent country (which cannot access IMF facilities), creating restructuring rules unique to the territory's ambiguous status.",
-     "Heavy institutional exposure to a single distressed municipal issuer (in this case, via tax-exempt bond funds that concentrated Puerto Rico debt for its tax advantages) has historically transmitted a regional fiscal crisis into national investment portfolios far from the issuer itself.",
-     "Debt-crisis austerity measures layered on top of a shrinking population and tax base have historically been self-reinforcing, since tax increases and service cuts have tended to accelerate the outward migration that shrank the tax base in the first place."
-    ],
-    "why_it_matters": "Puerto Rico's government-debt crisis and PROMESA restructuring (2014–2022): Puerto Rico's poverty rate reached roughly 45% by mid-2017, unemployment hit 12.4% in December 2016, and its sales tax rose to 11% alongside teacher retirement-age increases (47 to 62) and 10% pension cuts under the oversight board's austerity plan; nearly 70% of US municipal bond funds held Puerto Rico exposure, and its general obligation bonds fell to roughly 32 cents on the dollar after Hurricane Maria in 2017 before the territory exited bankruptcy in March 2022. A US territory's debt crisis has historically been resolved through federal oversight mechanisms different from either a state (which cannot file Chapter 9 the way cities can) or an independent country (which cannot access IMF facilities), creating restructuring rules unique to the territory's ambiguous status.",
-    "linked_playbooks": [
-     {
-      "id": "municipal-bankruptcy",
-      "name": "Major municipal or county bankruptcy",
-      "affected_domains": [
-       "government-debt",
-       "public-services",
-       "infrastructure",
-       "pensions"
-      ],
-      "why_it_matters": "Jefferson County, Alabama bankruptcy (November 2011 – December 2013): The county cut its government workforce by more than 700 employees by May 2012, and the bankruptcy court wrote off more than $1.4 billion of the debt before the county emerged from bankruptcy in December 2013. A municipal bankruptcy driven by a shrinking tax base and rising legacy retiree costs has historically forced a choice between deep pension cuts and finding outside funding (such as philanthropic support) to soften them, since the two options are not fiscally separable."
-     },
-     {
-      "id": "fiscal-austerity-program",
-      "name": "Government austerity program (spending cuts and tax rises)",
-      "affected_domains": [
-       "fiscal-policy",
-       "public-services",
-       "government-debt",
-       "social-programs",
-       "politics"
-      ],
-      "why_it_matters": "Canada's 1995 federal budget under Finance Minister Paul Martin (1995): By shrinking the federal transfer, the reform shifted fiscal pressure onto provincial governments, which had to make their own cuts to health and social assistance spending to absorb the reduced federal contribution. Government austerity programs that cut public sector employment have historically taken years to fully play out in local labor markets, as affected workers and the local businesses that served them adjust gradually rather than all at once."
-     },
-     {
-      "id": "sovereign-debt-default",
-      "name": "Sovereign government debt default",
-      "affected_domains": [
-       "government-debt",
-       "currency",
-       "emerging-markets",
-       "banking"
-      ],
-      "why_it_matters": "Sri Lanka's first sovereign default (April 2022): The default followed foreign reserves falling to just $1.9 billion by March 2022, insufficient to cover the country's import and debt-service needs, and led into an IMF rescue program. A sovereign default has historically triggered a sharp loss of access to international capital markets for the defaulting government, often for years, forcing reliance on domestic financing or multilateral lenders in the interim."
-     }
-    ]
-   },
-   "category_context": null
-  },
-  {
-   "signal_id": "c888144083cb6d15",
-   "signal_type": "playbook_corroboration",
-   "headline": "Трамп призвал ритейлеров в США снижать цены на горючее",
-   "matched_at": "2026-10-10T02:06:00Z",
-   "matched_language": "ru",
-   "aspects": [],
-   "corroboration": {
-    "tier": "playbook_corroboration",
-    "source_count": 18,
-    "country_count": 13,
-    "countries": [
-     "Australia",
-     "Austria",
      "Azerbaijan",
-     "Belize",
      "Egypt",
      "Iran",
      "Iraq",
      "Israel",
-     "Italy",
-     "Lebanon",
      "Russia",
+     "Syria",
      "Tunisia",
-     "Vietnam"
+     "Vietnam",
+     "Yemen"
     ],
-    "label": "18 sources across 13 countries",
+    "label": "11 sources across 10 countries",
     "scraped_fallback_sources_added": 7
    },
    "sources": [
     {
-     "title": "Трамп призвал ритейлеров в США снижать цены на горючее",
-     "source_name": "Interfax",
-     "country": "Russia",
-     "language": "Russian",
-     "url": "https://www.interfax.ru/world/1121541",
+     "title": "رضائي: لا تجرؤ أي قطعة بحرية أمريكية اجتياز مضيق هرمز",
+     "source_name": "Al-Thawra",
+     "country": "Yemen",
+     "language": "Arabic",
+     "url": "https://althawrah.ye/archives/1248853",
      "source_type": "rss",
-     "age_hours": 1.6
+     "age_hours": 0.2
     },
     {
-     "title": "Mở rộng EU - “Khoản đầu tư địa chiến lược”",
-     "source_name": "Nhân Dân",
+     "title": "الموز يحلق نتيجة تأخر التوريدات",
+     "source_name": "Al-Watan",
+     "country": "Syria",
+     "language": "Arabic",
+     "url": "https://alwatan.sy/%d8%a7%d9%84%d9%85%d9%88%d8%b2-%d9%8a%d8%ad%d9%84%d9%82-%d9%86%d8%aa%d9%8a%d8%ac%d8%a9-%d8%aa%d8%a3%d8%ae%d8%b1-%d8%a7%d9%84%d8%aa%d9%88%d8%b1%d9%8a%d8%af%d8%a7%d8%aa/",
+     "source_type": "rss",
+     "age_hours": 0.6
+    },
+    {
+     "title": "11 commercial ships attacked in and around Strait of Hormuz since early October",
+     "source_name": "AzerNews",
+     "country": "Azerbaijan",
+     "language": "English",
+     "url": "https://www.azernews.az/region/265298.html",
+     "source_type": "rss",
+     "age_hours": 2.1
+    },
+    {
+     "title": "Công ty Nhật Việt thông tin về tàu NV Sunshine",
+     "source_name": "Tiền Phong",
      "country": "Vietnam",
      "language": "Vietnamese",
-     "url": "https://nhandan.vn/mo-rong-eu-khoan-dau-tu-dia-chien-luoc-post994197.html",
+     "url": "https://tienphong.vn/cong-ty-nhat-viet-thong-tin-ve-tau-nv-sunshine-post1884126.tpo",
      "source_type": "rss",
-     "age_hours": 2.7
-    },
-    {
-     "title": "ترامب: إيران في ورطة كبيرة... ونسيطر بشكل كامل على مضيق هرمز",
-     "source_name": "An-Nahar",
-     "country": "Lebanon",
-     "language": "Arabic",
-     "url": "https://www.annahar.com/international/united-states/355685/ترامب-أسعار-النفط-ستنهار-بشكل-غير-مسبوق-بعد-انتها-الحرب-في-إيران",
-     "source_type": "rss",
-     "age_hours": 2.8
-    },
-    {
-     "title": "Iran strikes gas tanker in Strait of Hormuz",
-     "source_name": "The West Australian",
-     "country": "Australia",
-     "language": "English",
-     "url": "https://thewest.com.au/news/conflict/iran-strikes-gas-tanker-in-strait-of-hormuz-c-22997448",
-     "source_type": "rss",
-     "age_hours": 2.8
-    },
-    {
-     "title": "International News: Despite re-opening of Strait of Hormuz, fuel prices in U.S. and elsewhere keep rising!",
-     "source_name": "Breaking Belize News",
-     "country": "Belize",
-     "language": "English",
-     "url": "https://www.breakingbelizenews.com/2026/10/09/international-news-despite-re-opening-of-strait-of-hormuz-fuel-prices-in-u-s-and-elsewhere-keep-rising/",
-     "source_type": "rss",
-     "age_hours": 6.3
-    },
-    {
-     "title": "Prezzi del carburante alle stelle, Trump sospende fino ad aprile le sanzioni alla Russia e compra il gasolio di Putin. Zelensky: “Indegni e disonesti”",
-     "source_name": "Il Fatto Quotidiano",
-     "country": "Italy",
-     "language": "Italian",
-     "url": "https://www.ilfattoquotidiano.it/2026/10/09/trump-putin-accordo-gasolio-notizie/8533361/",
-     "source_type": "rss",
-     "age_hours": 8.6
-    },
-    {
-     "title": "النجباء تدعو بغداد إلى عدم الامتثال للعقوبات الأميركية على إيران",
-     "source_name": "Al-Mada",
-     "country": "Iraq",
-     "language": "Arabic",
-     "url": "https://almadapaper.net/456134/",
-     "source_type": "rss",
-     "age_hours": 10.1
-    },
-    {
-     "title": "ترامب: مرور 28 مليون برميل نفط عبر مضيق هرمز والحرب مع إيران ستنتهي قريبا",
-     "source_name": "Baghdad Today",
-     "country": "Iraq",
-     "language": "Arabic",
-     "url": "https://baghdadtoday.news/306478-28.html",
-     "source_type": "rss",
-     "age_hours": 10.7
-    },
-    {
-     "title": "Trump: More oil is currently reaching global market through Strait of Hormuz than before",
-     "source_name": "APA (Azerbaijan Press Agency)",
-     "country": "Azerbaijan",
-     "language": "Azerbaijani/English/Russian",
-     "url": "https://en.apa.az/america/trump-more-oil-is-currently-reaching-global-market-through-strait-of-hormuz-than-before-529200",
-     "source_type": "rss",
-     "age_hours": 11.9
-    },
-    {
-     "title": "الحرس الثوري يهاجم ناقلة أثناء عبورها مضيق هرمز",
-     "source_name": "Mosaïque FM",
-     "country": "Tunisia",
-     "language": "Arabic",
-     "url": "https://www.mosaiquefm.net/ar/%D8%A7%D9%84%D8%A3%D8%AE%D8%A8%D8%A7%D8%B1-%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%D9%8A%D8%A9/1532958/%D8%A7%D9%84%D8%AD%D8%B1%D8%B3-%D8%A7%D9%84%D8%AB%D9%88%D8%B1%D9%8A-%D9%8A%D9%87%D8%A7%D8%AC%D9%85-%D9%86%D8%A7%D9%82%D9%84%D8%A9-%D8%A3%D8%AB%D9%86%D8%A7%D8%A1-%D8%B9%D8%A8%D9%88%D8%B1%D9%87%D8%A7-%D9%85%D8%B6%D9%8A%D9%82-%D9%87%D8%B1%D9%85%D8%B2",
-     "source_type": "rss",
-     "age_hours": 12.3
-    }
-   ],
-   "ripple_effect": {
-    "id": "hormuz-gulf-oil-shock",
-    "name": "Persian Gulf oil supply shock",
-    "affected_domains": [],
-    "historical_precedents": [
-     {
-      "period": "1984–1988",
-      "event": "Iran–Iraq \"Tanker War\"",
-      "what_happened": "Iran and Iraq attacked oil tankers transiting the Persian Gulf and Strait of Hormuz, and Iran repeatedly threatened to close the strait.",
-      "market_impact": "Shipping insurance war-risk premiums in the Gulf rose sharply, and the U.S. Navy began escorting reflagged Kuwaiti tankers in 1987 to keep the strait open."
-     },
-     {
-      "period": "September 2019",
-      "event": "Drone and missile attack on Saudi Aramco's Abqaiq and Khurais facilities",
-      "what_happened": "The attack (which Saudi Arabia and the U.S. blamed on Iran, a claim Iran denied) temporarily knocked out roughly half of Saudi Arabia's oil output, about 5% of global supply.",
-      "market_impact": "Brent crude jumped about 15% in a single day — the largest one-day oil price increase since the 1990–91 Gulf War."
-     },
-     {
-      "period": "1990–1991",
-      "event": "Gulf War (Iraqi invasion of Kuwait)",
-      "what_happened": "Iraq's invasion of Kuwait removed a large share of Gulf oil exports from the market and raised fears of a wider regional war.",
-      "market_impact": "Oil prices roughly doubled in the months following the invasion before falling back once the war ended and supply concerns eased."
-     }
-    ],
-    "possibility_chains": [
-     "Roughly a fifth of the world's oil is estimated to pass through the Strait of Hormuz, so a sustained blockage or major disruption there has historically driven crude oil prices sharply higher.",
-     "Because ammonia-based fertilizer production is natural-gas intensive, and natural gas prices often move together with oil, a prolonged energy price spike has historically fed through into higher fertilizer costs over the following months.",
-     "Fertilizer is a major input cost in food production, so energy shocks of this kind have historically been followed — often with a lag — by higher food prices.",
-     "Shipping insurers have historically raised war-risk premiums for vessels transiting the Gulf during periods of heightened tension, adding to the landed cost of oil and other cargo."
-    ],
-    "why_it_matters": "Gulf War (Iraqi invasion of Kuwait) (1990–1991): Oil prices roughly doubled in the months following the invasion before falling back once the war ended and supply concerns eased. Roughly a fifth of the world's oil is estimated to pass through the Strait of Hormuz, so a sustained blockage or major disruption there has historically driven crude oil prices sharply higher.",
-    "linked_playbooks": []
-   },
-   "category_context": null
-  },
-  {
-   "signal_id": "226972e6023d16f7",
-   "signal_type": "playbook_single_source",
-   "headline": "Junín: incendio forestal destruye más de 250 hectáreas y pone en riesgo viviendas y cultivos asháninkas",
-   "matched_at": "2026-10-10T00:26:11Z",
-   "matched_language": "es",
-   "aspects": [
-    {
-     "id": "climate.extreme-weather",
-     "score": 3.0
-    }
-   ],
-   "ripple_effect": {
-    "id": "major-wildfire-disaster",
-    "name": "Major wildfire disaster",
-    "affected_domains": [],
-    "historical_precedents": [
-     {
-      "period": "November 2018",
-      "event": "California Camp Fire",
-      "what_happened": "The deadliest and most destructive wildfire in California history destroyed the town of Paradise and killed dozens of people; the fire was later linked to utility equipment, and the responsible utility filed for bankruptcy the following year.",
-      "market_impact": "Insured losses were estimated at over $10 billion; the utility company later filed for Chapter 11 bankruptcy citing wildfire liabilities."
-     },
-     {
-      "period": "2019–2020",
-      "event": "Australia's \"Black Summer\" bushfires",
-      "what_happened": "An unusually intense bushfire season burned tens of millions of hectares across Australia, destroying thousands of homes and blanketing major cities in smoke for weeks.",
-      "market_impact": "Australian government and insurer estimates put total economic losses in the tens of billions of Australian dollars."
-     },
-     {
-      "period": "June 2023",
-      "event": "Canadian wildfire smoke over the US Northeast",
-      "what_happened": "Record wildfire activity across Canada sent smoke plumes over major US East Coast cities including New York, prompting air-quality alerts and flight delays.",
-      "market_impact": "New York recorded some of the worst air-quality readings of any major city in the world during the peak smoke days."
-     },
-     {
-      "period": "2019",
-      "event": "Amazon rainforest fires, Brazil",
-      "what_happened": "A sharp surge in fires linked to illegal deforestation swept the Brazilian Amazon, drawing international alarm over the loss of the world's largest rainforest and a major global carbon sink; smoke darkened skies over São Paulo, thousands of kilometers away.",
-      "market_impact": "Several European countries threatened to block the EU-Mercosur trade agreement over the fires, some international investors and companies reassessed sourcing tied to Brazilian deforestation, and the episode intensified pressure on commodity supply chains linked to cattle and soy production in the region."
-     }
-    ],
-    "possibility_chains": [
-     "Large wildfires have historically forced evacuations and destroyed homes, businesses, and agricultural land across the fire's path.",
-     "Wildfire smoke has historically degraded air quality far beyond the fire itself, at times affecting cities hundreds of miles away.",
-     "Utilities found responsible for causing major wildfires have historically faced significant financial and legal liabilities, in at least one case leading to bankruptcy.",
-     "Repeated severe wildfire seasons have historically raised property insurance costs and reduced insurance availability in the affected regions."
-    ],
-    "why_it_matters": "Amazon rainforest fires, Brazil (2019): Several European countries threatened to block the EU-Mercosur trade agreement over the fires, some international investors and companies reassessed sourcing tied to Brazilian deforestation, and the episode intensified pressure on commodity supply chains linked to cattle and soy production in the region. Large wildfires have historically forced evacuations and destroyed homes, businesses, and agricultural land across the fire's path.",
-    "linked_playbooks": []
-   },
-   "category_context": null,
-   "corroboration": {
-    "tier": "single_source",
-    "source_count": 1,
-    "country_count": 1,
-    "countries": [
-     "Peru"
-    ],
-    "label": "1 source",
-    "scraped_fallback_sources_added": 0
-   },
-   "sources": [
-    {
-     "title": "Junín: incendio forestal destruye más de 250 hectáreas y pone en riesgo viviendas y cultivos asháninkas",
-     "source_name": "Correo",
-     "country": "Peru",
-     "language": "Spanish",
-     "url": "https://diariocorreo.pe/edicion/huancayo/junin-incendio-forestal-destruye-mas-de-250-hectareas-y-pone-en-riesgo-viviendas-y-cultivos-ashaninkas-noticia/",
-     "source_type": "rss",
-     "age_hours": 3.3
-    }
-   ]
-  },
-  {
-   "signal_id": "4abb9bb294a04f26",
-   "signal_type": "playbook_corroboration",
-   "headline": "Trump flexibiliza sanciones a Rusia para comprarle diésel ante aumento de costo en Estados Unidos",
-   "matched_at": "2026-10-09T23:47:42Z",
-   "matched_language": "es",
-   "aspects": [],
-   "corroboration": {
-    "tier": "playbook_corroboration",
-    "source_count": 2,
-    "country_count": 2,
-    "countries": [
-     "Costa Rica",
-     "Russia"
-    ],
-    "label": "2 sources across 2 countries",
-    "scraped_fallback_sources_added": 0
-   },
-   "sources": [
-    {
-     "title": "Trump flexibiliza sanciones a Rusia para comprarle diésel ante aumento de costo en Estados Unidos",
-     "source_name": "La Nación",
-     "country": "Costa Rica",
-     "language": "Spanish",
-     "url": "https://www.nacion.com/el-mundo/trump-flexibiliza-sanciones-a-rusia-para-comprarle/GLILNY57TNGPZIRO3C7XRYIF4I/story/",
-     "source_type": "rss",
-     "age_hours": 3.9
-    },
-    {
-     "title": "Трамп договорился с Путиным о поставках российского дизеля, ослабив санкции против России. Зеленский назвал это решение «инвестицией в войну». Главное",
-     "source_name": "Meduza",
-     "country": "Russia",
-     "language": "Russian (English at meduza.io/en)",
-     "url": "https://meduza.io/feature/2026/10/10/tramp-dogovorilsya-s-putinym-o-postavkah-rossiyskogo-dizelya-oslabiv-sanktsii-protiv-rossii",
-     "source_type": "rss",
-     "age_hours": 6.5
-    }
-   ],
-   "ripple_effect": {
-    "id": "major-economy-sanctions",
-    "name": "Sanctions imposed on a major economy",
-    "affected_domains": [],
-    "historical_precedents": [
-     {
-      "period": "2022",
-      "event": "Western sanctions on Russia following its invasion of Ukraine",
-      "what_happened": "The U.S., EU, and allies imposed sweeping sanctions on Russia's financial system, energy exports, and access to Western technology, and froze a large share of Russia's foreign-currency reserves.",
-      "market_impact": "European natural gas prices spiked to record highs as Russian pipeline gas supply to Europe fell sharply over the following year, and European governments spent heavily to secure alternative energy supplies and shield consumers from higher bills."
-     },
-     {
-      "period": "2010s",
-      "event": "International sanctions on Iran over its nuclear program",
-      "what_happened": "A series of U.S. and international sanctions restricted Iran's ability to sell oil and access the global banking system.",
-      "market_impact": "Iranian oil exports fell sharply, though global oil prices were also affected by supply from other producers filling the gap; Iran's own currency and economy experienced significant strain during the most restrictive sanctions periods."
-     }
-    ],
-    "possibility_chains": [
-     "Sanctions targeting a major energy or commodity exporter have historically tightened global supply of that commodity, which has often (though not always, depending on how much other producers can offset the loss) pushed prices higher.",
-     "Sanctioned countries have historically sought alternative trading partners and payment systems over time, a process that has typically reduced — but not eliminated — the sanctions' economic impact the longer they remain in place.",
-     "Countries or companies that depended heavily on trade with the sanctioned economy have historically faced their own adjustment costs, not just the sanctioned party."
-    ],
-    "why_it_matters": "International sanctions on Iran over its nuclear program (2010s): Iranian oil exports fell sharply, though global oil prices were also affected by supply from other producers filling the gap; Iran's own currency and economy experienced significant strain during the most restrictive sanctions periods. Sanctions targeting a major energy or commodity exporter have historically tightened global supply of that commodity, which has often (though not always, depending on how much other producers can offset the loss) pushed prices higher.",
-    "linked_playbooks": []
-   },
-   "category_context": null
-  },
-  {
-   "signal_id": "f84154d3e926d325",
-   "signal_type": "playbook_corroboration",
-   "headline": "Guinée : 70 morts, 35 disparitions forcées et plusieurs fosses communes découvertes depuis le coup d'État de 2021",
-   "matched_at": "2026-10-09T20:24:00Z",
-   "matched_language": "fr",
-   "aspects": [
-    {
-     "id": "politics.leadership",
-     "score": 3.0
-    }
-   ],
-   "corroboration": {
-    "tier": "playbook_corroboration",
-    "source_count": 3,
-    "country_count": 3,
-    "countries": [
-     "Bangladesh",
-     "Senegal",
-     "Tanzania"
-    ],
-    "label": "3 sources across 3 countries",
-    "scraped_fallback_sources_added": 0
-   },
-   "sources": [
-    {
-     "title": "Guinée : 70 morts, 35 disparitions forcées et plusieurs fosses communes découvertes depuis le coup d'État de 2021",
-     "source_name": "Dakaractu",
-     "country": "Senegal",
-     "language": "French",
-     "url": "https://www.dakaractu.com/Guinee-70-morts-35-disparitions-forcees-et-plusieurs-fosses-communes-decouvertes-depuis-le-coup-d-Etat-de-2021_a276893.html",
-     "source_type": "rss",
-     "age_hours": 7.3
-    },
-    {
-     "title": "MAKADA CCM RUVUMA WANOLEWA KUHUSU ITIKADI YA CHAMA",
-     "source_name": "Michuzi Blog",
-     "country": "Tanzania",
-     "language": "Swahili",
-     "url": "https://www.michuzi.co.tz/2026/10/makada-ccm-ruvuma-wanolewa-kuhusu.html",
-     "source_type": "rss",
-     "age_hours": 10.0
-    },
-    {
-     "title": "MAFUNZO YA MAKADA WA CCM TANGA YAPOKELEWA KWA KISHINDO",
-     "source_name": "Michuzi Blog",
-     "country": "Tanzania",
-     "language": "Swahili",
-     "url": "https://www.michuzi.co.tz/2026/10/mafunzo-ya-makada-wa-ccm-tanga.html",
-     "source_type": "rss",
-     "age_hours": 12.5
-    },
-    {
-     "title": "RAIS DKT. MWINYI AVUTIWA NA HUDUMA ZA DOC MEDICAL CENTER, QATAR",
-     "source_name": "Michuzi Blog",
-     "country": "Tanzania",
-     "language": "Swahili",
-     "url": "https://www.michuzi.co.tz/2026/10/rais-dkt-mwinyi-avutiwa-na-huduma-za.html",
-     "source_type": "rss",
-     "age_hours": 15.9
-    },
-    {
-     "title": "জুলাই অভ্যুত্থানে সবচেয়ে বেশি অবদান খালেদা জিয়ার, মেট্রোর পিলারে হবে গ্রাফিতি: ডিএনসিসি প্রশাসক",
-     "source_name": "Independent Television (itvbd)",
-     "country": "Bangladesh",
-     "language": "Bengali",
-     "url": "https://www.itvbd.com/country/dhaka/276286/%E0%A6%9C%E0%A7%81%E0%A6%B2%E0%A6%BE%E0%A6%87-%E0%A6%85%E0%A6%AD%E0%A7%8D%E0%A6%AF%E0%A7%81%E0%A6%A4%E0%A7%8D%E0%A6%A5%E0%A6%BE%E0%A6%A8%E0%A7%87-%E0%A6%B8%E0%A6%AC%E0%A6%9A%E0%A7%87%E0%A7%9F%E0%A7%87-%E0%A6%AC%E0%A7%87%E0%A6%B6%E0%A6%BF-%E0%A6%85%E0%A6%AC%E0%A6%A6%E0%A6%BE%E0%A6%A8-%E0%A6%96%E0%A6%BE%E0%A6%B2%E0%A7%87%E0%A6%A6%E0%A6%BE-%E0%A6%9C%E0%A6%BF%E0%A7%9F%E0%A6%BE%E0%A6%B0",
-     "source_type": "rss",
-     "age_hours": 21.0
-    }
-   ],
-   "ripple_effect": {
-    "id": "coup-regime-change-trade",
-    "name": "Coup or abrupt regime change disrupting trade relationships",
-    "affected_domains": [
-     "geopolitics",
-     "trade",
-     "mining-raw-materials",
-     "currency",
-     "banking-financial-stability",
-     "diplomacy"
-    ],
-    "historical_precedents": [
-     {
-      "period": "July 2023",
-      "event": "Niger military coup",
-      "what_happened": "On 26 July 2023, General Abdourahamane Tchiani led the presidential guard in removing President Mohamed Bazoum and installed a military council. The regional bloc ECOWAS responded with an ultimatum, then sanctions including closed land and air borders, a no-fly zone on commercial flights, suspension of financial transactions, and asset freezes; Nigeria cut electricity supply to Niger on 2 August 2023.",
-      "market_impact": "The West African regional central bank cancelled a planned 30 billion CFA franc (about $51 million) bond issuance for Niger, and the World Bank suspended disbursements to the country. Niger is a significant global uranium exporter, and the coup raised questions over the operations of French nuclear fuel company Orano's mining activities there."
-     },
-     {
-      "period": "February 2021",
-      "event": "Myanmar military coup",
-      "what_happened": "Senior General Min Aung Hlaing seized power on 1 February 2021, detaining civilian leader Aung San Suu Kyi and other elected officials. The Biden administration imposed sanctions on military leaders on 11 February 2021 and froze $1 billion in Myanmar government assets held in the U.S.",
-      "market_impact": "Foreign direct investment into Myanmar fell 22% to $3.8 billion in fiscal year 2020, and major foreign investors withdrew: Japan's Kirin ended a $1.7 billion brewery joint venture, Thailand's Amata halted a $1 billion industrial zone project, and India's Adani Ports terminated a $127 million port investment. The Yangon Stock Exchange suspended trading, and property sales reportedly dropped by nearly 100%."
-     }
-    ],
-    "possibility_chains": [
-     "A coup in a country that is a significant exporter of a specific commodity has historically raised questions about the continuity of that country's mining, energy, or agricultural exports, even when physical production is not immediately disrupted.",
-     "Coups have historically triggered sanctions and suspended aid or financing from regional blocs and international lenders, adding fiscal strain on top of the immediate political disruption.",
-     "Foreign companies operating in a country that experiences a coup have historically paused or withdrawn planned investment until the new government's posture toward existing contracts and foreign ownership becomes clearer."
-    ],
-    "why_it_matters": "Myanmar military coup (February 2021): Foreign direct investment into Myanmar fell 22% to $3.8 billion in fiscal year 2020, and major foreign investors withdrew: Japan's Kirin ended a $1.7 billion brewery joint venture, Thailand's Amata halted a $1 billion industrial zone project, and India's Adani Ports terminated a $127 million port investment. The Yangon Stock Exchange suspended trading, and property sales reportedly dropped by nearly 100%. A coup in a country that is a significant exporter of a specific commodity has historically raised questions about the continuity of that country's mining, energy, or agricultural exports, even when physical production is not immediately disrupted.",
-    "linked_playbooks": [
-     {
-      "id": "major-economy-sanctions",
-      "name": "Sanctions imposed on a major economy",
-      "affected_domains": [],
-      "why_it_matters": "International sanctions on Iran over its nuclear program (2010s): Iranian oil exports fell sharply, though global oil prices were also affected by supply from other producers filling the gap; Iran's own currency and economy experienced significant strain during the most restrictive sanctions periods. Sanctions targeting a major energy or commodity exporter have historically tightened global supply of that commodity, which has often (though not always, depending on how much other producers can offset the loss) pushed prices higher."
-     },
-     {
-      "id": "diplomatic-rupture-major-power",
-      "name": "Diplomatic rupture between major regional powers",
-      "affected_domains": [
-       "diplomacy",
-       "trade",
-       "shipping-transportation",
-       "currency",
-       "geopolitics",
-       "banking-financial-stability"
-      ],
-      "why_it_matters": "Saudi Arabia severs relations with Iran (January 2016): The rupture deepened the broader Saudi-Iran regional rivalry playing out through proxy conflicts in Yemen, Syria, and elsewhere; relations were not restored until a China-brokered agreement announced 10 March 2023, with embassies reopening in Riyadh in June 2023 and Tehran in August 2023. A sudden severing of diplomatic relations between neighboring major economies has historically disrupted direct trade, aviation, and financial flows between them, forcing rerouting of commerce through third countries at added cost."
-     },
-     {
-      "id": "currency-crisis",
-      "name": "Sharp currency devaluation / currency crisis",
-      "affected_domains": [],
-      "why_it_matters": "Turkish lira crisis (2018): The lira lost roughly 30–40% of its value against the U.S. dollar over the year, sharply raising the cost of imports and foreign-currency debt for Turkish businesses. A sharp currency devaluation has historically made imported goods, including fuel and food, significantly more expensive for consumers and businesses in the affected country."
-     }
-    ]
-   },
-   "category_context": null
-  },
-  {
-   "signal_id": "cd3bf08884d9f581",
-   "signal_type": "playbook_single_source",
-   "headline": "Florida and Alabama declare states of emergency as Hurricane Isaias nears Gulf Coast",
-   "matched_at": "2026-10-09T18:56:53Z",
-   "matched_language": "en",
-   "aspects": [
-    {
-     "id": "climate.extreme-weather",
-     "score": 4.0
-    }
-   ],
-   "ripple_effect": {
-    "id": "gulf-coast-storm-energy",
-    "name": "Major storm hitting Gulf Coast energy infrastructure",
-    "affected_domains": [],
-    "historical_precedents": [
-     {
-      "period": "August–September 2005",
-      "event": "Hurricanes Katrina and Rita",
-      "what_happened": "The storms damaged a large share of U.S. Gulf of Mexico oil and gas production and refining capacity, some of which stayed offline for months.",
-      "market_impact": "U.S. gasoline prices jumped to record highs at the time, with some regions experiencing temporary shortages, and crude oil prices also rose on the loss of Gulf production."
-     }
-    ],
-    "possibility_chains": [
-     "A major storm that damages Gulf Coast refineries or offshore production has historically caused a temporary spike in regional (and sometimes national) fuel prices, with the size of the spike depending on how much capacity is affected and for how long.",
-     "Refinery outages have historically had a bigger effect on gasoline and diesel prices specifically than on crude oil prices, since refining capacity (not just crude supply) is the bottleneck during these events.",
-     "Recovery time has historically depended on the extent of physical damage — flooding and wind damage to a refinery have taken much longer to repair than a precautionary shutdown with no direct damage."
-    ],
-    "why_it_matters": "Hurricanes Katrina and Rita (August–September 2005): U.S. gasoline prices jumped to record highs at the time, with some regions experiencing temporary shortages, and crude oil prices also rose on the loss of Gulf production. A major storm that damages Gulf Coast refineries or offshore production has historically caused a temporary spike in regional (and sometimes national) fuel prices, with the size of the spike depending on how much capacity is affected and for how long.",
-    "linked_playbooks": []
-   },
-   "category_context": null,
-   "corroboration": {
-    "tier": "single_source",
-    "source_count": 1,
-    "country_count": 1,
-    "countries": [
-     "United States"
-    ],
-    "label": "1 source",
-    "scraped_fallback_sources_added": 0
-   },
-   "sources": [
-    {
-     "title": "Florida and Alabama declare states of emergency as Hurricane Isaias nears Gulf Coast",
-     "source_name": "NBC News",
-     "country": "United States",
-     "language": "English",
-     "url": "https://www.nbcnews.com/now/video/florida-and-alabama-declare-states-of-emergency-as-hurricane-isaias-nears-gulf-coast-271352389806",
-     "source_type": "rss",
-     "age_hours": 8.8
-    }
-   ]
-  },
-  {
-   "signal_id": "da985bbc0c90e8d6",
-   "signal_type": "playbook_single_source",
-   "headline": "Olaf Scholz' »Zeitenwende«-Rede: Kanzleramt muss Entwurf nicht veröffentlichen",
-   "matched_at": "2026-10-09T17:59:00Z",
-   "matched_language": "de",
-   "aspects": [],
-   "ripple_effect": {
-    "id": "defense-spending-rearmament-surge",
-    "name": "National rearmament / defense spending surge",
-    "affected_domains": [
-     "defense",
-     "fiscal-policy",
-     "manufacturing",
-     "geopolitics"
-    ],
-    "historical_precedents": [
-     {
-      "period": "February 2022 – 2024",
-      "event": "Germany's 'Zeitenwende' defense policy shift",
-      "what_happened": "In a speech to the Bundestag on 27 February 2022, three days after Russia's invasion of Ukraine, Chancellor Olaf Scholz announced a one-time €100 billion special fund to modernize Germany's armed forces and committed Germany to spending over 2% of GDP on defense, a NATO membership guideline Germany had not previously met. By 2024, Germany had reached NATO's 2%-of-GDP defense spending target.",
-      "market_impact": "The announcement marked a historic reversal of Germany's post-WWII restraint on military spending and was followed by German defense contractors reporting substantially higher order backlogs in subsequent years."
-     }
-    ],
-    "possibility_chains": [
-     "A major security shock in a region has historically prompted neighboring or allied countries to announce sizable defense spending increases in the following weeks, even though actually building and delivering new military hardware has typically taken years.",
-     "Sustained higher defense spending commitments have historically boosted revenue and order backlogs for domestic and allied defense contractors, with the effect showing up in company earnings over subsequent quarters and years.",
-     "Countries that historically kept defense spending below alliance guidelines have, following a major rearmament announcement, faced years of budget and industrial-capacity planning to translate the announced spending into delivered equipment."
-    ],
-    "why_it_matters": "Germany's 'Zeitenwende' defense policy shift (February 2022 – 2024): The announcement marked a historic reversal of Germany's post-WWII restraint on military spending and was followed by German defense contractors reporting substantially higher order backlogs in subsequent years. A major security shock in a region has historically prompted neighboring or allied countries to announce sizable defense spending increases in the following weeks, even though actually building and delivering new military hardware has typically taken years.",
-    "linked_playbooks": [
-     {
-      "id": "nato-alliance-expansion",
-      "name": "NATO alliance expansion / enlargement",
-      "affected_domains": [
-       "defense",
-       "diplomacy",
-       "geopolitics"
-      ],
-      "why_it_matters": "Finland and Sweden's accession following Russia's invasion of Ukraine (2022–2024): Russia's Defense Ministry said Finland's accession significantly increased the risk of a wider conflict in Europe and doubled the length of NATO's border with Russia, while President Putin publicly dismissed the accessions as posing no direct threat to Russia; both new members proceeded with defense-spending commitments tied to NATO membership. NATO enlargement that extends the alliance's border with Russia has historically drawn public objections from Moscow, though the accessions themselves have not, to date, triggered direct military confrontation between Russia and the alliance."
-     },
-     {
-      "id": "arms-control-treaty-collapse",
-      "name": "Major arms control treaty withdrawal or collapse",
-      "affected_domains": [
-       "defense",
-       "diplomacy",
-       "geopolitics",
-       "law-regulation"
-      ],
-      "why_it_matters": "Intermediate-Range Nuclear Forces (INF) Treaty signing and collapse (1987–2019): Both the U.S. and Russia became free to develop and deploy previously-banned intermediate-range missile systems; Russia subsequently advanced hypersonic and Kalibr missile programs, and the collapse renewed debate over the future of New START, the last remaining major U.S.-Russia arms control agreement. The collapse of a major arms control treaty has historically prompted both sides to resume or accelerate development of previously-restricted weapons systems, a process that has typically unfolded over years given weapons-development timelines."
-     }
-    ]
-   },
-   "category_context": null,
-   "corroboration": {
-    "tier": "single_source",
-    "source_count": 1,
-    "country_count": 1,
-    "countries": [
-     "Germany"
-    ],
-    "label": "1 source",
-    "scraped_fallback_sources_added": 0
-   },
-   "sources": [
-    {
-     "title": "Olaf Scholz' »Zeitenwende«-Rede: Kanzleramt muss Entwurf nicht veröffentlichen",
-     "source_name": "Der Spiegel",
-     "country": "Germany",
-     "language": "German",
-     "url": "https://www.spiegel.de/politik/deutschland/olaf-scholz-zeitenwende-rede-kanzleramt-muss-entwurf-nicht-veroeffentlichen-a-b868bc1d-5c43-43a3-9c68-ccf85524e9c2#ref=rss",
-     "source_type": "rss",
-     "age_hours": 9.7
-    }
-   ]
-  },
-  {
-   "signal_id": "4481afc8d9c715a0",
-   "signal_type": "playbook_single_source",
-   "headline": "Iran bekennt sich zu Angriff auf Tanker in Hormus-Straße",
-   "matched_at": "2026-10-09T14:34:18Z",
-   "matched_language": "de",
-   "aspects": [
-    {
-     "id": "geopolitics.conflicts",
-     "score": 3.0
-    }
-   ],
-   "ripple_effect": {
-    "id": "hormuz-gulf-oil-shock",
-    "name": "Persian Gulf oil supply shock",
-    "affected_domains": [],
-    "historical_precedents": [
-     {
-      "period": "1984–1988",
-      "event": "Iran–Iraq \"Tanker War\"",
-      "what_happened": "Iran and Iraq attacked oil tankers transiting the Persian Gulf and Strait of Hormuz, and Iran repeatedly threatened to close the strait.",
-      "market_impact": "Shipping insurance war-risk premiums in the Gulf rose sharply, and the U.S. Navy began escorting reflagged Kuwaiti tankers in 1987 to keep the strait open."
-     },
-     {
-      "period": "September 2019",
-      "event": "Drone and missile attack on Saudi Aramco's Abqaiq and Khurais facilities",
-      "what_happened": "The attack (which Saudi Arabia and the U.S. blamed on Iran, a claim Iran denied) temporarily knocked out roughly half of Saudi Arabia's oil output, about 5% of global supply.",
-      "market_impact": "Brent crude jumped about 15% in a single day — the largest one-day oil price increase since the 1990–91 Gulf War."
-     },
-     {
-      "period": "1990–1991",
-      "event": "Gulf War (Iraqi invasion of Kuwait)",
-      "what_happened": "Iraq's invasion of Kuwait removed a large share of Gulf oil exports from the market and raised fears of a wider regional war.",
-      "market_impact": "Oil prices roughly doubled in the months following the invasion before falling back once the war ended and supply concerns eased."
-     }
-    ],
-    "possibility_chains": [
-     "Roughly a fifth of the world's oil is estimated to pass through the Strait of Hormuz, so a sustained blockage or major disruption there has historically driven crude oil prices sharply higher.",
-     "Because ammonia-based fertilizer production is natural-gas intensive, and natural gas prices often move together with oil, a prolonged energy price spike has historically fed through into higher fertilizer costs over the following months.",
-     "Fertilizer is a major input cost in food production, so energy shocks of this kind have historically been followed — often with a lag — by higher food prices.",
-     "Shipping insurers have historically raised war-risk premiums for vessels transiting the Gulf during periods of heightened tension, adding to the landed cost of oil and other cargo."
-    ],
-    "why_it_matters": "Gulf War (Iraqi invasion of Kuwait) (1990–1991): Oil prices roughly doubled in the months following the invasion before falling back once the war ended and supply concerns eased. Roughly a fifth of the world's oil is estimated to pass through the Strait of Hormuz, so a sustained blockage or major disruption there has historically driven crude oil prices sharply higher.",
-    "linked_playbooks": []
-   },
-   "category_context": null,
-   "corroboration": {
-    "tier": "single_source",
-    "source_count": 8,
-    "country_count": 7,
-    "countries": [
-     "Austria",
-     "Egypt",
-     "Iran",
-     "Iraq",
-     "Israel",
-     "Russia",
-     "Tunisia"
-    ],
-    "label": "8 sources across 7 countries",
-    "scraped_fallback_sources_added": 7
-   },
-   "sources": [
-    {
-     "title": "Iran bekennt sich zu Angriff auf Tanker in Hormus-Straße",
-     "source_name": "ORF (Österreichischer Rundfunk)",
-     "country": "Austria",
-     "language": "German",
-     "url": "https://orf.at/stories/3444610/",
-     "source_type": "rss",
-     "age_hours": 13.1
+     "age_hours": 2.2
     },
     {
      "title": "عاجل.. 6 سفن فقط عبرت مضيق هرمز خلال يوم مع تلاشي آمال التوصل لاتفاق سلام",
@@ -935,109 +164,142 @@
      "url": "https://www.i24news.tv/en/news/israel/defense/artc-i-don-t-trust-iran-they-lied-constantly-we-have-total-control-over-the-strait-trump-declares-live-blog",
      "source_type": "scraped_fallback",
      "age_hours": null
-    },
-    {
-     "title": "Strait of Hormuz developments",
-     "source_name": "TASS",
-     "country": "Russia",
-     "language": "English (Russian version at tass.ru)",
-     "url": "https://tass.com/situation-around-the-strait-of-hormuz",
-     "source_type": "scraped_fallback",
-     "age_hours": null
     }
-   ]
-  },
-  {
-   "signal_id": "177f1bce4553eb50",
-   "signal_type": "playbook_single_source",
-   "headline": "Billigflieger flüchten aus Wien – ist das ein Problem?",
-   "matched_at": "2026-10-09T14:11:28Z",
-   "matched_language": "de",
-   "aspects": [],
+   ],
    "ripple_effect": {
-    "id": "low-cost-carrier-airfare-disruption",
-    "name": "Low-cost carriers disrupt legacy airline pricing after deregulation",
-    "affected_domains": [
-     "aviation",
-     "consumer-spending",
-     "travel",
-     "regulation"
-    ],
+    "id": "hormuz-gulf-oil-shock",
+    "name": "Persian Gulf oil supply shock",
+    "affected_domains": [],
     "historical_precedents": [
      {
-      "period": "1990–1997",
-      "event": "Ryanair adopts the low-cost carrier model as EU aviation deregulation takes effect",
-      "what_happened": "Ryanair restructured itself into a low-cost carrier starting in 1990, after its founders studied Southwest Airlines' model in the United States; the airline standardized on an all-Boeing 737 fleet and cut its cheapest return fare from £99 to £59. When Ryanair had launched its Dublin-London Luton route in 1987 under partial EEC air-travel deregulation, it priced return fares at £99 — roughly half the prevailing legacy-carrier rate — prompting Aer Lingus and British Airways to cut their own fares to £95 and £94.99 in response. The EU's Single Aviation Market, established in 1992, and further deregulation in April 1997 removed remaining cabotage restrictions and enabled Ryanair's rapid pan-European expansion, with annual passengers growing from about 745,000 in 1990 to 66.5 million by 2010.",
-      "market_impact": "Ryanair's model was subsequently adopted by other low-cost carriers including easyJet, WestJet, and AirAsia, restructuring competitive pricing across the European aviation market over the following decades."
+      "period": "1984–1988",
+      "event": "Iran–Iraq \"Tanker War\"",
+      "what_happened": "Iran and Iraq attacked oil tankers transiting the Persian Gulf and Strait of Hormuz, and Iran repeatedly threatened to close the strait.",
+      "market_impact": "Shipping insurance war-risk premiums in the Gulf rose sharply, and the U.S. Navy began escorting reflagged Kuwaiti tankers in 1987 to keep the strait open."
      },
      {
-      "period": "1978–1994",
-      "event": "US Airline Deregulation Act and the growth of low-cost, point-to-point carriers",
-      "what_happened": "Following the 1978 US Airline Deregulation Act, low-cost carriers such as Southwest Airlines expanded point-to-point service that competed directly with legacy hub-and-spoke carriers on price.",
-      "market_impact": "Average US fares per passenger mile fell about 9% between 1979 and 1994, and inflation-adjusted fares fell roughly 30% between 1976 and 1990; a New York-Los Angeles round trip that would have cost an inflation-adjusted $1,442 in 1974 could be purchased for around $268 by 2010, though these savings accrued more to higher-traffic, longer-distance routes than to shorter ones."
+      "period": "September 2019",
+      "event": "Drone and missile attack on Saudi Aramco's Abqaiq and Khurais facilities",
+      "what_happened": "The attack (which Saudi Arabia and the U.S. blamed on Iran, a claim Iran denied) temporarily knocked out roughly half of Saudi Arabia's oil output, about 5% of global supply.",
+      "market_impact": "Brent crude jumped about 15% in a single day — the largest one-day oil price increase since the 1990–91 Gulf War."
+     },
+     {
+      "period": "1990–1991",
+      "event": "Gulf War (Iraqi invasion of Kuwait)",
+      "what_happened": "Iraq's invasion of Kuwait removed a large share of Gulf oil exports from the market and raised fears of a wider regional war.",
+      "market_impact": "Oil prices roughly doubled in the months following the invasion before falling back once the war ended and supply concerns eased."
      }
     ],
     "possibility_chains": [
-     "A low-cost carrier entering a new route or market has historically forced incumbent legacy carriers to cut their own fares on that route in direct response, rather than cede the market entirely.",
-     "Sustained low-cost-carrier competition following deregulation has historically compressed average industry fares over a period of years to decades, with the effect concentrated on the routes most exposed to new low-cost entrants."
+     "Roughly a fifth of the world's oil is estimated to pass through the Strait of Hormuz, so a sustained blockage or major disruption there has historically driven crude oil prices sharply higher.",
+     "Because ammonia-based fertilizer production is natural-gas intensive, and natural gas prices often move together with oil, a prolonged energy price spike has historically fed through into higher fertilizer costs over the following months.",
+     "Fertilizer is a major input cost in food production, so energy shocks of this kind have historically been followed — often with a lag — by higher food prices.",
+     "Shipping insurers have historically raised war-risk premiums for vessels transiting the Gulf during periods of heightened tension, adding to the landed cost of oil and other cargo."
     ],
-    "why_it_matters": "US Airline Deregulation Act and the growth of low-cost, point-to-point carriers (1978–1994): Average US fares per passenger mile fell about 9% between 1979 and 1994, and inflation-adjusted fares fell roughly 30% between 1976 and 1990; a New York-Los Angeles round trip that would have cost an inflation-adjusted $1,442 in 1974 could be purchased for around $268 by 2010, though these savings accrued more to higher-traffic, longer-distance routes than to shorter ones. A low-cost carrier entering a new route or market has historically forced incumbent legacy carriers to cut their own fares on that route in direct response, rather than cede the market entirely.",
-    "linked_playbooks": [
-     {
-      "id": "us-airline-merger-consolidation-wave",
-      "name": "2008–2015 US airline merger wave consolidates the industry into four major carriers",
-      "affected_domains": [
-       "aviation",
-       "capital-markets",
-       "employment",
-       "regulation",
-       "consumer-spending"
-      ],
-      "why_it_matters": "American Airlines merges with US Airways (February–December 2013): The merger created what became, by some measurements, the largest airline in the world by passengers carried and scheduled passenger-kilometers flown, completing a consolidation wave that also included United Airlines' 2010 merger with Continental — leaving the US domestic market dominated by four major carriers (American, Delta, United, and Southwest). A period of sustained high fuel costs or post-recession financial stress has historically accelerated airline merger activity, as weaker carriers sought scale and stronger balance sheets through consolidation rather than standalone survival."
-     },
-     {
-      "id": "thomas-cook-collapse-tour-operator-bankruptcy",
-      "name": "Thomas Cook collapse triggers UK's largest peacetime repatriation",
-      "affected_domains": [
-       "travel",
-       "tourism",
-       "aviation",
-       "employment",
-       "consumer-spending"
-      ],
-      "why_it_matters": "Collapse of Thomas Cook Group (September 2019): The UK Civil Aviation Authority launched 'Operation Matterhorn,' chartering roughly 40 aircraft from other carriers including easyJet, Virgin Atlantic, and Malaysia Airlines to repatriate stranded travelers — an operation the CAA said overtook the 2017 collapse of Monarch Airlines as the UK's largest peacetime repatriation. About 21,000 Thomas Cook employees worldwide lost their jobs, including 9,000 in the UK; the company had reported a £1.5 billion loss for the first half of 2019, including £1.1 billion in goodwill write-downs. A major tour operator or airline's sudden collapse has historically stranded large numbers of travelers simultaneously, forcing government-coordinated emergency repatriation using capacity chartered from competing airlines."
-     }
-    ]
+    "why_it_matters": "Gulf War (Iraqi invasion of Kuwait) (1990–1991): Oil prices roughly doubled in the months following the invasion before falling back once the war ended and supply concerns eased. Roughly a fifth of the world's oil is estimated to pass through the Strait of Hormuz, so a sustained blockage or major disruption there has historically driven crude oil prices sharply higher.",
+    "linked_playbooks": []
    },
-   "category_context": null,
+   "category_context": null
+  },
+  {
+   "signal_id": "4abb9bb294a04f26",
+   "signal_type": "playbook_corroboration",
+   "headline": "Каллас анонсировала крупнейший пакет санкций против России",
+   "matched_at": "2026-10-10T16:28:09Z",
+   "matched_language": "ru",
+   "aspects": [],
    "corroboration": {
-    "tier": "single_source",
-    "source_count": 1,
-    "country_count": 1,
+    "tier": "playbook_corroboration",
+    "source_count": 5,
+    "country_count": 2,
     "countries": [
-     "Austria"
+     "Austria",
+     "Russia"
     ],
-    "label": "1 source",
+    "label": "5 sources across 2 countries",
     "scraped_fallback_sources_added": 0
    },
    "sources": [
     {
-     "title": "Billigflieger flüchten aus Wien – ist das ein Problem?",
-     "source_name": "Der Standard",
+     "title": "Каллас анонсировала крупнейший пакет санкций против России",
+     "source_name": "RIA Novosti",
+     "country": "Russia",
+     "language": "Russian",
+     "url": "https://ria.ru/20261010/kallas-2123718136.html",
+     "source_type": "rss",
+     "age_hours": 0.3
+    },
+    {
+     "title": "Премьер Грузии считает правильным решение не вводить санкции против России",
+     "source_name": "Interfax",
+     "country": "Russia",
+     "language": "Russian",
+     "url": "https://www.interfax.ru/world/1121608",
+     "source_type": "rss",
+     "age_hours": 2.6
+    },
+    {
+     "title": "Дизельная сделка США и России привела к ссоре Трампа с Зеленским",
+     "source_name": "Novaya Gazeta Europe",
+     "country": "Russia",
+     "language": "Russian",
+     "url": "https://novayagazeta.eu/articles/2026/10/10/dizelnaia-sdelka-ssha-i-rossii-privela-k-ssore-trampa-s-zelenskim",
+     "source_type": "rss",
+     "age_hours": 2.7
+    },
+    {
+     "title": "„Investition in den Krieg“: Trump bestätigt Diesel-Deal mit Putin",
+     "source_name": "Die Presse",
      "country": "Austria",
      "language": "German",
-     "url": "https://www.derstandard.at/story/3000000343461/billigflieger-fluechten-aus-wien-ist-das-ein-problem?ref=rss",
+     "url": "https://www.diepresse.com/41342972/investition-in-den-krieg-trump-bestaetigt-diesel-deal-mit-putin",
      "source_type": "rss",
-     "age_hours": 13.5
+     "age_hours": 4.0
+    },
+    {
+     "title": "Трамп договорился с Путиным о поставках российского дизеля, ослабив санкции против России. Зеленский назвал это решение «инвестицией в войну». Главное",
+     "source_name": "Meduza",
+     "country": "Russia",
+     "language": "Russian (English at meduza.io/en)",
+     "url": "https://meduza.io/feature/2026/10/10/tramp-dogovorilsya-s-putinym-o-postavkah-rossiyskogo-dizelya-oslabiv-sanktsii-protiv-rossii",
+     "source_type": "rss",
+     "age_hours": 19.6
     }
-   ]
+   ],
+   "ripple_effect": {
+    "id": "major-economy-sanctions",
+    "name": "Sanctions imposed on a major economy",
+    "affected_domains": [],
+    "historical_precedents": [
+     {
+      "period": "2022",
+      "event": "Western sanctions on Russia following its invasion of Ukraine",
+      "what_happened": "The U.S., EU, and allies imposed sweeping sanctions on Russia's financial system, energy exports, and access to Western technology, and froze a large share of Russia's foreign-currency reserves.",
+      "market_impact": "European natural gas prices spiked to record highs as Russian pipeline gas supply to Europe fell sharply over the following year, and European governments spent heavily to secure alternative energy supplies and shield consumers from higher bills."
+     },
+     {
+      "period": "2010s",
+      "event": "International sanctions on Iran over its nuclear program",
+      "what_happened": "A series of U.S. and international sanctions restricted Iran's ability to sell oil and access the global banking system.",
+      "market_impact": "Iranian oil exports fell sharply, though global oil prices were also affected by supply from other producers filling the gap; Iran's own currency and economy experienced significant strain during the most restrictive sanctions periods."
+     }
+    ],
+    "possibility_chains": [
+     "Sanctions targeting a major energy or commodity exporter have historically tightened global supply of that commodity, which has often (though not always, depending on how much other producers can offset the loss) pushed prices higher.",
+     "Sanctioned countries have historically sought alternative trading partners and payment systems over time, a process that has typically reduced — but not eliminated — the sanctions' economic impact the longer they remain in place.",
+     "Countries or companies that depended heavily on trade with the sanctioned economy have historically faced their own adjustment costs, not just the sanctioned party."
+    ],
+    "why_it_matters": "International sanctions on Iran over its nuclear program (2010s): Iranian oil exports fell sharply, though global oil prices were also affected by supply from other producers filling the gap; Iran's own currency and economy experienced significant strain during the most restrictive sanctions periods. Sanctions targeting a major energy or commodity exporter have historically tightened global supply of that commodity, which has often (though not always, depending on how much other producers can offset the loss) pushed prices higher.",
+    "linked_playbooks": []
+   },
+   "category_context": null
   },
   {
-   "signal_id": "f1d2d7d30548d57c",
+   "signal_id": "90ddca63c1969d56",
    "signal_type": "playbook_single_source",
-   "headline": "PH flags near-doubling of Chinese vessels in disputed waters",
-   "matched_at": "2026-10-09T05:36:00Z",
-   "matched_language": "en",
+   "headline": "Chung sức xanh hóa Trường Sa",
+   "matched_at": "2026-10-10T14:19:46Z",
+   "matched_language": "vi",
    "aspects": [],
    "ripple_effect": {
     "id": "south-china-sea-dispute",
@@ -1105,20 +367,20 @@
     "countries": [
      "China",
      "Indonesia",
-     "Philippines"
+     "Vietnam"
     ],
     "label": "3 sources across 3 countries",
     "scraped_fallback_sources_added": 2
    },
    "sources": [
     {
-     "title": "PH flags near-doubling of Chinese vessels in disputed waters",
-     "source_name": "Philippine Daily Inquirer",
-     "country": "Philippines",
-     "language": "English",
-     "url": "https://www.inquirer.net/492302/ph-flags-near-doubling-of-sino-vessels-in-disputed-waters/",
+     "title": "Chung sức xanh hóa Trường Sa",
+     "source_name": "Nhân Dân",
+     "country": "Vietnam",
+     "language": "Vietnamese",
+     "url": "https://nhandan.vn/chung-suc-xanh-hoa-truong-sa-post994374.html",
      "source_type": "rss",
-     "age_hours": 22.1
+     "age_hours": 2.4
     },
     {
      "title": "一年近200艘军舰、数万架次军机，谁在海上“窥伺”？ “在战略互信不足与风险管控机制短板相互叠加下，普通常态互动容易向高风险互动演变。” 据“南海战略态势感知计划”披露数据，2025年共有18个域外国家，累计近两百艘军舰在西太平洋海域活动，域外国家军机超两万架次。",
@@ -1141,62 +403,66 @@
    ]
   },
   {
-   "signal_id": "55b776c510d52de1",
+   "signal_id": "6df41da518ceec6b",
    "signal_type": "playbook_single_source",
-   "headline": "Kazakhstan’s Nuclear Legacy Offers Lessons in Age of AI and Geopolitical Rivalry",
-   "matched_at": "2026-10-09T04:30:24Z",
-   "matched_language": "en",
-   "aspects": [
-    {
-     "id": "geopolitics.defense",
-     "score": 4.0
-    },
-    {
-     "id": "technology.ai",
-     "score": 3.0
-    }
-   ],
+   "headline": "\"Nous avons eu trois chocs durant les derniers mois et, malgré tout, les marchés ont bien résisté\"",
+   "matched_at": "2026-10-10T13:34:58Z",
+   "matched_language": "fr",
+   "aspects": [],
    "ripple_effect": {
-    "id": "nuclear-missile-test-crisis",
-    "name": "Nuclear or long-range missile test triggering international sanctions",
+    "id": "subprime-mortgage-securitization-crisis",
+    "name": "Subprime mortgage securitization crisis",
     "affected_domains": [
-     "defense",
-     "diplomacy",
-     "geopolitics",
-     "trade",
-     "law-regulation"
+     "banking-financial-stability",
+     "real-estate",
+     "capital-markets",
+     "employment",
+     "consumer-confidence"
     ],
     "historical_precedents": [
      {
-      "period": "2017",
-      "event": "North Korea's sixth nuclear test and ICBM tests",
-      "what_happened": "North Korea conducted its sixth and largest nuclear test on 3 September 2017, with seismic activity assessed at roughly 10 times more powerful than its previous test and an estimated yield of around 250 kilotons; the U.S. Geological Survey recorded a magnitude 6.3 event. Earlier that year, North Korea also test-fired intercontinental ballistic missiles on 4 July and 28 July 2017 that analysts assessed were capable of reaching the continental United States.",
-      "market_impact": "The UN Security Council unanimously adopted Resolution 2375 on 11 September 2017, capping North Korea's refined petroleum imports (initially 500,000 barrels over three months, then 2 million barrels annually), banning all textile exports (an estimated $800 million annual revenue loss), and phasing out visas for North Korean overseas workers (estimated to cost North Korea another $500 million a year) — among the most restrictive sanctions the Council had imposed on the country to that point."
+      "period": "2006–2008",
+      "event": "US subprime mortgage crisis",
+      "what_happened": "US subprime mortgage originations grew from about 5% of all mortgages ($35 billion) in 1994 to about 20% ($600 billion) in 2006, increasingly packaged into mortgage-backed securities (MBS) and collateralized debt obligations (CDOs) and sold to investors worldwide. As lending standards loosened further — by 2005 the median down payment was around 2%, and 43% of first-time buyers put no money down — and home prices then began falling in 2006, delinquencies surged: by October 2007 about 16% of subprime adjustable-rate mortgages were 90+ days delinquent or in foreclosure, rising to roughly 25% by May 2008.",
+      "market_impact": "US home prices fell nearly 30% from their peak; foreclosure filings rose to about 1.3 million properties in 2007 (up 79% from 2006) and 2.3 million in 2008 (up 81%); the US stock market fell roughly 50% by early 2009; household net worth fell by close to $13 trillion (about 20%) from its Q2 2007 peak; and roughly 9 million US jobs were lost in 2008–2009."
+     },
+     {
+      "period": "June–July 2007",
+      "event": "Collapse of two Bear Stearns subprime hedge funds",
+      "what_happened": "Two Bear Stearns-managed hedge funds heavily invested in subprime-backed CDOs suffered large losses and effectively collapsed as the value of their mortgage-securities holdings fell and creditors moved to seize collateral — one of the first widely publicized cracks in the subprime securitization market.",
+      "market_impact": "The funds' failure was an early, closely watched signal of stress building in mortgage-backed credit markets more than a year before Lehman Brothers' bankruptcy, and foreshadowed the much broader 2007–2008 credit crisis."
      }
     ],
     "possibility_chains": [
-     "A major nuclear or long-range missile test has historically prompted the UN Security Council to negotiate new sanctions resolutions in the following days to weeks, though the scope of sanctions has depended on securing agreement from all five permanent members, including the tested country's key trading partners.",
-     "Sanctions that target a specific export sector, such as textiles, or a labor-export revenue stream have historically been calibrated to cut off specific, identifiable sources of foreign currency earnings for the sanctioned government.",
-     "Repeated missile and nuclear tests over time have historically produced diminishing market and diplomatic reaction with each subsequent test, as neighboring countries and investors adjust to a higher baseline level of tension."
+     "Widespread mortgage securitization has historically obscured where credit risk ultimately sits, so losses that begin in one narrow segment of the mortgage market (like subprime) have historically spread to a much wider range of investors and institutions once defaults rise.",
+     "A sharp rise in mortgage delinquencies has historically forced holders of mortgage-backed securities to write down asset values, which has often triggered margin calls and forced asset sales that push prices down further.",
+     "Housing-market downturns tied to mortgage-credit stress have historically taken years, not months, to fully work through foreclosure inventories and stabilize home prices.",
+     "Severe mortgage-credit losses at systemically important institutions have historically prompted central bank rate cuts and emergency liquidity programs, since housing wealth effects and bank balance-sheet damage both weigh on the broader economy."
     ],
-    "why_it_matters": "North Korea's sixth nuclear test and ICBM tests (2017): The UN Security Council unanimously adopted Resolution 2375 on 11 September 2017, capping North Korea's refined petroleum imports (initially 500,000 barrels over three months, then 2 million barrels annually), banning all textile exports (an estimated $800 million annual revenue loss), and phasing out visas for North Korean overseas workers (estimated to cost North Korea another $500 million a year) — among the most restrictive sanctions the Council had imposed on the country to that point. A major nuclear or long-range missile test has historically prompted the UN Security Council to negotiate new sanctions resolutions in the following days to weeks, though the scope of sanctions has depended on securing agreement from all five permanent members, including the tested country's key trading partners.",
+    "why_it_matters": "Collapse of two Bear Stearns subprime hedge funds (June–July 2007): The funds' failure was an early, closely watched signal of stress building in mortgage-backed credit markets more than a year before Lehman Brothers' bankruptcy, and foreshadowed the much broader 2007–2008 credit crisis. Widespread mortgage securitization has historically obscured where credit risk ultimately sits, so losses that begin in one narrow segment of the mortgage market (like subprime) have historically spread to a much wider range of investors and institutions once defaults rise.",
     "linked_playbooks": [
      {
-      "id": "arms-control-treaty-collapse",
-      "name": "Major arms control treaty withdrawal or collapse",
-      "affected_domains": [
-       "defense",
-       "diplomacy",
-       "geopolitics",
-       "law-regulation"
-      ],
-      "why_it_matters": "Intermediate-Range Nuclear Forces (INF) Treaty signing and collapse (1987–2019): Both the U.S. and Russia became free to develop and deploy previously-banned intermediate-range missile systems; Russia subsequently advanced hypersonic and Kalibr missile programs, and the collapse renewed debate over the future of New START, the last remaining major U.S.-Russia arms control agreement. The collapse of a major arms control treaty has historically prompted both sides to resume or accelerate development of previously-restricted weapons systems, a process that has typically unfolded over years given weapons-development timelines."
+      "id": "bank-failure-contagion",
+      "name": "Bank failure and contagion fears",
+      "affected_domains": [],
+      "why_it_matters": "Japan's banking and securities crisis (November 1997): The Nikkei fell sharply in the following sessions and Japan's banking sector entered a prolonged credit crunch; the failures deepened fears about hidden bad debt across Japan's banking system and fed into the broader Asian financial crisis unfolding at the same time. A single bank failure has historically triggered deposit runs at other banks perceived to share similar risks, even when those banks were otherwise healthy."
      },
      {
-      "id": "major-economy-sanctions",
-      "name": "Sanctions imposed on a major economy",
+      "id": "fed-easing-cycle",
+      "name": "Central bank interest rate cuts",
       "affected_domains": [],
-      "why_it_matters": "International sanctions on Iran over its nuclear program (2010s): Iranian oil exports fell sharply, though global oil prices were also affected by supply from other producers filling the gap; Iran's own currency and economy experienced significant strain during the most restrictive sanctions periods. Sanctions targeting a major energy or commodity exporter have historically tightened global supply of that commodity, which has often (though not always, depending on how much other producers can offset the loss) pushed prices higher."
+      "why_it_matters": "Bank of Japan introduces negative interest rates (January–February 2016): The Nikkei jumped as much as 3% and 10-year JGB yields fell over 9 basis points (later turning negative for the first time) on the announcement, but the yen's initial ~2% slide against the dollar reversed within weeks as safe-haven flows and skepticism about the policy's effectiveness pushed it sharply stronger instead — a reminder that a central bank's intended market reaction doesn't always hold once initial positioning unwinds. Lower interest rates have historically made borrowing cheaper, which has often supported home buying, business investment, and stock valuations over time."
+     },
+     {
+      "id": "credit-default-swap-counterparty-crisis",
+      "name": "Credit default swap counterparty crisis",
+      "affected_domains": [
+       "banking-financial-stability",
+       "insurance",
+       "capital-markets",
+       "government-debt"
+      ],
+      "why_it_matters": "AIG's near-collapse and US government bailout (September 2008): The Federal Reserve Bank of New York provided an initial $85 billion rescue on September 16, 2008, which grew to a combined $182.3 billion in Federal Reserve and Treasury support — the largest single-company bailout of the crisis — because regulators judged that AIG's failure would have imperiled its major trading partners, including Goldman Sachs, Morgan Stanley, Bank of America, Merrill Lynch, and numerous European banks that had bought CDS protection from AIG. Because credit default swaps create a dense web of counterparty obligations, the failure of one large CDS seller has historically threatened losses at every institution that bought protection from it, not just the seller itself."
      }
     ]
    },
@@ -1206,22 +472,662 @@
     "source_count": 1,
     "country_count": 1,
     "countries": [
-     "Kazakhstan"
+     "Belgium"
     ],
     "label": "1 source",
     "scraped_fallback_sources_added": 0
    },
    "sources": [
     {
-     "title": "Kazakhstan’s Nuclear Legacy Offers Lessons in Age of AI and Geopolitical Rivalry",
-     "source_name": "The Astana Times",
-     "country": "Kazakhstan",
-     "language": "English",
-     "url": "https://astanatimes.com/2026/10/kazakhstans-nuclear-legacy-offers-lessons-in-age-of-ai-and-geopolitical-rivalry/",
+     "title": "\"Nous avons eu trois chocs durant les derniers mois et, malgré tout, les marchés ont bien résisté\"",
+     "source_name": "La Libre Belgique",
+     "country": "Belgium",
+     "language": "French",
+     "url": "https://www.lalibre.be/economie/placements/2026/10/10/nous-avons-eu-trois-chocs-durant-les-derniers-mois-et-malgre-tout-les-marches-ont-bien-resiste-KR747RMUKJCLJCIRQQECOK4DXM/",
      "source_type": "rss",
-     "age_hours": 23.2
+     "age_hours": 3.2
     }
    ]
+  },
+  {
+   "signal_id": "16a177e23db961a3",
+   "signal_type": "playbook_single_source",
+   "headline": "‘I Love the Smell of Russian Gas’: Controversial Polish Politician Backs Nord Stream",
+   "matched_at": "2026-10-10T13:09:00Z",
+   "matched_language": "en",
+   "aspects": [],
+   "ripple_effect": {
+    "id": "nord-stream-pipeline-disruption",
+    "name": "Natural gas pipeline sabotage or cutoff",
+    "affected_domains": [
+     "energy",
+     "geopolitics",
+     "inflation",
+     "manufacturing",
+     "national-security",
+     "utilities"
+    ],
+    "historical_precedents": [
+     {
+      "period": "September 2022",
+      "event": "Nord Stream pipeline sabotage",
+      "what_happened": "Four underwater explosions in the Baltic Sea near Bornholm Island ruptured three of the four Nord Stream 1 and Nord Stream 2 pipeline strings, which ran directly from Russia to Germany. Russia had already halted Nord Stream 1 gas flows at the end of August 2022, citing a maintenance dispute.",
+      "market_impact": "European natural gas benchmark prices, which had already surged to record highs earlier in 2022 as Russian pipeline supply fell, remained elevated; European governments accelerated efforts to secure LNG imports and other pipeline gas to replace the lost Russian route, and neither pipeline had been repaired as of the most recent public reporting."
+     },
+     {
+      "period": "January 2009",
+      "event": "Russia-Ukraine gas transit dispute",
+      "what_happened": "A pricing and debt dispute between Gazprom and Ukraine's Naftogaz led Russia to halt all gas flows through Ukraine's pipeline network — then the main route for Russian gas to Europe — for about 13 days.",
+      "market_impact": "Bulgaria, Slovakia, and several Balkan and Southeastern European countries lost the large majority of their gas supply; Bulgaria had to halt production at some industrial plants and Slovakia declared a state of emergency, while Gazprom and Ukraine each lost an estimated hundreds of millions to over a billion dollars in revenue and transit fees."
+     }
+    ],
+    "possibility_chains": [
+     "Disruption to a major pipeline route has historically forced importing countries to bid for scarce LNG cargoes on the spot market, pushing global (not just regional) gas prices higher.",
+     "Countries heavily dependent on a single pipeline supplier have historically faced the sharpest price spikes and, in the most severe cases, direct supply shortfalls during a cutoff.",
+     "Sustained higher natural gas costs have historically raised electricity prices in gas-reliant power grids and increased costs for gas-intensive industries such as fertilizer and chemicals production."
+    ],
+    "why_it_matters": "Russia-Ukraine gas transit dispute (January 2009): Bulgaria, Slovakia, and several Balkan and Southeastern European countries lost the large majority of their gas supply; Bulgaria had to halt production at some industrial plants and Slovakia declared a state of emergency, while Gazprom and Ukraine each lost an estimated hundreds of millions to over a billion dollars in revenue and transit fees. Disruption to a major pipeline route has historically forced importing countries to bid for scarce LNG cargoes on the spot market, pushing global (not just regional) gas prices higher.",
+    "linked_playbooks": [
+     {
+      "id": "hormuz-gulf-oil-shock",
+      "name": "Persian Gulf oil supply shock",
+      "affected_domains": [],
+      "why_it_matters": "Gulf War (Iraqi invasion of Kuwait) (1990–1991): Oil prices roughly doubled in the months following the invasion before falling back once the war ended and supply concerns eased. Roughly a fifth of the world's oil is estimated to pass through the Strait of Hormuz, so a sustained blockage or major disruption there has historically driven crude oil prices sharply higher."
+     },
+     {
+      "id": "major-economy-sanctions",
+      "name": "Sanctions imposed on a major economy",
+      "affected_domains": [],
+      "why_it_matters": "International sanctions on Iran over its nuclear program (2010s): Iranian oil exports fell sharply, though global oil prices were also affected by supply from other producers filling the gap; Iran's own currency and economy experienced significant strain during the most restrictive sanctions periods. Sanctions targeting a major energy or commodity exporter have historically tightened global supply of that commodity, which has often (though not always, depending on how much other producers can offset the loss) pushed prices higher."
+     },
+     {
+      "id": "russia-ukraine-food-fertilizer",
+      "name": "Black Sea grain and fertilizer export disruption",
+      "affected_domains": [],
+      "why_it_matters": "Russia withdrew from the Black Sea Grain Initiative (July 2023): Wheat and corn futures rose in the immediate aftermath on renewed supply concerns, though the size and durability of the move varied with harvest conditions elsewhere. Disruption to a major grain-exporting region has historically pushed global wheat, corn, or other staple crop prices higher, particularly when it coincides with weak harvests elsewhere."
+     },
+     {
+      "id": "lng-export-terminal-outage",
+      "name": "LNG export terminal outage",
+      "affected_domains": [
+       "energy",
+       "trade",
+       "manufacturing",
+       "inflation",
+       "geopolitics"
+      ],
+      "why_it_matters": "Freeport LNG explosion and shutdown (June 2022): Total losses from the incident were estimated at $6-8 billion; the outage removed a significant share of US LNG supply from the global market at a time when European buyers were competing hard for LNG cargoes to replace lost Russian pipeline gas, and it contributed to elevated international gas prices during the outage. An unplanned outage at a major LNG export terminal has historically tightened global LNG supply given how concentrated liquefaction capacity is among a relatively small number of large facilities."
+     },
+     {
+      "id": "russia-oil-price-cap-g7",
+      "name": "G7 price cap on sanctioned oil exports",
+      "affected_domains": [
+       "energy",
+       "geopolitics",
+       "national-security",
+       "trade",
+       "currency"
+      ],
+      "why_it_matters": "G7/EU/Australia price cap on Russian seaborne crude oil (December 2022 onward): Russian crude traded well below the cap in the following weeks — reported as low as about $45 a barrel at Baltic ports — and Russia's weekly oil export duty revenue reportedly fell by around 60%; Russia responded by building a large 'shadow fleet' of older tankers (estimated at over 1,000 vessels by late 2023) operating outside Western insurance and shipping services to sell oil above the cap. A price cap enforced through control of shipping and insurance services (rather than a direct import ban) has historically been partially evaded by the sanctioned country building an alternative fleet and insurance arrangement outside the sanctioning coalition's reach."
+     }
+    ]
+   },
+   "category_context": null,
+   "corroboration": {
+    "tier": "single_source",
+    "source_count": 1,
+    "country_count": 1,
+    "countries": [
+     "Ukraine"
+    ],
+    "label": "1 source",
+    "scraped_fallback_sources_added": 0
+   },
+   "sources": [
+    {
+     "title": "‘I Love the Smell of Russian Gas’: Controversial Polish Politician Backs Nord Stream",
+     "source_name": "Kyiv Post",
+     "country": "Ukraine",
+     "language": "English",
+     "url": "https://www.kyivpost.com/post/86597",
+     "source_type": "rss",
+     "age_hours": 3.6
+    }
+   ]
+  },
+  {
+   "signal_id": "e942a886f9c7f4a3",
+   "signal_type": "playbook_single_source",
+   "headline": "Swiss archaeologists redraw Roman maps after drought discoveries",
+   "matched_at": "2026-10-10T12:30:00Z",
+   "matched_language": "en",
+   "aspects": [
+    {
+     "id": "climate.extreme-weather",
+     "score": 3.0
+    }
+   ],
+   "ripple_effect": {
+    "id": "extreme-heatwave-economic-productivity-shock",
+    "name": "Extreme heatwave drives mass mortality, crop losses, and power-grid strain",
+    "affected_domains": [
+     "public-health",
+     "agriculture",
+     "energy",
+     "climate"
+    ],
+    "historical_precedents": [
+     {
+      "period": "July-August 2003",
+      "event": "2003 European heatwave",
+      "what_happened": "An extreme, prolonged heatwave across Europe in July-August 2003 -- the hottest European summer since at least 1540 -- killed an estimated 72,000 people, including roughly 20,000 in Italy, 14,800-19,000 in France, nearly 13,000 in Spain, 9,500 in Germany, 2,000 in the UK, and about 1,950 in Portugal, where the temperature reached a record 47.3 degC (117.1 degF) at Amareleja on August 1, 2003.",
+      "market_impact": "European economic losses were estimated at about 0.5% of European GDP overall, with more than 1% GDP loss in the hardest-hit regions. Wheat harvests fell short by 20% in France, 13% in Italy, and 12% in the UK, cutting total EU production by about 10 million tonnes (10%). On the power grid, thermal and nuclear plants in several countries faced restrictions on discharging cooling water into overheated rivers: Germany saw reduced hydroelectric output and rising electricity prices, Italy imposed rolling blackouts as consumption surged, and France's own power exports dropped by 800 megawatts as domestic demand competed with generation constraints."
+     }
+    ],
+    "possibility_chains": [
+     "Extreme heatwaves have historically caused mass excess mortality concentrated among elderly and vulnerable populations, with death tolls that were substantially undercounted in real time and only became clear in retrospective statistical analysis weeks or months later.",
+     "Sustained extreme heat has historically constrained thermal and nuclear power generation simultaneously with a surge in cooling-driven electricity demand, creating grid stress at exactly the moment supply is most limited.",
+     "A single severe heatwave affecting a major agricultural region has historically cut cereal harvests broadly across several neighboring countries at once, since the same weather system typically spans national borders."
+    ],
+    "why_it_matters": "2003 European heatwave (July-August 2003): European economic losses were estimated at about 0.5% of European GDP overall, with more than 1% GDP loss in the hardest-hit regions. Wheat harvests fell short by 20% in France, 13% in Italy, and 12% in the UK, cutting total EU production by about 10 million tonnes (10%). On the power grid, thermal and nuclear plants in several countries faced restrictions on discharging cooling water into overheated rivers: Germany saw reduced hydroelectric output and rising electricity prices, Italy imposed rolling blackouts as consumption surged, and France's own power exports dropped by 800 megawatts as domestic demand competed with generation constraints. Extreme heatwaves have historically caused mass excess mortality concentrated among elderly and vulnerable populations, with death tolls that were substantially undercounted in real time and only became clear in retrospective statistical analysis weeks or months later.",
+    "linked_playbooks": [
+     {
+      "id": "drought-crop-yield",
+      "name": "Major drought or heatwave affecting crop yields",
+      "affected_domains": [],
+      "why_it_matters": "East Africa drought and Somali famine (2010–2011): An estimated 260,000 people died in Somalia alone, roughly half of them children under five, and millions were displaced across the region — a reminder that crop-yield shocks in the world's poorest, import-dependent regions have historically produced humanitarian catastrophe rather than the price-inflation effects seen in wealthier grain-exporting economies. A severe drought or heatwave affecting a major agricultural exporting region has historically reduced crop yields and raised global prices for that crop, with the size of the effect depending on how much of global supply the affected region represents."
+     },
+     {
+      "id": "major-grid-blackout-cascading",
+      "name": "Cascading power grid blackout",
+      "affected_domains": [
+       "energy",
+       "utilities",
+       "regulation",
+       "manufacturing",
+       "technology"
+      ],
+      "why_it_matters": "Northeast blackout of 2003 (14-16 August 2003): Roughly 55 million people lost power, including 14.3 million in the New York City area, 8.3 million in the Toronto area, and 6.4 million in metropolitan Detroit; the blackout prompted the eventual creation of mandatory, enforceable electric reliability standards in the US and Canada, since none existed at the time of the failure. A localized equipment or software fault on a highly interconnected grid has historically cascaded far beyond its origin point, since protective systems designed to isolate faults can also propagate them if operators lose situational awareness in time."
+     },
+     {
+      "id": "nuclear-plant-shutdown-restart",
+      "name": "Nuclear power shutdown or phase-out",
+      "affected_domains": [
+       "energy",
+       "utilities",
+       "regulation",
+       "climate",
+       "manufacturing"
+      ],
+      "why_it_matters": "Germany's nuclear phase-out (2011-2023): Between 2002 and 2022 Germany's fossil-fuel energy use rose about 7% even as nuclear was phased out, with natural gas use increasing the most; a 2020 academic study estimated the shift from nuclear toward coal-fired generation cost Germany roughly €3-8 billion a year in social costs, mostly from air-pollution-linked deaths. A country that rapidly removes a large share of its baseload nuclear generation has historically had to replace it with a combination of fossil-fuel imports and renewable buildout, with the fossil-fuel share dominating in the near term given how long new generation capacity takes to build."
+     }
+    ]
+   },
+   "category_context": null,
+   "corroboration": {
+    "tier": "single_source",
+    "source_count": 1,
+    "country_count": 1,
+    "countries": [
+     "Cyprus"
+    ],
+    "label": "1 source",
+    "scraped_fallback_sources_added": 0
+   },
+   "sources": [
+    {
+     "title": "Swiss archaeologists redraw Roman maps after drought discoveries",
+     "source_name": "Cyprus Mail",
+     "country": "Cyprus",
+     "language": "English",
+     "url": "https://cyprus-mail.com/2026/10/10/swiss-archaeologists-redraw-roman-maps-after-drought-discoveries",
+     "source_type": "rss",
+     "age_hours": 4.2
+    }
+   ]
+  },
+  {
+   "signal_id": "36686e97e414dbcf",
+   "signal_type": "playbook_single_source",
+   "headline": "Se listen: Her er de virksomheder, der tjener flest penge",
+   "matched_at": "2026-10-10T10:05:38Z",
+   "matched_language": "en",
+   "aspects": [],
+   "ripple_effect": {
+    "id": "glp1-obesity-drug-market-shift",
+    "name": "GLP-1 obesity/diabetes drugs reshaping healthcare cost and pharma markets",
+    "affected_domains": [
+     "public-health",
+     "healthcare",
+     "pharmaceuticals",
+     "capital-markets",
+     "insurance"
+    ],
+    "historical_precedents": [
+     {
+      "period": "2022–2025",
+      "event": "Novo Nordisk's Ozempic/Wegovy-driven rise to Europe's most valuable company, then competitive erosion",
+      "what_happened": "Demand for Novo Nordisk's GLP-1 drugs Ozempic (approved for diabetes, widely used off-label for weight loss) and Wegovy (approved for obesity) grew so rapidly that weight-loss drugs made up 55% of the company's 2023 revenue and its first-half 2023 profit rose 45% year-over-year; by March 2024 the company reached a $604 billion market capitalization, the 12th most valuable company in the world, and by April 2024 its roughly $570 billion market cap exceeded the size of Denmark's entire economy, with its roughly $2.3 billion Danish corporate tax bill alone driving nearly all of Denmark's measured economic growth that year.",
+      "market_impact": "US list prices for these drugs ran far above prices charged elsewhere (Ozempic around $969/month in the US versus $155 in Canada and $59 in Germany; Wegovy around $1,349/month in the US versus $140 in Germany and $92 in the UK), fueling a US health-insurance and employer-benefit-design debate over covering the drugs at scale; by July 2025, rising competitor pressure had pushed Novo down to the fifth most valuable drugmaker by market cap, prompting a CEO change effective August 7, 2025."
+     }
+    ],
+    "possibility_chains": [
+     "A single drug class becoming a large share of a national economy's growth, as with Novo Nordisk and Denmark, has historically made that country's headline GDP figures unusually sensitive to one company's product cycle.",
+     "Insurers and employers facing a costly new high-demand drug class have historically responded first with coverage restrictions (prior authorization, BMI thresholds) before broadening access as production scales and price competition emerges.",
+     "A manufacturer's inability to keep pace with demand for a breakout drug has historically triggered shortages, compounding-pharmacy workarounds, and counterfeit-product risk in the gap before supply catches up."
+    ],
+    "why_it_matters": "Novo Nordisk's Ozempic/Wegovy-driven rise to Europe's most valuable company, then competitive erosion (2022–2025): US list prices for these drugs ran far above prices charged elsewhere (Ozempic around $969/month in the US versus $155 in Canada and $59 in Germany; Wegovy around $1,349/month in the US versus $140 in Germany and $92 in the UK), fueling a US health-insurance and employer-benefit-design debate over covering the drugs at scale; by July 2025, rising competitor pressure had pushed Novo down to the fifth most valuable drugmaker by market cap, prompting a CEO change effective August 7, 2025. A single drug class becoming a large share of a national economy's growth, as with Novo Nordisk and Denmark, has historically made that country's headline GDP figures unusually sensitive to one company's product cycle.",
+    "linked_playbooks": [
+     {
+      "id": "pharmaceutical-patent-cliff",
+      "name": "Pharmaceutical patent cliff and blockbuster drug revenue loss",
+      "affected_domains": [
+       "public-health",
+       "healthcare",
+       "pharmaceuticals",
+       "capital-markets",
+       "regulation"
+      ],
+      "why_it_matters": "Lipitor (atorvastatin) patent expiration (1996–2012 (US patent expired November 30, 2011)): Generic prices stayed relatively elevated during that initial exclusivity window, then fell sharply once additional manufacturers entered in May 2012, pushing a month's supply down toward standard generic pricing of $10 or less — illustrating the two-stage price collapse (moderate initial generic discount, then a much steeper one once multiple generic makers compete) that characterizes a typical pharmaceutical patent-cliff event. A cluster of blockbuster drugs (defined in the industry as over $1 billion in annual sales) losing patent protection in the same multi-year window has historically pushed large pharmaceutical companies toward M&A, portfolio diversification, and 'evergreening' strategies (new formulations or delivery mechanisms) to offset the revenue drop."
+     },
+     {
+      "id": "aging-population-healthcare-cost-capacity",
+      "name": "Aging population driving healthcare system cost and capacity pressure",
+      "affected_domains": [
+       "public-health",
+       "healthcare",
+       "fiscal-policy",
+       "demographics",
+       "pensions"
+      ],
+      "why_it_matters": "Japan's healthcare spending rise under a super-aged population (2008–2018): Japan introduced a dedicated long-term care insurance system (Kaigo-Hoken), funded partly by a roughly 2% income contribution from residents over 40 and administered by municipal governments, specifically to fund elderly care costs separately from general health insurance as the aging-driven cost pressure became structural rather than cyclical; by 2016 the system was allocating tens of billions of dollars annually toward long-term care expenditures. A country crossing the 'super-aged society' threshold (21%+ population 65+) has historically required either new dedicated funding mechanisms, as with Japan's long-term-care insurance, or rising general healthcare spending as a share of GDP, or both."
+     }
+    ]
+   },
+   "category_context": null,
+   "corroboration": {
+    "tier": "single_source",
+    "source_count": 2,
+    "country_count": 1,
+    "countries": [
+     "Denmark"
+    ],
+    "label": "2 sources",
+    "scraped_fallback_sources_added": 1
+   },
+   "sources": [
+    {
+     "title": "Se listen: Her er de virksomheder, der tjener flest penge",
+     "source_name": "Børsen (Dagbladet Børsen)",
+     "country": "Denmark",
+     "language": "Danish",
+     "url": "https://borsen.dk/nyheder/virksomheder/se-listen-her-er-de-virksomheder-der-tjener-flest-penge",
+     "source_type": "rss",
+     "age_hours": 6.7
+    },
+    {
+     "title": "Amerikansk gigant udfordrer Novo Nordisk i Danmark med 'dybt problematisk' kampagne",
+     "source_name": "DR (Danmarks Radio)",
+     "country": "Denmark",
+     "language": "Danish",
+     "url": "https://www.dr.dk/nyheder/penge/ny-kampagne-fra-novo-rival-faar-kritik-de-vil-bare-saelge-vaegttabsmedicin",
+     "source_type": "scraped_fallback",
+     "age_hours": null
+    }
+   ]
+  },
+  {
+   "signal_id": "695fa9318e785f80",
+   "signal_type": "playbook_single_source",
+   "headline": "Minimum wage hike to RM2,000 from June 2027 to benefit 4 million workers",
+   "matched_at": "2026-10-10T07:50:00Z",
+   "matched_language": "en",
+   "aspects": [
+    {
+     "id": "society.labor",
+     "score": 9.0
+    }
+   ],
+   "ripple_effect": {
+    "id": "minimum-wage-policy-shift",
+    "name": "Minimum wage policy shift",
+    "affected_domains": [
+     "employment",
+     "consumer-spending",
+     "inflation",
+     "politics"
+    ],
+    "historical_precedents": [
+     {
+      "period": "2012 (origin) – ongoing",
+      "event": "\"Fight for $15\" movement",
+      "what_happened": "The movement began in November 2012 when over 100 fast-food workers walked off the job in New York City demanding a $15 hourly wage and the right to unionize, at a time when the federal minimum wage had been frozen at $7.25 since 2009; it grew into coordinated multi-city strikes, including an April 2015 day of action across more than 200 cities that organizers called the largest protest by low-wage workers in US history.",
+      "market_impact": "By the mid-2020s seventeen US states plus Washington, D.C. had adopted $15-or-higher minimum wages, with organizers estimating roughly 26 million workers received a combined $151 billion in raises traceable to the movement's pressure on state and local policy."
+     },
+     {
+      "period": "2014–2019",
+      "event": "Seattle becomes the first major US city to adopt a $15 minimum wage",
+      "what_happened": "Seattle's city council, led by councilmember Kshama Sawant, passed an ordinance phasing in a $15 minimum wage starting in 2014, with the wage rising further to $15.45 in 2018 and $16 in 2019 under the city's indexing formula.",
+      "market_impact": "University of Washington and other researchers studying Seattle's rollout found no measurable decline in overall employment as the wage floor rose, making Seattle a frequently cited case study in the broader minimum-wage debate."
+     }
+    ],
+    "possibility_chains": [
+     "A minimum wage increase in one large city or state has historically prompted advocacy campaigns citing it as precedent for similar increases elsewhere, spreading policy change faster than pure economic modeling alone would predict.",
+     "Employers in low-margin, labor-intensive sectors (fast food, retail, hospitality) have historically responded to minimum wage increases through some combination of price increases, reduced hours, and accelerated investment in self-service or automation technology, with the mix varying by study and locality.",
+     "Higher minimum wages have historically raised the wage floor workers use as a reference point in unrelated wage negotiations nearby, a \"lighthouse effect\" observed in several minimum-wage studies."
+    ],
+    "why_it_matters": "Seattle becomes the first major US city to adopt a $15 minimum wage (2014–2019): University of Washington and other researchers studying Seattle's rollout found no measurable decline in overall employment as the wage floor rose, making Seattle a frequently cited case study in the broader minimum-wage debate. A minimum wage increase in one large city or state has historically prompted advocacy campaigns citing it as precedent for similar increases elsewhere, spreading policy change faster than pure economic modeling alone would predict.",
+    "linked_playbooks": [
+     {
+      "id": "gig-economy-worker-classification",
+      "name": "Gig-economy worker classification ruling",
+      "affected_domains": [
+       "employment",
+       "technology",
+       "law-regulation",
+       "consumer-spending"
+      ],
+      "why_it_matters": "California's Proposition 22 and its multi-year court challenge (November 2020 – July 2024): The nearly four-year legal uncertainty over Proposition 22's validity was itself a business risk for Uber, Lyft, DoorDash, and Instacart, which had spent over $200 million campaigning for the measure; its eventual affirmation cemented independent-contractor status for California gig drivers and became a template gig companies pushed for in other US states. A court or ballot-measure ruling on gig-worker classification in one jurisdiction has historically become a reference point cited by both labor advocates and gig companies lobbying for similar outcomes elsewhere, spreading the policy debate beyond the original jurisdiction."
+     },
+     {
+      "id": "great-resignation-labor-shortage",
+      "name": "Broad-based voluntary quits wave / labor shortage",
+      "affected_domains": [
+       "employment",
+       "inflation",
+       "consumer-spending"
+      ],
+      "why_it_matters": "The \"Great Resignation\" in the United States (March 2021 – mid-2023): Employers responded with the fastest wage growth in two decades — 4.5% year-over-year in December 2021 — while hospitality, healthcare, and education faced acute staffing shortages that pushed many businesses to accelerate investment in automation and self-service technology; quits rates did not return to pre-pandemic 2019 norms until mid-2023. A sustained period of unusually high voluntary quits has historically coincided with faster wage growth, as employers compete harder to retain and attract staff in a tight labor market."
+     }
+    ]
+   },
+   "category_context": null,
+   "corroboration": {
+    "tier": "single_source",
+    "source_count": 1,
+    "country_count": 1,
+    "countries": [
+     "Malaysia"
+    ],
+    "label": "1 source",
+    "scraped_fallback_sources_added": 0
+   },
+   "sources": [
+    {
+     "title": "Minimum wage hike to RM2,000 from June 2027 to benefit 4 million workers",
+     "source_name": "The Vibes",
+     "country": "Malaysia",
+     "language": "English",
+     "url": "https://www.thevibes.com/articles/news/128195/minimum-wage-hike-to-rm2000-from-june-2027-to-benefit-4-million-workers",
+     "source_type": "rss",
+     "age_hours": 8.9
+    }
+   ]
+  },
+  {
+   "signal_id": "cd260eec1c708634",
+   "signal_type": "playbook_single_source",
+   "headline": "New Ebola vaccine trials begin in Uganda amid deadly DRC outbreak",
+   "matched_at": "2026-10-10T05:00:37Z",
+   "matched_language": "en",
+   "aspects": [
+    {
+     "id": "science-health.public-health",
+     "score": 7.0
+    }
+   ],
+   "ripple_effect": {
+    "id": "disease-outbreak-phe-ic",
+    "name": "Disease outbreak with international health emergency",
+    "affected_domains": [],
+    "historical_precedents": [
+     {
+      "period": "2014–2016",
+      "event": "West Africa Ebola outbreak",
+      "what_happened": "The World Health Organization declared a Public Health Emergency of International Concern as Ebola spread across Guinea, Liberia, and Sierra Leone; several airlines suspended routes to the region and some countries imposed travel restrictions.",
+      "market_impact": "The World Bank estimated the outbreak cost the three hardest-hit countries over $2 billion in lost economic output."
+     },
+     {
+      "period": "2016",
+      "event": "Zika virus outbreak",
+      "what_happened": "The WHO declared a Public Health Emergency as Zika spread across the Americas, linked to birth defects; several countries issued travel advisories affecting tourism, notably ahead of the Rio de Janeiro Olympics.",
+      "market_impact": "Tourism-dependent economies in affected regions reported measurable declines in visitor bookings during the advisory period."
+     }
+    ],
+    "possibility_chains": [
+     "A WHO-declared public health emergency has historically triggered travel advisories and, in some cases, temporary route suspensions by airlines.",
+     "Disease outbreaks with international travel warnings have historically reduced tourism and business travel to the affected region for the duration of the advisory.",
+     "Outbreaks affecting agricultural or manufacturing regions have historically disrupted local labor supply and production.",
+     "Vaccine and treatment developers have historically seen increased investment and expedited regulatory review during major outbreaks."
+    ],
+    "why_it_matters": "Zika virus outbreak (2016): Tourism-dependent economies in affected regions reported measurable declines in visitor bookings during the advisory period. A WHO-declared public health emergency has historically triggered travel advisories and, in some cases, temporary route suspensions by airlines.",
+    "linked_playbooks": []
+   },
+   "category_context": null,
+   "corroboration": {
+    "tier": "single_source",
+    "source_count": 1,
+    "country_count": 1,
+    "countries": [
+     "Uganda"
+    ],
+    "label": "1 source",
+    "scraped_fallback_sources_added": 0
+   },
+   "sources": [
+    {
+     "title": "New Ebola vaccine trials begin in Uganda amid deadly DRC outbreak",
+     "source_name": "The Independent (Uganda)",
+     "country": "Uganda",
+     "language": "English",
+     "url": "https://www.independent.co.ug/new-ebola-vaccine-trials-begin-in-uganda-amid-deadly-drc-outbreak/",
+     "source_type": "rss",
+     "age_hours": 11.7
+    }
+   ]
+  },
+  {
+   "signal_id": "549cd4e2dd96befc",
+   "signal_type": "playbook_single_source",
+   "headline": "Alessia reaccionó a la extraña promesa de Juana y Juan Pablo",
+   "matched_at": "2026-10-10T02:39:00Z",
+   "matched_language": "es",
+   "aspects": [],
+   "ripple_effect": {
+    "id": "territorial-debt-crisis",
+    "name": "US territory / sub-sovereign debt restructuring crisis",
+    "affected_domains": [
+     "government-debt",
+     "public-services",
+     "capital-markets",
+     "pensions"
+    ],
+    "historical_precedents": [
+     {
+      "period": "2014–2022",
+      "event": "Puerto Rico's government-debt crisis and PROMESA restructuring",
+      "what_happened": "Puerto Rico's bonds were downgraded to junk status in February 2014, and Governor García Padilla declared the roughly $74 billion in bond debt (plus $49 billion in unfunded pension liabilities) 'not payable' on June 28, 2015; after Puerto Rico missed a $422 million payment on May 1, 2016, Congress passed PROMESA, which President Obama signed June 30, 2016, creating a federal oversight board with authority over the territory's budget and debt restructuring.",
+      "market_impact": "Puerto Rico's poverty rate reached roughly 45% by mid-2017, unemployment hit 12.4% in December 2016, and its sales tax rose to 11% alongside teacher retirement-age increases (47 to 62) and 10% pension cuts under the oversight board's austerity plan; nearly 70% of US municipal bond funds held Puerto Rico exposure, and its general obligation bonds fell to roughly 32 cents on the dollar after Hurricane Maria in 2017 before the territory exited bankruptcy in March 2022."
+     }
+    ],
+    "possibility_chains": [
+     "A US territory's debt crisis has historically been resolved through federal oversight mechanisms different from either a state (which cannot file Chapter 9 the way cities can) or an independent country (which cannot access IMF facilities), creating restructuring rules unique to the territory's ambiguous status.",
+     "Heavy institutional exposure to a single distressed municipal issuer (in this case, via tax-exempt bond funds that concentrated Puerto Rico debt for its tax advantages) has historically transmitted a regional fiscal crisis into national investment portfolios far from the issuer itself.",
+     "Debt-crisis austerity measures layered on top of a shrinking population and tax base have historically been self-reinforcing, since tax increases and service cuts have tended to accelerate the outward migration that shrank the tax base in the first place."
+    ],
+    "why_it_matters": "Puerto Rico's government-debt crisis and PROMESA restructuring (2014–2022): Puerto Rico's poverty rate reached roughly 45% by mid-2017, unemployment hit 12.4% in December 2016, and its sales tax rose to 11% alongside teacher retirement-age increases (47 to 62) and 10% pension cuts under the oversight board's austerity plan; nearly 70% of US municipal bond funds held Puerto Rico exposure, and its general obligation bonds fell to roughly 32 cents on the dollar after Hurricane Maria in 2017 before the territory exited bankruptcy in March 2022. A US territory's debt crisis has historically been resolved through federal oversight mechanisms different from either a state (which cannot file Chapter 9 the way cities can) or an independent country (which cannot access IMF facilities), creating restructuring rules unique to the territory's ambiguous status.",
+    "linked_playbooks": [
+     {
+      "id": "municipal-bankruptcy",
+      "name": "Major municipal or county bankruptcy",
+      "affected_domains": [
+       "government-debt",
+       "public-services",
+       "infrastructure",
+       "pensions"
+      ],
+      "why_it_matters": "Jefferson County, Alabama bankruptcy (November 2011 – December 2013): The county cut its government workforce by more than 700 employees by May 2012, and the bankruptcy court wrote off more than $1.4 billion of the debt before the county emerged from bankruptcy in December 2013. A municipal bankruptcy driven by a shrinking tax base and rising legacy retiree costs has historically forced a choice between deep pension cuts and finding outside funding (such as philanthropic support) to soften them, since the two options are not fiscally separable."
+     },
+     {
+      "id": "fiscal-austerity-program",
+      "name": "Government austerity program (spending cuts and tax rises)",
+      "affected_domains": [
+       "fiscal-policy",
+       "public-services",
+       "government-debt",
+       "social-programs",
+       "politics"
+      ],
+      "why_it_matters": "Canada's 1995 federal budget under Finance Minister Paul Martin (1995): By shrinking the federal transfer, the reform shifted fiscal pressure onto provincial governments, which had to make their own cuts to health and social assistance spending to absorb the reduced federal contribution. Government austerity programs that cut public sector employment have historically taken years to fully play out in local labor markets, as affected workers and the local businesses that served them adjust gradually rather than all at once."
+     },
+     {
+      "id": "sovereign-debt-default",
+      "name": "Sovereign government debt default",
+      "affected_domains": [
+       "government-debt",
+       "currency",
+       "emerging-markets",
+       "banking"
+      ],
+      "why_it_matters": "Sri Lanka's first sovereign default (April 2022): The default followed foreign reserves falling to just $1.9 billion by March 2022, insufficient to cover the country's import and debt-service needs, and led into an IMF rescue program. A sovereign default has historically triggered a sharp loss of access to international capital markets for the defaulting government, often for years, forcing reliance on domestic financing or multilateral lenders in the interim."
+     }
+    ]
+   },
+   "category_context": null,
+   "corroboration": {
+    "tier": "single_source",
+    "source_count": 1,
+    "country_count": 1,
+    "countries": [
+     "Peru"
+    ],
+    "label": "1 source",
+    "scraped_fallback_sources_added": 0
+   },
+   "sources": [
+    {
+     "title": "Alessia reaccionó a la extraña promesa de Juana y Juan Pablo",
+     "source_name": "América Televisión",
+     "country": "Peru",
+     "language": "Spanish",
+     "url": "https://www.americatv.com.pe/al-fondo-hay-sitio/alessia-reacciono-extrana-promesa-juana-y-juan-pablo-noticia-168154",
+     "source_type": "rss",
+     "age_hours": 14.1
+    }
+   ]
+  },
+  {
+   "signal_id": "bf14d28e41fa8bcf",
+   "signal_type": "playbook_corroboration",
+   "headline": "Guinée : 70 morts, 35 disparitions forcées et plusieurs fosses communes découvertes depuis le coup d'État de 2021",
+   "matched_at": "2026-10-09T20:24:00Z",
+   "matched_language": "fr",
+   "aspects": [
+    {
+     "id": "politics.leadership",
+     "score": 3.0
+    }
+   ],
+   "corroboration": {
+    "tier": "playbook_corroboration",
+    "source_count": 2,
+    "country_count": 2,
+    "countries": [
+     "Senegal",
+     "Tanzania"
+    ],
+    "label": "2 sources across 2 countries",
+    "scraped_fallback_sources_added": 0
+   },
+   "sources": [
+    {
+     "title": "Guinée : 70 morts, 35 disparitions forcées et plusieurs fosses communes découvertes depuis le coup d'État de 2021",
+     "source_name": "Dakaractu",
+     "country": "Senegal",
+     "language": "French",
+     "url": "https://www.dakaractu.com/Guinee-70-morts-35-disparitions-forcees-et-plusieurs-fosses-communes-decouvertes-depuis-le-coup-d-Etat-de-2021_a276893.html",
+     "source_type": "rss",
+     "age_hours": 20.3
+    },
+    {
+     "title": "MAKADA CCM RUVUMA WANOLEWA KUHUSU ITIKADI YA CHAMA",
+     "source_name": "Michuzi Blog",
+     "country": "Tanzania",
+     "language": "Swahili",
+     "url": "https://www.michuzi.co.tz/2026/10/makada-ccm-ruvuma-wanolewa-kuhusu.html",
+     "source_type": "rss",
+     "age_hours": 23.0
+    },
+    {
+     "title": "MAFUNZO YA MAKADA WA CCM TANGA YAPOKELEWA KWA KISHINDO",
+     "source_name": "Michuzi Blog",
+     "country": "Tanzania",
+     "language": "Swahili",
+     "url": "https://www.michuzi.co.tz/2026/10/mafunzo-ya-makada-wa-ccm-tanga.html",
+     "source_type": "rss",
+     "age_hours": 25.5
+    }
+   ],
+   "ripple_effect": {
+    "id": "coup-regime-change-trade",
+    "name": "Coup or abrupt regime change disrupting trade relationships",
+    "affected_domains": [
+     "geopolitics",
+     "trade",
+     "mining-raw-materials",
+     "currency",
+     "banking-financial-stability",
+     "diplomacy"
+    ],
+    "historical_precedents": [
+     {
+      "period": "July 2023",
+      "event": "Niger military coup",
+      "what_happened": "On 26 July 2023, General Abdourahamane Tchiani led the presidential guard in removing President Mohamed Bazoum and installed a military council. The regional bloc ECOWAS responded with an ultimatum, then sanctions including closed land and air borders, a no-fly zone on commercial flights, suspension of financial transactions, and asset freezes; Nigeria cut electricity supply to Niger on 2 August 2023.",
+      "market_impact": "The West African regional central bank cancelled a planned 30 billion CFA franc (about $51 million) bond issuance for Niger, and the World Bank suspended disbursements to the country. Niger is a significant global uranium exporter, and the coup raised questions over the operations of French nuclear fuel company Orano's mining activities there."
+     },
+     {
+      "period": "February 2021",
+      "event": "Myanmar military coup",
+      "what_happened": "Senior General Min Aung Hlaing seized power on 1 February 2021, detaining civilian leader Aung San Suu Kyi and other elected officials. The Biden administration imposed sanctions on military leaders on 11 February 2021 and froze $1 billion in Myanmar government assets held in the U.S.",
+      "market_impact": "Foreign direct investment into Myanmar fell 22% to $3.8 billion in fiscal year 2020, and major foreign investors withdrew: Japan's Kirin ended a $1.7 billion brewery joint venture, Thailand's Amata halted a $1 billion industrial zone project, and India's Adani Ports terminated a $127 million port investment. The Yangon Stock Exchange suspended trading, and property sales reportedly dropped by nearly 100%."
+     }
+    ],
+    "possibility_chains": [
+     "A coup in a country that is a significant exporter of a specific commodity has historically raised questions about the continuity of that country's mining, energy, or agricultural exports, even when physical production is not immediately disrupted.",
+     "Coups have historically triggered sanctions and suspended aid or financing from regional blocs and international lenders, adding fiscal strain on top of the immediate political disruption.",
+     "Foreign companies operating in a country that experiences a coup have historically paused or withdrawn planned investment until the new government's posture toward existing contracts and foreign ownership becomes clearer."
+    ],
+    "why_it_matters": "Myanmar military coup (February 2021): Foreign direct investment into Myanmar fell 22% to $3.8 billion in fiscal year 2020, and major foreign investors withdrew: Japan's Kirin ended a $1.7 billion brewery joint venture, Thailand's Amata halted a $1 billion industrial zone project, and India's Adani Ports terminated a $127 million port investment. The Yangon Stock Exchange suspended trading, and property sales reportedly dropped by nearly 100%. A coup in a country that is a significant exporter of a specific commodity has historically raised questions about the continuity of that country's mining, energy, or agricultural exports, even when physical production is not immediately disrupted.",
+    "linked_playbooks": [
+     {
+      "id": "major-economy-sanctions",
+      "name": "Sanctions imposed on a major economy",
+      "affected_domains": [],
+      "why_it_matters": "International sanctions on Iran over its nuclear program (2010s): Iranian oil exports fell sharply, though global oil prices were also affected by supply from other producers filling the gap; Iran's own currency and economy experienced significant strain during the most restrictive sanctions periods. Sanctions targeting a major energy or commodity exporter have historically tightened global supply of that commodity, which has often (though not always, depending on how much other producers can offset the loss) pushed prices higher."
+     },
+     {
+      "id": "diplomatic-rupture-major-power",
+      "name": "Diplomatic rupture between major regional powers",
+      "affected_domains": [
+       "diplomacy",
+       "trade",
+       "shipping-transportation",
+       "currency",
+       "geopolitics",
+       "banking-financial-stability"
+      ],
+      "why_it_matters": "Saudi Arabia severs relations with Iran (January 2016): The rupture deepened the broader Saudi-Iran regional rivalry playing out through proxy conflicts in Yemen, Syria, and elsewhere; relations were not restored until a China-brokered agreement announced 10 March 2023, with embassies reopening in Riyadh in June 2023 and Tehran in August 2023. A sudden severing of diplomatic relations between neighboring major economies has historically disrupted direct trade, aviation, and financial flows between them, forcing rerouting of commerce through third countries at added cost."
+     },
+     {
+      "id": "currency-crisis",
+      "name": "Sharp currency devaluation / currency crisis",
+      "affected_domains": [],
+      "why_it_matters": "Turkish lira crisis (2018): The lira lost roughly 30–40% of its value against the U.S. dollar over the year, sharply raising the cost of imports and foreign-currency debt for Turkish businesses. A sharp currency devaluation has historically made imported goods, including fuel and food, significantly more expensive for consumers and businesses in the affected country."
+     }
+    ]
+   },
+   "category_context": null
   }
  ]
 }
