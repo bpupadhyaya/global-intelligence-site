@@ -1,41 +1,41 @@
 {
  "schema_version": "1.0.0",
- "generated_at": "2026-10-26T18:04:10Z",
+ "generated_at": "2026-10-27T03:11:00Z",
  "note": "World Intelligence signals: multilingual aspect + ripple-effect playbook matching (with one-hop linked_playbooks chains) and cross-source corroboration, run against every country-outlet feed discovered in data/country_feeds.json, PLUS scraped_headlines_fallback.json headline scrapes for feed-less outlets (source_type 'scraped_fallback' vs 'rss' -- scraped items can only ADD corroboration to a signal an RSS item already established as real, never create one on their own, since scraped headlines have no reliable publish timestamp). Zero-cost, zero-LLM, keyword-matching + curated playbook data only. NOT yet wired into data/briefing.json / the live Briefing tab — a standalone, additive dataset for now.",
  "stats": {
   "outlets_total_with_feed": 1149,
-  "outlets_ok": 1023,
-  "outlets_failed": 126,
-  "fresh_items": 12182,
-  "items_matched_aspect": 2210,
-  "items_matched_ripple_playbook": 31,
-  "items_with_linked_playbook_chain": 10,
-  "corroboration_clusters_total": 45,
-  "corroboration_clusters_playbook": 4,
+  "outlets_ok": 1012,
+  "outlets_failed": 137,
+  "fresh_items": 12237,
+  "items_matched_aspect": 2232,
+  "items_matched_ripple_playbook": 33,
+  "items_with_linked_playbook_chain": 9,
+  "corroboration_clusters_total": 47,
+  "corroboration_clusters_playbook": 6,
   "corroboration_clusters_topic_momentum": 41,
-  "signals_total": 14,
+  "signals_total": 12,
   "matched_language_distribution": {
-   "en": 6990,
-   "es": 1349,
-   "fr": 1242,
-   "ar": 626,
-   "ru": 480,
+   "en": 6997,
+   "es": 1347,
+   "fr": 1260,
+   "ar": 633,
+   "ru": 478,
    "de": 339,
-   "pt": 198,
+   "pt": 208,
    "tr": 195,
    "id": 190,
    "vi": 150,
    "bn": 100,
-   "it": 85,
    "zh": 79,
-   "sw": 50,
+   "it": 76,
+   "sw": 75,
    "ko": 50,
    "hi": 25,
    "ur": 25,
-   "ja": 9
+   "ja": 10
   },
-  "fetch_elapsed_seconds": 67.1,
-  "total_elapsed_seconds": 189.0,
+  "fetch_elapsed_seconds": 47.3,
+  "total_elapsed_seconds": 125.5,
   "outlets_total_scraped_fallback": 567,
   "outlets_total_combined": 1716,
   "scraped_fallback_items_loaded": 7389,
@@ -44,40 +44,188 @@
  },
  "signals": [
   {
+   "signal_id": "095a6f2cbf662170",
+   "signal_type": "playbook_corroboration",
+   "headline": "Nigeria May Declare Ebola Outbreak Over By December 7 – Pate",
+   "matched_at": "2026-10-27T02:53:00Z",
+   "matched_language": "en",
+   "aspects": [
+    {
+     "id": "science-health.public-health",
+     "score": 3.0
+    }
+   ],
+   "corroboration": {
+    "tier": "playbook_corroboration",
+    "source_count": 5,
+    "country_count": 4,
+    "countries": [
+     "Ghana",
+     "Kenya",
+     "Nicaragua",
+     "Nigeria"
+    ],
+    "label": "5 sources across 4 countries",
+    "scraped_fallback_sources_added": 0
+   },
+   "sources": [
+    {
+     "title": "Nigeria May Declare Ebola Outbreak Over By December 7 – Pate",
+     "source_name": "Leadership",
+     "country": "Nigeria",
+     "language": "English",
+     "url": "https://leadership.ng/nigeria-may-declare-ebola-outbreak-over-by-december-7-pate/",
+     "source_type": "rss",
+     "age_hours": 0.3
+    },
+    {
+     "title": "Ghana not adequately prepared for Ebola threat — Dr Kingsley Agyemang",
+     "source_name": "MyJoyOnline (Joy News, Multimedia Group)",
+     "country": "Ghana",
+     "language": "English",
+     "url": "https://www.myjoyonline.com/ghana-not-adequately-prepared-for-ebola-threat-dr-kingsley-agyemang/",
+     "source_type": "rss",
+     "age_hours": 3.7
+    },
+    {
+     "title": "'Ebola may force postponement of 2027 elections' - NCDC",
+     "source_name": "Daily Post",
+     "country": "Nigeria",
+     "language": "English",
+     "url": "https://dailypost.ng/2026/10/26/ebola-why-2027-elections-might-be-postponed-ncdc/",
+     "source_type": "rss",
+     "age_hours": 6.4
+    },
+    {
+     "title": "Brote de ébola en República Democrática del Congo roza los 10 mil casos",
+     "source_name": "Canal 4",
+     "country": "Nicaragua",
+     "language": "Spanish",
+     "url": "https://www.canal4.com.ni/brote-de-ebola-en-republica-democratica-del-congo-roza-los-10-mil-casos/",
+     "source_type": "rss",
+     "age_hours": 10.4
+    },
+    {
+     "title": "Ebola outbreak: Uganda bans non-essential Travel to DR Congo, citizens to be quarantined for 21 days",
+     "source_name": "Tuko",
+     "country": "Kenya",
+     "language": "English/Swahili",
+     "url": "https://www.tuko.co.ke/world/africa/644524-ebola-outbreak-uganda-bans-essential-travel-dr-congo-citizens-quarantined-21-days/",
+     "source_type": "rss",
+     "age_hours": 11.3
+    },
+    {
+     "title": "Ebola Outbreak: 20 contacts released as Kenya eyes end of outbreak after 42 days",
+     "source_name": "Tuko",
+     "country": "Kenya",
+     "language": "English/Swahili",
+     "url": "https://www.tuko.co.ke/kenya/644521-ebola-outbreak-20-contacts-released-kenya-eyes-outbreak-42-days/",
+     "source_type": "rss",
+     "age_hours": 11.8
+    }
+   ],
+   "ripple_effect": {
+    "id": "disease-outbreak-phe-ic",
+    "name": "Disease outbreak with international health emergency",
+    "affected_domains": [],
+    "historical_precedents": [
+     {
+      "period": "2014–2016",
+      "event": "West Africa Ebola outbreak",
+      "what_happened": "The World Health Organization declared a Public Health Emergency of International Concern as Ebola spread across Guinea, Liberia, and Sierra Leone; several airlines suspended routes to the region and some countries imposed travel restrictions.",
+      "market_impact": "The World Bank estimated the outbreak cost the three hardest-hit countries over $2 billion in lost economic output."
+     },
+     {
+      "period": "2016",
+      "event": "Zika virus outbreak",
+      "what_happened": "The WHO declared a Public Health Emergency as Zika spread across the Americas, linked to birth defects; several countries issued travel advisories affecting tourism, notably ahead of the Rio de Janeiro Olympics.",
+      "market_impact": "Tourism-dependent economies in affected regions reported measurable declines in visitor bookings during the advisory period."
+     }
+    ],
+    "possibility_chains": [
+     "A WHO-declared public health emergency has historically triggered travel advisories and, in some cases, temporary route suspensions by airlines.",
+     "Disease outbreaks with international travel warnings have historically reduced tourism and business travel to the affected region for the duration of the advisory.",
+     "Outbreaks affecting agricultural or manufacturing regions have historically disrupted local labor supply and production.",
+     "Vaccine and treatment developers have historically seen increased investment and expedited regulatory review during major outbreaks."
+    ],
+    "why_it_matters": "Zika virus outbreak (2016): Tourism-dependent economies in affected regions reported measurable declines in visitor bookings during the advisory period. A WHO-declared public health emergency has historically triggered travel advisories and, in some cases, temporary route suspensions by airlines.",
+    "linked_playbooks": []
+   },
+   "category_context": null
+  },
+  {
    "signal_id": "f4e38956bfc32c4e",
    "signal_type": "playbook_corroboration",
-   "headline": "إيران: مضيق هرمز مغلق بالكامل وتحت سيطرة قواتنا المسلحة",
-   "matched_at": "2026-10-26T17:55:45Z",
-   "matched_language": "ar",
+   "headline": "Iran tegaskan kendali penuh atas Selat Hormuz dan sekitarnya",
+   "matched_at": "2026-10-27T02:23:20Z",
+   "matched_language": "id",
    "aspects": [],
    "corroboration": {
     "tier": "playbook_corroboration",
-    "source_count": 12,
-    "country_count": 10,
+    "source_count": 14,
+    "country_count": 12,
     "countries": [
      "Cuba",
      "Egypt",
+     "Indonesia",
      "Iran",
      "Iraq",
      "Israel",
-     "Palestine",
+     "Lebanon",
      "Philippines",
      "Russia",
+     "Tajikistan",
      "Tunisia",
      "Turkey"
     ],
-    "label": "12 sources across 10 countries",
+    "label": "14 sources across 12 countries",
     "scraped_fallback_sources_added": 7
    },
    "sources": [
     {
-     "title": "إيران: مضيق هرمز مغلق بالكامل وتحت سيطرة قواتنا المسلحة",
-     "source_name": "Al-Quds Al-Arabi",
-     "country": "Palestine",
-     "language": "Arabic",
-     "url": "https://www.alquds.co.uk/%d8%a5%d9%8a%d8%b1%d8%a7%d9%86-%d9%85%d8%b6%d9%8a%d9%82-%d9%87%d8%b1%d9%85%d8%b2-%d9%85%d8%ba%d9%84%d9%82-%d8%a8%d8%a7%d9%84%d9%83%d8%a7%d9%85%d9%84-%d9%88%d8%aa%d8%ad%d8%aa-%d8%b3%d9%8a%d8%b7%d8%b1/",
+     "title": "Iran tegaskan kendali penuh atas Selat Hormuz dan sekitarnya",
+     "source_name": "ANTARA (state news agency)",
+     "country": "Indonesia",
+     "language": "Indonesian",
+     "url": "https://www.antaranews.com/berita/5813775/iran-tegaskan-kendali-penuh-atas-selat-hormuz-dan-sekitarnya",
      "source_type": "rss",
-     "age_hours": 0.1
+     "age_hours": 0.8
+    },
+    {
+     "title": "ترامب: إيران كانت على بعد أسبوعين من صاروخ نووي... ولم أكن مقتنعاً بالهدنة",
+     "source_name": "An-Nahar",
+     "country": "Lebanon",
+     "language": "Arabic",
+     "url": "https://www.annahar.com/international/united-states/360637/ترامب-إيران-كانت-على-بعد-أسبوعين-من-صاروخ-نووي",
+     "source_type": "rss",
+     "age_hours": 0.8
+    },
+    {
+     "title": "Bir ayda 29 gemi vuruldu",
+     "source_name": "Yeni Şafak",
+     "country": "Turkey",
+     "language": "Turkish (also EN/AR/FR/RU/UR editions)",
+     "url": "https://www.yenisafak.com/dunya/bir-ayda-29-gemi-vuruldu-4867516",
+     "source_type": "rss",
+     "age_hours": 2.2
+    },
+    {
+     "title": "CREA: Hürmüz kaynaklı petrol şokunda en ağır yakıt faturasını ABD ödedi",
+     "source_name": "Anadolu Agency (AA)",
+     "country": "Turkey",
+     "language": "Turkish/English (multilingual)",
+     "url": "https://www.aa.com.tr/tr/ekonomi/crea-hurmuz-kaynakli-petrol-sokunda-en-agir-yakit-faturasini-abd-odedi/4101832",
+     "source_type": "rss",
+     "age_hours": 5.3
+    },
+    {
+     "title": "Иранский генерал пригрозил повреждением судам, нарушающим протоколы в южных водах",
+     "source_name": "TopTJ",
+     "country": "Tajikistan",
+     "language": "Russian",
+     "url": "http://toptj.com/news/2026/10/26/iranskiy-general-prigrozil-povrezhdeniem-sudam-narushayushchim-protokoly-v",
+     "source_type": "rss",
+     "age_hours": 8.5
     },
     {
      "title": "İran Genelkurmay Başkanı Abdullahi'den Hürmüz Boğazı açıklaması",
@@ -86,7 +234,7 @@
      "language": "Turkish/English (multilingual)",
      "url": "https://www.aa.com.tr/tr/dunya/iran-genelkurmay-baskani-abdullahiden-hurmuz-bogazi-aciklamasi/4101644",
      "source_type": "rss",
-     "age_hours": 0.5
+     "age_hours": 9.6
     },
     {
      "title": "Irán afirma que no abandonó las negociaciones con Estados Unidos",
@@ -95,16 +243,7 @@
      "language": "Spanish",
      "url": "https://lademajagua.cu/iran-afirma-no-abandono-las-negociaciones-estados-unidos/",
      "source_type": "rss",
-     "age_hours": 4.6
-    },
-    {
-     "title": "غوتيريش: توجد فرصة لتفاهمات بشأن مضيق هرمز ونووي إيران",
-     "source_name": "Palestine News Network (PNN)",
-     "country": "Palestine",
-     "language": "Arabic (also English)",
-     "url": "https://pnn.ps/news/729452",
-     "source_type": "rss",
-     "age_hours": 6.8
+     "age_hours": 13.7
     },
     {
      "title": "Mixed pump price adjustment on Oct. 27",
@@ -113,7 +252,7 @@
      "language": "English",
      "url": "https://www.newswatchplus.ph/2026/10/26/mixed-pump-price-adjustment-on-oct-27/",
      "source_type": "rss",
-     "age_hours": 7.7
+     "age_hours": 16.8
     },
     {
      "title": "عاجل.. 6 سفن فقط عبرت مضيق هرمز خلال يوم مع تلاشي آمال التوصل لاتفاق سلام",
@@ -130,33 +269,6 @@
      "country": "Tunisia",
      "language": "Arabic/French",
      "url": "https://www.jawharafm.net/ar/article/أمين-المجلس-الأعلى-للأمن-القومي-لن-يفتح-مضيق-هرمز-ما-لم-تقبل-الولايات-المتحدة-شروط-إيران/106/297518",
-     "source_type": "scraped_fallback",
-     "age_hours": null
-    },
-    {
-     "title": "Iran is not Venezuela: Hormuz Strait and limits of US power",
-     "source_name": "Tehran Times",
-     "country": "Iran",
-     "language": "English",
-     "url": "https://www.tehrantimes.com/news/529008/Iran-is-not-Venezuela-Hormuz-Strait-and-limits-of-US-power",
-     "source_type": "scraped_fallback",
-     "age_hours": null
-    },
-    {
-     "title": "Trump:'I’m the last person to trust Iran, they’ve lied constantly'President Trump rejects assertions he trusts Iran, claims total US control of Strait of Hormuz.",
-     "source_name": "Arutz Sheva (Israel National News)",
-     "country": "Israel",
-     "language": "Hebrew/English",
-     "url": "https://www.israelnationalnews.com/news/431583",
-     "source_type": "scraped_fallback",
-     "age_hours": null
-    },
-    {
-     "title": "Oil Prices Extend Rally as Strait of Hormuz Reopening Hopes Fade",
-     "source_name": "Kurdistan24",
-     "country": "Iraq",
-     "language": "Kurdish/English",
-     "url": "https://www.kurdistan24.net/en/story/931751/oil-prices-extend-rally-as-strait-of-hormuz-reopening-hopes-fade",
      "source_type": "scraped_fallback",
      "age_hours": null
     }
@@ -197,12 +309,223 @@
    "category_context": null
   },
   {
-   "signal_id": "442bf4e4c2543bc9",
+   "signal_id": "46b1048f9ea82ac9",
+   "signal_type": "playbook_corroboration",
+   "headline": "Pembuangan air limbah nuklir Fukushima ke laut masuki putaran ke-25",
+   "matched_at": "2026-10-27T01:55:58Z",
+   "matched_language": "id",
+   "aspects": [
+    {
+     "id": "geopolitics.defense",
+     "score": 3.0
+    },
+    {
+     "id": "climate.environment",
+     "score": 3.0
+    }
+   ],
+   "corroboration": {
+    "tier": "playbook_corroboration",
+    "source_count": 2,
+    "country_count": 2,
+    "countries": [
+     "Indonesia",
+     "Japan"
+    ],
+    "label": "2 sources across 2 countries",
+    "scraped_fallback_sources_added": 0
+   },
+   "sources": [
+    {
+     "title": "Pembuangan air limbah nuklir Fukushima ke laut masuki putaran ke-25",
+     "source_name": "ANTARA (state news agency)",
+     "country": "Indonesia",
+     "language": "Indonesian",
+     "url": "https://www.antaranews.com/berita/5813747/pembuangan-air-limbah-nuklir-fukushima-ke-laut-masuki-putaran-ke-25",
+     "source_type": "rss",
+     "age_hours": 1.2
+    },
+    {
+     "title": "宮城、福島で震度３",
+     "source_name": "Jiji Press",
+     "country": "Japan",
+     "language": "Japanese",
+     "url": "https://www.jiji.com/jc/article?k=2026102700295&g=soc&m=rss",
+     "source_type": "rss",
+     "age_hours": 2.4
+    }
+   ],
+   "ripple_effect": {
+    "id": "manufacturing-hub-natural-disaster",
+    "name": "Natural disaster hitting a manufacturing hub",
+    "affected_domains": [],
+    "historical_precedents": [
+     {
+      "period": "March 2011",
+      "event": "Japan's Tōhoku earthquake, tsunami, and Fukushima nuclear disaster",
+      "what_happened": "The disaster killed thousands of people and forced widespread factory shutdowns across Japan, which was and remains a major supplier of automotive parts and specialized electronic components.",
+      "market_impact": "Global automakers, including outside Japan, had to slow or halt production for weeks due to parts shortages, and some categories of electronic components saw temporary global shortages and price increases."
+     },
+     {
+      "period": "July–November 2011",
+      "event": "Thailand floods",
+      "what_happened": "Months of monsoon flooding submerged major industrial estates north of Bangkok that housed a large share of the world's hard-disk-drive manufacturing along with numerous automotive-parts factories, forcing an extended shutdown of dozens of plants.",
+      "market_impact": "Global hard-drive prices roughly doubled for several months due to the shortage, and several Japanese automakers had to cut production at plants worldwide because of parts sourced from the flooded factories."
+     }
+    ],
+    "possibility_chains": [
+     "A natural disaster affecting a region that supplies a specialized, hard-to-substitute component has historically caused production disruptions for manufacturers worldwide, not just locally, given how concentrated some supply chains are geographically.",
+     "Disruptions of this kind have historically prompted affected companies to review and diversify their supplier base over the following months and years, though meaningful diversification has typically taken longer than the disruption itself.",
+     "Recovery timelines have historically depended heavily on how specialized and geographically concentrated the affected manufacturing capacity was — highly specialized hubs (e.g. certain semiconductor fabrication) have taken longer to recover than more easily relocated production."
+    ],
+    "why_it_matters": "Thailand floods (July–November 2011): Global hard-drive prices roughly doubled for several months due to the shortage, and several Japanese automakers had to cut production at plants worldwide because of parts sourced from the flooded factories. A natural disaster affecting a region that supplies a specialized, hard-to-substitute component has historically caused production disruptions for manufacturers worldwide, not just locally, given how concentrated some supply chains are geographically.",
+    "linked_playbooks": []
+   },
+   "category_context": null
+  },
+  {
+   "signal_id": "891f3d54690b83f8",
    "signal_type": "playbook_single_source",
-   "headline": "María Corina Machado iniciará gira nacional tras su regreso a Venezuela para exigir elecciones libres",
-   "matched_at": "2026-10-26T17:46:15Z",
-   "matched_language": "es",
+   "headline": "Duchess hospital moves to curb medical tourism after 44 open-heart surgeries",
+   "matched_at": "2026-10-27T01:47:19Z",
+   "matched_language": "en",
    "aspects": [],
+   "ripple_effect": {
+    "id": "medical-tourism-cost-arbitrage",
+    "name": "Medical tourism as a cross-border healthcare cost arbitrage",
+    "affected_domains": [
+     "public-health",
+     "healthcare",
+     "travel",
+     "tourism",
+     "trade"
+    ],
+    "historical_precedents": [
+     {
+      "period": "2007–2015",
+      "event": "Growth of outbound US medical tourism and inbound medical-tourism hub economies",
+      "what_happened": "An estimated 750,000 Americans traveled abroad for medical care in 2007, with Deloitte projecting the flow could grow roughly tenfold over the following decade; by 2015 estimates of US outbound medical tourists seeking inpatient care ranged from 150,000 to 320,000 annually, while destination countries built dedicated medical-tourism industries — Thailand drew an estimated 2.81 million foreign patients in 2015 (up 10.2% year-on-year) generating about $4.7 billion in 2013 revenue, and Jordan attracted about 250,000 international patients and companions in 2012, generating over $1 billion.",
+      "market_impact": "Lower-cost destination countries built hospital accreditation and marketing infrastructure specifically to capture price-sensitive patients from higher-cost systems like the US; India's medical tourism sector was projected (as of 2015) to grow about 30% annually from a 2012 base, potentially reaching $2 billion by 2015 — establishing medical tourism as a recurring, price-driven cross-border patient flow rather than a niche phenomenon."
+     }
+    ],
+    "possibility_chains": [
+     "A large price gap between a patient's home healthcare system and a lower-cost destination with comparable hospital accreditation has historically been sufficient on its own to sustain outbound medical tourism flows, independent of any single trigger event.",
+     "Destination countries have historically used medical tourism revenue and hospital investment as a deliberate export-diversification strategy, as seen in Thailand, Jordan, and Vietnam.",
+     "A rise in domestic healthcare costs or insurance-coverage gaps in a patient's home country has historically correlated with an increase in outbound medical tourism from that country."
+    ],
+    "why_it_matters": "Growth of outbound US medical tourism and inbound medical-tourism hub economies (2007–2015): Lower-cost destination countries built hospital accreditation and marketing infrastructure specifically to capture price-sensitive patients from higher-cost systems like the US; India's medical tourism sector was projected (as of 2015) to grow about 30% annually from a 2012 base, potentially reaching $2 billion by 2015 — establishing medical tourism as a recurring, price-driven cross-border patient flow rather than a niche phenomenon. A large price gap between a patient's home healthcare system and a lower-cost destination with comparable hospital accreditation has historically been sufficient on its own to sustain outbound medical tourism flows, independent of any single trigger event.",
+    "linked_playbooks": [
+     {
+      "id": "pharmaceutical-patent-cliff",
+      "name": "Pharmaceutical patent cliff and blockbuster drug revenue loss",
+      "affected_domains": [
+       "public-health",
+       "healthcare",
+       "pharmaceuticals",
+       "capital-markets",
+       "regulation"
+      ],
+      "why_it_matters": "Lipitor (atorvastatin) patent expiration (1996–2012 (US patent expired November 30, 2011)): Generic prices stayed relatively elevated during that initial exclusivity window, then fell sharply once additional manufacturers entered in May 2012, pushing a month's supply down toward standard generic pricing of $10 or less — illustrating the two-stage price collapse (moderate initial generic discount, then a much steeper one once multiple generic makers compete) that characterizes a typical pharmaceutical patent-cliff event. A cluster of blockbuster drugs (defined in the industry as over $1 billion in annual sales) losing patent protection in the same multi-year window has historically pushed large pharmaceutical companies toward M&A, portfolio diversification, and 'evergreening' strategies (new formulations or delivery mechanisms) to offset the revenue drop."
+     },
+     {
+      "id": "aca-insurer-exchange-exit-instability",
+      "name": "Health insurer exits from public exchanges and market instability",
+      "affected_domains": [
+       "public-health",
+       "healthcare",
+       "insurance",
+       "regulation",
+       "politics"
+      ],
+      "why_it_matters": "UnitedHealth Group's large-scale ACA exchange exit (April 2016 (effective 2017 plan year)): The exit — following the shortfall of the ACA's risk-corridors program, which lost up to $8.3 billion for the 2014–2015 plan years combined and triggered separate insurer litigation against the federal government — reduced plan choice and competition in many exchange markets for the 2017 plan year and became a recurring talking point in the 2016 US election-year debate over the ACA's stability. A change in the assumed risk pool or a shortfall in a program's risk-mitigation funding, as with the ACA's risk corridors, has historically led large insurers to reassess or exit a newly created insurance market before it stabilizes."
+     }
+    ]
+   },
+   "category_context": null,
+   "corroboration": {
+    "tier": "single_source",
+    "source_count": 2,
+    "country_count": 1,
+    "countries": [
+     "Nigeria"
+    ],
+    "label": "2 sources",
+    "scraped_fallback_sources_added": 1
+   },
+   "sources": [
+    {
+     "title": "Duchess hospital moves to curb medical tourism after 44 open-heart surgeries",
+     "source_name": "The Punch (Punch Newspapers)",
+     "country": "Nigeria",
+     "language": "English",
+     "url": "https://punchng.com/duchess-hospital-moves-to-curb-medical-tourism-after-44-open-heart-surgeries/?utm_source=rss.punchng.com&utm_medium=web",
+     "source_type": "rss",
+     "age_hours": 1.4
+    },
+    {
+     "title": "Medical Tourism Takes Centre Stage at All Africa Medical & Wellness ExpoAugust 2, 2026",
+     "source_name": "Nigerian Television Authority (NTA)",
+     "country": "Nigeria",
+     "language": "English",
+     "url": "https://www.nta.ng/news/the-editors-picks/medical-tourism-takes-centre-stage-at-all-africa-medical-wellness-expo",
+     "source_type": "scraped_fallback",
+     "age_hours": null
+    }
+   ]
+  },
+  {
+   "signal_id": "d548d0574d8e8a5f",
+   "signal_type": "playbook_corroboration",
+   "headline": "La psicología dice que devolver dinero encontrado, reconocer un error que nadie había advertido o cumplir una promesa sin supervisión son decisiones cotidianas que pueden pasar inadvertidas. Sin embargo, estos comportamientos permiten analizar cómo actúan las personas cuando no esperan recibir recon",
+   "matched_at": "2026-10-27T01:40:14Z",
+   "matched_language": "es",
+   "aspects": [
+    {
+     "id": "geopolitics.sanctions",
+     "score": 3.0
+    }
+   ],
+   "corroboration": {
+    "tier": "playbook_corroboration",
+    "source_count": 3,
+    "country_count": 3,
+    "countries": [
+     "Argentina",
+     "Peru",
+     "Spain"
+    ],
+    "label": "3 sources across 3 countries",
+    "scraped_fallback_sources_added": 0
+   },
+   "sources": [
+    {
+     "title": "La psicología dice que devolver dinero encontrado, reconocer un error que nadie había advertido o cumplir una promesa sin supervisión son decisiones cotidianas que pueden pasar inadvertidas. Sin embargo, estos comportamientos permiten analizar cómo actúan las personas cuando no esperan recibir recon",
+     "source_name": "Clarín",
+     "country": "Argentina",
+     "language": "Spanish",
+     "url": "https://www.clarin.com/estados-unidos/psicologia-dice-devolver-dinero-encontrado-reconocer-error-nadie-advertido-cumplir-promesa-supervision-decisiones-cotidianas-pueden-pasar-inadvertidas-embargo-comportamientos-permiten-analizar-actuan-personas-esperan-recibir-reconocimiento_0_MEOeNIQ7VG.html",
+     "source_type": "rss",
+     "age_hours": 1.5
+    },
+    {
+     "title": "Lula da Silva es reelecto presidente de Brasil tras una remontada histórica frente a Flávio Bolsonaro",
+     "source_name": "La República",
+     "country": "Peru",
+     "language": "Spanish",
+     "url": "https://larepublica.pe/mundo/2026/10/25/lula-da-silva-continuara-como-presidente-de-brasil-tras-una-remontada-historica-frente-a-flavio-bolsonaro-639050",
+     "source_type": "rss",
+     "age_hours": 3.3
+    },
+    {
+     "title": "El jefe de Audi incendia Alemania al hacer campaña con Trump con la promesa de una fábrica",
+     "source_name": "El Mundo",
+     "country": "Spain",
+     "language": "Spanish",
+     "url": "https://www.elmundo.es/economia/2026/10/26/6adf9a44fdddff1d4c8b4589.html",
+     "source_type": "rss",
+     "age_hours": 8.7
+    }
+   ],
    "ripple_effect": {
     "id": "territorial-debt-crisis",
     "name": "US territory / sub-sovereign debt restructuring crisis",
@@ -263,169 +586,208 @@
      }
     ]
    },
+   "category_context": null
+  },
+  {
+   "signal_id": "54625584a0c1bcb0",
+   "signal_type": "playbook_corroboration",
+   "headline": "Microsoft's 60,000-Worker Buyout Adds to H-1B Visa Uncertainty",
+   "matched_at": "2026-10-26T22:42:22Z",
+   "matched_language": "en",
+   "aspects": [
+    {
+     "id": "technology.big-tech",
+     "score": 3.0
+    },
+    {
+     "id": "travel.visas",
+     "score": 3.0
+    }
+   ],
+   "corroboration": {
+    "tier": "playbook_corroboration",
+    "source_count": 2,
+    "country_count": 2,
+    "countries": [
+     "Kenya",
+     "United States"
+    ],
+    "label": "2 sources across 2 countries",
+    "scraped_fallback_sources_added": 0
+   },
+   "sources": [
+    {
+     "title": "Microsoft's 60,000-Worker Buyout Adds to H-1B Visa Uncertainty",
+     "source_name": "Newsweek",
+     "country": "United States",
+     "language": "English",
+     "url": "https://www.newsweek.com/microsoft-layoffs-buyout-h1b-visa-green-card-jobs-12621897",
+     "source_type": "rss",
+     "age_hours": 4.5
+    },
+    {
+     "title": "US Resumes Approving Some H-1B Visas Without $100,000 Fee After Court Rulings",
+     "source_name": "Tuko",
+     "country": "Kenya",
+     "language": "English/Swahili",
+     "url": "https://www.tuko.co.ke/world/us/644531-good-news-begins-visa-approval-petition-court-issues-order-trump/",
+     "source_type": "rss",
+     "age_hours": 8.7
+    }
+   ],
+   "ripple_effect": {
+    "id": "h1b-skilled-immigration-policy-shift",
+    "name": "Skilled-worker visa policy shift",
+    "affected_domains": [
+     "labor",
+     "immigration",
+     "technology",
+     "politics"
+    ],
+    "historical_precedents": [
+     {
+      "period": "22 April 2020 – 1 April 2021",
+      "event": "Trump administration's suspension of H-1B and other work-visa entry",
+      "what_happened": "Citing the risk that visa holders would \"displace and disadvantage\" US workers during the pandemic-era economic recovery, President Trump signed a proclamation on April 22, 2020 suspending entry for several nonimmigrant visa categories including H-1B, extended it through December 31, 2020, then again through March 31, 2021, before President Biden allowed the suspension to expire on April 1, 2021.",
+      "market_impact": "The roughly year-long suspension left many US employers, especially in technology, unable to bring new H-1B hires into the country during the suspension window, adding to pandemic-era hiring disruption for visa-dependent roles."
+     },
+     {
+      "period": "19 September 2025 – ongoing",
+      "event": "$100,000 H-1B application fee",
+      "what_happened": "President Trump signed a proclamation requiring employers to pay a one-time $100,000 fee for new H-1B petitions filed between September 21, 2025 and September 21, 2026 — a roughly 65-fold increase over the prior ~$1,500 filing cost — with waivers available only where the Department of Homeland Security judged the hire to be in the national interest.",
+      "market_impact": "A federal judge ruled the $100,000 fee unlawful on June 8, 2026, but the year-plus of uncertainty in between affected employer hiring and budget planning for new skilled-visa hires, particularly in technology and healthcare roles that rely heavily on the H-1B category."
+     }
+    ],
+    "possibility_chains": [
+     "A sudden increase in the cost or difficulty of hiring skilled foreign workers has historically pushed some employers to shift new hiring or entire teams to countries with more accessible immigration systems, a process that has typically played out over a year or more rather than immediately.",
+     "Restrictions on skilled-worker visas have historically had a concentrated impact on the specific industries (technology, healthcare, academia) that rely most heavily on that visa category, rather than spreading evenly across the labor market.",
+     "Because a large share of skilled-visa holders are early in their careers, sudden restrictions have historically had a disproportionate effect on entry-level hiring pipelines at affected employers, showing up gradually as those cohorts would otherwise have been promoted into more senior roles."
+    ],
+    "why_it_matters": "$100,000 H-1B application fee (19 September 2025 – ongoing): A federal judge ruled the $100,000 fee unlawful on June 8, 2026, but the year-plus of uncertainty in between affected employer hiring and budget planning for new skilled-visa hires, particularly in technology and healthcare roles that rely heavily on the H-1B category. A sudden increase in the cost or difficulty of hiring skilled foreign workers has historically pushed some employers to shift new hiring or entire teams to countries with more accessible immigration systems, a process that has typically played out over a year or more rather than immediately.",
+    "linked_playbooks": [
+     {
+      "id": "tech-sector-mass-layoffs",
+      "name": "Large-scale tech industry layoffs",
+      "affected_domains": [
+       "employment",
+       "technology",
+       "capital-markets",
+       "real-estate"
+      ],
+      "why_it_matters": "Elon Musk's mass layoffs at Twitter after his acquisition (November 2022 – April 2023): By January 2023 Twitter's headcount had fallen to roughly 2,300, and by April 2023 fewer than 1,500 active employees remained — an approximately 80% reduction from pre-acquisition levels — while the company also faced worker lawsuits alleging inadequate notice under the WARN Act. A wave of layoffs at one large tech employer has historically been followed within months by similar cuts at competitors, as boards and investors reward visible cost discipline during the same macro conditions."
+     },
+     {
+      "id": "agricultural-guest-worker-policy-shift",
+      "name": "Agricultural guest-worker / farm labor immigration policy shift",
+      "affected_domains": [
+       "labor",
+       "agriculture",
+       "immigration",
+       "consumer-spending"
+      ],
+      "why_it_matters": "Growth of the H-2A agricultural guest-worker visa program (1997–2020): By the late 2010s several major farm states (North Carolina, Washington, Florida, Georgia, California) had come to rely on H-2A workers for more than half of their certified agricultural labor positions, making the program a structural feature of US farm labor supply rather than a marginal one — and making farm output in those states sensitive to any future federal changes to the visa's rules or processing speed. Tightening immigration enforcement or guest-worker visa availability in a major agricultural region has historically raised the risk of unharvested crops and higher farm labor costs during peak harvest windows, since domestic labor has rarely fully filled the resulting gap on short notice."
+     }
+    ]
+   },
+   "category_context": null
+  },
+  {
+   "signal_id": "b10279c6b533b680",
+   "signal_type": "playbook_single_source",
+   "headline": "Brazil’s currency plunges most since 1999 after Lula’s election victory",
+   "matched_at": "2026-10-26T21:08:50Z",
+   "matched_language": "en",
+   "aspects": [
+    {
+     "id": "markets.currencies",
+     "score": 3.0
+    },
+    {
+     "id": "politics.elections",
+     "score": 3.0
+    }
+   ],
+   "ripple_effect": {
+    "id": "currency-crisis",
+    "name": "Sharp currency devaluation / currency crisis",
+    "affected_domains": [],
+    "historical_precedents": [
+     {
+      "period": "1997–1998",
+      "event": "Asian financial crisis",
+      "what_happened": "Thailand's decision to float its currency, the baht, after months of speculative pressure triggered a wave of currency devaluations across Thailand, Indonesia, South Korea, and other Asian economies.",
+      "market_impact": "Several regional currencies lost half or more of their value against the U.S. dollar within months, stock markets across the region fell sharply, and multiple countries required IMF bailout programs."
+     },
+     {
+      "period": "2018",
+      "event": "Turkish lira crisis",
+      "what_happened": "The Turkish lira came under severe pressure amid high inflation, large foreign-currency debts, and a diplomatic dispute with the U.S.",
+      "market_impact": "The lira lost roughly 30–40% of its value against the U.S. dollar over the year, sharply raising the cost of imports and foreign-currency debt for Turkish businesses."
+     }
+    ],
+    "possibility_chains": [
+     "A sharp currency devaluation has historically made imported goods, including fuel and food, significantly more expensive for consumers and businesses in the affected country.",
+     "Companies and governments with large debts denominated in a foreign currency (commonly the U.S. dollar) have historically faced sharply higher effective debt burdens when their local currency devalues.",
+     "A currency crisis in one emerging-market economy has historically raised investor caution toward other economies seen as having similar vulnerabilities, sometimes spreading pressure regionally even without a direct economic link."
+    ],
+    "why_it_matters": "Turkish lira crisis (2018): The lira lost roughly 30–40% of its value against the U.S. dollar over the year, sharply raising the cost of imports and foreign-currency debt for Turkish businesses. A sharp currency devaluation has historically made imported goods, including fuel and food, significantly more expensive for consumers and businesses in the affected country.",
+    "linked_playbooks": []
+   },
    "category_context": null,
    "corroboration": {
     "tier": "single_source",
     "source_count": 1,
     "country_count": 1,
     "countries": [
-     "Venezuela"
+     "United Kingdom"
     ],
     "label": "1 source",
     "scraped_fallback_sources_added": 0
    },
    "sources": [
     {
-     "title": "María Corina Machado iniciará gira nacional tras su regreso a Venezuela para exigir elecciones libres",
-     "source_name": "El Nacional",
-     "country": "Venezuela",
-     "language": "Spanish",
-     "url": "https://www.elnacional.com/2026/10/maria-corina-machado-iniciara-gira-nacional-tras-su-regreso-a-venezuela-para-exigir-elecciones-libres/",
+     "title": "Brazil’s currency plunges most since 1999 after Lula’s election victory",
+     "source_name": "Financial Times",
+     "country": "United Kingdom",
+     "language": "English",
+     "url": "https://www.ft.com/content/bffe028e-838d-4e74-b05e-62f6db4978db?syn-25a6b1a6=1",
      "source_type": "rss",
-     "age_hours": 0.3
+     "age_hours": 6.0
     }
    ]
   },
   {
-   "signal_id": "095a6f2cbf662170",
+   "signal_id": "8ab28ef58f663d38",
    "signal_type": "playbook_corroboration",
-   "headline": "Nigeria could declare Ebola outbreak over by Dec 7 – Pate",
-   "matched_at": "2026-10-26T17:29:38Z",
+   "headline": "Serbia will not impose Russia sanctions – election winner’s rep to RT",
+   "matched_at": "2026-10-26T20:05:24Z",
    "matched_language": "en",
    "aspects": [
     {
-     "id": "science-health.public-health",
+     "id": "politics.elections",
      "score": 3.0
     }
    ],
    "corroboration": {
     "tier": "playbook_corroboration",
     "source_count": 5,
-    "country_count": 4,
+    "country_count": 2,
     "countries": [
-     "Kenya",
-     "Nicaragua",
-     "Nigeria",
-     "Switzerland"
-    ],
-    "label": "5 sources across 4 countries",
-    "scraped_fallback_sources_added": 0
-   },
-   "sources": [
-    {
-     "title": "Nigeria could declare Ebola outbreak over by Dec 7 – Pate",
-     "source_name": "Vanguard",
-     "country": "Nigeria",
-     "language": "English",
-     "url": "https://www.vanguardngr.com/2026/10/nigeria-could-declare-ebola-outbreak-over-by-dec-7-pate/",
-     "source_type": "rss",
-     "age_hours": 0.6
-    },
-    {
-     "title": "Brote de ébola en República Democrática del Congo roza los 10 mil casos",
-     "source_name": "Canal 4",
-     "country": "Nicaragua",
-     "language": "Spanish",
-     "url": "https://www.canal4.com.ni/brote-de-ebola-en-republica-democratica-del-congo-roza-los-10-mil-casos/",
-     "source_type": "rss",
-     "age_hours": 1.3
-    },
-    {
-     "title": "Kano tests health workers’ readiness for Ebola outbreak",
-     "source_name": "Daily Post",
-     "country": "Nigeria",
-     "language": "English",
-     "url": "https://dailypost.ng/2026/10/26/kano-tests-health-workers-readiness-for-ebola-outbreak/",
-     "source_type": "rss",
-     "age_hours": 2.1
-    },
-    {
-     "title": "Ebola outbreak: Uganda bans non-essential Travel to DR Congo, citizens to be quarantined for 21 days",
-     "source_name": "Tuko",
-     "country": "Kenya",
-     "language": "English/Swahili",
-     "url": "https://www.tuko.co.ke/world/africa/644524-ebola-outbreak-uganda-bans-essential-travel-dr-congo-citizens-quarantined-21-days/",
-     "source_type": "rss",
-     "age_hours": 2.2
-    },
-    {
-     "title": "DIE NEUESTEN ENTWICKLUNGEN - Ebola-Ausbruch in Zentralafrika: Universitätsspital Zürich nimmt Person mit Ebola-Verdacht auf",
-     "source_name": "Neue Zürcher Zeitung (NZZ)",
-     "country": "Switzerland",
-     "language": "German",
-     "url": "https://www.nzz.ch/wissenschaft/ebola-ausbruch-in-zentralafrika-mehr-als-300-ebola-tote-in-kongo-erster-fall-in-frankreich-nachgewiesen-ld.10007509",
-     "source_type": "rss",
-     "age_hours": 2.7
-    },
-    {
-     "title": "Ebola Outbreak: 20 contacts released as Kenya eyes end of outbreak after 42 days",
-     "source_name": "Tuko",
-     "country": "Kenya",
-     "language": "English/Swahili",
-     "url": "https://www.tuko.co.ke/kenya/644521-ebola-outbreak-20-contacts-released-kenya-eyes-outbreak-42-days/",
-     "source_type": "rss",
-     "age_hours": 2.7
-    }
-   ],
-   "ripple_effect": {
-    "id": "disease-outbreak-phe-ic",
-    "name": "Disease outbreak with international health emergency",
-    "affected_domains": [],
-    "historical_precedents": [
-     {
-      "period": "2014–2016",
-      "event": "West Africa Ebola outbreak",
-      "what_happened": "The World Health Organization declared a Public Health Emergency of International Concern as Ebola spread across Guinea, Liberia, and Sierra Leone; several airlines suspended routes to the region and some countries imposed travel restrictions.",
-      "market_impact": "The World Bank estimated the outbreak cost the three hardest-hit countries over $2 billion in lost economic output."
-     },
-     {
-      "period": "2016",
-      "event": "Zika virus outbreak",
-      "what_happened": "The WHO declared a Public Health Emergency as Zika spread across the Americas, linked to birth defects; several countries issued travel advisories affecting tourism, notably ahead of the Rio de Janeiro Olympics.",
-      "market_impact": "Tourism-dependent economies in affected regions reported measurable declines in visitor bookings during the advisory period."
-     }
-    ],
-    "possibility_chains": [
-     "A WHO-declared public health emergency has historically triggered travel advisories and, in some cases, temporary route suspensions by airlines.",
-     "Disease outbreaks with international travel warnings have historically reduced tourism and business travel to the affected region for the duration of the advisory.",
-     "Outbreaks affecting agricultural or manufacturing regions have historically disrupted local labor supply and production.",
-     "Vaccine and treatment developers have historically seen increased investment and expedited regulatory review during major outbreaks."
-    ],
-    "why_it_matters": "Zika virus outbreak (2016): Tourism-dependent economies in affected regions reported measurable declines in visitor bookings during the advisory period. A WHO-declared public health emergency has historically triggered travel advisories and, in some cases, temporary route suspensions by airlines.",
-    "linked_playbooks": []
-   },
-   "category_context": null
-  },
-  {
-   "signal_id": "8ab28ef58f663d38",
-   "signal_type": "playbook_corroboration",
-   "headline": "Победившая на выборах в Сербии оппозиция намерена прекратить поставки оружия в зоны конфликтов",
-   "matched_at": "2026-10-26T17:22:21Z",
-   "matched_language": "ru",
-   "aspects": [],
-   "corroboration": {
-    "tier": "playbook_corroboration",
-    "source_count": 7,
-    "country_count": 5,
-    "countries": [
-     "Belarus",
-     "Germany",
      "Russia",
-     "Ukraine",
-     "Zambia"
+     "Ukraine"
     ],
-    "label": "7 sources across 5 countries",
+    "label": "5 sources across 2 countries",
     "scraped_fallback_sources_added": 0
    },
    "sources": [
     {
-     "title": "Победившая на выборах в Сербии оппозиция намерена прекратить поставки оружия в зоны конфликтов",
-     "source_name": "BelTA",
-     "country": "Belarus",
-     "language": "Russian (Belarusian/English/other options)",
-     "url": "https://belta.by/world/view/pobedivshaja-na-vyborah-v-serbii-oppozitsija-namerena-prekratit-postavki-oruzhija-v-zony-konfliktov-807846-2026/",
+     "title": "Serbia will not impose Russia sanctions – election winner’s rep to RT",
+     "source_name": "RT (Russia Today)",
+     "country": "Russia",
+     "language": "English (multiple language editions)",
+     "url": "https://rt-english.com/news/647755-serbia-new-government-russia-sanctions/?utm_source=rss&utm_medium=rss&utm_campaign=RSS",
      "source_type": "rss",
-     "age_hours": 0.7
+     "age_hours": 7.1
     },
     {
      "title": "Победивший на выборах в Сербии «Студенческий список» пообещал не вводить санкции против России",
@@ -434,7 +796,7 @@
      "language": "Russian",
      "url": "https://novayagazeta.eu/articles/2026/10/26/pobedivshii-na-vyborakh-v-serbii-studencheskii-spisok-poobeshchal-ne-vvodit-sanktsii-protiv-rossii-news",
      "source_type": "rss",
-     "age_hours": 1.5
+     "age_hours": 10.6
     },
     {
      "title": "Ухудшится ли жизнь россиян в Сербии при власти «студентов»? И почему они вряд ли захотят ссориться с Россией?",
@@ -443,7 +805,7 @@
      "language": "Russian (English at meduza.io/en)",
      "url": "https://meduza.io/feature/2026/10/26/uhudshitsya-li-zhizn-rossiyan-v-serbii-pri-novoy-vlasti",
      "source_type": "rss",
-     "age_hours": 2.3
+     "age_hours": 11.4
     },
     {
      "title": "Победившая в Сербии оппозиция не намерена вводить санкции против России",
@@ -452,16 +814,7 @@
      "language": "Russian",
      "url": "https://tvrain.tv/news/pobedivshaja-v-serbii-oppozitsija-ne-namerena-vvodit-sanktsii-protiv-rossii-577627/?from=rss",
      "source_type": "rss",
-     "age_hours": 2.9
-    },
-    {
-     "title": "VUČIĆ CONCEDES DEFEAT, BLAMES FOREIGN POWERS AND PREDICTS SANCTIONS ON RUSSIA",
-     "source_name": "Zambian Observer",
-     "country": "Zambia",
-     "language": "English",
-     "url": "https://zambianobserver.com/vucic-concedes-defeat-blames-foreign-powers-and-predicts-sanctions-on-russia/",
-     "source_type": "rss",
-     "age_hours": 3.0
+     "age_hours": 12.0
     },
     {
      "title": "Serbia’s Vucic Loses Vote, Predicts Sanctions on Russia",
@@ -470,16 +823,7 @@
      "language": "English",
      "url": "https://www.kyivpost.com/post/88193",
      "source_type": "rss",
-     "age_hours": 5.1
-    },
-    {
-     "title": "Nach Vučićs Sturz in Serbien: \"Bei Sanktionen gegen Russland wird die Studentenbewegung zögern\"",
-     "source_name": "n-tv",
-     "country": "Germany",
-     "language": "German",
-     "url": "https://www.n-tv.de/politik/Bei-Sanktionen-gegen-Russland-wird-die-Studentenbewegung-zoegern-id31458814.html",
-     "source_type": "rss",
-     "age_hours": 5.8
+     "age_hours": 14.2
     },
     {
      "title": "На парламентских выборах в Сербии победило оппозиционное движение «Студенческий список». Вучич признал поражение. Он утверждает, что теперь новые власти введут санкции против России («студенты» это отрицают)",
@@ -488,7 +832,7 @@
      "language": "Russian (English at meduza.io/en)",
      "url": "https://meduza.io/feature/2026/10/26/na-parlamentskih-vyborah-v-serbii-pobedilo-dvizhenie-studencheskiy-spisok",
      "source_type": "rss",
-     "age_hours": 7.8
+     "age_hours": 16.9
     }
    ],
    "ripple_effect": {
@@ -520,121 +864,155 @@
    "category_context": null
   },
   {
-   "signal_id": "6b9d444f30744bab",
-   "signal_type": "playbook_corroboration",
-   "headline": "Schauspielerin Jördis Triebel ist froh, ihre Berliner Schnauze an ihre Kinder weitergegeben zu haben",
-   "matched_at": "2026-10-26T16:44:00Z",
-   "matched_language": "de",
+   "signal_id": "fcc6f89f7c8b49fb",
+   "signal_type": "playbook_single_source",
+   "headline": "АБР предложил Таджикистану рассмотреть повышение пенсионного возраста",
+   "matched_at": "2026-10-26T20:00:00Z",
+   "matched_language": "ru",
    "aspects": [],
+   "ripple_effect": {
+    "id": "retirement-age-pension-reform",
+    "name": "Retirement age / pension reform and backlash",
+    "affected_domains": [
+     "labor",
+     "politics",
+     "fiscal-policy"
+    ],
+    "historical_precedents": [
+     {
+      "period": "January–June 2023",
+      "event": "France's 2023 pension reform and nationwide strikes",
+      "what_happened": "The French government proposed raising the legal retirement age from 62 to 64 and increasing the required contribution period from 42 to 43 years; over one million people demonstrated nationwide on January 19, 2023, with subsequent protest days drawing anywhere from several hundred thousand to (by union counts) 2–2.5 million people. On March 16, 2023, Prime Minister Élisabeth Borne invoked Article 49.3 of the constitution to force the bill through without a parliamentary vote, triggering further protests and two no-confidence motions that narrowly failed.",
+      "market_impact": "The reform was ultimately enacted despite the sustained opposition, but the government's use of Article 49.3 rather than a parliamentary majority became a lasting point of political controversy, and the episode weighed on President Macron's approval ratings and his coalition's ability to pass subsequent legislation in a parliament where it had already lost its outright majority."
+     }
+    ],
+    "possibility_chains": [
+     "Government proposals to raise the retirement age have historically triggered some of the largest and most sustained street protests of a given political cycle, since the policy directly and visibly affects a large share of the working population's near-term life plans.",
+     "Where a government lacks a legislative majority, forcing a retirement-age or pension reform through by decree or special procedure has historically deepened, rather than resolved, the underlying political conflict, leaving lasting effects on the government's ability to pass unrelated legislation.",
+     "Pension and retirement-age reforms have historically interacted with demographic pressure (a shrinking ratio of working-age contributors to retirees) as the underlying economic justification, even when the political debate has focused primarily on fairness and timing."
+    ],
+    "why_it_matters": "France's 2023 pension reform and nationwide strikes (January–June 2023): The reform was ultimately enacted despite the sustained opposition, but the government's use of Article 49.3 rather than a parliamentary majority became a lasting point of political controversy, and the episode weighed on President Macron's approval ratings and his coalition's ability to pass subsequent legislation in a parliament where it had already lost its outright majority. Government proposals to raise the retirement age have historically triggered some of the largest and most sustained street protests of a given political cycle, since the policy directly and visibly affects a large share of the working population's near-term life plans.",
+    "linked_playbooks": [
+     {
+      "id": "uk-rail-strike-inflation-wave",
+      "name": "Inflation-driven public-sector/transport strike wave",
+      "affected_domains": [
+       "labor",
+       "transportation",
+       "politics",
+       "consumer-spending"
+      ],
+      "why_it_matters": "2022–2024 UK railway strikes (21 June 2022 – November 2024): Strike days cut services to roughly 20% of normal timetabled capacity, and the hospitality sector estimated £1.5 billion in lost trade over the dispute; the UK's Conservative government blocked settlement in England for an extended period even as devolved Scottish and Welsh disputes were resolved by May 2023, with final agreement in England only reached after the 2024 change of government, when workers secured improved pay and the cancellation of proposed ticket-office closures. A period of high inflation eroding real wages has historically produced a wave of strikes across multiple public-facing sectors in the same country within the same one-to-two-year window, rather than an isolated dispute in a single industry."
+     }
+    ]
+   },
+   "category_context": null,
    "corroboration": {
-    "tier": "playbook_corroboration",
-    "source_count": 2,
+    "tier": "single_source",
+    "source_count": 1,
     "country_count": 1,
     "countries": [
-     "Germany"
+     "Tajikistan"
     ],
-    "label": "2 sources",
+    "label": "1 source",
     "scraped_fallback_sources_added": 0
    },
    "sources": [
     {
-     "title": "Schauspielerin Jördis Triebel ist froh, ihre Berliner Schnauze an ihre Kinder weitergegeben zu haben",
-     "source_name": "Der Spiegel",
-     "country": "Germany",
-     "language": "German",
-     "url": "https://www.spiegel.de/panorama/leute/schauspielerin-joerdis-triebel-ist-froh-berliner-schnauze-an-ihre-kinder-weitergegeben-zu-haben-a-12b918ea-ac32-4f3c-bf17-be5d614fe82b#ref=rss",
+     "title": "АБР предложил Таджикистану рассмотреть повышение пенсионного возраста",
+     "source_name": "TopTJ",
+     "country": "Tajikistan",
+     "language": "Russian",
+     "url": "http://toptj.com/news/2026/10/26/sovet-ne-dlya-vsekh-abr-predlozhil-tadzhikistanu-rassmotret-povyshenie",
      "source_type": "rss",
-     "age_hours": 1.3
+     "age_hours": 7.2
+    }
+   ]
+  },
+  {
+   "signal_id": "13b86364a3660580",
+   "signal_type": "playbook_single_source",
+   "headline": "Canada-U.S. trade war to end ‘soon,’ Trump says, but there’s no real sign of a breakthrough",
+   "matched_at": "2026-10-26T18:11:28Z",
+   "matched_language": "en",
+   "aspects": [
+    {
+     "id": "economy.trade",
+     "score": 3.0
     },
     {
-     "title": "Sparmaßnahmen im Konzern: Volkswagen setzt bei Software auf günstige China-Variante",
-     "source_name": "n-tv",
-     "country": "Germany",
-     "language": "German",
-     "url": "https://www.n-tv.de/wirtschaft/Volkswagen-setzt-bei-Software-auf-guenstige-China-Variante-id31460184.html",
-     "source_type": "rss",
-     "age_hours": 1.8
+     "id": "geopolitics.conflicts",
+     "score": 3.0
+    },
+    {
+     "id": "science-health.research",
+     "score": 3.0
     }
    ],
    "ripple_effect": {
-    "id": "fiscal-austerity-program",
-    "name": "Government austerity program (spending cuts and tax rises)",
-    "affected_domains": [
-     "fiscal-policy",
-     "public-services",
-     "government-debt",
-     "social-programs",
-     "politics"
-    ],
+    "id": "major-tariff-trade-war",
+    "name": "Major tariff escalation / trade war",
+    "affected_domains": [],
     "historical_precedents": [
      {
-      "period": "2010–2019",
-      "event": "UK austerity programme under Chancellor George Osborne",
-      "what_happened": "Following his June 2010 budget, the Conservative-led coalition pursued roughly £110 billion in combined spending cuts and tax increases aimed at eliminating the structural deficit, including over £30 billion in welfare cuts, a 2011–2013 public sector pay freeze, and reductions that cut local government funding by an estimated 60% over the decade.",
-      "market_impact": "About 220,000 local authority jobs were eliminated and nearly 800 public libraries closed between 2010 and 2020; a 2017 University College London study published in BMJ Open found that annual health-funding growth fell from 3.8% in the 2000s to 0.41% after 2010, and researchers linked the slowdown in health and social care spending to a rise in mortality-rate growth over the same period."
+      "period": "2018–2019",
+      "event": "U.S.–China trade war",
+      "what_happened": "The U.S. imposed tariffs on hundreds of billions of dollars of Chinese goods, and China retaliated with its own tariffs, including on U.S. agricultural exports.",
+      "market_impact": "U.S. soybean exports to China fell sharply, and the U.S. government paid out tens of billions of dollars in subsidies to farmers hurt by the retaliation; global manufacturers reported higher input costs and supply-chain uncertainty through the period."
      },
      {
-      "period": "1995",
-      "event": "Canada's 1995 federal budget under Finance Minister Paul Martin",
-      "what_happened": "Facing a $30 billion federal deficit, Canada's budget cut program spending by a planned 18.9% by 1997–98, eliminated dozens of federal agencies and business subsidies (including a $560 million annual rail subsidy), and merged two separate federal transfer programs into a single, reduced Canada Health and Social Transfer block grant to the provinces.",
-      "market_impact": "By shrinking the federal transfer, the reform shifted fiscal pressure onto provincial governments, which had to make their own cuts to health and social assistance spending to absorb the reduced federal contribution."
+      "period": "1930",
+      "event": "Smoot-Hawley Tariff Act",
+      "what_happened": "The U.S. raised tariffs on over 20,000 imported goods to some of the highest levels in a century; Canada, France, and other major trading partners retaliated with their own tariffs within months.",
+      "market_impact": "World trade volumes fell by roughly two-thirds over the following four years; widely cited by economists as having deepened and prolonged the Great Depression globally, not just in the U.S. — the clearest historical example that a major tariff escalation's damage isn't confined to the two countries directly involved."
+     },
+     {
+      "period": "September 2010 – 2011",
+      "event": "China's rare earth export restrictions on Japan",
+      "what_happened": "After Japan detained a Chinese trawler captain following a collision near the disputed Senkaku/Diaoyu Islands, China informally slowed rare earth mineral shipments to Japan without declaring a formal ban.",
+      "market_impact": "China's rare earth exports fell roughly 77% year-on-year by September 2011, and global prices spiked several-fold (cerium oxide rose from around $4.70/kg in April 2010 to around $36/kg that October). The U.S. filed a WTO case in 2012; the WTO ruled against China in 2014, and China dropped its export quotas in 2015 — but the episode had already pushed Japan and other importers to diversify sourcing and boost recycling."
      }
     ],
     "possibility_chains": [
-     "Government austerity programs that cut public sector employment have historically taken years to fully play out in local labor markets, as affected workers and the local businesses that served them adjust gradually rather than all at once.",
-     "Cuts concentrated in health and social services have historically been linked by researchers to slower improvement (or reversal) in public health outcomes, though isolating austerity's specific contribution from other factors has remained a subject of academic debate.",
-     "Federal-level austerity that reduces transfers to regional or local governments has historically pushed the political and fiscal burden of further cuts down to those lower levels of government, which have fewer tools (such as currency issuance or unlimited borrowing) to absorb the shortfall."
+     "New tariffs have historically raised the cost of the affected imported goods, at least part of which has often been passed on to consumers or absorbed as lower profit margins by importers.",
+     "Retaliatory tariffs targeting a country's agricultural or manufacturing exports have historically hurt the specific industries and regions most exposed to that export market.",
+     "Extended periods of tariff uncertainty have historically led some companies to shift or diversify supply chains toward other countries, a process that has typically played out over one to several years, not weeks."
     ],
-    "why_it_matters": "Canada's 1995 federal budget under Finance Minister Paul Martin (1995): By shrinking the federal transfer, the reform shifted fiscal pressure onto provincial governments, which had to make their own cuts to health and social assistance spending to absorb the reduced federal contribution. Government austerity programs that cut public sector employment have historically taken years to fully play out in local labor markets, as affected workers and the local businesses that served them adjust gradually rather than all at once.",
-    "linked_playbooks": [
-     {
-      "id": "imf-bailout-program",
-      "name": "IMF bailout or rescue program for a sovereign",
-      "affected_domains": [
-       "government-debt",
-       "currency",
-       "emerging-markets",
-       "employment"
-      ],
-      "why_it_matters": "Sri Lanka's IMF Extended Fund Facility after its 2022 default (2022–2024): The program aimed to raise Sri Lanka's tax-to-GDP ratio from 8.1% in 2021 to 15% by 2025, but the accompanying austerity coincided with unemployment rising from 5.7% to 8.3% between 2022 and 2023. IMF rescue programs have historically come attached to austerity conditions (tax increases, spending cuts, structural reforms) that have often produced short-term economic pain — higher unemployment, reduced public services — even where they are intended to restore longer-term stability."
-     },
-     {
-      "id": "eurozone-periphery-debt-crisis",
-      "name": "Eurozone periphery sovereign bond crisis",
-      "affected_domains": [
-       "government-debt",
-       "banking",
-       "currency",
-       "capital-markets"
-      ],
-      "why_it_matters": "Mario Draghi's 'whatever it takes' pledge (July 2012): The pledge is widely credited as the turning point in the crisis, prompting a steady decline in borrowing costs for Spain, Italy, and other periphery economies in the following months, even though the OMT program itself was never actually activated. Rising bond yields in one eurozone member has historically raised borrowing costs in other members seen as having similar debt vulnerabilities, a contagion dynamic distinct from a single-country crisis."
-     },
-     {
-      "id": "pension-reform-unrest",
-      "name": "Pension/retirement-age reform triggers unrest",
-      "affected_domains": [
-       "social-programs",
-       "pensions",
-       "politics",
-       "fiscal-policy",
-       "labor"
-      ],
-      "why_it_matters": "France's 2010 pension reform under President Sarkozy (September–October 2010): The strikes shut down all twelve of mainland France's oil refineries, leaving roughly one in four fuel stations dry nationwide, and cancelled about half of long-distance trains and up to 50% of flights at major airports before the government passed the reform largely unchanged. Government proposals to raise the statutory retirement age have historically triggered some of the largest and most sustained street protests and strikes a country experiences, often mobilizing unions well beyond those directly representing older workers."
-     },
-     {
-      "id": "municipal-bankruptcy",
-      "name": "Major municipal or county bankruptcy",
-      "affected_domains": [
-       "government-debt",
-       "public-services",
-       "infrastructure",
-       "pensions"
-      ],
-      "why_it_matters": "Jefferson County, Alabama bankruptcy (November 2011 – December 2013): The county cut its government workforce by more than 700 employees by May 2012, and the bankruptcy court wrote off more than $1.4 billion of the debt before the county emerged from bankruptcy in December 2013. A municipal bankruptcy driven by a shrinking tax base and rising legacy retiree costs has historically forced a choice between deep pension cuts and finding outside funding (such as philanthropic support) to soften them, since the two options are not fiscally separable."
-     }
-    ]
+    "why_it_matters": "China's rare earth export restrictions on Japan (September 2010 – 2011): China's rare earth exports fell roughly 77% year-on-year by September 2011, and global prices spiked several-fold (cerium oxide rose from around $4.70/kg in April 2010 to around $36/kg that October). The U.S. filed a WTO case in 2012; the WTO ruled against China in 2014, and China dropped its export quotas in 2015 — but the episode had already pushed Japan and other importers to diversify sourcing and boost recycling. New tariffs have historically raised the cost of the affected imported goods, at least part of which has often been passed on to consumers or absorbed as lower profit margins by importers.",
+    "linked_playbooks": []
    },
-   "category_context": null
+   "category_context": null,
+   "corroboration": {
+    "tier": "single_source",
+    "source_count": 2,
+    "country_count": 2,
+    "countries": [
+     "Canada",
+     "Singapore"
+    ],
+    "label": "2 sources across 2 countries",
+    "scraped_fallback_sources_added": 1
+   },
+   "sources": [
+    {
+     "title": "Canada-U.S. trade war to end ‘soon,’ Trump says, but there’s no real sign of a breakthrough",
+     "source_name": "National Post",
+     "country": "Canada",
+     "language": "English",
+     "url": "https://nationalpost.com/news/canada/trade-war-to-end-soon-trump-no-breakthrough",
+     "source_type": "rss",
+     "age_hours": 9.0
+    },
+    {
+     "title": "Southeast Asia remains 'a clear priority' despite concerns over Trump tariffs: US envoy to ASEAN",
+     "source_name": "CNA (Channel NewsAsia)",
+     "country": "Singapore",
+     "language": "English",
+     "url": "https://www.channelnewsasia.com/world/us-ambassador-asean-southeast-asia-tariffs-south-china-sea-myanmar-6311526",
+     "source_type": "scraped_fallback",
+     "age_hours": null
+    }
+   ]
   },
   {
    "signal_id": "1230e89646d47318",
@@ -709,7 +1087,7 @@
      "language": "Arabic",
      "url": "https://akhbarlibya24.net/2026/10/26/%d8%a5%d8%b6%d8%b1%d8%a7%d8%a8-%d8%a7%d9%84%d9%85%d8%b9%d9%84%d9%85%d9%8a%d9%86-%d9%8a%d9%81%d8%b6%d8%ad-%d8%a3%d8%b2%d9%85%d8%a9-%d8%a7%d9%84%d8%af%d9%88%d9%84%d8%a9-%d8%a7%d9%84%d9%84%d9%8a%d8%a8",
      "source_type": "rss",
-     "age_hours": 2.1
+     "age_hours": 11.3
     }
    ]
   },
@@ -786,580 +1164,7 @@
      "language": "German",
      "url": "https://www.faz.net/aktuell/finanzen/e-zigaretten-landwirtschaftsministerium-setzt-auf-wissenschaft-statt-emotion-201622509.html",
      "source_type": "rss",
-     "age_hours": 2.6
-    }
-   ]
-  },
-  {
-   "signal_id": "ba38a2764f88fcf4",
-   "signal_type": "playbook_single_source",
-   "headline": "Saudi Arabia raises minimum wage thresholds to SR5,000 in 2027 and SR6,000 in 2028",
-   "matched_at": "2026-10-26T15:15:41Z",
-   "matched_language": "en",
-   "aspects": [
-    {
-     "id": "society.labor",
-     "score": 6.0
-    }
-   ],
-   "ripple_effect": {
-    "id": "minimum-wage-policy-shift",
-    "name": "Minimum wage policy shift",
-    "affected_domains": [
-     "employment",
-     "consumer-spending",
-     "inflation",
-     "politics"
-    ],
-    "historical_precedents": [
-     {
-      "period": "2012 (origin) – ongoing",
-      "event": "\"Fight for $15\" movement",
-      "what_happened": "The movement began in November 2012 when over 100 fast-food workers walked off the job in New York City demanding a $15 hourly wage and the right to unionize, at a time when the federal minimum wage had been frozen at $7.25 since 2009; it grew into coordinated multi-city strikes, including an April 2015 day of action across more than 200 cities that organizers called the largest protest by low-wage workers in US history.",
-      "market_impact": "By the mid-2020s seventeen US states plus Washington, D.C. had adopted $15-or-higher minimum wages, with organizers estimating roughly 26 million workers received a combined $151 billion in raises traceable to the movement's pressure on state and local policy."
-     },
-     {
-      "period": "2014–2019",
-      "event": "Seattle becomes the first major US city to adopt a $15 minimum wage",
-      "what_happened": "Seattle's city council, led by councilmember Kshama Sawant, passed an ordinance phasing in a $15 minimum wage starting in 2014, with the wage rising further to $15.45 in 2018 and $16 in 2019 under the city's indexing formula.",
-      "market_impact": "University of Washington and other researchers studying Seattle's rollout found no measurable decline in overall employment as the wage floor rose, making Seattle a frequently cited case study in the broader minimum-wage debate."
-     }
-    ],
-    "possibility_chains": [
-     "A minimum wage increase in one large city or state has historically prompted advocacy campaigns citing it as precedent for similar increases elsewhere, spreading policy change faster than pure economic modeling alone would predict.",
-     "Employers in low-margin, labor-intensive sectors (fast food, retail, hospitality) have historically responded to minimum wage increases through some combination of price increases, reduced hours, and accelerated investment in self-service or automation technology, with the mix varying by study and locality.",
-     "Higher minimum wages have historically raised the wage floor workers use as a reference point in unrelated wage negotiations nearby, a \"lighthouse effect\" observed in several minimum-wage studies."
-    ],
-    "why_it_matters": "Seattle becomes the first major US city to adopt a $15 minimum wage (2014–2019): University of Washington and other researchers studying Seattle's rollout found no measurable decline in overall employment as the wage floor rose, making Seattle a frequently cited case study in the broader minimum-wage debate. A minimum wage increase in one large city or state has historically prompted advocacy campaigns citing it as precedent for similar increases elsewhere, spreading policy change faster than pure economic modeling alone would predict.",
-    "linked_playbooks": [
-     {
-      "id": "gig-economy-worker-classification",
-      "name": "Gig-economy worker classification ruling",
-      "affected_domains": [
-       "employment",
-       "technology",
-       "law-regulation",
-       "consumer-spending"
-      ],
-      "why_it_matters": "California's Proposition 22 and its multi-year court challenge (November 2020 – July 2024): The nearly four-year legal uncertainty over Proposition 22's validity was itself a business risk for Uber, Lyft, DoorDash, and Instacart, which had spent over $200 million campaigning for the measure; its eventual affirmation cemented independent-contractor status for California gig drivers and became a template gig companies pushed for in other US states. A court or ballot-measure ruling on gig-worker classification in one jurisdiction has historically become a reference point cited by both labor advocates and gig companies lobbying for similar outcomes elsewhere, spreading the policy debate beyond the original jurisdiction."
-     },
-     {
-      "id": "great-resignation-labor-shortage",
-      "name": "Broad-based voluntary quits wave / labor shortage",
-      "affected_domains": [
-       "employment",
-       "inflation",
-       "consumer-spending"
-      ],
-      "why_it_matters": "The \"Great Resignation\" in the United States (March 2021 – mid-2023): Employers responded with the fastest wage growth in two decades — 4.5% year-over-year in December 2021 — while hospitality, healthcare, and education faced acute staffing shortages that pushed many businesses to accelerate investment in automation and self-service technology; quits rates did not return to pre-pandemic 2019 norms until mid-2023. A sustained period of unusually high voluntary quits has historically coincided with faster wage growth, as employers compete harder to retain and attract staff in a tight labor market."
-     }
-    ]
-   },
-   "category_context": null,
-   "corroboration": {
-    "tier": "single_source",
-    "source_count": 1,
-    "country_count": 1,
-    "countries": [
-     "United Arab Emirates"
-    ],
-    "label": "1 source",
-    "scraped_fallback_sources_added": 0
-   },
-   "sources": [
-    {
-     "title": "Saudi Arabia raises minimum wage thresholds to SR5,000 in 2027 and SR6,000 in 2028",
-     "source_name": "Gulf News",
-     "country": "United Arab Emirates",
-     "language": "English",
-     "url": "https://gulfnews.com/world/gulf/saudi/saudi-arabia-raises-minimum-wage-thresholds-to-sr5000-in-2027-and-sr6000-in-2028-1.500724456",
-     "source_type": "rss",
-     "age_hours": 2.8
-    }
-   ]
-  },
-  {
-   "signal_id": "1f1a182957251091",
-   "signal_type": "playbook_single_source",
-   "headline": "LULA WIN TRIGGERS BLACK MONDAY SELLOFF IN BRAZIL MARKETS",
-   "matched_at": "2026-10-26T15:02:07Z",
-   "matched_language": "en",
-   "aspects": [
-    {
-     "id": "markets.stocks",
-     "score": 3.0
-    }
-   ],
-   "ripple_effect": {
-    "id": "stock-market-flash-crash",
-    "name": "Sudden stock market crash",
-    "affected_domains": [],
-    "historical_precedents": [
-     {
-      "period": "October 1987",
-      "event": "Black Monday",
-      "what_happened": "US stock markets fell more than 20% in a single trading day — the largest one-day percentage decline in Dow Jones history — with the crash spreading to markets in Europe and Asia within hours.",
-      "market_impact": "The Dow Jones Industrial Average fell about 22.6% in one session; global markets lost a comparable share of their value over the following days."
-     },
-     {
-      "period": "May 2010",
-      "event": "The \"Flash Crash\"",
-      "what_happened": "US stock indices plunged roughly 9% in minutes before recovering most of the loss within the same session, driven in part by high-frequency algorithmic trading; regulators later introduced new circuit-breaker rules.",
-      "market_impact": "The Dow Jones dropped about 1,000 points intraday before rebounding; the episode led to new exchange-wide trading-halt rules."
-     },
-     {
-      "period": "February–March 2020",
-      "event": "COVID-19 market crash",
-      "what_happened": "Global stock markets fell roughly a third from their peak over about a month as the pandemic spread and lockdowns began, triggering multiple single-day trading halts.",
-      "market_impact": "The S&P 500 fell about 34% peak-to-trough; US markets hit circuit-breaker halts on four separate days in March 2020."
-     },
-     {
-      "period": "January 2016",
-      "event": "China stock market circuit-breaker crash",
-      "what_happened": "China's newly introduced circuit-breaker mechanism, only in effect for its fourth trading day, halted trading twice within minutes of the open after the CSI 300 index fell 7% — the second halt shut the market for the rest of the day in under 30 minutes; regulators suspended the mechanism entirely days later after concluding it had accelerated the sell-off rather than calmed it.",
-      "market_impact": "The Shanghai Composite fell roughly 7% in a single session on two separate days that week; the panic spread to European and US markets, contributing to one of the worst opening weeks for global stocks on record."
-     }
-    ],
-    "possibility_chains": [
-     "A sudden, deep single-day stock decline has historically prompted exchanges to briefly halt trading via circuit breakers, giving markets time to reassess before reopening.",
-     "Sharp equity sell-offs have historically pushed investors toward traditionally safer assets such as government bonds and gold, temporarily lowering their yields and raising their prices.",
-     "Central banks have historically responded to severe market routs with public reassurances, emergency rate moves, or liquidity support when the decline threatened broader financial stability.",
-     "Extended market downturns have historically led companies to delay planned IPOs, financing rounds, and mergers until conditions stabilized."
-    ],
-    "why_it_matters": "China stock market circuit-breaker crash (January 2016): The Shanghai Composite fell roughly 7% in a single session on two separate days that week; the panic spread to European and US markets, contributing to one of the worst opening weeks for global stocks on record. A sudden, deep single-day stock decline has historically prompted exchanges to briefly halt trading via circuit breakers, giving markets time to reassess before reopening.",
-    "linked_playbooks": []
-   },
-   "category_context": null,
-   "corroboration": {
-    "tier": "single_source",
-    "source_count": 1,
-    "country_count": 1,
-    "countries": [
-     "Zambia"
-    ],
-    "label": "1 source",
-    "scraped_fallback_sources_added": 0
-   },
-   "sources": [
-    {
-     "title": "LULA WIN TRIGGERS BLACK MONDAY SELLOFF IN BRAZIL MARKETS",
-     "source_name": "Zambian Observer",
-     "country": "Zambia",
-     "language": "English",
-     "url": "https://zambianobserver.com/lula-win-triggers-black-monday-selloff-in-brazil-markets/",
-     "source_type": "rss",
-     "age_hours": 3.0
-    }
-   ]
-  },
-  {
-   "signal_id": "ae9a2f8196a1b04d",
-   "signal_type": "playbook_single_source",
-   "headline": "Thủ tướng Anh loại trừ khả năng trở lại EU vào thời điểm hiện tại",
-   "matched_at": "2026-10-26T14:30:24Z",
-   "matched_language": "vi",
-   "aspects": [
-    {
-     "id": "politics.leadership",
-     "score": 3.0
-    }
-   ],
-   "ripple_effect": {
-    "id": "election-driven-foreign-policy-shift",
-    "name": "Major election or referendum reshaping trade and foreign policy",
-    "affected_domains": [
-     "currency",
-     "capital-markets",
-     "trade",
-     "elections",
-     "diplomacy",
-     "banking-financial-stability"
-    ],
-    "historical_precedents": [
-     {
-      "period": "23 June 2016",
-      "event": "United Kingdom's Brexit referendum",
-      "what_happened": "British voters chose by 51.89% to 48.11% to leave the European Union, a result that defied most pre-vote polling and betting-market expectations.",
-      "market_impact": "The pound sterling fell about 10% against the U.S. dollar and 7% against the euro within hours, dropping from around $1.50 to $1.37, its lowest level since 1985 and the currency's largest two-hour move on record. The FTSE 100 initially plunged over 8% intraday before recovering to close down about 3%, while the more domestically-focused FTSE 250 fell around 14% over the following days; global equity markets were estimated to have lost $2-3 trillion in value in the days after the result. S&P and Fitch downgraded the UK's sovereign credit rating (S&P from AAA to AA, Fitch from AA+ to AA), and Moody's revised its outlook to negative."
-     }
-    ],
-    "possibility_chains": [
-     "A national vote that produces a surprise outcome on trade or alliance membership has historically triggered a sharp, same-day currency and equity market reaction, reflecting investors repricing the country's economic outlook in real time.",
-     "Referendum or election results that commit a country to renegotiating its trade relationships have historically been followed by a multi-year period of negotiation and business uncertainty well beyond the vote itself.",
-     "Credit rating agencies have historically moved quickly to reassess a country's sovereign rating or outlook after a vote that materially changes its economic and political trajectory."
-    ],
-    "why_it_matters": "United Kingdom's Brexit referendum (23 June 2016): The pound sterling fell about 10% against the U.S. dollar and 7% against the euro within hours, dropping from around $1.50 to $1.37, its lowest level since 1985 and the currency's largest two-hour move on record. The FTSE 100 initially plunged over 8% intraday before recovering to close down about 3%, while the more domestically-focused FTSE 250 fell around 14% over the following days; global equity markets were estimated to have lost $2-3 trillion in value in the days after the result. S&P and Fitch downgraded the UK's sovereign credit rating (S&P from AAA to AA, Fitch from AA+ to AA), and Moody's revised its outlook to negative. A national vote that produces a surprise outcome on trade or alliance membership has historically triggered a sharp, same-day currency and equity market reaction, reflecting investors repricing the country's economic outlook in real time.",
-    "linked_playbooks": [
-     {
-      "id": "currency-crisis",
-      "name": "Sharp currency devaluation / currency crisis",
-      "affected_domains": [],
-      "why_it_matters": "Turkish lira crisis (2018): The lira lost roughly 30–40% of its value against the U.S. dollar over the year, sharply raising the cost of imports and foreign-currency debt for Turkish businesses. A sharp currency devaluation has historically made imported goods, including fuel and food, significantly more expensive for consumers and businesses in the affected country."
-     },
-     {
-      "id": "major-tariff-trade-war",
-      "name": "Major tariff escalation / trade war",
-      "affected_domains": [],
-      "why_it_matters": "China's rare earth export restrictions on Japan (September 2010 – 2011): China's rare earth exports fell roughly 77% year-on-year by September 2011, and global prices spiked several-fold (cerium oxide rose from around $4.70/kg in April 2010 to around $36/kg that October). The U.S. filed a WTO case in 2012; the WTO ruled against China in 2014, and China dropped its export quotas in 2015 — but the episode had already pushed Japan and other importers to diversify sourcing and boost recycling. New tariffs have historically raised the cost of the affected imported goods, at least part of which has often been passed on to consumers or absorbed as lower profit margins by importers."
-     }
-    ]
-   },
-   "category_context": null,
-   "corroboration": {
-    "tier": "single_source",
-    "source_count": 1,
-    "country_count": 1,
-    "countries": [
-     "Vietnam"
-    ],
-    "label": "1 source",
-    "scraped_fallback_sources_added": 0
-   },
-   "sources": [
-    {
-     "title": "Thủ tướng Anh loại trừ khả năng trở lại EU vào thời điểm hiện tại",
-     "source_name": "Dân Trí",
-     "country": "Vietnam",
-     "language": "Vietnamese",
-     "url": "https://dantri.com.vn/the-gioi/thu-tuong-anh-loai-tru-kha-nang-tro-lai-eu-vao-thoi-diem-hien-tai-20261026211237203.htm",
-     "source_type": "rss",
-     "age_hours": 3.5
-    }
-   ]
-  },
-  {
-   "signal_id": "fc1ab15e338a8c6f",
-   "signal_type": "playbook_single_source",
-   "headline": "Singapore nâng tuổi nghỉ hưu lên 65, người lao động có thể làm đến 70 tuổi",
-   "matched_at": "2026-10-26T14:04:32Z",
-   "matched_language": "vi",
-   "aspects": [],
-   "ripple_effect": {
-    "id": "retirement-age-pension-reform",
-    "name": "Retirement age / pension reform and backlash",
-    "affected_domains": [
-     "labor",
-     "politics",
-     "fiscal-policy"
-    ],
-    "historical_precedents": [
-     {
-      "period": "January–June 2023",
-      "event": "France's 2023 pension reform and nationwide strikes",
-      "what_happened": "The French government proposed raising the legal retirement age from 62 to 64 and increasing the required contribution period from 42 to 43 years; over one million people demonstrated nationwide on January 19, 2023, with subsequent protest days drawing anywhere from several hundred thousand to (by union counts) 2–2.5 million people. On March 16, 2023, Prime Minister Élisabeth Borne invoked Article 49.3 of the constitution to force the bill through without a parliamentary vote, triggering further protests and two no-confidence motions that narrowly failed.",
-      "market_impact": "The reform was ultimately enacted despite the sustained opposition, but the government's use of Article 49.3 rather than a parliamentary majority became a lasting point of political controversy, and the episode weighed on President Macron's approval ratings and his coalition's ability to pass subsequent legislation in a parliament where it had already lost its outright majority."
-     }
-    ],
-    "possibility_chains": [
-     "Government proposals to raise the retirement age have historically triggered some of the largest and most sustained street protests of a given political cycle, since the policy directly and visibly affects a large share of the working population's near-term life plans.",
-     "Where a government lacks a legislative majority, forcing a retirement-age or pension reform through by decree or special procedure has historically deepened, rather than resolved, the underlying political conflict, leaving lasting effects on the government's ability to pass unrelated legislation.",
-     "Pension and retirement-age reforms have historically interacted with demographic pressure (a shrinking ratio of working-age contributors to retirees) as the underlying economic justification, even when the political debate has focused primarily on fairness and timing."
-    ],
-    "why_it_matters": "France's 2023 pension reform and nationwide strikes (January–June 2023): The reform was ultimately enacted despite the sustained opposition, but the government's use of Article 49.3 rather than a parliamentary majority became a lasting point of political controversy, and the episode weighed on President Macron's approval ratings and his coalition's ability to pass subsequent legislation in a parliament where it had already lost its outright majority. Government proposals to raise the retirement age have historically triggered some of the largest and most sustained street protests of a given political cycle, since the policy directly and visibly affects a large share of the working population's near-term life plans.",
-    "linked_playbooks": [
-     {
-      "id": "uk-rail-strike-inflation-wave",
-      "name": "Inflation-driven public-sector/transport strike wave",
-      "affected_domains": [
-       "labor",
-       "transportation",
-       "politics",
-       "consumer-spending"
-      ],
-      "why_it_matters": "2022–2024 UK railway strikes (21 June 2022 – November 2024): Strike days cut services to roughly 20% of normal timetabled capacity, and the hospitality sector estimated £1.5 billion in lost trade over the dispute; the UK's Conservative government blocked settlement in England for an extended period even as devolved Scottish and Welsh disputes were resolved by May 2023, with final agreement in England only reached after the 2024 change of government, when workers secured improved pay and the cancellation of proposed ticket-office closures. A period of high inflation eroding real wages has historically produced a wave of strikes across multiple public-facing sectors in the same country within the same one-to-two-year window, rather than an isolated dispute in a single industry."
-     }
-    ]
-   },
-   "category_context": null,
-   "corroboration": {
-    "tier": "single_source",
-    "source_count": 1,
-    "country_count": 1,
-    "countries": [
-     "Vietnam"
-    ],
-    "label": "1 source",
-    "scraped_fallback_sources_added": 0
-   },
-   "sources": [
-    {
-     "title": "Singapore nâng tuổi nghỉ hưu lên 65, người lao động có thể làm đến 70 tuổi",
-     "source_name": "Dân Trí",
-     "country": "Vietnam",
-     "language": "Vietnamese",
-     "url": "https://dantri.com.vn/the-gioi/singapore-nang-tuoi-nghi-huu-len-65-nguoi-lao-dong-co-the-lam-den-70-tuoi-20261026204256615.htm",
-     "source_type": "rss",
-     "age_hours": 4.0
-    }
-   ]
-  },
-  {
-   "signal_id": "83fc00f4bf53f641",
-   "signal_type": "playbook_single_source",
-   "headline": "Obama dénonce la guerre tarifaire de Trump contre le Canada",
-   "matched_at": "2026-10-26T00:42:02Z",
-   "matched_language": "fr",
-   "aspects": [
-    {
-     "id": "geopolitics.conflicts",
-     "score": 3.0
-    },
-    {
-     "id": "economy.trade",
-     "score": 2.0
-    }
-   ],
-   "ripple_effect": {
-    "id": "major-tariff-trade-war",
-    "name": "Major tariff escalation / trade war",
-    "affected_domains": [],
-    "historical_precedents": [
-     {
-      "period": "2018–2019",
-      "event": "U.S.–China trade war",
-      "what_happened": "The U.S. imposed tariffs on hundreds of billions of dollars of Chinese goods, and China retaliated with its own tariffs, including on U.S. agricultural exports.",
-      "market_impact": "U.S. soybean exports to China fell sharply, and the U.S. government paid out tens of billions of dollars in subsidies to farmers hurt by the retaliation; global manufacturers reported higher input costs and supply-chain uncertainty through the period."
-     },
-     {
-      "period": "1930",
-      "event": "Smoot-Hawley Tariff Act",
-      "what_happened": "The U.S. raised tariffs on over 20,000 imported goods to some of the highest levels in a century; Canada, France, and other major trading partners retaliated with their own tariffs within months.",
-      "market_impact": "World trade volumes fell by roughly two-thirds over the following four years; widely cited by economists as having deepened and prolonged the Great Depression globally, not just in the U.S. — the clearest historical example that a major tariff escalation's damage isn't confined to the two countries directly involved."
-     },
-     {
-      "period": "September 2010 – 2011",
-      "event": "China's rare earth export restrictions on Japan",
-      "what_happened": "After Japan detained a Chinese trawler captain following a collision near the disputed Senkaku/Diaoyu Islands, China informally slowed rare earth mineral shipments to Japan without declaring a formal ban.",
-      "market_impact": "China's rare earth exports fell roughly 77% year-on-year by September 2011, and global prices spiked several-fold (cerium oxide rose from around $4.70/kg in April 2010 to around $36/kg that October). The U.S. filed a WTO case in 2012; the WTO ruled against China in 2014, and China dropped its export quotas in 2015 — but the episode had already pushed Japan and other importers to diversify sourcing and boost recycling."
-     }
-    ],
-    "possibility_chains": [
-     "New tariffs have historically raised the cost of the affected imported goods, at least part of which has often been passed on to consumers or absorbed as lower profit margins by importers.",
-     "Retaliatory tariffs targeting a country's agricultural or manufacturing exports have historically hurt the specific industries and regions most exposed to that export market.",
-     "Extended periods of tariff uncertainty have historically led some companies to shift or diversify supply chains toward other countries, a process that has typically played out over one to several years, not weeks."
-    ],
-    "why_it_matters": "China's rare earth export restrictions on Japan (September 2010 – 2011): China's rare earth exports fell roughly 77% year-on-year by September 2011, and global prices spiked several-fold (cerium oxide rose from around $4.70/kg in April 2010 to around $36/kg that October). The U.S. filed a WTO case in 2012; the WTO ruled against China in 2014, and China dropped its export quotas in 2015 — but the episode had already pushed Japan and other importers to diversify sourcing and boost recycling. New tariffs have historically raised the cost of the affected imported goods, at least part of which has often been passed on to consumers or absorbed as lower profit margins by importers.",
-    "linked_playbooks": []
-   },
-   "category_context": null,
-   "corroboration": {
-    "tier": "single_source",
-    "source_count": 2,
-    "country_count": 2,
-    "countries": [
-     "Haiti",
-     "Singapore"
-    ],
-    "label": "2 sources across 2 countries",
-    "scraped_fallback_sources_added": 1
-   },
-   "sources": [
-    {
-     "title": "Obama dénonce la guerre tarifaire de Trump contre le Canada",
-     "source_name": "Rezo Nòdwès",
-     "country": "Haiti",
-     "language": "French/Haitian Creole",
-     "url": "https://rezonodwes.com/2026/10/obama-denonce-la-guerre-tarifaire-de-trump-contre-le-canada/?utm_source=rss&utm_medium=rss&utm_campaign=obama-denonce-la-guerre-tarifaire-de-trump-contre-le-canada",
-     "source_type": "rss",
-     "age_hours": 17.4
-    },
-    {
-     "title": "Southeast Asia remains 'a clear priority' despite concerns over Trump tariffs: US envoy to ASEAN",
-     "source_name": "CNA (Channel NewsAsia)",
-     "country": "Singapore",
-     "language": "English",
-     "url": "https://www.channelnewsasia.com/world/us-ambassador-asean-southeast-asia-tariffs-south-china-sea-myanmar-6311526",
-     "source_type": "scraped_fallback",
-     "age_hours": null
-    }
-   ]
-  },
-  {
-   "signal_id": "52d861fa44e5a6d2",
-   "signal_type": "playbook_single_source",
-   "headline": "Dra. Isabel Viñas, experta en metabolismo y hormonas: \"Si adelgazas 20 kilos, la pregunta no es cuánto has perdido, sino qué has perdido\"",
-   "matched_at": "2026-10-25T23:07:04Z",
-   "matched_language": "es",
-   "aspects": [],
-   "ripple_effect": {
-    "id": "glp1-obesity-drug-market-shift",
-    "name": "GLP-1 obesity/diabetes drugs reshaping healthcare cost and pharma markets",
-    "affected_domains": [
-     "public-health",
-     "healthcare",
-     "pharmaceuticals",
-     "capital-markets",
-     "insurance"
-    ],
-    "historical_precedents": [
-     {
-      "period": "2022–2025",
-      "event": "Novo Nordisk's Ozempic/Wegovy-driven rise to Europe's most valuable company, then competitive erosion",
-      "what_happened": "Demand for Novo Nordisk's GLP-1 drugs Ozempic (approved for diabetes, widely used off-label for weight loss) and Wegovy (approved for obesity) grew so rapidly that weight-loss drugs made up 55% of the company's 2023 revenue and its first-half 2023 profit rose 45% year-over-year; by March 2024 the company reached a $604 billion market capitalization, the 12th most valuable company in the world, and by April 2024 its roughly $570 billion market cap exceeded the size of Denmark's entire economy, with its roughly $2.3 billion Danish corporate tax bill alone driving nearly all of Denmark's measured economic growth that year.",
-      "market_impact": "US list prices for these drugs ran far above prices charged elsewhere (Ozempic around $969/month in the US versus $155 in Canada and $59 in Germany; Wegovy around $1,349/month in the US versus $140 in Germany and $92 in the UK), fueling a US health-insurance and employer-benefit-design debate over covering the drugs at scale; by July 2025, rising competitor pressure had pushed Novo down to the fifth most valuable drugmaker by market cap, prompting a CEO change effective August 7, 2025."
-     }
-    ],
-    "possibility_chains": [
-     "A single drug class becoming a large share of a national economy's growth, as with Novo Nordisk and Denmark, has historically made that country's headline GDP figures unusually sensitive to one company's product cycle.",
-     "Insurers and employers facing a costly new high-demand drug class have historically responded first with coverage restrictions (prior authorization, BMI thresholds) before broadening access as production scales and price competition emerges.",
-     "A manufacturer's inability to keep pace with demand for a breakout drug has historically triggered shortages, compounding-pharmacy workarounds, and counterfeit-product risk in the gap before supply catches up."
-    ],
-    "why_it_matters": "Novo Nordisk's Ozempic/Wegovy-driven rise to Europe's most valuable company, then competitive erosion (2022–2025): US list prices for these drugs ran far above prices charged elsewhere (Ozempic around $969/month in the US versus $155 in Canada and $59 in Germany; Wegovy around $1,349/month in the US versus $140 in Germany and $92 in the UK), fueling a US health-insurance and employer-benefit-design debate over covering the drugs at scale; by July 2025, rising competitor pressure had pushed Novo down to the fifth most valuable drugmaker by market cap, prompting a CEO change effective August 7, 2025. A single drug class becoming a large share of a national economy's growth, as with Novo Nordisk and Denmark, has historically made that country's headline GDP figures unusually sensitive to one company's product cycle.",
-    "linked_playbooks": [
-     {
-      "id": "pharmaceutical-patent-cliff",
-      "name": "Pharmaceutical patent cliff and blockbuster drug revenue loss",
-      "affected_domains": [
-       "public-health",
-       "healthcare",
-       "pharmaceuticals",
-       "capital-markets",
-       "regulation"
-      ],
-      "why_it_matters": "Lipitor (atorvastatin) patent expiration (1996–2012 (US patent expired November 30, 2011)): Generic prices stayed relatively elevated during that initial exclusivity window, then fell sharply once additional manufacturers entered in May 2012, pushing a month's supply down toward standard generic pricing of $10 or less — illustrating the two-stage price collapse (moderate initial generic discount, then a much steeper one once multiple generic makers compete) that characterizes a typical pharmaceutical patent-cliff event. A cluster of blockbuster drugs (defined in the industry as over $1 billion in annual sales) losing patent protection in the same multi-year window has historically pushed large pharmaceutical companies toward M&A, portfolio diversification, and 'evergreening' strategies (new formulations or delivery mechanisms) to offset the revenue drop."
-     },
-     {
-      "id": "aging-population-healthcare-cost-capacity",
-      "name": "Aging population driving healthcare system cost and capacity pressure",
-      "affected_domains": [
-       "public-health",
-       "healthcare",
-       "fiscal-policy",
-       "demographics",
-       "pensions"
-      ],
-      "why_it_matters": "Japan's healthcare spending rise under a super-aged population (2008–2018): Japan introduced a dedicated long-term care insurance system (Kaigo-Hoken), funded partly by a roughly 2% income contribution from residents over 40 and administered by municipal governments, specifically to fund elderly care costs separately from general health insurance as the aging-driven cost pressure became structural rather than cyclical; by 2016 the system was allocating tens of billions of dollars annually toward long-term care expenditures. A country crossing the 'super-aged society' threshold (21%+ population 65+) has historically required either new dedicated funding mechanisms, as with Japan's long-term-care insurance, or rising general healthcare spending as a share of GDP, or both."
-     }
-    ]
-   },
-   "category_context": null,
-   "corroboration": {
-    "tier": "single_source",
-    "source_count": 2,
-    "country_count": 2,
-    "countries": [
-     "Denmark",
-     "Spain"
-    ],
-    "label": "2 sources across 2 countries",
-    "scraped_fallback_sources_added": 1
-   },
-   "sources": [
-    {
-     "title": "Dra. Isabel Viñas, experta en metabolismo y hormonas: \"Si adelgazas 20 kilos, la pregunta no es cuánto has perdido, sino qué has perdido\"",
-     "source_name": "El Mundo",
-     "country": "Spain",
-     "language": "Spanish",
-     "url": "https://www.elmundo.es/yodona/vida-saludable/2026/10/26/6ac6140cfc6c837b7e8b458a.html",
-     "source_type": "rss",
-     "age_hours": 18.9
-    },
-    {
-     "title": "Amerikansk gigant udfordrer Novo Nordisk i Danmark med 'dybt problematisk' kampagne",
-     "source_name": "DR (Danmarks Radio)",
-     "country": "Denmark",
-     "language": "Danish",
-     "url": "https://www.dr.dk/nyheder/penge/ny-kampagne-fra-novo-rival-faar-kritik-de-vil-bare-saelge-vaegttabsmedicin",
-     "source_type": "scraped_fallback",
-     "age_hours": null
-    }
-   ]
-  },
-  {
-   "signal_id": "aa22d6b2701cc080",
-   "signal_type": "playbook_single_source",
-   "headline": "HOMERA ATANGAZA MAPINDUZI YA UMEME VITONGOJINI, AIPONGEZA REA KWA UTEKELEZAJI",
-   "matched_at": "2026-10-25T18:57:13Z",
-   "matched_language": "sw",
-   "aspects": [
-    {
-     "id": "politics.leadership",
-     "score": 3.0
-    },
-    {
-     "id": "energy.electricity",
-     "score": 3.0
-    }
-   ],
-   "ripple_effect": {
-    "id": "coup-regime-change-trade",
-    "name": "Coup or abrupt regime change disrupting trade relationships",
-    "affected_domains": [
-     "geopolitics",
-     "trade",
-     "mining-raw-materials",
-     "currency",
-     "banking-financial-stability",
-     "diplomacy"
-    ],
-    "historical_precedents": [
-     {
-      "period": "July 2023",
-      "event": "Niger military coup",
-      "what_happened": "On 26 July 2023, General Abdourahamane Tchiani led the presidential guard in removing President Mohamed Bazoum and installed a military council. The regional bloc ECOWAS responded with an ultimatum, then sanctions including closed land and air borders, a no-fly zone on commercial flights, suspension of financial transactions, and asset freezes; Nigeria cut electricity supply to Niger on 2 August 2023.",
-      "market_impact": "The West African regional central bank cancelled a planned 30 billion CFA franc (about $51 million) bond issuance for Niger, and the World Bank suspended disbursements to the country. Niger is a significant global uranium exporter, and the coup raised questions over the operations of French nuclear fuel company Orano's mining activities there."
-     },
-     {
-      "period": "February 2021",
-      "event": "Myanmar military coup",
-      "what_happened": "Senior General Min Aung Hlaing seized power on 1 February 2021, detaining civilian leader Aung San Suu Kyi and other elected officials. The Biden administration imposed sanctions on military leaders on 11 February 2021 and froze $1 billion in Myanmar government assets held in the U.S.",
-      "market_impact": "Foreign direct investment into Myanmar fell 22% to $3.8 billion in fiscal year 2020, and major foreign investors withdrew: Japan's Kirin ended a $1.7 billion brewery joint venture, Thailand's Amata halted a $1 billion industrial zone project, and India's Adani Ports terminated a $127 million port investment. The Yangon Stock Exchange suspended trading, and property sales reportedly dropped by nearly 100%."
-     }
-    ],
-    "possibility_chains": [
-     "A coup in a country that is a significant exporter of a specific commodity has historically raised questions about the continuity of that country's mining, energy, or agricultural exports, even when physical production is not immediately disrupted.",
-     "Coups have historically triggered sanctions and suspended aid or financing from regional blocs and international lenders, adding fiscal strain on top of the immediate political disruption.",
-     "Foreign companies operating in a country that experiences a coup have historically paused or withdrawn planned investment until the new government's posture toward existing contracts and foreign ownership becomes clearer."
-    ],
-    "why_it_matters": "Myanmar military coup (February 2021): Foreign direct investment into Myanmar fell 22% to $3.8 billion in fiscal year 2020, and major foreign investors withdrew: Japan's Kirin ended a $1.7 billion brewery joint venture, Thailand's Amata halted a $1 billion industrial zone project, and India's Adani Ports terminated a $127 million port investment. The Yangon Stock Exchange suspended trading, and property sales reportedly dropped by nearly 100%. A coup in a country that is a significant exporter of a specific commodity has historically raised questions about the continuity of that country's mining, energy, or agricultural exports, even when physical production is not immediately disrupted.",
-    "linked_playbooks": [
-     {
-      "id": "major-economy-sanctions",
-      "name": "Sanctions imposed on a major economy",
-      "affected_domains": [],
-      "why_it_matters": "International sanctions on Iran over its nuclear program (2010s): Iranian oil exports fell sharply, though global oil prices were also affected by supply from other producers filling the gap; Iran's own currency and economy experienced significant strain during the most restrictive sanctions periods. Sanctions targeting a major energy or commodity exporter have historically tightened global supply of that commodity, which has often (though not always, depending on how much other producers can offset the loss) pushed prices higher."
-     },
-     {
-      "id": "diplomatic-rupture-major-power",
-      "name": "Diplomatic rupture between major regional powers",
-      "affected_domains": [
-       "diplomacy",
-       "trade",
-       "shipping-transportation",
-       "currency",
-       "geopolitics",
-       "banking-financial-stability"
-      ],
-      "why_it_matters": "Saudi Arabia severs relations with Iran (January 2016): The rupture deepened the broader Saudi-Iran regional rivalry playing out through proxy conflicts in Yemen, Syria, and elsewhere; relations were not restored until a China-brokered agreement announced 10 March 2023, with embassies reopening in Riyadh in June 2023 and Tehran in August 2023. A sudden severing of diplomatic relations between neighboring major economies has historically disrupted direct trade, aviation, and financial flows between them, forcing rerouting of commerce through third countries at added cost."
-     },
-     {
-      "id": "currency-crisis",
-      "name": "Sharp currency devaluation / currency crisis",
-      "affected_domains": [],
-      "why_it_matters": "Turkish lira crisis (2018): The lira lost roughly 30–40% of its value against the U.S. dollar over the year, sharply raising the cost of imports and foreign-currency debt for Turkish businesses. A sharp currency devaluation has historically made imported goods, including fuel and food, significantly more expensive for consumers and businesses in the affected country."
-     }
-    ]
-   },
-   "category_context": null,
-   "corroboration": {
-    "tier": "single_source",
-    "source_count": 1,
-    "country_count": 1,
-    "countries": [
-     "Tanzania"
-    ],
-    "label": "1 source",
-    "scraped_fallback_sources_added": 0
-   },
-   "sources": [
-    {
-     "title": "HOMERA ATANGAZA MAPINDUZI YA UMEME VITONGOJINI, AIPONGEZA REA KWA UTEKELEZAJI",
-     "source_name": "Michuzi Blog",
-     "country": "Tanzania",
-     "language": "Swahili",
-     "url": "https://www.michuzi.co.tz/2026/10/homera-atangaza-mapinduzi-ya-umeme.html",
-     "source_type": "rss",
-     "age_hours": 23.1
+     "age_hours": 11.7
     }
    ]
   }
