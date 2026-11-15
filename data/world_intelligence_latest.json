@@ -1,41 +1,41 @@
 {
  "schema_version": "1.0.0",
- "generated_at": "2026-11-14T17:33:08Z",
+ "generated_at": "2026-11-15T04:08:56Z",
  "note": "World Intelligence signals: multilingual aspect + ripple-effect playbook matching (with one-hop linked_playbooks chains) and cross-source corroboration, run against every country-outlet feed discovered in data/country_feeds.json, PLUS scraped_headlines_fallback.json headline scrapes for feed-less outlets (source_type 'scraped_fallback' vs 'rss' -- scraped items can only ADD corroboration to a signal an RSS item already established as real, never create one on their own, since scraped headlines have no reliable publish timestamp). Zero-cost, zero-LLM, keyword-matching + curated playbook data only. NOT yet wired into data/briefing.json / the live Briefing tab — a standalone, additive dataset for now.",
  "stats": {
   "outlets_total_with_feed": 1149,
-  "outlets_ok": 1031,
-  "outlets_failed": 118,
-  "fresh_items": 11476,
-  "items_matched_aspect": 2072,
-  "items_matched_ripple_playbook": 47,
-  "items_with_linked_playbook_chain": 31,
+  "outlets_ok": 1033,
+  "outlets_failed": 116,
+  "fresh_items": 10960,
+  "items_matched_aspect": 1916,
+  "items_matched_ripple_playbook": 42,
+  "items_with_linked_playbook_chain": 29,
   "corroboration_clusters_total": 46,
   "corroboration_clusters_playbook": 6,
   "corroboration_clusters_topic_momentum": 40,
-  "signals_total": 23,
+  "signals_total": 15,
   "matched_language_distribution": {
-   "en": 6470,
-   "es": 1295,
-   "fr": 1111,
-   "ar": 649,
-   "ru": 408,
-   "de": 330,
+   "en": 6212,
+   "es": 1245,
+   "fr": 972,
+   "ar": 635,
+   "ru": 395,
+   "de": 321,
    "id": 240,
-   "pt": 175,
-   "tr": 170,
+   "tr": 195,
    "vi": 150,
+   "pt": 132,
    "bn": 124,
-   "it": 78,
-   "sw": 72,
    "zh": 69,
+   "it": 69,
+   "sw": 66,
    "ko": 50,
    "ur": 50,
    "hi": 25,
    "ja": 10
   },
-  "fetch_elapsed_seconds": 54.6,
-  "total_elapsed_seconds": 131.5,
+  "fetch_elapsed_seconds": 48.8,
+  "total_elapsed_seconds": 133.0,
   "outlets_total_scraped_fallback": 567,
   "outlets_total_combined": 1716,
   "scraped_fallback_items_loaded": 7389,
@@ -44,31 +44,591 @@
  },
  "signals": [
   {
+   "signal_id": "b6b049275301db43",
+   "signal_type": "playbook_corroboration",
+   "headline": "Trung Đông sáng 15-11: Iran tuyên bố hạ drone MQ-1 của Mỹ trên đảo Qeshm; Israel tiêu diệt chỉ huy Hamas",
+   "matched_at": "2026-11-15T04:06:53Z",
+   "matched_language": "vi",
+   "aspects": [],
+   "corroboration": {
+    "tier": "playbook_corroboration",
+    "source_count": 17,
+    "country_count": 14,
+    "countries": [
+     "Afghanistan",
+     "Austria",
+     "Azerbaijan",
+     "Egypt",
+     "Iran",
+     "Iraq",
+     "Israel",
+     "Jordan",
+     "Pakistan",
+     "Russia",
+     "Tajikistan",
+     "Tunisia",
+     "Turkey",
+     "Vietnam"
+    ],
+    "label": "17 sources across 14 countries",
+    "scraped_fallback_sources_added": 7
+   },
+   "sources": [
+    {
+     "title": "Trung Đông sáng 15-11: Iran tuyên bố hạ drone MQ-1 của Mỹ trên đảo Qeshm; Israel tiêu diệt chỉ huy Hamas",
+     "source_name": "Tuổi Trẻ",
+     "country": "Vietnam",
+     "language": "Vietnamese",
+     "url": "https://tuoitre.vn/trung-dong-sang-15-11-iran-tuyen-bo-ha-drone-mq-1-cua-my-tren-dao-qeshm-israel-tieu-diet-chi-huy-hamas-100261115075440585.htm",
+     "source_type": "rss",
+     "age_hours": 0.0
+    },
+    {
+     "title": "İran Devrim Muhafızları: Hürmüz Boğazı'nda 2 petrol tankeri mayına çarparak alev aldı",
+     "source_name": "Anadolu Agency (AA)",
+     "country": "Turkey",
+     "language": "Turkish/English (multilingual)",
+     "url": "https://www.aa.com.tr/tr/dunya/iran-devrim-muhafizlari-hurmuz-bogazinda-2-petrol-tankeri-mayina-carparak-alev-aldi/4125481",
+     "source_type": "rss",
+     "age_hours": 0.6
+    },
+    {
+     "title": "البحرية الإيرانية: نيران في 3 ناقلات اصطدمت بألغام في مضيق هرمز",
+     "source_name": "Al Mamlaka TV",
+     "country": "Jordan",
+     "language": "Arabic",
+     "url": "https://almamlakatv.com/ar/news/البحرية-الإيرانية-نيران-في-3-ناقلات-اصطدمت-بألغام-في-مضيق-هرمز",
+     "source_type": "rss",
+     "age_hours": 5.2
+    },
+    {
+     "title": "Drei Öltanker in Straße von Hormus nach Minenkontakt in Brand",
+     "source_name": "ORF (Österreichischer Rundfunk)",
+     "country": "Austria",
+     "language": "German",
+     "url": "https://orf.at/stories/3448208/",
+     "source_type": "rss",
+     "age_hours": 5.7
+    },
+    {
+     "title": "ВС США обеспечили перевозку более 1,7 млрд баррелей нефти через Ормузский пролив",
+     "source_name": "Interfax",
+     "country": "Russia",
+     "language": "Russian",
+     "url": "https://www.interfax.ru/world/1129053",
+     "source_type": "rss",
+     "age_hours": 5.7
+    },
+    {
+     "title": "КСИР: два танкера подорвались на минах в Ормузском проливе, пытаясь пройти запрещённым маршрутом",
+     "source_name": "TopTJ",
+     "country": "Tajikistan",
+     "language": "Russian",
+     "url": "http://toptj.com/news/2026/11/14/irgc-navy-two-violating-tankers-catch-fire-after-striking-mines-on-unauthorized",
+     "source_type": "rss",
+     "age_hours": 5.8
+    },
+    {
+     "title": "BM: Hürmüz Boğazı'nda şubattan beri en az 25 denizci öldürüldü",
+     "source_name": "Diken",
+     "country": "Turkey",
+     "language": "Turkish",
+     "url": "https://www.diken.com.tr/bm-hurmuz-bogazinda-subattan-beri-en-az-25-denizci-olduruldu/?utm_source=rss&utm_medium=rss&utm_campaign=bm-hurmuz-bogazinda-subattan-beri-en-az-25-denizci-olduruldu",
+     "source_type": "rss",
+     "age_hours": 10.2
+    },
+    {
+     "title": "Strait of Hormuz shipping traffic remains far below pre-conflict levels",
+     "source_name": "AzerNews",
+     "country": "Azerbaijan",
+     "language": "English",
+     "url": "https://www.azernews.az/region/267416.html",
+     "source_type": "rss",
+     "age_hours": 16.7
+    },
+    {
+     "title": "Iran reports three incidents of oil tankers hit by mines in Hormuz",
+     "source_name": "Business Recorder",
+     "country": "Pakistan",
+     "language": "English",
+     "url": "https://www.brecorder.com/news/40448900/iran-reports-three-incidents-of-oil-tankers-hit-by-mines-in-hormuz",
+     "source_type": "rss",
+     "age_hours": 20.7
+    },
+    {
+     "title": "Hormuz Shipping Traffic Remains 65% Below Pre-War Levels",
+     "source_name": "Khaama Press",
+     "country": "Afghanistan",
+     "language": "English/Dari/Pashto",
+     "url": "https://www.khaama.com/hormuz-shipping-traffic-below-pre-war-levels/",
+     "source_type": "rss",
+     "age_hours": 24.6
+    }
+   ],
+   "ripple_effect": {
+    "id": "hormuz-gulf-oil-shock",
+    "name": "Persian Gulf oil supply shock",
+    "affected_domains": [],
+    "historical_precedents": [
+     {
+      "period": "1984–1988",
+      "event": "Iran–Iraq \"Tanker War\"",
+      "what_happened": "Iran and Iraq attacked oil tankers transiting the Persian Gulf and Strait of Hormuz, and Iran repeatedly threatened to close the strait.",
+      "market_impact": "Shipping insurance war-risk premiums in the Gulf rose sharply, and the U.S. Navy began escorting reflagged Kuwaiti tankers in 1987 to keep the strait open."
+     },
+     {
+      "period": "September 2019",
+      "event": "Drone and missile attack on Saudi Aramco's Abqaiq and Khurais facilities",
+      "what_happened": "The attack (which Saudi Arabia and the U.S. blamed on Iran, a claim Iran denied) temporarily knocked out roughly half of Saudi Arabia's oil output, about 5% of global supply.",
+      "market_impact": "Brent crude jumped about 15% in a single day — the largest one-day oil price increase since the 1990–91 Gulf War."
+     },
+     {
+      "period": "1990–1991",
+      "event": "Gulf War (Iraqi invasion of Kuwait)",
+      "what_happened": "Iraq's invasion of Kuwait removed a large share of Gulf oil exports from the market and raised fears of a wider regional war.",
+      "market_impact": "Oil prices roughly doubled in the months following the invasion before falling back once the war ended and supply concerns eased."
+     }
+    ],
+    "possibility_chains": [
+     "Roughly a fifth of the world's oil is estimated to pass through the Strait of Hormuz, so a sustained blockage or major disruption there has historically driven crude oil prices sharply higher.",
+     "Because ammonia-based fertilizer production is natural-gas intensive, and natural gas prices often move together with oil, a prolonged energy price spike has historically fed through into higher fertilizer costs over the following months.",
+     "Fertilizer is a major input cost in food production, so energy shocks of this kind have historically been followed — often with a lag — by higher food prices.",
+     "Shipping insurers have historically raised war-risk premiums for vessels transiting the Gulf during periods of heightened tension, adding to the landed cost of oil and other cargo."
+    ],
+    "why_it_matters": "Gulf War (Iraqi invasion of Kuwait) (1990–1991): Oil prices roughly doubled in the months following the invasion before falling back once the war ended and supply concerns eased. Roughly a fifth of the world's oil is estimated to pass through the Strait of Hormuz, so a sustained blockage or major disruption there has historically driven crude oil prices sharply higher.",
+    "linked_playbooks": []
+   },
+   "category_context": null
+  },
+  {
+   "signal_id": "66f68be0db0b25a5",
+   "signal_type": "playbook_corroboration",
+   "headline": "Liveblog Ukrainekrieg: Putin will an Treffen mit Trump und Xi teilnehmen",
+   "matched_at": "2026-11-15T04:03:24Z",
+   "matched_language": "de",
+   "aspects": [],
+   "corroboration": {
+    "tier": "playbook_corroboration",
+    "source_count": 9,
+    "country_count": 6,
+    "countries": [
+     "Austria",
+     "France",
+     "Germany",
+     "Russia",
+     "Switzerland",
+     "Vietnam"
+    ],
+    "label": "9 sources across 6 countries",
+    "scraped_fallback_sources_added": 0
+   },
+   "sources": [
+    {
+     "title": "Liveblog Ukrainekrieg: Putin will an Treffen mit Trump und Xi teilnehmen",
+     "source_name": "Frankfurter Allgemeine Zeitung (FAZ)",
+     "country": "Germany",
+     "language": "German",
+     "url": "https://www.faz.net/aktuell/politik/ukraine/ukraine-liveticker-putin-will-an-treffen-mit-trump-und-xi-teilnehmen-faz-110683325.html",
+     "source_type": "rss",
+     "age_hours": 0.1
+    },
+    {
+     "title": "\"Wie ein schmerzender Zahn\": Moskau arbeitet sich an der Nato ab",
+     "source_name": "n-tv",
+     "country": "Germany",
+     "language": "German",
+     "url": "https://www.n-tv.de/politik/Moskau-arbeitet-sich-an-der-Nato-ab-id31534977.html",
+     "source_type": "rss",
+     "age_hours": 1.0
+    },
+    {
+     "title": "Mỹ hé lộ ý tưởng mới sau đàm phán, Ukraine nêu đề xuất của Washington",
+     "source_name": "Dân Trí",
+     "country": "Vietnam",
+     "language": "Vietnamese",
+     "url": "https://dantri.com.vn/the-gioi/my-he-lo-y-tuong-moi-sau-dam-phan-ukraine-neu-de-xuat-cua-washington-20261115071101421.htm",
+     "source_type": "rss",
+     "age_hours": 3.9
+    },
+    {
+     "title": "Донбасс в обмен на НАТО: предложение США Киеву. Что обсудят Путин, Трамп и Си. Лерчек помиловали",
+     "source_name": "TV Rain (Dozhd)",
+     "country": "Russia",
+     "language": "Russian",
+     "url": "https://tvrain.tv/teleshow/here_and_now/donbass-v-obmen-na-nato-578403/?from=rss",
+     "source_type": "rss",
+     "age_hours": 11.1
+    },
+    {
+     "title": "Brisantes Papier - Kreml will NATO ins Jahr 1997 zurückdrängen",
+     "source_name": "Kronen Zeitung",
+     "country": "Austria",
+     "language": "German",
+     "url": "https://www.krone.at/4375968",
+     "source_type": "rss",
+     "age_hours": 11.4
+    },
+    {
+     "title": "Ukraine: Washington aurait proposé des concessions territoriales en échange d'une adhésion du pays à l'Otan",
+     "source_name": "RFI (Radio France Internationale)",
+     "country": "France",
+     "language": "French (multilingual)",
+     "url": "https://www.rfi.fr/fr/europe/20261114-ukraine-washington-aurait-propos%C3%A9-des-concessions-territoriales-en-%C3%A9change-d-une-adh%C3%A9sion-du-pays-%C3%A0-l-otan",
+     "source_type": "rss",
+     "age_hours": 14.4
+    },
+    {
+     "title": "USA brachten NATO-Beitritt aufs Tapet",
+     "source_name": "ORF (Österreichischer Rundfunk)",
+     "country": "Austria",
+     "language": "German",
+     "url": "https://orf.at/stories/3448164/",
+     "source_type": "rss",
+     "age_hours": 17.3
+    },
+    {
+     "title": "США впервые спросили, готова ли Украина вывести войска из Донбасса в обмен на вступление в НАТО — Зеленский",
+     "source_name": "Novaya Gazeta Europe",
+     "country": "Russia",
+     "language": "Russian",
+     "url": "https://novayagazeta.eu/articles/2026/11/14/ssha-vpervye-sprosili-gotova-li-ukraina-vyvesti-voiska-iz-donbassa-v-obmen-na-vstuplenie-v-nato-zelenskii-news",
+     "source_type": "rss",
+     "age_hours": 17.6
+    },
+    {
+     "title": "Details aus Verhandlungen : Selenskyj: USA stellen Nato-Beitritt für Verzicht auf Donbass zur Debatte",
+     "source_name": "n-tv",
+     "country": "Germany",
+     "language": "German",
+     "url": "https://www.n-tv.de/politik/Selenskyj-USA-stellen-Nato-Beitritt-fuer-Verzicht-auf-Donbass-zur-Debatte-id31533890.html",
+     "source_type": "rss",
+     "age_hours": 17.7
+    },
+    {
+     "title": "LIVE-TICKER - Krieg in der Ukraine: USA sollen Selenski Nato-Beitritt im Tausch gegen Rückzug aus Donbass vorgeschlagen haben +++ Ukrainischer Drohnenangriff tötet Familie in Westrussland",
+     "source_name": "Neue Zürcher Zeitung (NZZ)",
+     "country": "Switzerland",
+     "language": "German",
+     "url": "https://www.nzz.ch/international/krieg-in-der-ukraine-die-neusten-entwicklungen-im-liveticker-ld.10021245",
+     "source_type": "rss",
+     "age_hours": 17.7
+    }
+   ],
+   "ripple_effect": {
+    "id": "nato-alliance-expansion",
+    "name": "NATO alliance expansion / enlargement",
+    "affected_domains": [
+     "defense",
+     "diplomacy",
+     "geopolitics"
+    ],
+    "historical_precedents": [
+     {
+      "period": "1999",
+      "event": "NATO's first post-Cold War enlargement round",
+      "what_happened": "The Czech Republic, Hungary, and Poland formally joined NATO on 12 March 1999, the alliance's first enlargement into former Warsaw Pact territory.",
+      "market_impact": "The new members subsequently restructured their militaries toward NATO interoperability standards over the following years, a process that involved substantial defense procurement and modernization spending."
+     },
+     {
+      "period": "2004",
+      "event": "NATO's largest single enlargement round",
+      "what_happened": "Bulgaria, Estonia, Latvia, Lithuania, Romania, Slovakia, and Slovenia joined NATO on 29 March 2004, extending the alliance's border directly to Russia via the Baltic states.",
+      "market_impact": "The round significantly expanded NATO's direct border with Russia and was followed by years of gradual integration of the new members' militaries and defense industries into NATO structures."
+     },
+     {
+      "period": "2022–2024",
+      "event": "Finland and Sweden's accession following Russia's invasion of Ukraine",
+      "what_happened": "Finland and Sweden, both militarily non-aligned for decades, applied to join NATO on 18 May 2022. Finland was admitted on 4 April 2023; Sweden's accession was delayed by Turkish and Hungarian holds before both were admitted, and Sweden formally joined on 7 March 2024 as NATO's 32nd member.",
+      "market_impact": "Russia's Defense Ministry said Finland's accession significantly increased the risk of a wider conflict in Europe and doubled the length of NATO's border with Russia, while President Putin publicly dismissed the accessions as posing no direct threat to Russia; both new members proceeded with defense-spending commitments tied to NATO membership."
+     }
+    ],
+    "possibility_chains": [
+     "NATO enlargement that extends the alliance's border with Russia has historically drawn public objections from Moscow, though the accessions themselves have not, to date, triggered direct military confrontation between Russia and the alliance.",
+     "New NATO members have historically committed to raising defense spending toward the alliance's 2%-of-GDP guideline, a process that has typically unfolded over multiple years rather than immediately upon accession.",
+     "Countries seeking NATO membership while ratification is pending have historically faced a period of diplomatic and procedural uncertainty, since any single member state can delay or block accession."
+    ],
+    "why_it_matters": "Finland and Sweden's accession following Russia's invasion of Ukraine (2022–2024): Russia's Defense Ministry said Finland's accession significantly increased the risk of a wider conflict in Europe and doubled the length of NATO's border with Russia, while President Putin publicly dismissed the accessions as posing no direct threat to Russia; both new members proceeded with defense-spending commitments tied to NATO membership. NATO enlargement that extends the alliance's border with Russia has historically drawn public objections from Moscow, though the accessions themselves have not, to date, triggered direct military confrontation between Russia and the alliance.",
+    "linked_playbooks": [
+     {
+      "id": "defense-spending-rearmament-surge",
+      "name": "National rearmament / defense spending surge",
+      "affected_domains": [
+       "defense",
+       "fiscal-policy",
+       "manufacturing",
+       "geopolitics"
+      ],
+      "why_it_matters": "Germany's 'Zeitenwende' defense policy shift (February 2022 – 2024): The announcement marked a historic reversal of Germany's post-WWII restraint on military spending and was followed by German defense contractors reporting substantially higher order backlogs in subsequent years. A major security shock in a region has historically prompted neighboring or allied countries to announce sizable defense spending increases in the following weeks, even though actually building and delivering new military hardware has typically taken years."
+     },
+     {
+      "id": "major-economy-sanctions",
+      "name": "Sanctions imposed on a major economy",
+      "affected_domains": [],
+      "why_it_matters": "International sanctions on Iran over its nuclear program (2010s): Iranian oil exports fell sharply, though global oil prices were also affected by supply from other producers filling the gap; Iran's own currency and economy experienced significant strain during the most restrictive sanctions periods. Sanctions targeting a major energy or commodity exporter have historically tightened global supply of that commodity, which has often (though not always, depending on how much other producers can offset the loss) pushed prices higher."
+     }
+    ]
+   },
+   "category_context": null
+  },
+  {
+   "signal_id": "d198fadd5e933ce3",
+   "signal_type": "playbook_corroboration",
+   "headline": "Women are forking over thousands on cosmetic tweaks to fix 'Ozempic temples' - including Melissa Rivers",
+   "matched_at": "2026-11-15T03:50:09Z",
+   "matched_language": "en",
+   "aspects": [],
+   "corroboration": {
+    "tier": "playbook_corroboration",
+    "source_count": 5,
+    "country_count": 5,
+    "countries": [
+     "Denmark",
+     "Kenya",
+     "Lebanon",
+     "United Kingdom",
+     "Zambia"
+    ],
+    "label": "5 sources across 5 countries",
+    "scraped_fallback_sources_added": 1
+   },
+   "sources": [
+    {
+     "title": "Women are forking over thousands on cosmetic tweaks to fix 'Ozempic temples' - including Melissa Rivers",
+     "source_name": "Daily Mail",
+     "country": "United Kingdom",
+     "language": "English",
+     "url": "https://www.dailymail.com/lifestyle/beauty/article-16288533/melissa-rivers-temporal-hallowing-filler-plastic-surgery.html?ns_mchannel=rss&ns_campaign=1490&ito=1490",
+     "source_type": "rss",
+     "age_hours": 0.3
+    },
+    {
+     "title": "أقراص ويغوفي اليومية تُفقد 6.2% من الوزن خلال ثلاثة أشهر",
+     "source_name": "An-Nahar",
+     "country": "Lebanon",
+     "language": "Arabic",
+     "url": "https://www.annahar.com/health-science/366535/أقراص-ويغوفي-اليومية-تفقد-62-من-الوزن-خلال-ثلاثة-أشهر",
+     "source_type": "rss",
+     "age_hours": 9.2
+    },
+    {
+     "title": "DJ Khaled shows off dramatic weight loss after hitting 300 pounds",
+     "source_name": "Zambian Observer",
+     "country": "Zambia",
+     "language": "English",
+     "url": "https://zambianobserver.com/dj-khaled-shows-off-dramatic-weight-loss-after-hitting-300-pounds/",
+     "source_type": "rss",
+     "age_hours": 9.5
+    },
+    {
+     "title": "DJ Khaled shows off new epic transformation after massive weight loss",
+     "source_name": "Tuko",
+     "country": "Kenya",
+     "language": "English/Swahili",
+     "url": "https://www.tuko.co.ke/world/us/646826-dj-khaled-shows-epic-transformation-massive-weight-loss/",
+     "source_type": "rss",
+     "age_hours": 13.0
+    },
+    {
+     "title": "Amerikansk gigant udfordrer Novo Nordisk i Danmark med 'dybt problematisk' kampagne",
+     "source_name": "DR (Danmarks Radio)",
+     "country": "Denmark",
+     "language": "Danish",
+     "url": "https://www.dr.dk/nyheder/penge/ny-kampagne-fra-novo-rival-faar-kritik-de-vil-bare-saelge-vaegttabsmedicin",
+     "source_type": "scraped_fallback",
+     "age_hours": null
+    }
+   ],
+   "ripple_effect": {
+    "id": "glp1-obesity-drug-market-shift",
+    "name": "GLP-1 obesity/diabetes drugs reshaping healthcare cost and pharma markets",
+    "affected_domains": [
+     "public-health",
+     "healthcare",
+     "pharmaceuticals",
+     "capital-markets",
+     "insurance"
+    ],
+    "historical_precedents": [
+     {
+      "period": "2022–2025",
+      "event": "Novo Nordisk's Ozempic/Wegovy-driven rise to Europe's most valuable company, then competitive erosion",
+      "what_happened": "Demand for Novo Nordisk's GLP-1 drugs Ozempic (approved for diabetes, widely used off-label for weight loss) and Wegovy (approved for obesity) grew so rapidly that weight-loss drugs made up 55% of the company's 2023 revenue and its first-half 2023 profit rose 45% year-over-year; by March 2024 the company reached a $604 billion market capitalization, the 12th most valuable company in the world, and by April 2024 its roughly $570 billion market cap exceeded the size of Denmark's entire economy, with its roughly $2.3 billion Danish corporate tax bill alone driving nearly all of Denmark's measured economic growth that year.",
+      "market_impact": "US list prices for these drugs ran far above prices charged elsewhere (Ozempic around $969/month in the US versus $155 in Canada and $59 in Germany; Wegovy around $1,349/month in the US versus $140 in Germany and $92 in the UK), fueling a US health-insurance and employer-benefit-design debate over covering the drugs at scale; by July 2025, rising competitor pressure had pushed Novo down to the fifth most valuable drugmaker by market cap, prompting a CEO change effective August 7, 2025."
+     }
+    ],
+    "possibility_chains": [
+     "A single drug class becoming a large share of a national economy's growth, as with Novo Nordisk and Denmark, has historically made that country's headline GDP figures unusually sensitive to one company's product cycle.",
+     "Insurers and employers facing a costly new high-demand drug class have historically responded first with coverage restrictions (prior authorization, BMI thresholds) before broadening access as production scales and price competition emerges.",
+     "A manufacturer's inability to keep pace with demand for a breakout drug has historically triggered shortages, compounding-pharmacy workarounds, and counterfeit-product risk in the gap before supply catches up."
+    ],
+    "why_it_matters": "Novo Nordisk's Ozempic/Wegovy-driven rise to Europe's most valuable company, then competitive erosion (2022–2025): US list prices for these drugs ran far above prices charged elsewhere (Ozempic around $969/month in the US versus $155 in Canada and $59 in Germany; Wegovy around $1,349/month in the US versus $140 in Germany and $92 in the UK), fueling a US health-insurance and employer-benefit-design debate over covering the drugs at scale; by July 2025, rising competitor pressure had pushed Novo down to the fifth most valuable drugmaker by market cap, prompting a CEO change effective August 7, 2025. A single drug class becoming a large share of a national economy's growth, as with Novo Nordisk and Denmark, has historically made that country's headline GDP figures unusually sensitive to one company's product cycle.",
+    "linked_playbooks": [
+     {
+      "id": "pharmaceutical-patent-cliff",
+      "name": "Pharmaceutical patent cliff and blockbuster drug revenue loss",
+      "affected_domains": [
+       "public-health",
+       "healthcare",
+       "pharmaceuticals",
+       "capital-markets",
+       "regulation"
+      ],
+      "why_it_matters": "Lipitor (atorvastatin) patent expiration (1996–2012 (US patent expired November 30, 2011)): Generic prices stayed relatively elevated during that initial exclusivity window, then fell sharply once additional manufacturers entered in May 2012, pushing a month's supply down toward standard generic pricing of $10 or less — illustrating the two-stage price collapse (moderate initial generic discount, then a much steeper one once multiple generic makers compete) that characterizes a typical pharmaceutical patent-cliff event. A cluster of blockbuster drugs (defined in the industry as over $1 billion in annual sales) losing patent protection in the same multi-year window has historically pushed large pharmaceutical companies toward M&A, portfolio diversification, and 'evergreening' strategies (new formulations or delivery mechanisms) to offset the revenue drop."
+     },
+     {
+      "id": "aging-population-healthcare-cost-capacity",
+      "name": "Aging population driving healthcare system cost and capacity pressure",
+      "affected_domains": [
+       "public-health",
+       "healthcare",
+       "fiscal-policy",
+       "demographics",
+       "pensions"
+      ],
+      "why_it_matters": "Japan's healthcare spending rise under a super-aged population (2008–2018): Japan introduced a dedicated long-term care insurance system (Kaigo-Hoken), funded partly by a roughly 2% income contribution from residents over 40 and administered by municipal governments, specifically to fund elderly care costs separately from general health insurance as the aging-driven cost pressure became structural rather than cyclical; by 2016 the system was allocating tens of billions of dollars annually toward long-term care expenditures. A country crossing the 'super-aged society' threshold (21%+ population 65+) has historically required either new dedicated funding mechanisms, as with Japan's long-term-care insurance, or rising general healthcare spending as a share of GDP, or both."
+     }
+    ]
+   },
+   "category_context": null
+  },
+  {
+   "signal_id": "4224edcf515a3348",
+   "signal_type": "playbook_single_source",
+   "headline": "“Sé que muchas familias sufren por la delincuencia y la extorsión”: León XIV habla sobre la inseguridad en el norte",
+   "matched_at": "2026-11-15T03:33:19Z",
+   "matched_language": "es",
+   "aspects": [],
+   "ripple_effect": {
+    "id": "territorial-debt-crisis",
+    "name": "US territory / sub-sovereign debt restructuring crisis",
+    "affected_domains": [
+     "government-debt",
+     "public-services",
+     "capital-markets",
+     "pensions"
+    ],
+    "historical_precedents": [
+     {
+      "period": "2014–2022",
+      "event": "Puerto Rico's government-debt crisis and PROMESA restructuring",
+      "what_happened": "Puerto Rico's bonds were downgraded to junk status in February 2014, and Governor García Padilla declared the roughly $74 billion in bond debt (plus $49 billion in unfunded pension liabilities) 'not payable' on June 28, 2015; after Puerto Rico missed a $422 million payment on May 1, 2016, Congress passed PROMESA, which President Obama signed June 30, 2016, creating a federal oversight board with authority over the territory's budget and debt restructuring.",
+      "market_impact": "Puerto Rico's poverty rate reached roughly 45% by mid-2017, unemployment hit 12.4% in December 2016, and its sales tax rose to 11% alongside teacher retirement-age increases (47 to 62) and 10% pension cuts under the oversight board's austerity plan; nearly 70% of US municipal bond funds held Puerto Rico exposure, and its general obligation bonds fell to roughly 32 cents on the dollar after Hurricane Maria in 2017 before the territory exited bankruptcy in March 2022."
+     }
+    ],
+    "possibility_chains": [
+     "A US territory's debt crisis has historically been resolved through federal oversight mechanisms different from either a state (which cannot file Chapter 9 the way cities can) or an independent country (which cannot access IMF facilities), creating restructuring rules unique to the territory's ambiguous status.",
+     "Heavy institutional exposure to a single distressed municipal issuer (in this case, via tax-exempt bond funds that concentrated Puerto Rico debt for its tax advantages) has historically transmitted a regional fiscal crisis into national investment portfolios far from the issuer itself.",
+     "Debt-crisis austerity measures layered on top of a shrinking population and tax base have historically been self-reinforcing, since tax increases and service cuts have tended to accelerate the outward migration that shrank the tax base in the first place."
+    ],
+    "why_it_matters": "Puerto Rico's government-debt crisis and PROMESA restructuring (2014–2022): Puerto Rico's poverty rate reached roughly 45% by mid-2017, unemployment hit 12.4% in December 2016, and its sales tax rose to 11% alongside teacher retirement-age increases (47 to 62) and 10% pension cuts under the oversight board's austerity plan; nearly 70% of US municipal bond funds held Puerto Rico exposure, and its general obligation bonds fell to roughly 32 cents on the dollar after Hurricane Maria in 2017 before the territory exited bankruptcy in March 2022. A US territory's debt crisis has historically been resolved through federal oversight mechanisms different from either a state (which cannot file Chapter 9 the way cities can) or an independent country (which cannot access IMF facilities), creating restructuring rules unique to the territory's ambiguous status.",
+    "linked_playbooks": [
+     {
+      "id": "municipal-bankruptcy",
+      "name": "Major municipal or county bankruptcy",
+      "affected_domains": [
+       "government-debt",
+       "public-services",
+       "infrastructure",
+       "pensions"
+      ],
+      "why_it_matters": "Jefferson County, Alabama bankruptcy (November 2011 – December 2013): The county cut its government workforce by more than 700 employees by May 2012, and the bankruptcy court wrote off more than $1.4 billion of the debt before the county emerged from bankruptcy in December 2013. A municipal bankruptcy driven by a shrinking tax base and rising legacy retiree costs has historically forced a choice between deep pension cuts and finding outside funding (such as philanthropic support) to soften them, since the two options are not fiscally separable."
+     },
+     {
+      "id": "fiscal-austerity-program",
+      "name": "Government austerity program (spending cuts and tax rises)",
+      "affected_domains": [
+       "fiscal-policy",
+       "public-services",
+       "government-debt",
+       "social-programs",
+       "politics"
+      ],
+      "why_it_matters": "Canada's 1995 federal budget under Finance Minister Paul Martin (1995): By shrinking the federal transfer, the reform shifted fiscal pressure onto provincial governments, which had to make their own cuts to health and social assistance spending to absorb the reduced federal contribution. Government austerity programs that cut public sector employment have historically taken years to fully play out in local labor markets, as affected workers and the local businesses that served them adjust gradually rather than all at once."
+     },
+     {
+      "id": "sovereign-debt-default",
+      "name": "Sovereign government debt default",
+      "affected_domains": [
+       "government-debt",
+       "currency",
+       "emerging-markets",
+       "banking"
+      ],
+      "why_it_matters": "Sri Lanka's first sovereign default (April 2022): The default followed foreign reserves falling to just $1.9 billion by March 2022, insufficient to cover the country's import and debt-service needs, and led into an IMF rescue program. A sovereign default has historically triggered a sharp loss of access to international capital markets for the defaulting government, often for years, forcing reliance on domestic financing or multilateral lenders in the interim."
+     }
+    ]
+   },
+   "category_context": null,
+   "corroboration": {
+    "tier": "single_source",
+    "source_count": 1,
+    "country_count": 1,
+    "countries": [
+     "Peru"
+    ],
+    "label": "1 source",
+    "scraped_fallback_sources_added": 0
+   },
+   "sources": [
+    {
+     "title": "“Sé que muchas familias sufren por la delincuencia y la extorsión”: León XIV habla sobre la inseguridad en el norte",
+     "source_name": "La República",
+     "country": "Peru",
+     "language": "Spanish",
+     "url": "https://larepublica.pe/sociedad/2026/11/14/se-que-muchas-familias-sufren-por-la-delincuencia-y-la-extorsion-leon-xiv-habla-sobre-el-miedo-en-el-norte-547708",
+     "source_type": "rss",
+     "age_hours": 0.6
+    }
+   ]
+  },
+  {
    "signal_id": "0f3b370382102096",
    "signal_type": "playbook_corroboration",
-   "headline": "DFA: South China Sea code 80% complete, but ‘sticking points’ remain",
-   "matched_at": "2026-11-14T19:46:45Z",
+   "headline": "ASEAN must advance effective South China Sea Code of Conduct under international law: Philippine President Marcos",
+   "matched_at": "2026-11-15T03:28:08Z",
    "matched_language": "en",
    "aspects": [
     {
+     "id": "politics.leadership",
+     "score": 3.0
+    },
+    {
      "id": "geopolitics.diplomacy",
-     "score": 2.0
+     "score": 3.0
     }
    ],
    "corroboration": {
     "tier": "playbook_corroboration",
-    "source_count": 4,
+    "source_count": 5,
     "country_count": 4,
     "countries": [
      "China",
      "Indonesia",
-     "Malaysia",
+     "Oman",
      "Philippines"
     ],
-    "label": "4 sources across 4 countries",
+    "label": "5 sources across 4 countries",
     "scraped_fallback_sources_added": 2
    },
    "sources": [
+    {
+     "title": "ASEAN must advance effective South China Sea Code of Conduct under international law: Philippine President Marcos",
+     "source_name": "Times of Oman",
+     "country": "Oman",
+     "language": "English",
+     "url": "https://timesofoman.com//article/179173-asean-must-advance-effective-south-china-sea-code-of-conduct-under-international-law-philippine-president-marcos",
+     "source_type": "rss",
+     "age_hours": 0.7
+    },
+    {
+     "title": "ASEAN unity faces test as energy crisis, regional conflicts loom over summit",
+     "source_name": "Interaksyon",
+     "country": "Philippines",
+     "language": "English/Filipino",
+     "url": "https://interaksyon.philstar.com/politics-issues/2026/11/15/321889/asean-unity-faces-test-as-energy-crisis-regional-conflicts-loom-over-summit/",
+     "source_type": "rss",
+     "age_hours": 4.6
+    },
     {
      "title": "DFA: South China Sea code 80% complete, but ‘sticking points’ remain",
      "source_name": "Philippine Daily Inquirer",
@@ -76,16 +636,7 @@
      "language": "English",
      "url": "https://www.inquirer.net/495711/dfa-south-china-sea-code-80-complete-but-sticking-points-remain/",
      "source_type": "rss",
-     "age_hours": 0.0
-    },
-    {
-     "title": "Malaysia pushes ASEAN, China to conclude South China Sea Code of Conduct",
-     "source_name": "The Vibes",
-     "country": "Malaysia",
-     "language": "English",
-     "url": "https://www.thevibes.com/articles/world/129554/malaysia-pushes-asean-china-to-conclude-south-china-sea-code-of-conduct",
-     "source_type": "rss",
-     "age_hours": 8.2
+     "age_hours": 8.4
     },
     {
      "title": "Code of Conduct talks ‘70% complete’",
@@ -94,7 +645,7 @@
      "language": "English",
      "url": "https://www.inquirer.net/495597/code-of-conduct-talks-70-complete/",
      "source_type": "rss",
-     "age_hours": 12.0
+     "age_hours": 22.6
     },
     {
      "title": "一年近200艘军舰、数万架次军机，谁在海上“窥伺”？ “在战略互信不足与风险管控机制短板相互叠加下，普通常态互动容易向高风险互动演变。” 据“南海战略态势感知计划”披露数据，2025年共有18个域外国家，累计近两百艘军舰在西太平洋海域活动，域外国家军机超两万架次。",
@@ -176,365 +727,189 @@
    "category_context": null
   },
   {
-   "signal_id": "b6b049275301db43",
+   "signal_id": "83c609604112af86",
    "signal_type": "playbook_corroboration",
-   "headline": "الدفاعات الجوية الإيرانية تسقط مسيرة أمريكية فوق جزيرة قشم",
-   "matched_at": "2026-11-14T17:13:51Z",
-   "matched_language": "ar",
-   "aspects": [],
-   "corroboration": {
-    "tier": "playbook_corroboration",
-    "source_count": 19,
-    "country_count": 16,
-    "countries": [
-     "Afghanistan",
-     "Austria",
-     "Azerbaijan",
-     "Chile",
-     "Egypt",
-     "Honduras",
-     "Indonesia",
-     "Iran",
-     "Iraq",
-     "Israel",
-     "Pakistan",
-     "Palestine",
-     "Russia",
-     "Saint Kitts and Nevis",
-     "Tunisia",
-     "United Arab Emirates"
-    ],
-    "label": "19 sources across 16 countries",
-    "scraped_fallback_sources_added": 7
-   },
-   "sources": [
-    {
-     "title": "الدفاعات الجوية الإيرانية تسقط مسيرة أمريكية فوق جزيرة قشم",
-     "source_name": "Al-Quds",
-     "country": "Palestine",
-     "language": "Arabic",
-     "url": "https://alquds.com/ar/posts/273527-iran-downs-us-drone-qeshm-island",
-     "source_type": "rss",
-     "age_hours": 0.3
-    },
-    {
-     "title": "UN urges US, Iran to allow fertiliser shipments through Strait of Hormuz",
-     "source_name": "Gulf News",
-     "country": "United Arab Emirates",
-     "language": "English",
-     "url": "https://gulfnews.com/world/mena/un-urges-us-iran-to-allow-fertiliser-shipments-through-strait-of-hormuz-1.500747424",
-     "source_type": "rss",
-     "age_hours": 1.4
-    },
-    {
-     "title": "PBB Desak AS-Iran Buka Blokade Pupuk di Selat Hormuz",
-     "source_name": "Media Indonesia",
-     "country": "Indonesia",
-     "language": "Indonesian",
-     "url": "https://mediaindonesia.com/internasional/956273/pbb-desak-as-iran-buka-blokade-pupuk-di-selat-hormuz",
-     "source_type": "rss",
-     "age_hours": 2.2
-    },
-    {
-     "title": "La Guardia Revolucionaria iraní dice haber derribado un dron MQ-1 de EEUU",
-     "source_name": "Proceso Digital",
-     "country": "Honduras",
-     "language": "Spanish",
-     "url": "https://proceso.hn/la-guardia-revolucionaria-irani-dice-haber-derribado-un-dron-mq-1-de-eeuu/",
-     "source_type": "rss",
-     "age_hours": 3.5
-    },
-    {
-     "title": "Tres petroleros se incendian tras chocar con minas navales en el Estrecho de Ormuz",
-     "source_name": "La Tercera",
-     "country": "Chile",
-     "language": "Spanish",
-     "url": "https://www.latercera.com/mundo/noticia/tres-petroleros-se-incendian-tras-chocar-con-minas-navales-en-el-estrecho-de-ormuz/",
-     "source_type": "rss",
-     "age_hours": 4.0
-    },
-    {
-     "title": "Fifth tanker reported hit around Hormuz in past 24 hours",
-     "source_name": "WINN Media (WINN FM 98.9)",
-     "country": "Saint Kitts and Nevis",
-     "language": "English",
-     "url": "https://www.winnmediaskn.com/fifth-tanker-reported-hit-around-hormuz-in-past-24-hours/",
-     "source_type": "rss",
-     "age_hours": 4.6
-    },
-    {
-     "title": "Strait of Hormuz shipping traffic remains far below pre-conflict levels",
-     "source_name": "AzerNews",
-     "country": "Azerbaijan",
-     "language": "English",
-     "url": "https://www.azernews.az/region/267416.html",
-     "source_type": "rss",
-     "age_hours": 6.1
-    },
-    {
-     "title": "إيران: حريق بناقلة نفط بعد اصطدامها بلغم بحري في مضيق هرمز",
-     "source_name": "Mosaïque FM",
-     "country": "Tunisia",
-     "language": "Arabic",
-     "url": "https://www.mosaiquefm.net/ar/%D8%A7%D9%84%D8%A3%D8%AE%D8%A8%D8%A7%D8%B1-%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%D9%8A%D8%A9/1536834/%D8%A5%D9%8A%D8%B1%D8%A7%D9%86-%D8%AD%D8%B1%D9%8A%D9%82-%D8%A8%D9%86%D8%A7%D9%82%D9%84%D8%A9-%D9%86%D9%81%D8%B7-%D8%A8%D8%B9%D8%AF-%D8%A7%D8%B5%D8%B7%D8%AF%D8%A7%D9%85%D9%87%D8%A7-%D8%A8%D9%84%D8%BA%D9%85-%D8%A8%D8%AD%D8%B1%D9%8A-%D9%81%D9%8A-%D9%85%D8%B6%D9%8A%D9%82-%D9%87%D8%B1%D9%85%D8%B2",
-     "source_type": "rss",
-     "age_hours": 6.6
-    },
-    {
-     "title": "Another oil tanker hits mine and catches fire in Strait of Hormuz",
-     "source_name": "APA (Azerbaijan Press Agency)",
-     "country": "Azerbaijan",
-     "language": "Azerbaijani/English/Russian",
-     "url": "https://en.apa.az/asia/another-oil-tanker-hits-mine-and-catches-fire-in-strait-of-hormuz-536104",
-     "source_type": "rss",
-     "age_hours": 6.9
-    },
-    {
-     "title": "Tanker catches fire in Strait of Hormuz after reported mine strike",
-     "source_name": "AzerNews",
-     "country": "Azerbaijan",
-     "language": "English",
-     "url": "https://www.azernews.az/region/267407.html",
-     "source_type": "rss",
-     "age_hours": 8.3
-    }
-   ],
-   "ripple_effect": {
-    "id": "hormuz-gulf-oil-shock",
-    "name": "Persian Gulf oil supply shock",
-    "affected_domains": [],
-    "historical_precedents": [
-     {
-      "period": "1984–1988",
-      "event": "Iran–Iraq \"Tanker War\"",
-      "what_happened": "Iran and Iraq attacked oil tankers transiting the Persian Gulf and Strait of Hormuz, and Iran repeatedly threatened to close the strait.",
-      "market_impact": "Shipping insurance war-risk premiums in the Gulf rose sharply, and the U.S. Navy began escorting reflagged Kuwaiti tankers in 1987 to keep the strait open."
-     },
-     {
-      "period": "September 2019",
-      "event": "Drone and missile attack on Saudi Aramco's Abqaiq and Khurais facilities",
-      "what_happened": "The attack (which Saudi Arabia and the U.S. blamed on Iran, a claim Iran denied) temporarily knocked out roughly half of Saudi Arabia's oil output, about 5% of global supply.",
-      "market_impact": "Brent crude jumped about 15% in a single day — the largest one-day oil price increase since the 1990–91 Gulf War."
-     },
-     {
-      "period": "1990–1991",
-      "event": "Gulf War (Iraqi invasion of Kuwait)",
-      "what_happened": "Iraq's invasion of Kuwait removed a large share of Gulf oil exports from the market and raised fears of a wider regional war.",
-      "market_impact": "Oil prices roughly doubled in the months following the invasion before falling back once the war ended and supply concerns eased."
-     }
-    ],
-    "possibility_chains": [
-     "Roughly a fifth of the world's oil is estimated to pass through the Strait of Hormuz, so a sustained blockage or major disruption there has historically driven crude oil prices sharply higher.",
-     "Because ammonia-based fertilizer production is natural-gas intensive, and natural gas prices often move together with oil, a prolonged energy price spike has historically fed through into higher fertilizer costs over the following months.",
-     "Fertilizer is a major input cost in food production, so energy shocks of this kind have historically been followed — often with a lag — by higher food prices.",
-     "Shipping insurers have historically raised war-risk premiums for vessels transiting the Gulf during periods of heightened tension, adding to the landed cost of oil and other cargo."
-    ],
-    "why_it_matters": "Gulf War (Iraqi invasion of Kuwait) (1990–1991): Oil prices roughly doubled in the months following the invasion before falling back once the war ended and supply concerns eased. Roughly a fifth of the world's oil is estimated to pass through the Strait of Hormuz, so a sustained blockage or major disruption there has historically driven crude oil prices sharply higher.",
-    "linked_playbooks": []
-   },
-   "category_context": null
-  },
-  {
-   "signal_id": "70a833f289aead6f",
-   "signal_type": "playbook_corroboration",
-   "headline": "Донбасс в обмен на НАТО: предложение США Киеву. Что обсудят Путин, Трамп и Си. Лерчек помиловали",
-   "matched_at": "2026-11-14T17:00:23Z",
-   "matched_language": "ru",
+   "headline": "Giá vàng trải qua tuần lao dốc mạnh nhất nhiều tháng vì áp lực lãi suất",
+   "matched_at": "2026-11-15T01:54:15Z",
+   "matched_language": "vi",
    "aspects": [
     {
-     "id": "geopolitics.diplomacy",
+     "id": "economy.central-banks",
+     "score": 5.0
+    },
+    {
+     "id": "markets.commodities",
+     "score": 3.0
+    },
+    {
+     "id": "business.earnings",
      "score": 3.0
     }
    ],
    "corroboration": {
     "tier": "playbook_corroboration",
-    "source_count": 12,
-    "country_count": 8,
+    "source_count": 2,
+    "country_count": 2,
     "countries": [
-     "Austria",
-     "Bangladesh",
-     "France",
-     "Germany",
-     "Russia",
-     "San Marino",
-     "Switzerland",
-     "Venezuela"
+     "Australia",
+     "Vietnam"
     ],
-    "label": "12 sources across 8 countries",
+    "label": "2 sources across 2 countries",
     "scraped_fallback_sources_added": 0
    },
    "sources": [
     {
-     "title": "Донбасс в обмен на НАТО: предложение США Киеву. Что обсудят Путин, Трамп и Си. Лерчек помиловали",
-     "source_name": "TV Rain (Dozhd)",
-     "country": "Russia",
-     "language": "Russian",
-     "url": "https://tvrain.tv/teleshow/here_and_now/donbass-v-obmen-na-nato-578403/?from=rss",
+     "title": "Giá vàng trải qua tuần lao dốc mạnh nhất nhiều tháng vì áp lực lãi suất",
+     "source_name": "Dân Trí",
+     "country": "Vietnam",
+     "language": "Vietnamese",
+     "url": "https://dantri.com.vn/kinh-doanh/gia-vang-trai-qua-tuan-lao-doc-manh-nhat-nhieu-thang-vi-ap-luc-lai-suat-20261115081255817.htm",
      "source_type": "rss",
-     "age_hours": 0.5
+     "age_hours": 2.2
     },
     {
-     "title": "Brisantes Papier - Kreml will NATO ins Jahr 1997 zurückdrängen",
-     "source_name": "Kronen Zeitung",
-     "country": "Austria",
-     "language": "German",
-     "url": "https://www.krone.at/4375968",
+     "title": "Fresh light to be shed on split interest rate hike call",
+     "source_name": "The West Australian",
+     "country": "Australia",
+     "language": "English",
+     "url": "https://thewest.com.au/politics/fresh-light-to-be-shed-on-split-interest-rate-hike-call-c-23164113",
      "source_type": "rss",
-     "age_hours": 0.9
-    },
-    {
-     "title": "Zelenski: EE UU propuso que Ucrania ceda territorio a cambio de su adhesión a la OTAN",
-     "source_name": "El Nacional",
-     "country": "Venezuela",
-     "language": "Spanish",
-     "url": "https://www.elnacional.com/2026/11/zelenski-ee-uu-propuso-que-ucrania-ceda-territorio-a-cambio-de-su-adhesion-a-la-otan/",
-     "source_type": "rss",
-     "age_hours": 1.2
-    },
-    {
-     "title": "Ein NATO-Beitritt der Ukraine? Putin träumt stattdessen von 1997 [premium]",
-     "source_name": "Die Presse",
-     "country": "Austria",
-     "language": "German",
-     "url": "https://www.diepresse.com/41452860/ein-nato-beitritt-der-ukraine-putin-traeumt-stattdessen-von-1997",
-     "source_type": "rss",
-     "age_hours": 3.3
-    },
-    {
-     "title": "Ukraine: Washington aurait proposé des concessions territoriales en échange d'une adhésion du pays à l'Otan",
-     "source_name": "RFI (Radio France Internationale)",
-     "country": "France",
-     "language": "French (multilingual)",
-     "url": "https://www.rfi.fr/fr/europe/20261114-ukraine-washington-aurait-propos%C3%A9-des-concessions-territoriales-en-%C3%A9change-d-une-adh%C3%A9sion-du-pays-%C3%A0-l-otan",
-     "source_type": "rss",
-     "age_hours": 3.8
-    },
-    {
-     "title": "ন্যাটোতে যোগদানের বিনিময়ে ইউক্রেনকে ভূখণ্ড ছাড়ার প্রস্তাব যুক্তরাষ্ট্রের: জেলেনস্কি",
-     "source_name": "Ekattor Television",
-     "country": "Bangladesh",
-     "language": "Bengali",
-     "url": "https://ekattor.tv/international/97653/%E0%A6%A8%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%9F%E0%A7%8B%E0%A6%A4%E0%A7%87-%E0%A6%AF%E0%A7%8B%E0%A6%97%E0%A6%A6%E0%A6%BE%E0%A6%A8%E0%A7%87%E0%A6%B0-%E0%A6%AC%E0%A6%BF%E0%A6%A8%E0%A6%BF%E0%A6%AE%E0%A7%9F%E0%A7%87-%E0%A6%87%E0%A6%89%E0%A6%95%E0%A7%8D%E0%A6%B0%E0%A7%87%E0%A6%A8%E0%A6%95%E0%A7%87-%E0%A6%AD%E0%A7%82%E0%A6%96%E0%A6%A3%E0%A7%8D%E0%A6%A1-%E0%A6%9B%E0%A6%BE%E0%A7%9C%E0%A6%BE%E0%A6%B0",
-     "source_type": "rss",
-     "age_hours": 4.5
-    },
-    {
-     "title": "USA brachten NATO-Beitritt aufs Tapet",
-     "source_name": "ORF (Österreichischer Rundfunk)",
-     "country": "Austria",
-     "language": "German",
-     "url": "https://orf.at/stories/3448164/",
-     "source_type": "rss",
-     "age_hours": 6.7
-    },
-    {
-     "title": "США впервые спросили, готова ли Украина вывести войска из Донбасса в обмен на вступление в НАТО — Зеленский",
-     "source_name": "Novaya Gazeta Europe",
-     "country": "Russia",
-     "language": "Russian",
-     "url": "https://novayagazeta.eu/articles/2026/11/14/ssha-vpervye-sprosili-gotova-li-ukraina-vyvesti-voiska-iz-donbassa-v-obmen-na-vstuplenie-v-nato-zelenskii-news",
-     "source_type": "rss",
-     "age_hours": 7.0
-    },
-    {
-     "title": "Details aus Verhandlungen : Selenskyj: USA stellen Nato-Beitritt für Verzicht auf Donbass zur Debatte",
-     "source_name": "n-tv",
-     "country": "Germany",
-     "language": "German",
-     "url": "https://www.n-tv.de/politik/Selenskyj-USA-stellen-Nato-Beitritt-fuer-Verzicht-auf-Donbass-zur-Debatte-id31533890.html",
-     "source_type": "rss",
-     "age_hours": 7.1
-    },
-    {
-     "title": "LIVE-TICKER - Krieg in der Ukraine: USA sollen Selenski Nato-Beitritt im Tausch gegen Rückzug aus Donbass vorgeschlagen haben +++ Ukrainischer Drohnenangriff tötet Familie in Westrussland",
-     "source_name": "Neue Zürcher Zeitung (NZZ)",
-     "country": "Switzerland",
-     "language": "German",
-     "url": "https://www.nzz.ch/international/krieg-in-der-ukraine-die-neusten-entwicklungen-im-liveticker-ld.10021245",
-     "source_type": "rss",
-     "age_hours": 7.1
+     "age_hours": 3.1
     }
    ],
    "ripple_effect": {
-    "id": "nato-alliance-expansion",
-    "name": "NATO alliance expansion / enlargement",
-    "affected_domains": [
-     "defense",
-     "diplomacy",
-     "geopolitics"
-    ],
+    "id": "fed-hiking-cycle",
+    "name": "Central bank interest rate hikes",
+    "affected_domains": [],
     "historical_precedents": [
      {
-      "period": "1999",
-      "event": "NATO's first post-Cold War enlargement round",
-      "what_happened": "The Czech Republic, Hungary, and Poland formally joined NATO on 12 March 1999, the alliance's first enlargement into former Warsaw Pact territory.",
-      "market_impact": "The new members subsequently restructured their militaries toward NATO interoperability standards over the following years, a process that involved substantial defense procurement and modernization spending."
+      "period": "2022–2023",
+      "event": "U.S. Federal Reserve's fastest rate-hiking cycle in decades",
+      "what_happened": "The Fed raised its benchmark interest rate from near zero to over 5% in about 16 months, responding to the highest inflation in roughly 40 years.",
+      "market_impact": "The average 30-year U.S. mortgage rate roughly doubled from around 3% to over 7%, home sales slowed sharply, and high-growth technology stocks — more sensitive to rate changes — fell substantially more than the broader market in 2022."
      },
      {
-      "period": "2004",
-      "event": "NATO's largest single enlargement round",
-      "what_happened": "Bulgaria, Estonia, Latvia, Lithuania, Romania, Slovakia, and Slovenia joined NATO on 29 March 2004, extending the alliance's border directly to Russia via the Baltic states.",
-      "market_impact": "The round significantly expanded NATO's direct border with Russia and was followed by years of gradual integration of the new members' militaries and defense industries into NATO structures."
+      "period": "1979–1981",
+      "event": "Fed Chair Paul Volcker's rate hikes to break double-digit inflation",
+      "what_happened": "The Fed raised interest rates to nearly 20% to bring runaway inflation under control.",
+      "market_impact": "The policy triggered a deep recession and a sharp rise in unemployment before inflation was brought down over the following years."
      },
      {
-      "period": "2022–2024",
-      "event": "Finland and Sweden's accession following Russia's invasion of Ukraine",
-      "what_happened": "Finland and Sweden, both militarily non-aligned for decades, applied to join NATO on 18 May 2022. Finland was admitted on 4 April 2023; Sweden's accession was delayed by Turkish and Hungarian holds before both were admitted, and Sweden formally joined on 7 March 2024 as NATO's 32nd member.",
-      "market_impact": "Russia's Defense Ministry said Finland's accession significantly increased the risk of a wider conflict in Europe and doubled the length of NATO's border with Russia, while President Putin publicly dismissed the accessions as posing no direct threat to Russia; both new members proceeded with defense-spending commitments tied to NATO membership."
+      "period": "April and July 2011",
+      "event": "European Central Bank rate hikes under Jean-Claude Trichet",
+      "what_happened": "The ECB raised its benchmark rate twice in 2011 (to 1.25% in April, then 1.5% in July) to fight headline inflation, even as the Eurozone sovereign debt crisis was worsening — Portugal's debt was downgraded to junk the same day as the July hike.",
+      "market_impact": "Peripheral Eurozone bond yields (Italy, Spain, Portugal, Greece) surged in the following months as the debt crisis deepened; the hikes are widely regarded in hindsight as a policy mistake, and the ECB reversed course with cuts in November and December 2011 after Mario Draghi succeeded Trichet as president — a case where a rate-hike decision, unlike the Fed episodes above, is broadly seen as having worsened rather than merely responded to a crisis."
      }
     ],
     "possibility_chains": [
-     "NATO enlargement that extends the alliance's border with Russia has historically drawn public objections from Moscow, though the accessions themselves have not, to date, triggered direct military confrontation between Russia and the alliance.",
-     "New NATO members have historically committed to raising defense spending toward the alliance's 2%-of-GDP guideline, a process that has typically unfolded over multiple years rather than immediately upon accession.",
-     "Countries seeking NATO membership while ratification is pending have historically faced a period of diplomatic and procedural uncertainty, since any single member state can delay or block accession."
+     "Higher central bank interest rates have historically raised borrowing costs across the economy — mortgages, auto loans, and business credit — with mortgage and housing markets typically among the most sensitive.",
+     "Rate hikes have historically pressured stock valuations, particularly for growth-oriented companies whose profits are expected further in the future, since higher rates reduce the present value of those future earnings.",
+     "Aggressive rate-hiking cycles have historically raised the risk of an economic slowdown or recession, though the size and timing of that effect has varied a great deal across different hiking cycles."
     ],
-    "why_it_matters": "Finland and Sweden's accession following Russia's invasion of Ukraine (2022–2024): Russia's Defense Ministry said Finland's accession significantly increased the risk of a wider conflict in Europe and doubled the length of NATO's border with Russia, while President Putin publicly dismissed the accessions as posing no direct threat to Russia; both new members proceeded with defense-spending commitments tied to NATO membership. NATO enlargement that extends the alliance's border with Russia has historically drawn public objections from Moscow, though the accessions themselves have not, to date, triggered direct military confrontation between Russia and the alliance.",
-    "linked_playbooks": [
-     {
-      "id": "defense-spending-rearmament-surge",
-      "name": "National rearmament / defense spending surge",
-      "affected_domains": [
-       "defense",
-       "fiscal-policy",
-       "manufacturing",
-       "geopolitics"
-      ],
-      "why_it_matters": "Germany's 'Zeitenwende' defense policy shift (February 2022 – 2024): The announcement marked a historic reversal of Germany's post-WWII restraint on military spending and was followed by German defense contractors reporting substantially higher order backlogs in subsequent years. A major security shock in a region has historically prompted neighboring or allied countries to announce sizable defense spending increases in the following weeks, even though actually building and delivering new military hardware has typically taken years."
-     },
-     {
-      "id": "major-economy-sanctions",
-      "name": "Sanctions imposed on a major economy",
-      "affected_domains": [],
-      "why_it_matters": "International sanctions on Iran over its nuclear program (2010s): Iranian oil exports fell sharply, though global oil prices were also affected by supply from other producers filling the gap; Iran's own currency and economy experienced significant strain during the most restrictive sanctions periods. Sanctions targeting a major energy or commodity exporter have historically tightened global supply of that commodity, which has often (though not always, depending on how much other producers can offset the loss) pushed prices higher."
-     }
-    ]
+    "why_it_matters": "European Central Bank rate hikes under Jean-Claude Trichet (April and July 2011): Peripheral Eurozone bond yields (Italy, Spain, Portugal, Greece) surged in the following months as the debt crisis deepened; the hikes are widely regarded in hindsight as a policy mistake, and the ECB reversed course with cuts in November and December 2011 after Mario Draghi succeeded Trichet as president — a case where a rate-hike decision, unlike the Fed episodes above, is broadly seen as having worsened rather than merely responded to a crisis. Higher central bank interest rates have historically raised borrowing costs across the economy — mortgages, auto loans, and business credit — with mortgage and housing markets typically among the most sensitive.",
+    "linked_playbooks": []
    },
    "category_context": null
   },
   {
-   "signal_id": "6af363bbb905d83b",
-   "signal_type": "playbook_corroboration",
-   "headline": "২৪-এর গণঅভ্যুত্থানে সামরিক বাহিনী সহায়ক ভূমিকা পালন করেছে: স্পিকার",
-   "matched_at": "2026-11-14T16:51:18Z",
-   "matched_language": "bn",
+   "signal_id": "b25d1bf1909e796d",
+   "signal_type": "playbook_single_source",
+   "headline": "Fuel removal at Fukushima reactor going smoothly: workers",
+   "matched_at": "2026-11-15T00:28:00Z",
+   "matched_language": "en",
    "aspects": [
     {
-     "id": "geopolitics.defense",
+     "id": "energy.renewables",
+     "score": 3.0
+    },
+    {
+     "id": "society.labor",
+     "score": 3.0
+    }
+   ],
+   "ripple_effect": {
+    "id": "manufacturing-hub-natural-disaster",
+    "name": "Natural disaster hitting a manufacturing hub",
+    "affected_domains": [],
+    "historical_precedents": [
+     {
+      "period": "March 2011",
+      "event": "Japan's Tōhoku earthquake, tsunami, and Fukushima nuclear disaster",
+      "what_happened": "The disaster killed thousands of people and forced widespread factory shutdowns across Japan, which was and remains a major supplier of automotive parts and specialized electronic components.",
+      "market_impact": "Global automakers, including outside Japan, had to slow or halt production for weeks due to parts shortages, and some categories of electronic components saw temporary global shortages and price increases."
+     },
+     {
+      "period": "July–November 2011",
+      "event": "Thailand floods",
+      "what_happened": "Months of monsoon flooding submerged major industrial estates north of Bangkok that housed a large share of the world's hard-disk-drive manufacturing along with numerous automotive-parts factories, forcing an extended shutdown of dozens of plants.",
+      "market_impact": "Global hard-drive prices roughly doubled for several months due to the shortage, and several Japanese automakers had to cut production at plants worldwide because of parts sourced from the flooded factories."
+     }
+    ],
+    "possibility_chains": [
+     "A natural disaster affecting a region that supplies a specialized, hard-to-substitute component has historically caused production disruptions for manufacturers worldwide, not just locally, given how concentrated some supply chains are geographically.",
+     "Disruptions of this kind have historically prompted affected companies to review and diversify their supplier base over the following months and years, though meaningful diversification has typically taken longer than the disruption itself.",
+     "Recovery timelines have historically depended heavily on how specialized and geographically concentrated the affected manufacturing capacity was — highly specialized hubs (e.g. certain semiconductor fabrication) have taken longer to recover than more easily relocated production."
+    ],
+    "why_it_matters": "Thailand floods (July–November 2011): Global hard-drive prices roughly doubled for several months due to the shortage, and several Japanese automakers had to cut production at plants worldwide because of parts sourced from the flooded factories. A natural disaster affecting a region that supplies a specialized, hard-to-substitute component has historically caused production disruptions for manufacturers worldwide, not just locally, given how concentrated some supply chains are geographically.",
+    "linked_playbooks": []
+   },
+   "category_context": null,
+   "corroboration": {
+    "tier": "single_source",
+    "source_count": 1,
+    "country_count": 1,
+    "countries": [
+     "Japan"
+    ],
+    "label": "1 source",
+    "scraped_fallback_sources_added": 0
+   },
+   "sources": [
+    {
+     "title": "Fuel removal at Fukushima reactor going smoothly: workers",
+     "source_name": "The Japan Times",
+     "country": "Japan",
+     "language": "English",
+     "url": "https://www.japantimes.co.jp/news/2026/11/15/japan/fukushima-plant-fuel-removal/",
+     "source_type": "rss",
+     "age_hours": 3.7
+    }
+   ]
+  },
+  {
+   "signal_id": "6af363bbb905d83b",
+   "signal_type": "playbook_corroboration",
+   "headline": "مصرع ستة أشخاص وإصابة 11 آخرين جراء انقلاب حافلة في كولومبيا",
+   "matched_at": "2026-11-14T23:32:00Z",
+   "matched_language": "ar",
+   "aspects": [
+    {
+     "id": "politics.leadership",
      "score": 3.0
     }
    ],
    "corroboration": {
     "tier": "playbook_corroboration",
     "source_count": 3,
-    "country_count": 2,
+    "country_count": 3,
     "countries": [
      "Bangladesh",
+     "Syria",
      "Tanzania"
     ],
-    "label": "3 sources across 2 countries",
+    "label": "3 sources across 3 countries",
     "scraped_fallback_sources_added": 0
    },
    "sources": [
+    {
+     "title": "مصرع ستة أشخاص وإصابة 11 آخرين جراء انقلاب حافلة في كولومبيا",
+     "source_name": "SANA (Syrian Arab News Agency)",
+     "country": "Syria",
+     "language": "Arabic",
+     "url": "https://sana.sy/international/2635404/",
+     "source_type": "rss",
+     "age_hours": 4.6
+    },
     {
      "title": "২৪-এর গণঅভ্যুত্থানে সামরিক বাহিনী সহায়ক ভূমিকা পালন করেছে: স্পিকার",
      "source_name": "Ekattor Television",
@@ -542,16 +917,7 @@
      "language": "Bengali",
      "url": "https://ekattor.tv/national/97666/%E0%A7%A8%E0%A7%AA-%E0%A6%8F%E0%A6%B0-%E0%A6%97%E0%A6%A3%E0%A6%85%E0%A6%AD%E0%A7%8D%E0%A6%AF%E0%A7%81%E0%A6%A4%E0%A7%8D%E0%A6%A5%E0%A6%BE%E0%A6%A8%E0%A7%87-%E0%A6%B8%E0%A6%BE%E0%A6%AE%E0%A6%B0%E0%A6%BF%E0%A6%95-%E0%A6%AC%E0%A6%BE%E0%A6%B9%E0%A6%BF%E0%A6%A8%E0%A7%80-%E0%A6%B8%E0%A6%B9%E0%A6%BE%E0%A7%9F%E0%A6%95-%E0%A6%AD%E0%A7%82%E0%A6%AE%E0%A6%BF%E0%A6%95%E0%A6%BE",
      "source_type": "rss",
-     "age_hours": 0.7
-    },
-    {
-     "title": "২৪-এর গণঅভ্যুত্থানে সামরিক বাহিনী গুরুত্বপূর্ণ ভূমিকা পালন করেছে: স্পিকার",
-     "source_name": "The Daily Ittefaq",
-     "country": "Bangladesh",
-     "language": "Bengali",
-     "url": "https://www.ittefaq.com.bd/821009/%E0%A7%A8%E0%A7%AA-%E0%A6%8F%E0%A6%B0-%E0%A6%97%E0%A6%A3%E0%A6%85%E0%A6%AD%E0%A7%8D%E0%A6%AF%E0%A7%81%E0%A6%A4%E0%A7%8D%E0%A6%A5%E0%A6%BE%E0%A6%A8%E0%A7%87-%E0%A6%B8%E0%A6%BE%E0%A6%AE%E0%A6%B0%E0%A6%BF%E0%A6%95-%E0%A6%AC%E0%A6%BE%E0%A6%B9%E0%A6%BF%E0%A6%A8%E0%A7%80-%E0%A6%97%E0%A7%81%E0%A6%B0%E0%A7%81%E0%A6%A4%E0%A7%8D%E0%A6%AC%E0%A6%AA%E0%A7%82%E0%A6%B0%E0%A7%8D%E0%A6%A3",
-     "source_type": "rss",
-     "age_hours": 1.0
+     "age_hours": 11.3
     },
     {
      "title": "SALIM ABRI ASAS ATIMIZA MIAKA 40 YA UANACHAMA CCM, AISHUKURU CHAMA KWA SAFARI YAKE YA UONGOZI",
@@ -560,7 +926,7 @@
      "language": "Swahili",
      "url": "https://www.michuzi.co.tz/2026/11/salim-abri-asas-atimiza-miaka-40-ya.html",
      "source_type": "rss",
-     "age_hours": 7.8
+     "age_hours": 18.4
     }
    ],
    "ripple_effect": {
@@ -625,81 +991,92 @@
    "category_context": null
   },
   {
-   "signal_id": "49f4fd70e2678ff7",
-   "signal_type": "playbook_corroboration",
-   "headline": "رئيسة الاحتياطي الفيدرالي في بوسطن تدعو لرفع تدريجي لأسعار الفائدة لإدارة المخاطر الاقتصادية",
-   "matched_at": "2026-11-14T16:43:38Z",
-   "matched_language": "ar",
+   "signal_id": "35b0dfa86efe94a3",
+   "signal_type": "playbook_single_source",
+   "headline": "Governo não prevê aumento do salário mínimo a curto prazo",
+   "matched_at": "2026-11-14T20:32:13Z",
+   "matched_language": "pt",
    "aspects": [
     {
-     "id": "economy.central-banks",
+     "id": "society.labor",
      "score": 6.0
     }
    ],
-   "corroboration": {
-    "tier": "playbook_corroboration",
-    "source_count": 2,
-    "country_count": 2,
-    "countries": [
-     "Palestine",
-     "Vietnam"
+   "ripple_effect": {
+    "id": "minimum-wage-policy-shift",
+    "name": "Minimum wage policy shift",
+    "affected_domains": [
+     "employment",
+     "consumer-spending",
+     "inflation",
+     "politics"
     ],
-    "label": "2 sources across 2 countries",
+    "historical_precedents": [
+     {
+      "period": "2012 (origin) – ongoing",
+      "event": "\"Fight for $15\" movement",
+      "what_happened": "The movement began in November 2012 when over 100 fast-food workers walked off the job in New York City demanding a $15 hourly wage and the right to unionize, at a time when the federal minimum wage had been frozen at $7.25 since 2009; it grew into coordinated multi-city strikes, including an April 2015 day of action across more than 200 cities that organizers called the largest protest by low-wage workers in US history.",
+      "market_impact": "By the mid-2020s seventeen US states plus Washington, D.C. had adopted $15-or-higher minimum wages, with organizers estimating roughly 26 million workers received a combined $151 billion in raises traceable to the movement's pressure on state and local policy."
+     },
+     {
+      "period": "2014–2019",
+      "event": "Seattle becomes the first major US city to adopt a $15 minimum wage",
+      "what_happened": "Seattle's city council, led by councilmember Kshama Sawant, passed an ordinance phasing in a $15 minimum wage starting in 2014, with the wage rising further to $15.45 in 2018 and $16 in 2019 under the city's indexing formula.",
+      "market_impact": "University of Washington and other researchers studying Seattle's rollout found no measurable decline in overall employment as the wage floor rose, making Seattle a frequently cited case study in the broader minimum-wage debate."
+     }
+    ],
+    "possibility_chains": [
+     "A minimum wage increase in one large city or state has historically prompted advocacy campaigns citing it as precedent for similar increases elsewhere, spreading policy change faster than pure economic modeling alone would predict.",
+     "Employers in low-margin, labor-intensive sectors (fast food, retail, hospitality) have historically responded to minimum wage increases through some combination of price increases, reduced hours, and accelerated investment in self-service or automation technology, with the mix varying by study and locality.",
+     "Higher minimum wages have historically raised the wage floor workers use as a reference point in unrelated wage negotiations nearby, a \"lighthouse effect\" observed in several minimum-wage studies."
+    ],
+    "why_it_matters": "Seattle becomes the first major US city to adopt a $15 minimum wage (2014–2019): University of Washington and other researchers studying Seattle's rollout found no measurable decline in overall employment as the wage floor rose, making Seattle a frequently cited case study in the broader minimum-wage debate. A minimum wage increase in one large city or state has historically prompted advocacy campaigns citing it as precedent for similar increases elsewhere, spreading policy change faster than pure economic modeling alone would predict.",
+    "linked_playbooks": [
+     {
+      "id": "gig-economy-worker-classification",
+      "name": "Gig-economy worker classification ruling",
+      "affected_domains": [
+       "employment",
+       "technology",
+       "law-regulation",
+       "consumer-spending"
+      ],
+      "why_it_matters": "California's Proposition 22 and its multi-year court challenge (November 2020 – July 2024): The nearly four-year legal uncertainty over Proposition 22's validity was itself a business risk for Uber, Lyft, DoorDash, and Instacart, which had spent over $200 million campaigning for the measure; its eventual affirmation cemented independent-contractor status for California gig drivers and became a template gig companies pushed for in other US states. A court or ballot-measure ruling on gig-worker classification in one jurisdiction has historically become a reference point cited by both labor advocates and gig companies lobbying for similar outcomes elsewhere, spreading the policy debate beyond the original jurisdiction."
+     },
+     {
+      "id": "great-resignation-labor-shortage",
+      "name": "Broad-based voluntary quits wave / labor shortage",
+      "affected_domains": [
+       "employment",
+       "inflation",
+       "consumer-spending"
+      ],
+      "why_it_matters": "The \"Great Resignation\" in the United States (March 2021 – mid-2023): Employers responded with the fastest wage growth in two decades — 4.5% year-over-year in December 2021 — while hospitality, healthcare, and education faced acute staffing shortages that pushed many businesses to accelerate investment in automation and self-service technology; quits rates did not return to pre-pandemic 2019 norms until mid-2023. A sustained period of unusually high voluntary quits has historically coincided with faster wage growth, as employers compete harder to retain and attract staff in a tight labor market."
+     }
+    ]
+   },
+   "category_context": null,
+   "corroboration": {
+    "tier": "single_source",
+    "source_count": 1,
+    "country_count": 1,
+    "countries": [
+     "Cabo Verde"
+    ],
+    "label": "1 source",
     "scraped_fallback_sources_added": 0
    },
    "sources": [
     {
-     "title": "رئيسة الاحتياطي الفيدرالي في بوسطن تدعو لرفع تدريجي لأسعار الفائدة لإدارة المخاطر الاقتصادية",
-     "source_name": "Al-Quds",
-     "country": "Palestine",
-     "language": "Arabic",
-     "url": "https://alquds.com/ar/posts/273516-fed-collins-gradual-rate-hikes-economic-risks",
+     "title": "Governo não prevê aumento do salário mínimo a curto prazo",
+     "source_name": "Terra Nova",
+     "country": "Cabo Verde",
+     "language": "Portuguese",
+     "url": "https://terranova.cv/pt_PT/governo-nao-preve-aumento-do-salario-minimo-a-curto-prazo/",
      "source_type": "rss",
-     "age_hours": 0.8
-    },
-    {
-     "title": "Fed lộ kịch bản tăng lãi suất liên tiếp vào tháng 12 và tháng 1/2027",
-     "source_name": "Dân Trí",
-     "country": "Vietnam",
-     "language": "Vietnamese",
-     "url": "https://dantri.com.vn/kinh-doanh/fed-lo-kich-ban-tang-lai-suat-lien-tiep-vao-thang-12-va-thang-12027-20261114164442120.htm",
-     "source_type": "rss",
-     "age_hours": 6.0
+     "age_hours": 7.6
     }
-   ],
-   "ripple_effect": {
-    "id": "fed-hiking-cycle",
-    "name": "Central bank interest rate hikes",
-    "affected_domains": [],
-    "historical_precedents": [
-     {
-      "period": "2022–2023",
-      "event": "U.S. Federal Reserve's fastest rate-hiking cycle in decades",
-      "what_happened": "The Fed raised its benchmark interest rate from near zero to over 5% in about 16 months, responding to the highest inflation in roughly 40 years.",
-      "market_impact": "The average 30-year U.S. mortgage rate roughly doubled from around 3% to over 7%, home sales slowed sharply, and high-growth technology stocks — more sensitive to rate changes — fell substantially more than the broader market in 2022."
-     },
-     {
-      "period": "1979–1981",
-      "event": "Fed Chair Paul Volcker's rate hikes to break double-digit inflation",
-      "what_happened": "The Fed raised interest rates to nearly 20% to bring runaway inflation under control.",
-      "market_impact": "The policy triggered a deep recession and a sharp rise in unemployment before inflation was brought down over the following years."
-     },
-     {
-      "period": "April and July 2011",
-      "event": "European Central Bank rate hikes under Jean-Claude Trichet",
-      "what_happened": "The ECB raised its benchmark rate twice in 2011 (to 1.25% in April, then 1.5% in July) to fight headline inflation, even as the Eurozone sovereign debt crisis was worsening — Portugal's debt was downgraded to junk the same day as the July hike.",
-      "market_impact": "Peripheral Eurozone bond yields (Italy, Spain, Portugal, Greece) surged in the following months as the debt crisis deepened; the hikes are widely regarded in hindsight as a policy mistake, and the ECB reversed course with cuts in November and December 2011 after Mario Draghi succeeded Trichet as president — a case where a rate-hike decision, unlike the Fed episodes above, is broadly seen as having worsened rather than merely responded to a crisis."
-     }
-    ],
-    "possibility_chains": [
-     "Higher central bank interest rates have historically raised borrowing costs across the economy — mortgages, auto loans, and business credit — with mortgage and housing markets typically among the most sensitive.",
-     "Rate hikes have historically pressured stock valuations, particularly for growth-oriented companies whose profits are expected further in the future, since higher rates reduce the present value of those future earnings.",
-     "Aggressive rate-hiking cycles have historically raised the risk of an economic slowdown or recession, though the size and timing of that effect has varied a great deal across different hiking cycles."
-    ],
-    "why_it_matters": "European Central Bank rate hikes under Jean-Claude Trichet (April and July 2011): Peripheral Eurozone bond yields (Italy, Spain, Portugal, Greece) surged in the following months as the debt crisis deepened; the hikes are widely regarded in hindsight as a policy mistake, and the ECB reversed course with cuts in November and December 2011 after Mario Draghi succeeded Trichet as president — a case where a rate-hike decision, unlike the Fed episodes above, is broadly seen as having worsened rather than merely responded to a crisis. Higher central bank interest rates have historically raised borrowing costs across the economy — mortgages, auto loans, and business credit — with mortgage and housing markets typically among the most sensitive.",
-    "linked_playbooks": []
-   },
-   "category_context": null
+   ]
   },
   {
    "signal_id": "13f145d42f10d87f",
@@ -785,7 +1162,7 @@
      "language": "English",
      "url": "https://www.maravipost.com/environmental-action-no-longer-optional-in-addressing-amr/",
      "source_type": "rss",
-     "age_hours": 0.8
+     "age_hours": 11.4
     },
     {
      "title": "CARPHA lab to strengthen regional fight against antimicrobial resistance",
@@ -875,7 +1252,7 @@
      "language": "Kazakh (multilingual: KZ/RU/EN/others)",
      "url": "https://qazinform.com/news/japan-eyes-60-trillion-yen-defense-budget-targets-ai-and-drone-warfare-b18073",
      "source_type": "rss",
-     "age_hours": 1.8
+     "age_hours": 12.4
     },
     {
      "title": "Adapting to drone warfare: Easier said than done - analysisRead more...",
@@ -885,490 +1262,6 @@
      "url": "https://www.i24news.tv/en/news/analysis-opinion/artc-adapting-to-drone-warfare-easier-said-than-done-analysis",
      "source_type": "scraped_fallback",
      "age_hours": null
-    }
-   ]
-  },
-  {
-   "signal_id": "8d3aa93f53500c8e",
-   "signal_type": "playbook_single_source",
-   "headline": "احتجاجات جديدة في فرنسا ضد غلاء المعيشة وعنف الشرطة",
-   "matched_at": "2026-11-14T15:43:57Z",
-   "matched_language": "ar",
-   "aspects": [
-    {
-     "id": "economy.inflation",
-     "score": 2.0
-    }
-   ],
-   "ripple_effect": {
-    "id": "minimum-wage-policy-shift",
-    "name": "Minimum wage policy shift",
-    "affected_domains": [
-     "employment",
-     "consumer-spending",
-     "inflation",
-     "politics"
-    ],
-    "historical_precedents": [
-     {
-      "period": "2012 (origin) – ongoing",
-      "event": "\"Fight for $15\" movement",
-      "what_happened": "The movement began in November 2012 when over 100 fast-food workers walked off the job in New York City demanding a $15 hourly wage and the right to unionize, at a time when the federal minimum wage had been frozen at $7.25 since 2009; it grew into coordinated multi-city strikes, including an April 2015 day of action across more than 200 cities that organizers called the largest protest by low-wage workers in US history.",
-      "market_impact": "By the mid-2020s seventeen US states plus Washington, D.C. had adopted $15-or-higher minimum wages, with organizers estimating roughly 26 million workers received a combined $151 billion in raises traceable to the movement's pressure on state and local policy."
-     },
-     {
-      "period": "2014–2019",
-      "event": "Seattle becomes the first major US city to adopt a $15 minimum wage",
-      "what_happened": "Seattle's city council, led by councilmember Kshama Sawant, passed an ordinance phasing in a $15 minimum wage starting in 2014, with the wage rising further to $15.45 in 2018 and $16 in 2019 under the city's indexing formula.",
-      "market_impact": "University of Washington and other researchers studying Seattle's rollout found no measurable decline in overall employment as the wage floor rose, making Seattle a frequently cited case study in the broader minimum-wage debate."
-     }
-    ],
-    "possibility_chains": [
-     "A minimum wage increase in one large city or state has historically prompted advocacy campaigns citing it as precedent for similar increases elsewhere, spreading policy change faster than pure economic modeling alone would predict.",
-     "Employers in low-margin, labor-intensive sectors (fast food, retail, hospitality) have historically responded to minimum wage increases through some combination of price increases, reduced hours, and accelerated investment in self-service or automation technology, with the mix varying by study and locality.",
-     "Higher minimum wages have historically raised the wage floor workers use as a reference point in unrelated wage negotiations nearby, a \"lighthouse effect\" observed in several minimum-wage studies."
-    ],
-    "why_it_matters": "Seattle becomes the first major US city to adopt a $15 minimum wage (2014–2019): University of Washington and other researchers studying Seattle's rollout found no measurable decline in overall employment as the wage floor rose, making Seattle a frequently cited case study in the broader minimum-wage debate. A minimum wage increase in one large city or state has historically prompted advocacy campaigns citing it as precedent for similar increases elsewhere, spreading policy change faster than pure economic modeling alone would predict.",
-    "linked_playbooks": [
-     {
-      "id": "gig-economy-worker-classification",
-      "name": "Gig-economy worker classification ruling",
-      "affected_domains": [
-       "employment",
-       "technology",
-       "law-regulation",
-       "consumer-spending"
-      ],
-      "why_it_matters": "California's Proposition 22 and its multi-year court challenge (November 2020 – July 2024): The nearly four-year legal uncertainty over Proposition 22's validity was itself a business risk for Uber, Lyft, DoorDash, and Instacart, which had spent over $200 million campaigning for the measure; its eventual affirmation cemented independent-contractor status for California gig drivers and became a template gig companies pushed for in other US states. A court or ballot-measure ruling on gig-worker classification in one jurisdiction has historically become a reference point cited by both labor advocates and gig companies lobbying for similar outcomes elsewhere, spreading the policy debate beyond the original jurisdiction."
-     },
-     {
-      "id": "great-resignation-labor-shortage",
-      "name": "Broad-based voluntary quits wave / labor shortage",
-      "affected_domains": [
-       "employment",
-       "inflation",
-       "consumer-spending"
-      ],
-      "why_it_matters": "The \"Great Resignation\" in the United States (March 2021 – mid-2023): Employers responded with the fastest wage growth in two decades — 4.5% year-over-year in December 2021 — while hospitality, healthcare, and education faced acute staffing shortages that pushed many businesses to accelerate investment in automation and self-service technology; quits rates did not return to pre-pandemic 2019 norms until mid-2023. A sustained period of unusually high voluntary quits has historically coincided with faster wage growth, as employers compete harder to retain and attract staff in a tight labor market."
-     }
-    ]
-   },
-   "category_context": null,
-   "corroboration": {
-    "tier": "single_source",
-    "source_count": 1,
-    "country_count": 1,
-    "countries": [
-     "Bahrain"
-    ],
-    "label": "1 source",
-    "scraped_fallback_sources_added": 0
-   },
-   "sources": [
-    {
-     "title": "احتجاجات جديدة في فرنسا ضد غلاء المعيشة وعنف الشرطة",
-     "source_name": "Al Bilad",
-     "country": "Bahrain",
-     "language": "Arabic",
-     "url": "https://www.albiladpress.com/news/2026/6606/arab-and-world/1031246.html",
-     "source_type": "rss",
-     "age_hours": 1.8
-    }
-   ]
-  },
-  {
-   "signal_id": "a83ca7eba394333d",
-   "signal_type": "playbook_corroboration",
-   "headline": "DJ Khaled shows off new epic transformation after massive weight loss",
-   "matched_at": "2026-11-14T15:09:10Z",
-   "matched_language": "en",
-   "aspects": [],
-   "corroboration": {
-    "tier": "playbook_corroboration",
-    "source_count": 3,
-    "country_count": 3,
-    "countries": [
-     "Denmark",
-     "Kenya",
-     "United States"
-    ],
-    "label": "3 sources across 3 countries",
-    "scraped_fallback_sources_added": 1
-   },
-   "sources": [
-    {
-     "title": "DJ Khaled shows off new epic transformation after massive weight loss",
-     "source_name": "Tuko",
-     "country": "Kenya",
-     "language": "English/Swahili",
-     "url": "https://www.tuko.co.ke/world/us/646826-dj-khaled-shows-epic-transformation-massive-weight-loss/",
-     "source_type": "rss",
-     "age_hours": 2.4
-    },
-    {
-     "title": "Fashion Loved Curvy Women Until Ozempic Came Along",
-     "source_name": "Newsweek",
-     "country": "United States",
-     "language": "English",
-     "url": "https://www.newsweek.com/ozempic-fashion-plus-size-clothing-body-positivity-12711508",
-     "source_type": "rss",
-     "age_hours": 5.5
-    },
-    {
-     "title": "Amerikansk gigant udfordrer Novo Nordisk i Danmark med 'dybt problematisk' kampagne",
-     "source_name": "DR (Danmarks Radio)",
-     "country": "Denmark",
-     "language": "Danish",
-     "url": "https://www.dr.dk/nyheder/penge/ny-kampagne-fra-novo-rival-faar-kritik-de-vil-bare-saelge-vaegttabsmedicin",
-     "source_type": "scraped_fallback",
-     "age_hours": null
-    }
-   ],
-   "ripple_effect": {
-    "id": "glp1-obesity-drug-market-shift",
-    "name": "GLP-1 obesity/diabetes drugs reshaping healthcare cost and pharma markets",
-    "affected_domains": [
-     "public-health",
-     "healthcare",
-     "pharmaceuticals",
-     "capital-markets",
-     "insurance"
-    ],
-    "historical_precedents": [
-     {
-      "period": "2022–2025",
-      "event": "Novo Nordisk's Ozempic/Wegovy-driven rise to Europe's most valuable company, then competitive erosion",
-      "what_happened": "Demand for Novo Nordisk's GLP-1 drugs Ozempic (approved for diabetes, widely used off-label for weight loss) and Wegovy (approved for obesity) grew so rapidly that weight-loss drugs made up 55% of the company's 2023 revenue and its first-half 2023 profit rose 45% year-over-year; by March 2024 the company reached a $604 billion market capitalization, the 12th most valuable company in the world, and by April 2024 its roughly $570 billion market cap exceeded the size of Denmark's entire economy, with its roughly $2.3 billion Danish corporate tax bill alone driving nearly all of Denmark's measured economic growth that year.",
-      "market_impact": "US list prices for these drugs ran far above prices charged elsewhere (Ozempic around $969/month in the US versus $155 in Canada and $59 in Germany; Wegovy around $1,349/month in the US versus $140 in Germany and $92 in the UK), fueling a US health-insurance and employer-benefit-design debate over covering the drugs at scale; by July 2025, rising competitor pressure had pushed Novo down to the fifth most valuable drugmaker by market cap, prompting a CEO change effective August 7, 2025."
-     }
-    ],
-    "possibility_chains": [
-     "A single drug class becoming a large share of a national economy's growth, as with Novo Nordisk and Denmark, has historically made that country's headline GDP figures unusually sensitive to one company's product cycle.",
-     "Insurers and employers facing a costly new high-demand drug class have historically responded first with coverage restrictions (prior authorization, BMI thresholds) before broadening access as production scales and price competition emerges.",
-     "A manufacturer's inability to keep pace with demand for a breakout drug has historically triggered shortages, compounding-pharmacy workarounds, and counterfeit-product risk in the gap before supply catches up."
-    ],
-    "why_it_matters": "Novo Nordisk's Ozempic/Wegovy-driven rise to Europe's most valuable company, then competitive erosion (2022–2025): US list prices for these drugs ran far above prices charged elsewhere (Ozempic around $969/month in the US versus $155 in Canada and $59 in Germany; Wegovy around $1,349/month in the US versus $140 in Germany and $92 in the UK), fueling a US health-insurance and employer-benefit-design debate over covering the drugs at scale; by July 2025, rising competitor pressure had pushed Novo down to the fifth most valuable drugmaker by market cap, prompting a CEO change effective August 7, 2025. A single drug class becoming a large share of a national economy's growth, as with Novo Nordisk and Denmark, has historically made that country's headline GDP figures unusually sensitive to one company's product cycle.",
-    "linked_playbooks": [
-     {
-      "id": "pharmaceutical-patent-cliff",
-      "name": "Pharmaceutical patent cliff and blockbuster drug revenue loss",
-      "affected_domains": [
-       "public-health",
-       "healthcare",
-       "pharmaceuticals",
-       "capital-markets",
-       "regulation"
-      ],
-      "why_it_matters": "Lipitor (atorvastatin) patent expiration (1996–2012 (US patent expired November 30, 2011)): Generic prices stayed relatively elevated during that initial exclusivity window, then fell sharply once additional manufacturers entered in May 2012, pushing a month's supply down toward standard generic pricing of $10 or less — illustrating the two-stage price collapse (moderate initial generic discount, then a much steeper one once multiple generic makers compete) that characterizes a typical pharmaceutical patent-cliff event. A cluster of blockbuster drugs (defined in the industry as over $1 billion in annual sales) losing patent protection in the same multi-year window has historically pushed large pharmaceutical companies toward M&A, portfolio diversification, and 'evergreening' strategies (new formulations or delivery mechanisms) to offset the revenue drop."
-     },
-     {
-      "id": "aging-population-healthcare-cost-capacity",
-      "name": "Aging population driving healthcare system cost and capacity pressure",
-      "affected_domains": [
-       "public-health",
-       "healthcare",
-       "fiscal-policy",
-       "demographics",
-       "pensions"
-      ],
-      "why_it_matters": "Japan's healthcare spending rise under a super-aged population (2008–2018): Japan introduced a dedicated long-term care insurance system (Kaigo-Hoken), funded partly by a roughly 2% income contribution from residents over 40 and administered by municipal governments, specifically to fund elderly care costs separately from general health insurance as the aging-driven cost pressure became structural rather than cyclical; by 2016 the system was allocating tens of billions of dollars annually toward long-term care expenditures. A country crossing the 'super-aged society' threshold (21%+ population 65+) has historically required either new dedicated funding mechanisms, as with Japan's long-term-care insurance, or rising general healthcare spending as a share of GDP, or both."
-     }
-    ]
-   },
-   "category_context": null
-  },
-  {
-   "signal_id": "646fb45429fef8c6",
-   "signal_type": "playbook_single_source",
-   "headline": "Con las obras del estadio a medias, Club Guaraní echa en falta fondos depositados en Ueno",
-   "matched_at": "2026-11-14T14:28:19Z",
-   "matched_language": "es",
-   "aspects": [],
-   "ripple_effect": {
-    "id": "territorial-debt-crisis",
-    "name": "US territory / sub-sovereign debt restructuring crisis",
-    "affected_domains": [
-     "government-debt",
-     "public-services",
-     "capital-markets",
-     "pensions"
-    ],
-    "historical_precedents": [
-     {
-      "period": "2014–2022",
-      "event": "Puerto Rico's government-debt crisis and PROMESA restructuring",
-      "what_happened": "Puerto Rico's bonds were downgraded to junk status in February 2014, and Governor García Padilla declared the roughly $74 billion in bond debt (plus $49 billion in unfunded pension liabilities) 'not payable' on June 28, 2015; after Puerto Rico missed a $422 million payment on May 1, 2016, Congress passed PROMESA, which President Obama signed June 30, 2016, creating a federal oversight board with authority over the territory's budget and debt restructuring.",
-      "market_impact": "Puerto Rico's poverty rate reached roughly 45% by mid-2017, unemployment hit 12.4% in December 2016, and its sales tax rose to 11% alongside teacher retirement-age increases (47 to 62) and 10% pension cuts under the oversight board's austerity plan; nearly 70% of US municipal bond funds held Puerto Rico exposure, and its general obligation bonds fell to roughly 32 cents on the dollar after Hurricane Maria in 2017 before the territory exited bankruptcy in March 2022."
-     }
-    ],
-    "possibility_chains": [
-     "A US territory's debt crisis has historically been resolved through federal oversight mechanisms different from either a state (which cannot file Chapter 9 the way cities can) or an independent country (which cannot access IMF facilities), creating restructuring rules unique to the territory's ambiguous status.",
-     "Heavy institutional exposure to a single distressed municipal issuer (in this case, via tax-exempt bond funds that concentrated Puerto Rico debt for its tax advantages) has historically transmitted a regional fiscal crisis into national investment portfolios far from the issuer itself.",
-     "Debt-crisis austerity measures layered on top of a shrinking population and tax base have historically been self-reinforcing, since tax increases and service cuts have tended to accelerate the outward migration that shrank the tax base in the first place."
-    ],
-    "why_it_matters": "Puerto Rico's government-debt crisis and PROMESA restructuring (2014–2022): Puerto Rico's poverty rate reached roughly 45% by mid-2017, unemployment hit 12.4% in December 2016, and its sales tax rose to 11% alongside teacher retirement-age increases (47 to 62) and 10% pension cuts under the oversight board's austerity plan; nearly 70% of US municipal bond funds held Puerto Rico exposure, and its general obligation bonds fell to roughly 32 cents on the dollar after Hurricane Maria in 2017 before the territory exited bankruptcy in March 2022. A US territory's debt crisis has historically been resolved through federal oversight mechanisms different from either a state (which cannot file Chapter 9 the way cities can) or an independent country (which cannot access IMF facilities), creating restructuring rules unique to the territory's ambiguous status.",
-    "linked_playbooks": [
-     {
-      "id": "municipal-bankruptcy",
-      "name": "Major municipal or county bankruptcy",
-      "affected_domains": [
-       "government-debt",
-       "public-services",
-       "infrastructure",
-       "pensions"
-      ],
-      "why_it_matters": "Jefferson County, Alabama bankruptcy (November 2011 – December 2013): The county cut its government workforce by more than 700 employees by May 2012, and the bankruptcy court wrote off more than $1.4 billion of the debt before the county emerged from bankruptcy in December 2013. A municipal bankruptcy driven by a shrinking tax base and rising legacy retiree costs has historically forced a choice between deep pension cuts and finding outside funding (such as philanthropic support) to soften them, since the two options are not fiscally separable."
-     },
-     {
-      "id": "fiscal-austerity-program",
-      "name": "Government austerity program (spending cuts and tax rises)",
-      "affected_domains": [
-       "fiscal-policy",
-       "public-services",
-       "government-debt",
-       "social-programs",
-       "politics"
-      ],
-      "why_it_matters": "Canada's 1995 federal budget under Finance Minister Paul Martin (1995): By shrinking the federal transfer, the reform shifted fiscal pressure onto provincial governments, which had to make their own cuts to health and social assistance spending to absorb the reduced federal contribution. Government austerity programs that cut public sector employment have historically taken years to fully play out in local labor markets, as affected workers and the local businesses that served them adjust gradually rather than all at once."
-     },
-     {
-      "id": "sovereign-debt-default",
-      "name": "Sovereign government debt default",
-      "affected_domains": [
-       "government-debt",
-       "currency",
-       "emerging-markets",
-       "banking"
-      ],
-      "why_it_matters": "Sri Lanka's first sovereign default (April 2022): The default followed foreign reserves falling to just $1.9 billion by March 2022, insufficient to cover the country's import and debt-service needs, and led into an IMF rescue program. A sovereign default has historically triggered a sharp loss of access to international capital markets for the defaulting government, often for years, forcing reliance on domestic financing or multilateral lenders in the interim."
-     }
-    ]
-   },
-   "category_context": null,
-   "corroboration": {
-    "tier": "single_source",
-    "source_count": 1,
-    "country_count": 1,
-    "countries": [
-     "Honduras"
-    ],
-    "label": "1 source",
-    "scraped_fallback_sources_added": 0
-   },
-   "sources": [
-    {
-     "title": "Con las obras del estadio a medias, Club Guaraní echa en falta fondos depositados en Ueno",
-     "source_name": "Proceso Digital",
-     "country": "Honduras",
-     "language": "Spanish",
-     "url": "https://proceso.hn/con-las-obras-del-estadio-a-medias-club-guarani-echa-en-falta-fondos-depositados-en-ueno/",
-     "source_type": "rss",
-     "age_hours": 3.1
-    }
-   ]
-  },
-  {
-   "signal_id": "c64ebd1d1469d8a8",
-   "signal_type": "playbook_single_source",
-   "headline": "Warum Seoul mit Moskau kuschelt: \"Einige Politiker haben die dumme Idee, dass Russland ihnen bei Nordkorea hilft\"",
-   "matched_at": "2026-11-14T12:53:47Z",
-   "matched_language": "de",
-   "aspects": [],
-   "ripple_effect": {
-    "id": "major-economy-sanctions",
-    "name": "Sanctions imposed on a major economy",
-    "affected_domains": [],
-    "historical_precedents": [
-     {
-      "period": "2022",
-      "event": "Western sanctions on Russia following its invasion of Ukraine",
-      "what_happened": "The U.S., EU, and allies imposed sweeping sanctions on Russia's financial system, energy exports, and access to Western technology, and froze a large share of Russia's foreign-currency reserves.",
-      "market_impact": "European natural gas prices spiked to record highs as Russian pipeline gas supply to Europe fell sharply over the following year, and European governments spent heavily to secure alternative energy supplies and shield consumers from higher bills."
-     },
-     {
-      "period": "2010s",
-      "event": "International sanctions on Iran over its nuclear program",
-      "what_happened": "A series of U.S. and international sanctions restricted Iran's ability to sell oil and access the global banking system.",
-      "market_impact": "Iranian oil exports fell sharply, though global oil prices were also affected by supply from other producers filling the gap; Iran's own currency and economy experienced significant strain during the most restrictive sanctions periods."
-     }
-    ],
-    "possibility_chains": [
-     "Sanctions targeting a major energy or commodity exporter have historically tightened global supply of that commodity, which has often (though not always, depending on how much other producers can offset the loss) pushed prices higher.",
-     "Sanctioned countries have historically sought alternative trading partners and payment systems over time, a process that has typically reduced — but not eliminated — the sanctions' economic impact the longer they remain in place.",
-     "Countries or companies that depended heavily on trade with the sanctioned economy have historically faced their own adjustment costs, not just the sanctioned party."
-    ],
-    "why_it_matters": "International sanctions on Iran over its nuclear program (2010s): Iranian oil exports fell sharply, though global oil prices were also affected by supply from other producers filling the gap; Iran's own currency and economy experienced significant strain during the most restrictive sanctions periods. Sanctions targeting a major energy or commodity exporter have historically tightened global supply of that commodity, which has often (though not always, depending on how much other producers can offset the loss) pushed prices higher.",
-    "linked_playbooks": []
-   },
-   "category_context": null,
-   "corroboration": {
-    "tier": "single_source",
-    "source_count": 1,
-    "country_count": 1,
-    "countries": [
-     "Germany"
-    ],
-    "label": "1 source",
-    "scraped_fallback_sources_added": 0
-   },
-   "sources": [
-    {
-     "title": "Warum Seoul mit Moskau kuschelt: \"Einige Politiker haben die dumme Idee, dass Russland ihnen bei Nordkorea hilft\"",
-     "source_name": "n-tv",
-     "country": "Germany",
-     "language": "German",
-     "url": "https://www.n-tv.de/politik/Einige-Politiker-haben-die-dumme-Idee-dass-Russland-ihnen-bei-Nordkorea-hilft-id31514935.html",
-     "source_type": "rss",
-     "age_hours": 4.6
-    }
-   ]
-  },
-  {
-   "signal_id": "41da40a8ee49e7fd",
-   "signal_type": "playbook_single_source",
-   "headline": "Penampakan Kapal Pesiar Terbalik Usai Ditabrak Kapal Tanker",
-   "matched_at": "2026-11-14T12:31:00Z",
-   "matched_language": "id",
-   "aspects": [],
-   "ripple_effect": {
-    "id": "costa-concordia-cruise-safety-regulation",
-    "name": "Costa Concordia disaster reshapes cruise-industry safety practices",
-    "affected_domains": [
-     "tourism",
-     "hospitality",
-     "insurance",
-     "regulation",
-     "consumer-spending"
-    ],
-    "historical_precedents": [
-     {
-      "period": "January 13, 2012",
-      "event": "Costa Concordia disaster, Isola del Giglio, Italy",
-      "what_happened": "The Costa Concordia, carrying 4,252 passengers and crew, struck rocks after deviating from its planned route to perform a close 'sail-by salute' near Isola del Giglio, Italy, tearing a 35-meter gash in the hull and causing the ship to capsize partially on an underwater ledge. The disaster killed 32 people. Captain Francesco Schettino left the ship before the evacuation was complete and was later convicted of manslaughter and sentenced to 16 years in prison. An investigation found that no mandatory lifeboat evacuation drill had been held for roughly 600 passengers who had boarded shortly before departure.",
-      "market_impact": "Total costs of the disaster, including the multi-year wreck-removal and ship-scrapping operation, were estimated at around $2 billion — more than three times the vessel's $612 million construction cost — with the salvage operation alone estimated at $1.2 billion. Costa Cruises offered affected passengers compensation of up to €11,000 each; only about a third of survivors accepted."
-     }
-    ],
-    "possibility_chains": [
-     "A major cruise-ship casualty involving loss of life has historically drawn scrutiny of muster-drill and evacuation-procedure gaps, particularly for passengers who boarded shortly before departure and had not yet received a safety briefing.",
-     "A high-profile cruise-line safety failure has historically imposed costs far beyond the ship itself, including multi-year wreck salvage, passenger compensation, and reputational exposure for the operator and its parent company.",
-     "Cruise disasters concentrated in a single well-publicized incident have historically prompted short-term booking hesitancy across the broader cruise industry, even for operators uninvolved in the incident, before recovering over subsequent seasons."
-    ],
-    "why_it_matters": "Costa Concordia disaster, Isola del Giglio, Italy (January 13, 2012): Total costs of the disaster, including the multi-year wreck-removal and ship-scrapping operation, were estimated at around $2 billion — more than three times the vessel's $612 million construction cost — with the salvage operation alone estimated at $1.2 billion. Costa Cruises offered affected passengers compensation of up to €11,000 each; only about a third of survivors accepted. A major cruise-ship casualty involving loss of life has historically drawn scrutiny of muster-drill and evacuation-procedure gaps, particularly for passengers who boarded shortly before departure and had not yet received a safety briefing.",
-    "linked_playbooks": [
-     {
-      "id": "cruise-industry-covid-shutdown-recovery",
-      "name": "COVID-19 shuts down the global cruise industry and forces a multi-year recovery",
-      "affected_domains": [
-       "tourism",
-       "hospitality",
-       "public-health",
-       "capital-markets",
-       "employment"
-      ],
-      "why_it_matters": "Carnival Corporation's pandemic-driven losses (2020): Carnival raised approximately $12 billion in new financing since March 2020 to maintain liquidity through the shutdown, and announced the disposal of 18 ships (about 12% of its global fleet) in September 2020 to cut costs. A disease outbreak aboard a single cruise ship, once widely publicized, has historically triggered an operational suspension across the entire cruise industry rather than only the affected vessel or operator, given the shared reputational and regulatory exposure across cruise lines."
-     },
-     {
-      "id": "venice-barcelona-overtourism-policy-response",
-      "name": "Venice and Barcelona impose entry fees and rental bans to curb overtourism",
-      "affected_domains": [
-       "tourism",
-       "travel",
-       "real-estate",
-       "regulation",
-       "hospitality"
-      ],
-      "why_it_matters": "Barcelona announces a phase-out of short-term tourist rental licenses (2024): The announcement followed years of documented overtourism pressure on the city's housing market — in some Barcelona neighborhoods, the resident population fell by an estimated 45% between 2007 and 2019 as tourist rental activity expanded — and came amid broader anti-tourism protests in several Spanish cities over residents' concerns that tourist-tax revenue was not being reinvested in affected communities. Popular tourist destinations experiencing sustained visitor growth well beyond what their historic infrastructure was built for have historically responded with a mix of entry fees, tourist taxes, and short-term-rental restrictions rather than any single policy tool."
-     }
-    ]
-   },
-   "category_context": null,
-   "corroboration": {
-    "tier": "single_source",
-    "source_count": 1,
-    "country_count": 1,
-    "countries": [
-     "Indonesia"
-    ],
-    "label": "1 source",
-    "scraped_fallback_sources_added": 0
-   },
-   "sources": [
-    {
-     "title": "Penampakan Kapal Pesiar Terbalik Usai Ditabrak Kapal Tanker",
-     "source_name": "CNBC Indonesia",
-     "country": "Indonesia",
-     "language": "Indonesian",
-     "url": "https://www.cnbcindonesia.com/news/20261114125617-7-785220/penampakan-kapal-pesiar-terbalik-usai-ditabrak-kapal-tanker",
-     "source_type": "rss",
-     "age_hours": 5.0
-    }
-   ]
-  },
-  {
-   "signal_id": "5f1271b0a1a9330a",
-   "signal_type": "playbook_single_source",
-   "headline": "Tien jaar na NotPetya is Maersk weer getroffen door ransomware",
-   "matched_at": "2026-11-14T12:02:13Z",
-   "matched_language": "en",
-   "aspects": [
-    {
-     "id": "technology.cybersecurity",
-     "score": 3.0
-    }
-   ],
-   "ripple_effect": {
-    "id": "notpetya-corporate-ransomware-supply-chain",
-    "name": "Destructive corporate cyberattack and global supply-chain disruption",
-    "affected_domains": [
-     "technology",
-     "shipping-logistics",
-     "manufacturing",
-     "national-security",
-     "capital-markets"
-    ],
-    "historical_precedents": [
-     {
-      "period": "June 27, 2017",
-      "event": "NotPetya cyberattack cripples multiple global corporations",
-      "what_happened": "A destructive malware attack disguised as ransomware, later attributed by multiple governments to Russia's GRU military-intelligence Sandworm unit, spread globally on June 27, 2017 after compromising the update mechanism of M.E.Doc, a Ukrainian tax-preparation program used by most companies doing business in Ukraine; among the many multinational companies affected were shipping giant Maersk, delivery firm FedEx (via subsidiary TNT Express), pharmaceutical maker Merck & Co., and consumer-goods firms Reckitt Benckiser and Mondelez.",
-      "market_impact": "Maersk reported business-interruption losses of $200-300 million, forcing it to reinstall software on tens of thousands of devices and manually reroute container-shipping operations for days; FedEx disclosed roughly $400 million in losses tied to the attack in its 2019 annual report; a White House assessment cited in press reporting put total global damages from the attack at more than $10 billion, making it one of the most financially destructive cyberattacks recorded to that point."
-     }
-    ],
-    "possibility_chains": [
-     "A cyberattack that spreads through a shared piece of widely used business software (rather than targeting one company directly) has historically caused damage far beyond its apparent initial target, hitting unrelated multinational companies with no direct connection to the original dispute.",
-     "Companies hit by a major destructive cyberattack have historically needed weeks to fully restore operations even after the immediate malware threat is contained, because rebuilding trust in and rebuilding compromised IT infrastructure from scratch takes longer than simply removing malware.",
-     "A cyberattack causing large, well-publicized corporate losses has historically accelerated corporate cyber-insurance purchasing and prompted insurers to reassess (and in some cases contest) whether such attacks qualify for coverage under war-exclusion clauses."
-    ],
-    "why_it_matters": "NotPetya cyberattack cripples multiple global corporations (June 27, 2017): Maersk reported business-interruption losses of $200-300 million, forcing it to reinstall software on tens of thousands of devices and manually reroute container-shipping operations for days; FedEx disclosed roughly $400 million in losses tied to the attack in its 2019 annual report; a White House assessment cited in press reporting put total global damages from the attack at more than $10 billion, making it one of the most financially destructive cyberattacks recorded to that point. A cyberattack that spreads through a shared piece of widely used business software (rather than targeting one company directly) has historically caused damage far beyond its apparent initial target, hitting unrelated multinational companies with no direct connection to the original dispute.",
-    "linked_playbooks": [
-     {
-      "id": "infrastructure-cyberattack",
-      "name": "Cyberattack on critical infrastructure",
-      "affected_domains": [],
-      "why_it_matters": "NotPetya malware outbreak (June 2017): Maersk had to reinstall its entire global IT infrastructure and briefly ran port terminal operations manually; total global damages were later estimated at over $10 billion, making it one of the most costly cyberattacks in history. A cyberattack that forces critical infrastructure offline (pipelines, ports, power grids) has historically caused localized shortages and price spikes in the directly affected region, even when the underlying supply elsewhere is unaffected."
-     }
-    ]
-   },
-   "category_context": null,
-   "corroboration": {
-    "tier": "single_source",
-    "source_count": 1,
-    "country_count": 1,
-    "countries": [
-     "Netherlands"
-    ],
-    "label": "1 source",
-    "scraped_fallback_sources_added": 0
-   },
-   "sources": [
-    {
-     "title": "Tien jaar na NotPetya is Maersk weer getroffen door ransomware",
-     "source_name": "NU.nl",
-     "country": "Netherlands",
-     "language": "Dutch",
-     "url": "https://www.nu.nl/tweakers/6416577/tien-jaar-na-notpetya-is-maersk-weer-getroffen-door-ransomware.html",
-     "source_type": "rss",
-     "age_hours": 5.5
     }
    ]
   },
@@ -1445,7 +1338,7 @@
      "language": "English",
      "url": "https://time.com/article/2026/11/14/the-china-shock-in-the-ai-era/",
      "source_type": "rss",
-     "age_hours": 5.5
+     "age_hours": 16.1
     }
    ]
   },
@@ -1523,96 +1416,7 @@
      "language": "French",
      "url": "https://www.la-croix.com/societe/la-peche-a-l-anguille-jaune-interdite-en-france-pour-faire-face-au-declin-rapide-de-cette-espece-20261114",
      "source_type": "rss",
-     "age_hours": 5.7
-    }
-   ]
-  },
-  {
-   "signal_id": "186261c9a9e7f0ee",
-   "signal_type": "playbook_single_source",
-   "headline": "Liveblog Ukrainekrieg: Selenskyj: USA bringen NATO-Beitritt für Gebietsverzicht ins Spiel",
-   "matched_at": "2026-11-14T10:08:37Z",
-   "matched_language": "de",
-   "aspects": [
-    {
-     "id": "geopolitics.diplomacy",
-     "score": 3.0
-    }
-   ],
-   "ripple_effect": {
-    "id": "nato-alliance-expansion",
-    "name": "NATO alliance expansion / enlargement",
-    "affected_domains": [
-     "defense",
-     "diplomacy",
-     "geopolitics"
-    ],
-    "historical_precedents": [
-     {
-      "period": "1999",
-      "event": "NATO's first post-Cold War enlargement round",
-      "what_happened": "The Czech Republic, Hungary, and Poland formally joined NATO on 12 March 1999, the alliance's first enlargement into former Warsaw Pact territory.",
-      "market_impact": "The new members subsequently restructured their militaries toward NATO interoperability standards over the following years, a process that involved substantial defense procurement and modernization spending."
-     },
-     {
-      "period": "2004",
-      "event": "NATO's largest single enlargement round",
-      "what_happened": "Bulgaria, Estonia, Latvia, Lithuania, Romania, Slovakia, and Slovenia joined NATO on 29 March 2004, extending the alliance's border directly to Russia via the Baltic states.",
-      "market_impact": "The round significantly expanded NATO's direct border with Russia and was followed by years of gradual integration of the new members' militaries and defense industries into NATO structures."
-     },
-     {
-      "period": "2022–2024",
-      "event": "Finland and Sweden's accession following Russia's invasion of Ukraine",
-      "what_happened": "Finland and Sweden, both militarily non-aligned for decades, applied to join NATO on 18 May 2022. Finland was admitted on 4 April 2023; Sweden's accession was delayed by Turkish and Hungarian holds before both were admitted, and Sweden formally joined on 7 March 2024 as NATO's 32nd member.",
-      "market_impact": "Russia's Defense Ministry said Finland's accession significantly increased the risk of a wider conflict in Europe and doubled the length of NATO's border with Russia, while President Putin publicly dismissed the accessions as posing no direct threat to Russia; both new members proceeded with defense-spending commitments tied to NATO membership."
-     }
-    ],
-    "possibility_chains": [
-     "NATO enlargement that extends the alliance's border with Russia has historically drawn public objections from Moscow, though the accessions themselves have not, to date, triggered direct military confrontation between Russia and the alliance.",
-     "New NATO members have historically committed to raising defense spending toward the alliance's 2%-of-GDP guideline, a process that has typically unfolded over multiple years rather than immediately upon accession.",
-     "Countries seeking NATO membership while ratification is pending have historically faced a period of diplomatic and procedural uncertainty, since any single member state can delay or block accession."
-    ],
-    "why_it_matters": "Finland and Sweden's accession following Russia's invasion of Ukraine (2022–2024): Russia's Defense Ministry said Finland's accession significantly increased the risk of a wider conflict in Europe and doubled the length of NATO's border with Russia, while President Putin publicly dismissed the accessions as posing no direct threat to Russia; both new members proceeded with defense-spending commitments tied to NATO membership. NATO enlargement that extends the alliance's border with Russia has historically drawn public objections from Moscow, though the accessions themselves have not, to date, triggered direct military confrontation between Russia and the alliance.",
-    "linked_playbooks": [
-     {
-      "id": "defense-spending-rearmament-surge",
-      "name": "National rearmament / defense spending surge",
-      "affected_domains": [
-       "defense",
-       "fiscal-policy",
-       "manufacturing",
-       "geopolitics"
-      ],
-      "why_it_matters": "Germany's 'Zeitenwende' defense policy shift (February 2022 – 2024): The announcement marked a historic reversal of Germany's post-WWII restraint on military spending and was followed by German defense contractors reporting substantially higher order backlogs in subsequent years. A major security shock in a region has historically prompted neighboring or allied countries to announce sizable defense spending increases in the following weeks, even though actually building and delivering new military hardware has typically taken years."
-     },
-     {
-      "id": "major-economy-sanctions",
-      "name": "Sanctions imposed on a major economy",
-      "affected_domains": [],
-      "why_it_matters": "International sanctions on Iran over its nuclear program (2010s): Iranian oil exports fell sharply, though global oil prices were also affected by supply from other producers filling the gap; Iran's own currency and economy experienced significant strain during the most restrictive sanctions periods. Sanctions targeting a major energy or commodity exporter have historically tightened global supply of that commodity, which has often (though not always, depending on how much other producers can offset the loss) pushed prices higher."
-     }
-    ]
-   },
-   "category_context": null,
-   "corroboration": {
-    "tier": "single_source",
-    "source_count": 1,
-    "country_count": 1,
-    "countries": [
-     "Germany"
-    ],
-    "label": "1 source",
-    "scraped_fallback_sources_added": 0
-   },
-   "sources": [
-    {
-     "title": "Liveblog Ukrainekrieg: Selenskyj: USA bringen NATO-Beitritt für Gebietsverzicht ins Spiel",
-     "source_name": "Frankfurter Allgemeine Zeitung (FAZ)",
-     "country": "Germany",
-     "language": "German",
-     "url": "https://www.faz.net/aktuell/politik/ukraine/ukraine-liveticker-selenskyj-usa-bringen-nato-beitritt-fuer-gebietsverzicht-ins-spiel-faz-110683325.html",
-     "source_type": "rss",
-     "age_hours": 7.4
+     "age_hours": 16.3
     }
    ]
   },
@@ -1706,7 +1510,7 @@
      "language": "English",
      "url": "https://www.thecitizen.co.tz/tanzania/news/national/5g-rollout-outpaces-local-business-applications-5670622",
      "source_type": "rss",
-     "age_hours": 7.6
+     "age_hours": 18.2
     }
    ]
   },
@@ -1795,590 +1599,7 @@
      "language": "German",
      "url": "https://orf.at/stories/3448165/",
      "source_type": "rss",
-     "age_hours": 7.7
-    }
-   ]
-  },
-  {
-   "signal_id": "750c7d009e3b6c56",
-   "signal_type": "playbook_single_source",
-   "headline": "Iran reports three incidents of oil tankers hit by mines in Hormuz",
-   "matched_at": "2026-11-14T07:24:35Z",
-   "matched_language": "en",
-   "aspects": [
-    {
-     "id": "energy.oil-gas",
-     "score": 3.0
-    }
-   ],
-   "ripple_effect": {
-    "id": "hormuz-gulf-oil-shock",
-    "name": "Persian Gulf oil supply shock",
-    "affected_domains": [],
-    "historical_precedents": [
-     {
-      "period": "1984–1988",
-      "event": "Iran–Iraq \"Tanker War\"",
-      "what_happened": "Iran and Iraq attacked oil tankers transiting the Persian Gulf and Strait of Hormuz, and Iran repeatedly threatened to close the strait.",
-      "market_impact": "Shipping insurance war-risk premiums in the Gulf rose sharply, and the U.S. Navy began escorting reflagged Kuwaiti tankers in 1987 to keep the strait open."
-     },
-     {
-      "period": "September 2019",
-      "event": "Drone and missile attack on Saudi Aramco's Abqaiq and Khurais facilities",
-      "what_happened": "The attack (which Saudi Arabia and the U.S. blamed on Iran, a claim Iran denied) temporarily knocked out roughly half of Saudi Arabia's oil output, about 5% of global supply.",
-      "market_impact": "Brent crude jumped about 15% in a single day — the largest one-day oil price increase since the 1990–91 Gulf War."
-     },
-     {
-      "period": "1990–1991",
-      "event": "Gulf War (Iraqi invasion of Kuwait)",
-      "what_happened": "Iraq's invasion of Kuwait removed a large share of Gulf oil exports from the market and raised fears of a wider regional war.",
-      "market_impact": "Oil prices roughly doubled in the months following the invasion before falling back once the war ended and supply concerns eased."
-     }
-    ],
-    "possibility_chains": [
-     "Roughly a fifth of the world's oil is estimated to pass through the Strait of Hormuz, so a sustained blockage or major disruption there has historically driven crude oil prices sharply higher.",
-     "Because ammonia-based fertilizer production is natural-gas intensive, and natural gas prices often move together with oil, a prolonged energy price spike has historically fed through into higher fertilizer costs over the following months.",
-     "Fertilizer is a major input cost in food production, so energy shocks of this kind have historically been followed — often with a lag — by higher food prices.",
-     "Shipping insurers have historically raised war-risk premiums for vessels transiting the Gulf during periods of heightened tension, adding to the landed cost of oil and other cargo."
-    ],
-    "why_it_matters": "Gulf War (Iraqi invasion of Kuwait) (1990–1991): Oil prices roughly doubled in the months following the invasion before falling back once the war ended and supply concerns eased. Roughly a fifth of the world's oil is estimated to pass through the Strait of Hormuz, so a sustained blockage or major disruption there has historically driven crude oil prices sharply higher.",
-    "linked_playbooks": []
-   },
-   "category_context": null,
-   "corroboration": {
-    "tier": "single_source",
-    "source_count": 8,
-    "country_count": 7,
-    "countries": [
-     "Egypt",
-     "Iran",
-     "Iraq",
-     "Israel",
-     "Pakistan",
-     "Russia",
-     "Tunisia"
-    ],
-    "label": "8 sources across 7 countries",
-    "scraped_fallback_sources_added": 7
-   },
-   "sources": [
-    {
-     "title": "Iran reports three incidents of oil tankers hit by mines in Hormuz",
-     "source_name": "Business Recorder",
-     "country": "Pakistan",
-     "language": "English",
-     "url": "https://www.brecorder.com/news/40448900/iran-reports-three-incidents-of-oil-tankers-hit-by-mines-in-hormuz",
-     "source_type": "rss",
-     "age_hours": 10.1
-    },
-    {
-     "title": "عاجل.. 6 سفن فقط عبرت مضيق هرمز خلال يوم مع تلاشي آمال التوصل لاتفاق سلام",
-     "source_name": "Al-Dostor",
-     "country": "Egypt",
-     "language": "Arabic",
-     "url": "https://www.dostor.org/5664668",
-     "source_type": "scraped_fallback",
-     "age_hours": null
-    },
-    {
-     "title": "أمين المجلس الأعلى للأمن القومي: لن يفتح مضيق هرمز ما لم تقبل الولايات المتحدة شروط إيران",
-     "source_name": "Jawhara FM",
-     "country": "Tunisia",
-     "language": "Arabic/French",
-     "url": "https://www.jawharafm.net/ar/article/أمين-المجلس-الأعلى-للأمن-القومي-لن-يفتح-مضيق-هرمز-ما-لم-تقبل-الولايات-المتحدة-شروط-إيران/106/297518",
-     "source_type": "scraped_fallback",
-     "age_hours": null
-    },
-    {
-     "title": "Iran is not Venezuela: Hormuz Strait and limits of US power",
-     "source_name": "Tehran Times",
-     "country": "Iran",
-     "language": "English",
-     "url": "https://www.tehrantimes.com/news/529008/Iran-is-not-Venezuela-Hormuz-Strait-and-limits-of-US-power",
-     "source_type": "scraped_fallback",
-     "age_hours": null
-    },
-    {
-     "title": "Trump:'I’m the last person to trust Iran, they’ve lied constantly'President Trump rejects assertions he trusts Iran, claims total US control of Strait of Hormuz.",
-     "source_name": "Arutz Sheva (Israel National News)",
-     "country": "Israel",
-     "language": "Hebrew/English",
-     "url": "https://www.israelnationalnews.com/news/431583",
-     "source_type": "scraped_fallback",
-     "age_hours": null
-    },
-    {
-     "title": "Oil Prices Extend Rally as Strait of Hormuz Reopening Hopes Fade",
-     "source_name": "Kurdistan24",
-     "country": "Iraq",
-     "language": "Kurdish/English",
-     "url": "https://www.kurdistan24.net/en/story/931751/oil-prices-extend-rally-as-strait-of-hormuz-reopening-hopes-fade",
-     "source_type": "scraped_fallback",
-     "age_hours": null
-    },
-    {
-     "title": "Trump claims US has ‘total control’ of the Strait of Hormuz, warning Iran it could be ‘blown away’ if it acts",
-     "source_name": "i24NEWS",
-     "country": "Israel",
-     "language": "English/French/Arabic",
-     "url": "https://www.i24news.tv/en/news/israel/defense/artc-i-don-t-trust-iran-they-lied-constantly-we-have-total-control-over-the-strait-trump-declares-live-blog",
-     "source_type": "scraped_fallback",
-     "age_hours": null
-    },
-    {
-     "title": "Strait of Hormuz developments",
-     "source_name": "TASS",
-     "country": "Russia",
-     "language": "English (Russian version at tass.ru)",
-     "url": "https://tass.com/situation-around-the-strait-of-hormuz",
-     "source_type": "scraped_fallback",
-     "age_hours": null
-    }
-   ]
-  },
-  {
-   "signal_id": "de33d1e3604c0eb0",
-   "signal_type": "playbook_single_source",
-   "headline": "Iran: Öltanker in Straße von Hormus in Brand geraten",
-   "matched_at": "2026-11-14T06:42:18Z",
-   "matched_language": "de",
-   "aspects": [],
-   "ripple_effect": {
-    "id": "hormuz-gulf-oil-shock",
-    "name": "Persian Gulf oil supply shock",
-    "affected_domains": [],
-    "historical_precedents": [
-     {
-      "period": "1984–1988",
-      "event": "Iran–Iraq \"Tanker War\"",
-      "what_happened": "Iran and Iraq attacked oil tankers transiting the Persian Gulf and Strait of Hormuz, and Iran repeatedly threatened to close the strait.",
-      "market_impact": "Shipping insurance war-risk premiums in the Gulf rose sharply, and the U.S. Navy began escorting reflagged Kuwaiti tankers in 1987 to keep the strait open."
-     },
-     {
-      "period": "September 2019",
-      "event": "Drone and missile attack on Saudi Aramco's Abqaiq and Khurais facilities",
-      "what_happened": "The attack (which Saudi Arabia and the U.S. blamed on Iran, a claim Iran denied) temporarily knocked out roughly half of Saudi Arabia's oil output, about 5% of global supply.",
-      "market_impact": "Brent crude jumped about 15% in a single day — the largest one-day oil price increase since the 1990–91 Gulf War."
-     },
-     {
-      "period": "1990–1991",
-      "event": "Gulf War (Iraqi invasion of Kuwait)",
-      "what_happened": "Iraq's invasion of Kuwait removed a large share of Gulf oil exports from the market and raised fears of a wider regional war.",
-      "market_impact": "Oil prices roughly doubled in the months following the invasion before falling back once the war ended and supply concerns eased."
-     }
-    ],
-    "possibility_chains": [
-     "Roughly a fifth of the world's oil is estimated to pass through the Strait of Hormuz, so a sustained blockage or major disruption there has historically driven crude oil prices sharply higher.",
-     "Because ammonia-based fertilizer production is natural-gas intensive, and natural gas prices often move together with oil, a prolonged energy price spike has historically fed through into higher fertilizer costs over the following months.",
-     "Fertilizer is a major input cost in food production, so energy shocks of this kind have historically been followed — often with a lag — by higher food prices.",
-     "Shipping insurers have historically raised war-risk premiums for vessels transiting the Gulf during periods of heightened tension, adding to the landed cost of oil and other cargo."
-    ],
-    "why_it_matters": "Gulf War (Iraqi invasion of Kuwait) (1990–1991): Oil prices roughly doubled in the months following the invasion before falling back once the war ended and supply concerns eased. Roughly a fifth of the world's oil is estimated to pass through the Strait of Hormuz, so a sustained blockage or major disruption there has historically driven crude oil prices sharply higher.",
-    "linked_playbooks": []
-   },
-   "category_context": null,
-   "corroboration": {
-    "tier": "single_source",
-    "source_count": 8,
-    "country_count": 7,
-    "countries": [
-     "Austria",
-     "Egypt",
-     "Iran",
-     "Iraq",
-     "Israel",
-     "Russia",
-     "Tunisia"
-    ],
-    "label": "8 sources across 7 countries",
-    "scraped_fallback_sources_added": 7
-   },
-   "sources": [
-    {
-     "title": "Iran: Öltanker in Straße von Hormus in Brand geraten",
-     "source_name": "ORF (Österreichischer Rundfunk)",
-     "country": "Austria",
-     "language": "German",
-     "url": "https://orf.at/stories/3448145/",
-     "source_type": "rss",
-     "age_hours": 10.8
-    },
-    {
-     "title": "عاجل.. 6 سفن فقط عبرت مضيق هرمز خلال يوم مع تلاشي آمال التوصل لاتفاق سلام",
-     "source_name": "Al-Dostor",
-     "country": "Egypt",
-     "language": "Arabic",
-     "url": "https://www.dostor.org/5664668",
-     "source_type": "scraped_fallback",
-     "age_hours": null
-    },
-    {
-     "title": "أمين المجلس الأعلى للأمن القومي: لن يفتح مضيق هرمز ما لم تقبل الولايات المتحدة شروط إيران",
-     "source_name": "Jawhara FM",
-     "country": "Tunisia",
-     "language": "Arabic/French",
-     "url": "https://www.jawharafm.net/ar/article/أمين-المجلس-الأعلى-للأمن-القومي-لن-يفتح-مضيق-هرمز-ما-لم-تقبل-الولايات-المتحدة-شروط-إيران/106/297518",
-     "source_type": "scraped_fallback",
-     "age_hours": null
-    },
-    {
-     "title": "Iran is not Venezuela: Hormuz Strait and limits of US power",
-     "source_name": "Tehran Times",
-     "country": "Iran",
-     "language": "English",
-     "url": "https://www.tehrantimes.com/news/529008/Iran-is-not-Venezuela-Hormuz-Strait-and-limits-of-US-power",
-     "source_type": "scraped_fallback",
-     "age_hours": null
-    },
-    {
-     "title": "Trump:'I’m the last person to trust Iran, they’ve lied constantly'President Trump rejects assertions he trusts Iran, claims total US control of Strait of Hormuz.",
-     "source_name": "Arutz Sheva (Israel National News)",
-     "country": "Israel",
-     "language": "Hebrew/English",
-     "url": "https://www.israelnationalnews.com/news/431583",
-     "source_type": "scraped_fallback",
-     "age_hours": null
-    },
-    {
-     "title": "Oil Prices Extend Rally as Strait of Hormuz Reopening Hopes Fade",
-     "source_name": "Kurdistan24",
-     "country": "Iraq",
-     "language": "Kurdish/English",
-     "url": "https://www.kurdistan24.net/en/story/931751/oil-prices-extend-rally-as-strait-of-hormuz-reopening-hopes-fade",
-     "source_type": "scraped_fallback",
-     "age_hours": null
-    },
-    {
-     "title": "Trump claims US has ‘total control’ of the Strait of Hormuz, warning Iran it could be ‘blown away’ if it acts",
-     "source_name": "i24NEWS",
-     "country": "Israel",
-     "language": "English/French/Arabic",
-     "url": "https://www.i24news.tv/en/news/israel/defense/artc-i-don-t-trust-iran-they-lied-constantly-we-have-total-control-over-the-strait-trump-declares-live-blog",
-     "source_type": "scraped_fallback",
-     "age_hours": null
-    },
-    {
-     "title": "Strait of Hormuz developments",
-     "source_name": "TASS",
-     "country": "Russia",
-     "language": "English (Russian version at tass.ru)",
-     "url": "https://tass.com/situation-around-the-strait-of-hormuz",
-     "source_type": "scraped_fallback",
-     "age_hours": null
-    }
-   ]
-  },
-  {
-   "signal_id": "d7dfb1f4338d1481",
-   "signal_type": "playbook_single_source",
-   "headline": "Hormuz Shipping Traffic Remains 65% Below Pre-War Levels",
-   "matched_at": "2026-11-14T03:30:25Z",
-   "matched_language": "en",
-   "aspects": [
-    {
-     "id": "geopolitics.conflicts",
-     "score": 3.0
-    },
-    {
-     "id": "business.supply-chains",
-     "score": 3.0
-    }
-   ],
-   "ripple_effect": {
-    "id": "hormuz-gulf-oil-shock",
-    "name": "Persian Gulf oil supply shock",
-    "affected_domains": [],
-    "historical_precedents": [
-     {
-      "period": "1984–1988",
-      "event": "Iran–Iraq \"Tanker War\"",
-      "what_happened": "Iran and Iraq attacked oil tankers transiting the Persian Gulf and Strait of Hormuz, and Iran repeatedly threatened to close the strait.",
-      "market_impact": "Shipping insurance war-risk premiums in the Gulf rose sharply, and the U.S. Navy began escorting reflagged Kuwaiti tankers in 1987 to keep the strait open."
-     },
-     {
-      "period": "September 2019",
-      "event": "Drone and missile attack on Saudi Aramco's Abqaiq and Khurais facilities",
-      "what_happened": "The attack (which Saudi Arabia and the U.S. blamed on Iran, a claim Iran denied) temporarily knocked out roughly half of Saudi Arabia's oil output, about 5% of global supply.",
-      "market_impact": "Brent crude jumped about 15% in a single day — the largest one-day oil price increase since the 1990–91 Gulf War."
-     },
-     {
-      "period": "1990–1991",
-      "event": "Gulf War (Iraqi invasion of Kuwait)",
-      "what_happened": "Iraq's invasion of Kuwait removed a large share of Gulf oil exports from the market and raised fears of a wider regional war.",
-      "market_impact": "Oil prices roughly doubled in the months following the invasion before falling back once the war ended and supply concerns eased."
-     }
-    ],
-    "possibility_chains": [
-     "Roughly a fifth of the world's oil is estimated to pass through the Strait of Hormuz, so a sustained blockage or major disruption there has historically driven crude oil prices sharply higher.",
-     "Because ammonia-based fertilizer production is natural-gas intensive, and natural gas prices often move together with oil, a prolonged energy price spike has historically fed through into higher fertilizer costs over the following months.",
-     "Fertilizer is a major input cost in food production, so energy shocks of this kind have historically been followed — often with a lag — by higher food prices.",
-     "Shipping insurers have historically raised war-risk premiums for vessels transiting the Gulf during periods of heightened tension, adding to the landed cost of oil and other cargo."
-    ],
-    "why_it_matters": "Gulf War (Iraqi invasion of Kuwait) (1990–1991): Oil prices roughly doubled in the months following the invasion before falling back once the war ended and supply concerns eased. Roughly a fifth of the world's oil is estimated to pass through the Strait of Hormuz, so a sustained blockage or major disruption there has historically driven crude oil prices sharply higher.",
-    "linked_playbooks": []
-   },
-   "category_context": null,
-   "corroboration": {
-    "tier": "single_source",
-    "source_count": 8,
-    "country_count": 7,
-    "countries": [
-     "Afghanistan",
-     "Egypt",
-     "Iran",
-     "Iraq",
-     "Israel",
-     "Russia",
-     "Tunisia"
-    ],
-    "label": "8 sources across 7 countries",
-    "scraped_fallback_sources_added": 7
-   },
-   "sources": [
-    {
-     "title": "Hormuz Shipping Traffic Remains 65% Below Pre-War Levels",
-     "source_name": "Khaama Press",
-     "country": "Afghanistan",
-     "language": "English/Dari/Pashto",
-     "url": "https://www.khaama.com/hormuz-shipping-traffic-below-pre-war-levels/",
-     "source_type": "rss",
-     "age_hours": 14.0
-    },
-    {
-     "title": "عاجل.. 6 سفن فقط عبرت مضيق هرمز خلال يوم مع تلاشي آمال التوصل لاتفاق سلام",
-     "source_name": "Al-Dostor",
-     "country": "Egypt",
-     "language": "Arabic",
-     "url": "https://www.dostor.org/5664668",
-     "source_type": "scraped_fallback",
-     "age_hours": null
-    },
-    {
-     "title": "أمين المجلس الأعلى للأمن القومي: لن يفتح مضيق هرمز ما لم تقبل الولايات المتحدة شروط إيران",
-     "source_name": "Jawhara FM",
-     "country": "Tunisia",
-     "language": "Arabic/French",
-     "url": "https://www.jawharafm.net/ar/article/أمين-المجلس-الأعلى-للأمن-القومي-لن-يفتح-مضيق-هرمز-ما-لم-تقبل-الولايات-المتحدة-شروط-إيران/106/297518",
-     "source_type": "scraped_fallback",
-     "age_hours": null
-    },
-    {
-     "title": "Iran is not Venezuela: Hormuz Strait and limits of US power",
-     "source_name": "Tehran Times",
-     "country": "Iran",
-     "language": "English",
-     "url": "https://www.tehrantimes.com/news/529008/Iran-is-not-Venezuela-Hormuz-Strait-and-limits-of-US-power",
-     "source_type": "scraped_fallback",
-     "age_hours": null
-    },
-    {
-     "title": "Trump:'I’m the last person to trust Iran, they’ve lied constantly'President Trump rejects assertions he trusts Iran, claims total US control of Strait of Hormuz.",
-     "source_name": "Arutz Sheva (Israel National News)",
-     "country": "Israel",
-     "language": "Hebrew/English",
-     "url": "https://www.israelnationalnews.com/news/431583",
-     "source_type": "scraped_fallback",
-     "age_hours": null
-    },
-    {
-     "title": "Oil Prices Extend Rally as Strait of Hormuz Reopening Hopes Fade",
-     "source_name": "Kurdistan24",
-     "country": "Iraq",
-     "language": "Kurdish/English",
-     "url": "https://www.kurdistan24.net/en/story/931751/oil-prices-extend-rally-as-strait-of-hormuz-reopening-hopes-fade",
-     "source_type": "scraped_fallback",
-     "age_hours": null
-    },
-    {
-     "title": "Trump claims US has ‘total control’ of the Strait of Hormuz, warning Iran it could be ‘blown away’ if it acts",
-     "source_name": "i24NEWS",
-     "country": "Israel",
-     "language": "English/French/Arabic",
-     "url": "https://www.i24news.tv/en/news/israel/defense/artc-i-don-t-trust-iran-they-lied-constantly-we-have-total-control-over-the-strait-trump-declares-live-blog",
-     "source_type": "scraped_fallback",
-     "age_hours": null
-    },
-    {
-     "title": "Strait of Hormuz developments",
-     "source_name": "TASS",
-     "country": "Russia",
-     "language": "English (Russian version at tass.ru)",
-     "url": "https://tass.com/situation-around-the-strait-of-hormuz",
-     "source_type": "scraped_fallback",
-     "age_hours": null
-    }
-   ]
-  },
-  {
-   "signal_id": "e019faf8f4cb4cc6",
-   "signal_type": "playbook_single_source",
-   "headline": "Ucraina, Zelensky: \"Usa propongono cessione Donbass in cambio di adesione alla Nato\"",
-   "matched_at": "2026-11-14T00:25:00Z",
-   "matched_language": "it",
-   "aspects": [
-    {
-     "id": "geopolitics.diplomacy",
-     "score": 4.0
-    }
-   ],
-   "ripple_effect": {
-    "id": "nato-alliance-expansion",
-    "name": "NATO alliance expansion / enlargement",
-    "affected_domains": [
-     "defense",
-     "diplomacy",
-     "geopolitics"
-    ],
-    "historical_precedents": [
-     {
-      "period": "1999",
-      "event": "NATO's first post-Cold War enlargement round",
-      "what_happened": "The Czech Republic, Hungary, and Poland formally joined NATO on 12 March 1999, the alliance's first enlargement into former Warsaw Pact territory.",
-      "market_impact": "The new members subsequently restructured their militaries toward NATO interoperability standards over the following years, a process that involved substantial defense procurement and modernization spending."
-     },
-     {
-      "period": "2004",
-      "event": "NATO's largest single enlargement round",
-      "what_happened": "Bulgaria, Estonia, Latvia, Lithuania, Romania, Slovakia, and Slovenia joined NATO on 29 March 2004, extending the alliance's border directly to Russia via the Baltic states.",
-      "market_impact": "The round significantly expanded NATO's direct border with Russia and was followed by years of gradual integration of the new members' militaries and defense industries into NATO structures."
-     },
-     {
-      "period": "2022–2024",
-      "event": "Finland and Sweden's accession following Russia's invasion of Ukraine",
-      "what_happened": "Finland and Sweden, both militarily non-aligned for decades, applied to join NATO on 18 May 2022. Finland was admitted on 4 April 2023; Sweden's accession was delayed by Turkish and Hungarian holds before both were admitted, and Sweden formally joined on 7 March 2024 as NATO's 32nd member.",
-      "market_impact": "Russia's Defense Ministry said Finland's accession significantly increased the risk of a wider conflict in Europe and doubled the length of NATO's border with Russia, while President Putin publicly dismissed the accessions as posing no direct threat to Russia; both new members proceeded with defense-spending commitments tied to NATO membership."
-     }
-    ],
-    "possibility_chains": [
-     "NATO enlargement that extends the alliance's border with Russia has historically drawn public objections from Moscow, though the accessions themselves have not, to date, triggered direct military confrontation between Russia and the alliance.",
-     "New NATO members have historically committed to raising defense spending toward the alliance's 2%-of-GDP guideline, a process that has typically unfolded over multiple years rather than immediately upon accession.",
-     "Countries seeking NATO membership while ratification is pending have historically faced a period of diplomatic and procedural uncertainty, since any single member state can delay or block accession."
-    ],
-    "why_it_matters": "Finland and Sweden's accession following Russia's invasion of Ukraine (2022–2024): Russia's Defense Ministry said Finland's accession significantly increased the risk of a wider conflict in Europe and doubled the length of NATO's border with Russia, while President Putin publicly dismissed the accessions as posing no direct threat to Russia; both new members proceeded with defense-spending commitments tied to NATO membership. NATO enlargement that extends the alliance's border with Russia has historically drawn public objections from Moscow, though the accessions themselves have not, to date, triggered direct military confrontation between Russia and the alliance.",
-    "linked_playbooks": [
-     {
-      "id": "defense-spending-rearmament-surge",
-      "name": "National rearmament / defense spending surge",
-      "affected_domains": [
-       "defense",
-       "fiscal-policy",
-       "manufacturing",
-       "geopolitics"
-      ],
-      "why_it_matters": "Germany's 'Zeitenwende' defense policy shift (February 2022 – 2024): The announcement marked a historic reversal of Germany's post-WWII restraint on military spending and was followed by German defense contractors reporting substantially higher order backlogs in subsequent years. A major security shock in a region has historically prompted neighboring or allied countries to announce sizable defense spending increases in the following weeks, even though actually building and delivering new military hardware has typically taken years."
-     },
-     {
-      "id": "major-economy-sanctions",
-      "name": "Sanctions imposed on a major economy",
-      "affected_domains": [],
-      "why_it_matters": "International sanctions on Iran over its nuclear program (2010s): Iranian oil exports fell sharply, though global oil prices were also affected by supply from other producers filling the gap; Iran's own currency and economy experienced significant strain during the most restrictive sanctions periods. Sanctions targeting a major energy or commodity exporter have historically tightened global supply of that commodity, which has often (though not always, depending on how much other producers can offset the loss) pushed prices higher."
-     }
-    ]
-   },
-   "category_context": null,
-   "corroboration": {
-    "tier": "single_source",
-    "source_count": 1,
-    "country_count": 1,
-    "countries": [
-     "San Marino"
-    ],
-    "label": "1 source",
-    "scraped_fallback_sources_added": 0
-   },
-   "sources": [
-    {
-     "title": "Ucraina, Zelensky: \"Usa propongono cessione Donbass in cambio di adesione alla Nato\"",
-     "source_name": "San Marino RTV",
-     "country": "San Marino",
-     "language": "Italian",
-     "url": "https://www.sanmarinortv.sm/news/mondo-c8/ucraina-zelensky-usa-propongono-cessione-donbass-in-cambio-di-adesione-alla-nato-a298512",
-     "source_type": "rss",
-     "age_hours": 17.1
-    }
-   ]
-  },
-  {
-   "signal_id": "75420fc229ab535c",
-   "signal_type": "playbook_single_source",
-   "headline": "Russlands Forderungen: Wenn Putin vom „ewigen Frieden“ spricht",
-   "matched_at": "2026-11-13T15:59:45Z",
-   "matched_language": "de",
-   "aspects": [],
-   "ripple_effect": {
-    "id": "nato-alliance-expansion",
-    "name": "NATO alliance expansion / enlargement",
-    "affected_domains": [
-     "defense",
-     "diplomacy",
-     "geopolitics"
-    ],
-    "historical_precedents": [
-     {
-      "period": "1999",
-      "event": "NATO's first post-Cold War enlargement round",
-      "what_happened": "The Czech Republic, Hungary, and Poland formally joined NATO on 12 March 1999, the alliance's first enlargement into former Warsaw Pact territory.",
-      "market_impact": "The new members subsequently restructured their militaries toward NATO interoperability standards over the following years, a process that involved substantial defense procurement and modernization spending."
-     },
-     {
-      "period": "2004",
-      "event": "NATO's largest single enlargement round",
-      "what_happened": "Bulgaria, Estonia, Latvia, Lithuania, Romania, Slovakia, and Slovenia joined NATO on 29 March 2004, extending the alliance's border directly to Russia via the Baltic states.",
-      "market_impact": "The round significantly expanded NATO's direct border with Russia and was followed by years of gradual integration of the new members' militaries and defense industries into NATO structures."
-     },
-     {
-      "period": "2022–2024",
-      "event": "Finland and Sweden's accession following Russia's invasion of Ukraine",
-      "what_happened": "Finland and Sweden, both militarily non-aligned for decades, applied to join NATO on 18 May 2022. Finland was admitted on 4 April 2023; Sweden's accession was delayed by Turkish and Hungarian holds before both were admitted, and Sweden formally joined on 7 March 2024 as NATO's 32nd member.",
-      "market_impact": "Russia's Defense Ministry said Finland's accession significantly increased the risk of a wider conflict in Europe and doubled the length of NATO's border with Russia, while President Putin publicly dismissed the accessions as posing no direct threat to Russia; both new members proceeded with defense-spending commitments tied to NATO membership."
-     }
-    ],
-    "possibility_chains": [
-     "NATO enlargement that extends the alliance's border with Russia has historically drawn public objections from Moscow, though the accessions themselves have not, to date, triggered direct military confrontation between Russia and the alliance.",
-     "New NATO members have historically committed to raising defense spending toward the alliance's 2%-of-GDP guideline, a process that has typically unfolded over multiple years rather than immediately upon accession.",
-     "Countries seeking NATO membership while ratification is pending have historically faced a period of diplomatic and procedural uncertainty, since any single member state can delay or block accession."
-    ],
-    "why_it_matters": "Finland and Sweden's accession following Russia's invasion of Ukraine (2022–2024): Russia's Defense Ministry said Finland's accession significantly increased the risk of a wider conflict in Europe and doubled the length of NATO's border with Russia, while President Putin publicly dismissed the accessions as posing no direct threat to Russia; both new members proceeded with defense-spending commitments tied to NATO membership. NATO enlargement that extends the alliance's border with Russia has historically drawn public objections from Moscow, though the accessions themselves have not, to date, triggered direct military confrontation between Russia and the alliance.",
-    "linked_playbooks": [
-     {
-      "id": "defense-spending-rearmament-surge",
-      "name": "National rearmament / defense spending surge",
-      "affected_domains": [
-       "defense",
-       "fiscal-policy",
-       "manufacturing",
-       "geopolitics"
-      ],
-      "why_it_matters": "Germany's 'Zeitenwende' defense policy shift (February 2022 – 2024): The announcement marked a historic reversal of Germany's post-WWII restraint on military spending and was followed by German defense contractors reporting substantially higher order backlogs in subsequent years. A major security shock in a region has historically prompted neighboring or allied countries to announce sizable defense spending increases in the following weeks, even though actually building and delivering new military hardware has typically taken years."
-     },
-     {
-      "id": "major-economy-sanctions",
-      "name": "Sanctions imposed on a major economy",
-      "affected_domains": [],
-      "why_it_matters": "International sanctions on Iran over its nuclear program (2010s): Iranian oil exports fell sharply, though global oil prices were also affected by supply from other producers filling the gap; Iran's own currency and economy experienced significant strain during the most restrictive sanctions periods. Sanctions targeting a major energy or commodity exporter have historically tightened global supply of that commodity, which has often (though not always, depending on how much other producers can offset the loss) pushed prices higher."
-     }
-    ]
-   },
-   "category_context": null,
-   "corroboration": {
-    "tier": "single_source",
-    "source_count": 1,
-    "country_count": 1,
-    "countries": [
-     "Germany"
-    ],
-    "label": "1 source",
-    "scraped_fallback_sources_added": 0
-   },
-   "sources": [
-    {
-     "title": "Russlands Forderungen: Wenn Putin vom „ewigen Frieden“ spricht",
-     "source_name": "Frankfurter Allgemeine Zeitung (FAZ)",
-     "country": "Germany",
-     "language": "German",
-     "url": "https://www.faz.net/aktuell/politik/ukraine/wenn-putin-vom-ewigen-frieden-spricht-201680029.html",
-     "source_type": "rss",
-     "age_hours": 25.5
+     "age_hours": 18.2
     }
    ]
   }
